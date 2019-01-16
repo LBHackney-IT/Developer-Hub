@@ -1,0 +1,83 @@
+<h2 class="govuk-heading-l">Register for a developer account</h2>       
+<p class="govuk-body">Register for a developer account to start using our <a routerLink="/api-list">APIs</a> in your applications.</p>        
+<p class="govuk-body">Already registered? <a routerLink="/login">Sign in.</a></p>
+            
+<form class="form js-form" [formGroup]="registerForm" (ngSubmit)="register()">
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="emailAddress" id="emailAddress-label"> Email address  </label>              
+    <input  type="text"             
+            id="emailAddress"
+            name="emailAddress"
+            formControlName="emailAddress"
+            value=""
+            class="govuk-input"
+            aria-labelledby="emailAddress-label"        
+            aria-required="true"/>
+  </div>
+
+  <div class="govuk-form-group">              
+    <label  class="govuk-label" for="firstName" id="firstName-label"> First name </label>
+    <input  type="text"             
+            id="firstName"
+            name="firstName"
+            formControlName="firstName"
+            value=""
+            class="govuk-input"
+            aria-labelledby="firstName-label"
+            aria-required="true"/>
+  </div>
+
+  <div class="govuk-form-group ">
+    <label  class="govuk-label" for="lastName" id="lastName-label"> Last name </label>
+    <input  type="text"
+            id="lastName"
+            name="lastName"
+            formControlName="lastName"
+            value=""
+            class="govuk-input"
+            aria-labelledby="lastName-label"
+            aria-required="true"/>
+  </div>
+
+  <div class="govuk-form-group">
+    <label  class="govuk-label" for="organisation" id="organisation-label">Organisation (optional)</label>
+    <input  type="text"
+            id="organisation"
+            name="organisation"
+            value=""
+            formControlName="organisation"
+            class="govuk-input"
+            aria-labelledby="organisation-label"
+            aria-required="false"/>
+  </div>
+
+  <div >
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="password">Create password</label>
+      <small>Your password must be at least 8 characters and contain at least one number, lowercase letter, uppercase letter and special character.</small>
+      <input  type="password" 
+              autocomplete="off"
+              id="password"
+              name="password"
+              formControlName="password"
+              class="govuk-input"
+              aria-describedby="password-note"
+              aria-required="true"/>
+    </div>
+
+    <div class="govuk-form-group">
+      <label  class="govuk-label" for="confirmPassword">Confirm password</label>
+      <input  type="password" 
+              autocomplete="off"
+              id="confirmPassword"
+              name="confirmPassword"
+              formControlName="confirmPassword"
+              class="govuk-input"
+             aria-required="true"/>      
+    </div>
+  </div>
+
+  <div class="govuk-form-group">
+      <button id="submitButton" class="govuk-button" type="submit">Register</button>
+  </div>
+</form>

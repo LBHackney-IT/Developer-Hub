@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/govuk-frontend/all";
+$hackney-black: #000;
+$hackney-white: #FFF;
+$hackney-green: #00694F;
+$hackney-lines-dark: #00664F;
+$hackney-lines-mid: #00B140;
+$hackney-lines-light: #84BD00;
+$hackney-border-color: #064579;
+
+
+.govuk-panel--green {
+    background: $hackney-green;
+}

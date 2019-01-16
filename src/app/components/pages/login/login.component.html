@@ -1,0 +1,33 @@
+<h2 class="govuk-heading-l">Log in to your account</h2>
+           
+<p class="govuk-body">Don't have a developer account yet? <a routerLink="/register">Sign up now</a>.</p>
+        
+<form class="form js-form" [formGroup]="loginForm" (ngSubmit)="logIn()">
+  <div class="govuk-form-group">             
+    <label class="govuk-label" for="emailaddress" id="emailaddress-label"> Email address</label>              
+    <input  type="text"                      
+            id="emailaddress"             
+            name="emailaddress"
+            formControlName="emailAddress"             
+            value=""             
+            class="govuk-input"
+            aria-labelledby="emailaddress-label"             
+            aria-required="true"/>          
+  </div>
+  
+  <div class="govuk-form-group">                
+    <label class="govuk-label" for="password"> Password </label>
+    <input  type="password" 
+            autocomplete="off"          
+            name="password"
+            formControlName="password"
+            class="govuk-input"
+            aria-describedby="password-note"
+            aria-required="true"/>                
+  </div>
+  <a routerLink="/forgot-password"  class="govuk-back-link">Forgot your password?</a>
+
+  <div class="govuk-form-group">
+    <button id="submitButton" class="govuk-button" type="submit">Sign In</button>            
+  </div>      
+</form>

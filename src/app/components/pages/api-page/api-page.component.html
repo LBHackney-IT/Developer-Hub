@@ -1,0 +1,52 @@
+<!-- <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">{{ page.title }}</h1>
+  </div>
+  <div class="govuk-grid-column-one-third align-right">
+    <h1 class="govuk-tag govuk-tag--{% if page.compliant %}positive{% else %}negative{% endif %}">{{ page.compliant_message }}</h1>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <table class="govuk-table">
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="row">Available in Staging</th>
+          <td class="govuk-table__cell">{{{% if page.staging_available %}Yes{% else %}No{% endif %}}}</td>
+        </tr>
+        {% if page.staging_available %}
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="row">Staging Base URL</th>
+          <td class="govuk-table__cell">{{ page.staging_url }}</td>
+        </tr>
+        {% endif %}
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="row">Available in Production</th>
+          <td class="govuk-table__cell">{% if page.production_available %}Yes{% else %}No{% endif %}</td>
+        </tr>
+        {% if page.production_available %}
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="row">Production Base URL</th>
+          <td class="govuk-table__cell">{{ page.production_url }}</td>
+        </tr>
+        {% endif %}
+        {% if page.github_url %}
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="row">GitHub URL</th>
+          <td class="govuk-table__cell">{{ page.github_url }}</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <div>
+            <button class="govuk-button" onclick="redirectTo('/access')">Request API-Key</button> 
+        </div>
+    {{ page.content }}
+  </div>
+</div> -->
