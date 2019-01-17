@@ -20,6 +20,7 @@ import { ConfirmationComponent } from './components/pages/confirmation/confirmat
 import { ApiPageComponent } from './components/pages/api-page/api-page.component';
 import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
+import { TokenManagerComponent } from './components/pages/token-manager/token-manager.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
     ChangePasswordComponent,
     ConfirmationComponent,
     ApiPageComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    TokenManagerComponent
   ],
   imports: [
     BrowserModule,
