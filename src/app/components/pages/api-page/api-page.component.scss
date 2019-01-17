@@ -1,0 +1,11 @@
+@import '../../../../variables';
+
+.govuk-tag {
+    &--positive {
+      background: $hackney-green;
+    }
+  
+    &--negative {
+      background: orange;
+    }  
+}
