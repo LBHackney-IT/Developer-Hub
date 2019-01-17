@@ -1,9 +1,9 @@
-<!-- <div class="govuk-grid-row">
+<div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">{{ page.title }}</h1>
+    <h1 class="govuk-heading-xl">{{ api.title }}</h1>
   </div>
   <div class="govuk-grid-column-one-third align-right">
-    <h1 class="govuk-tag govuk-tag--{% if page.compliant %}positive{% else %}negative{% endif %}">{{ page.compliant_message }}</h1>
+    <h1 class="govuk-tag govuk-tag--{{checkIfApiIsCompliant(api) ? 'negative' : 'positive' }}"> {{checkIfApiIsCompliant(api) ? 'Non Compliant' : 'Compliant' }} </h1>
   </div>
 </div>
 
@@ -11,42 +11,51 @@
   <div class="govuk-grid-column-full">
     <table class="govuk-table">
       <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
+        <tr class="govuk-table__row" *ngIf='isStagingAvailiable()'>
           <th class="govuk-table__header" scope="row">Available in Staging</th>
-          <td class="govuk-table__cell">{{{% if page.staging_available %}Yes{% else %}No{% endif %}}}</td>
+          <td class="govuk-table__cell">{{ isStagingAvailiable() ? "Yes" : "No"}}</td>
         </tr>
-        {% if page.staging_available %}
-        <tr class="govuk-table__row">
+        
+        <tr class="govuk-table__row" *ngIf='isStagingAvailiable()'>
           <th class="govuk-table__header" scope="row">Staging Base URL</th>
-          <td class="govuk-table__cell">{{ page.staging_url }}</td>
+          <td class="govuk-table__cell">{{ api.staging.url }}</td>
         </tr>
-        {% endif %}
-        <tr class="govuk-table__row">
+
+        <tr class="govuk-table__row" *ngIf='isProductionAvailiable()'>
           <th class="govuk-table__header" scope="row">Available in Production</th>
-          <td class="govuk-table__cell">{% if page.production_available %}Yes{% else %}No{% endif %}</td>
+          <td class="govuk-table__cell">{{ isProductionAvailiable() ? "Yes" : "No"}}</td>
         </tr>
-        {% if page.production_available %}
-        <tr class="govuk-table__row">
+
+        <tr class="govuk-table__row" *ngIf='isProductionAvailiable()'>
           <th class="govuk-table__header" scope="row">Production Base URL</th>
-          <td class="govuk-table__cell">{{ page.production_url }}</td>
+          <td class="govuk-table__cell">{{ api.production.url }}</td>
         </tr>
-        {% endif %}
-        {% if page.github_url %}
-        <tr class="govuk-table__row">
+        
+        <tr class="govuk-table__row" *ngIf="api.github_url">
           <th class="govuk-table__header" scope="row">GitHub URL</th>
-          <td class="govuk-table__cell">{{ page.github_url }}</td>
+          <td class="govuk-table__cell">{{api.github_url }}</td>
         </tr>
-        {% endif %}
       </tbody>
     </table>
   </div>
 </div>
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-      <div>
-            <button class="govuk-button" onclick="redirectTo('/access')">Request API-Key</button> 
-        </div>
-    {{ page.content }}
+  <div class="govuk-grid-column-full">        
+    <a class="govuk-button" routerLink="/token-manager" type="button">Request API-Key</a>    
   </div>
-</div> -->
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h3 class="govuk-heading-l"> Overview</h3>
+    <p class="govuk-body"> {{ api.description }} </p>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h3 class="govuk-heading-l"> Service Area</h3>
+      <p class="govuk-body"> {{ api.description }} </p>
+    </div>
+  </div>
