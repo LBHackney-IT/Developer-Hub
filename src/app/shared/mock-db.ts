@@ -32,6 +32,10 @@ export const apis: IApi[] = [
       healthStatus: true,
     },
     github_url: "https://github.com/LBHackney-IT/HackneyAsbestosAPI",
+    owner: {
+      name: "Name",
+      contactDetails: "name@email.com"
+    },
     description: "The Asbestos API provides asbestos related information on London Borough of Hackney property stock. This API provides data from PSI2000, a data source that used to be hosted on-prem and that is currently accessed externally as a software as a service. The endpoints of Asbestos API allow access to data about inspections carried on in properties via the property references. If there is one or more inspections for a property, the id's contained allows to query other specific in order to get more specific asbestos data about the property like rooms, floors or elements. The API also allows to access to the actual documents related to asbestos inspections on properties like photos, floorplans and reports." 
   },
   {
@@ -63,6 +67,10 @@ export const apis: IApi[] = [
       swagger_url: "not available",
       deployed: true, 
       healthStatus: false,
+    },
+    owner: {
+      name: "Name",
+      contactDetails: "name@email.com"
     },
     github_url: "https://github.com/LBHackney-IT/LBH-IncomeCollection",
     description: "The Asbestos API provides asbestos related information on London Borough of Hackney property stock. This API provides data from PSI2000, a data source that used to be hosted on-prem and that is currently accessed externally as a software as a service. The endpoints of Asbestos API allow access to data about inspections carried on in properties via the property references. If there is one or more inspections for a property, the id's contained allows to query other specific in order to get more specific asbestos data about the property like rooms, floors or elements. The API also allows to access to the actual documents related to asbestos inspections on properties like photos, floorplans and reports." 
@@ -97,6 +105,10 @@ export const apis: IApi[] = [
       deployed: true, 
       healthStatus: false,
     },
+    owner: {
+      name: "Name",
+      contactDetails: "name@email.com"
+    },
     github_url: "https://github.com/LBHackney-IT/Manage_a_tenancy_API",
     description: "The Asbestos API provides asbestos related information on London Borough of Hackney property stock. This API provides data from PSI2000, a data source that used to be hosted on-prem and that is currently accessed externally as a software as a service. The endpoints of Asbestos API allow access to data about inspections carried on in properties via the property references. If there is one or more inspections for a property, the id's contained allows to query other specific in order to get more specific asbestos data about the property like rooms, floors or elements. The API also allows to access to the actual documents related to asbestos inspections on properties like photos, floorplans and reports." 
   },
@@ -129,6 +141,10 @@ export const apis: IApi[] = [
       swagger_url: "http://api.hackney.gov.uk/lbhnccapi/swagger/index.html",
       deployed: true, 
       healthStatus: false,
+    },
+    owner: {
+      name: "Name",
+      contactDetails: "name@email.com"
     },
     github_url: "https://github.com/LBHackney-IT/LBHNCCApi",
     description: "The Asbestos API provides asbestos related information on London Borough of Hackney property stock. This API provides data from PSI2000, a data source that used to be hosted on-prem and that is currently accessed externally as a software as a service. The endpoints of Asbestos API allow access to data about inspections carried on in properties via the property references. If there is one or more inspections for a property, the id's contained allows to query other specific in order to get more specific asbestos data about the property like rooms, floors or elements. The API also allows to access to the actual documents related to asbestos inspections on properties like photos, floorplans and reports." 
@@ -163,6 +179,10 @@ export const apis: IApi[] = [
       deployed: true, 
       healthStatus: false,
     },
+    owner: {
+      name: "Name",
+      contactDetails: "name@email.com"
+    },
     github_url: "https://github.com/LBHackney-IT/RentAccountAPI",
     description: "The Asbestos API provides asbestos related information on London Borough of Hackney property stock. This API provides data from PSI2000, a data source that used to be hosted on-prem and that is currently accessed externally as a software as a service. The endpoints of Asbestos API allow access to data about inspections carried on in properties via the property references. If there is one or more inspections for a property, the id's contained allows to query other specific in order to get more specific asbestos data about the property like rooms, floors or elements. The API also allows to access to the actual documents related to asbestos inspections on properties like photos, floorplans and reports." 
   },
@@ -195,6 +215,10 @@ export const apis: IApi[] = [
       swagger_url: "https://g6bw0g0ojk.execute-api.eu-west-2.amazonaws.com/production/repairs/swagger/index.html",
       deployed: true, 
       healthStatus: true,
+    },
+    owner: {
+      name: "Name",
+      contactDetails: "name@email.com"
     },
     github_url: "https://github.com/LBHackney-IT/Hackney_Repairs_API",
     description: "The Asbestos API provides asbestos related information on London Borough of Hackney property stock. This API provides data from PSI2000, a data source that used to be hosted on-prem and that is currently accessed externally as a software as a service. The endpoints of Asbestos API allow access to data about inspections carried on in properties via the property references. If there is one or more inspections for a property, the id's contained allows to query other specific in order to get more specific asbestos data about the property like rooms, floors or elements. The API also allows to access to the actual documents related to asbestos inspections on properties like photos, floorplans and reports." 
@@ -229,6 +253,10 @@ export const apis: IApi[] = [
       deployed: true, 
       healthStatus: true,
     },
+    owner: {
+      name: "Name",
+      contactDetails: "name@email.com"
+    },
     github_url: "https://github.com/LBHackney-IT/LBHTenancyAPI",
     description: "The Asbestos API provides asbestos related information on London Borough of Hackney property stock. This API provides data from PSI2000, a data source that used to be hosted on-prem and that is currently accessed externally as a software as a service. The endpoints of Asbestos API allow access to data about inspections carried on in properties via the property references. If there is one or more inspections for a property, the id's contained allows to query other specific in order to get more specific asbestos data about the property like rooms, floors or elements. The API also allows to access to the actual documents related to asbestos inspections on properties like photos, floorplans and reports." 
   },
@@ -261,6 +289,10 @@ export const apis: IApi[] = [
       swagger_url: "https://g6bw0g0ojk.execute-api.eu-west-2.amazonaws.com/production/tenancy/swagger",
       deployed: true, 
       healthStatus: true,
+    },
+    owner: {
+      name: "Name",
+      contactDetails: "name@email.com"
     },
     github_url: "https://github.com/LBHackney-IT/LBHTenancyAPI",
     description: "The Asbestos API provides asbestos related information on London Borough of Hackney property stock. This API provides data from PSI2000, a data source that used to be hosted on-prem and that is currently accessed externally as a software as a service. The endpoints of Asbestos API allow access to data about inspections carried on in properties via the property references. If there is one or more inspections for a property, the id's contained allows to query other specific in order to get more specific asbestos data about the property like rooms, floors or elements. The API also allows to access to the actual documents related to asbestos inspections on properties like photos, floorplans and reports." 
