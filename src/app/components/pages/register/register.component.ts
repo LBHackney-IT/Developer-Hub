@@ -70,7 +70,6 @@ export class RegisterComponent implements OnInit {
     }
     const cognitoUser = result.user;
     console.log('user name is ' + cognitoUser.getUsername());
-    
   });
   }
 
