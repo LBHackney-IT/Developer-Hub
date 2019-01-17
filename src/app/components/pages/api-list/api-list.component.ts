@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { apis } from '../../../shared/mock-db';
 import { IApi } from 'src/app/interfaces/IApi';
+import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-api-list',
@@ -8,8 +8,12 @@ import { IApi } from 'src/app/interfaces/IApi';
   styleUrls: ['./api-list.component.scss']
 })
 export class ApiListComponent implements OnInit {
-  apis: IApi[] = apis;
-  constructor() { }
+  private apis;
+  constructor(
+    private apiService: ApiService
+  ) { 
+      this.apis = apiService.getListOfApis();
+  }
 
   ngOnInit() {
   }
