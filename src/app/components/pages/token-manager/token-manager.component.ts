@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-token-manager',
@@ -6,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./token-manager.component.scss']
 })
 export class TokenManagerComponent implements OnInit {
-
-  constructor() { }
+  private apis;
+  constructor(
+    private apiService: ApiService
+  ) { 
+    this.apis = this.apiService.getListOfApis();
+  }
 
   ngOnInit() {
   }

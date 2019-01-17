@@ -21,6 +21,7 @@ import { ApiPageComponent } from './components/pages/api-page/api-page.component
 import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { TokenManagerComponent } from './components/pages/token-manager/token-manager.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { TokenManagerComponent } from './components/pages/token-manager/token-ma
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule, 
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
