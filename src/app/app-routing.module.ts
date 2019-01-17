@@ -12,6 +12,7 @@ import { ChangePasswordComponent } from './components/pages/change-password/chan
 import { ConfirmationComponent } from './components/pages/confirmation/confirmation.component';
 import { ApiPageComponent } from './components/pages/api-page/api-page.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
+import { TokenManagerComponent } from './components/pages/token-manager/token-manager.component';
 
 const routes: Routes = [
   {path: '',  component: HomeComponent},
@@ -25,8 +26,8 @@ const routes: Routes = [
   {path: 'confirm-registration', component: ConfirmRegistrationComponent, pathMatch: 'full'},
   {path: 'change-password', component: ChangePasswordComponent, pathMatch: 'full'},
   {path: 'confirmation/:type', component: ConfirmationComponent, pathMatch: 'full'},
+  {path: 'token-manager', component: TokenManagerComponent, pathMatch: 'full'},
   {path: '**', component: NotFoundComponent}
-
 ];
 
 @NgModule({
