@@ -4,18 +4,22 @@ export interface IApi {
     title: string,
     summary: string,
     compliant: ICompiancy,
-    staging: {
+    staging?: {
         url?: string,
         swagger_url?: string,
         deployed: boolean,
         healthStatus: boolean,
     },
-    production: {
+    production?: {
         url?: string,
         swagger_url?: string,
         deployed: boolean,
         healthStatus: boolean
     },
     description: string,
-    github_url: string
+    github_url?: string,
+    owner?: {
+        name?: string,
+        contactDetails?: string
+    }
 }
