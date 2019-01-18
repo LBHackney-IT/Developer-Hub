@@ -3,6 +3,7 @@ import { ApiService } from '../../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { IApi } from '../../../interfaces/IApi';
 import { HttpService } from '../../../services/http.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-api-page',
@@ -33,10 +34,44 @@ export class ApiPageComponent implements OnInit {
     return this.api.hasOwnProperty('production');
   }
 
-  checkIfApiIsCompliant = () => {
+  isApiCompliant = () => {
     const values: boolean[] = Object.values(this.api.compliant);
     return values.includes(false);
   }
+
+  isHealthy = (environment: string) => {
+    let response: boolean;
+    switch (environment) {
+      case 'staging': {
+        response = this.api.staging.healthStatus;
+        break;
+      }
+      case 'production': {
+        response = this.api.production.healthStatus;
+        break;
+      }
+    }
+
+    return response;
+  }
+ 
+  isDeployed = (environment: string) => {
+    let response: boolean;
+    switch (environment) {
+      case 'staging': {
+        response = this.api.staging.deployed;
+        break;
+      }
+      case 'production': {
+        response = this.api.production.deployed;
+        break;
+      }
+    }
+
+    return response;
+  }
+
+
 
   requestAPIKey = () => {
     this.http.createApiKey(this.api.id)
@@ -63,14 +98,5 @@ export class ApiPageComponent implements OnInit {
      (error) => {
       console.log(error);
      });
-  }
-
-  printApiKey = () => {
-    if(this.apiKey){
-      return this.apiKey + " <h1 class='govuk-tag govuk-tag--{{verified ? 'positive' : 'negative' }}'> {{verified ? 'Verified' : 'Not Verified' }} </h1>";
-    }
-    else {
-      return "Request Below";
-    }
   }
 }
