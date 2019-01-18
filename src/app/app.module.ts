@@ -22,6 +22,9 @@ import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { TokenManagerComponent } from './components/pages/token-manager/token-manager.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AlertComponent } from './components/partials/alert/alert.component';
+import { FooterComponent } from './components/partials/footer/footer.component';
+import { HttpService } from './services/http.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +44,9 @@ import { HttpClientModule } from '@angular/common/http';
     ConfirmationComponent,
     ApiPageComponent,
     NotFoundComponent,
-    TokenManagerComponent
+    TokenManagerComponent,
+    AlertComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,7 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule, 
     HttpClientModule
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
