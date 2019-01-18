@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {CognitoUser, AuthenticationDetails, CognitoUserPool} from 'amazon-cognito-identity-js';
-import { environment } from '../../../../environments/environment';
-import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 
@@ -27,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   logIn = () => {
-    this.authService.logIn(this.loginForm);   
+    this.authService.logIn(this.loginForm);  
   }
 
 }
