@@ -13,11 +13,12 @@ import { ConfirmationComponent } from './components/pages/confirmation/confirmat
 import { ApiPageComponent } from './components/pages/api-page/api-page.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { TokenManagerComponent } from './components/pages/token-manager/token-manager.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {path: '',  component: HomeComponent},
   {path: 'api-list',  component: ApiListComponent, pathMatch: 'full'},
-  {path: 'api/:id',  component: ApiPageComponent, pathMatch: 'full'},
+  {path: 'api/:id',  component: ApiPageComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   {path: 'api-guide',  component: ApiGuideComponent, pathMatch: 'full'},
   {path: 'api-checklist',  component: ApiChecklistComponent, pathMatch: 'full'},
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
@@ -26,7 +27,7 @@ const routes: Routes = [
   {path: 'confirm-registration', component: ConfirmRegistrationComponent, pathMatch: 'full'},
   {path: 'change-password', component: ChangePasswordComponent, pathMatch: 'full'},
   {path: 'confirmation/:type', component: ConfirmationComponent, pathMatch: 'full'},
-  {path: 'token-manager', component: TokenManagerComponent, pathMatch: 'full'},
+  {path: 'token-manager', component: TokenManagerComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   {path: '**', component: NotFoundComponent}
 ];
 
