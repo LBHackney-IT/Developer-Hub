@@ -3,6 +3,7 @@ import {CognitoUser, AuthenticationDetails, CognitoUserPool} from 'amazon-cognit
 import { environment } from '../../../../environments/environment';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   constructor(
-    private router: Router
+    private authService: AuthService
     ) {  }
 
   loginForm = new FormGroup({
@@ -26,37 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   logIn = () => {
-    console.log(this.loginForm.value)
-    let accessToken;
-
-    const poolData = {
-      UserPoolId : environment.cognito.userPoolId, // Your user pool id here
-      ClientId : environment.cognito.clientId, // Your client id here
-    };
-
-    const userPool = new CognitoUserPool(poolData);
-      
-    const authenticationData = {
-      Username : this.loginForm.value.emailAddress,
-      Password : this.loginForm.value.password,
-    };
-
-    const authenticationDetails: AuthenticationDetails = new AuthenticationDetails(authenticationData);
-
-    const userData = {
-        Username : authenticationData.Username,
-        Pool : userPool,
-    };
-
-    const cognitoUser = new CognitoUser(userData);
-    cognitoUser.authenticateUser(authenticationDetails, {
-        onSuccess: function (result) {
-          this.router.navigateByUrl("/api-list");
-        },
-        onFailure: function(err) {
-          console.log(err);
-        },
-    });
+    this.authService.logIn(this.loginForm);   
   }
 
 }

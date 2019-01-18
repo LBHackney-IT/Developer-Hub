@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import {CognitoUser, AuthenticationDetails, CognitoUserPool, CognitoUserAttribute, ICognitoUserAttributeData} from 'amazon-cognito-identity-js';
 import { environment } from '../../../../environments/environment';
+import { AuthService } from '../../../services/auth.service';
 
 
 @Component({
@@ -11,7 +12,9 @@ import { environment } from '../../../../environments/environment';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   forgotPasswordForm = new FormGroup({
     emailAddress: new FormControl('')
@@ -21,31 +24,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   forgotPassword = () => {
-    
-    const poolData = {
-      UserPoolId : environment.cognito.userPoolId, // Your user pool id here
-      ClientId : environment.cognito.clientId, // Your client id here
-    };
-
-
-  const userPool = new CognitoUserPool(poolData);
-    
-  const userData = {
-    Username : this.forgotPasswordForm.value.emailAddress,    
-    Pool : userPool,    
-  };
-
-  const cognitoUser = new CognitoUser(userData);
-
-  cognitoUser.forgotPassword({
-      onSuccess: function(result) {
-        this.router.navigateByUrl("/confirmation/forgot-password");
-      },
-      onFailure: function(err) {
-        // Show error
-        console.log(err);
-      },
-    });
+    this.authService.forgotPassword(this.forgotPasswordForm);
   }
 
 }
