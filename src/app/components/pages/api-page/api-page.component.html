@@ -35,6 +35,14 @@
           <th class="govuk-table__header" scope="row">GitHub URL</th>
           <td class="govuk-table__cell">{{api.github_url }}</td>
         </tr>
+
+        <tr class="govuk-table__row" *ngIf="api.github_url">
+          <th class="govuk-table__header" scope="row">API Key</th>
+          <td class="govuk-table__cell"> 
+            {{ apiKey ? apiKey : "Request Below" }}
+            <h1 class="govuk-tag govuk-tag--{{verified ? 'positive' : 'negative' }}"> {{verified ? 'Verified' : 'Not Verified' }} </h1>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -42,7 +50,7 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">        
-    <a class="govuk-button" routerLink="/token-manager" type="button">Request API-Key</a>    
+    <a class="govuk-button" (click)="requestAPIKey()" type="button">Request API-Key</a>    
   </div>
 </div>
 
@@ -55,7 +63,14 @@
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      <h3 class="govuk-heading-l"> Service Area</h3>
-      <p class="govuk-body"> {{ api.description }} </p>
-    </div>
-  </div>
+      <h3 class="govuk-heading-l"> Compliancy</h3>
+      <p class="govuk-body"> Compliancy Info </p>
+    </div>  
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h3 class="govuk-heading-l"> Compliancy</h3>
+    <p class="govuk-body"> Compliancy Info </p>
+  </div>  
+</div>
