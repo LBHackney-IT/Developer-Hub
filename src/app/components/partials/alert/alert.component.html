@@ -1,3 +1,7 @@
-<p>
-  alert works!
-</p>
+<div class="govuk-width-container">
+        <div (click)="remove()" *ngIf="message"  class="govuk-panel govuk-panel--positive govuk-panel--confirmation">
+                <div class="govuk-panel__body">
+                    <br><strong>{{message.text}}</strong>        
+                </div>    
+            </div>
+</div>
