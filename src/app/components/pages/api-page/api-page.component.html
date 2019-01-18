@@ -40,7 +40,7 @@
           <th class="govuk-table__header" scope="row">API Key</th>
           <td class="govuk-table__cell"> 
             {{ apiKey ? apiKey : "Request Below" }}
-            <h1 class="govuk-tag govuk-tag--{{verified ? 'positive' : 'negative' }}"> {{verified ? 'Verified' : 'Not Verified' }} </h1>
+            <h1 *ngIf="verified != null" class="govuk-tag govuk-tag--{{verified ? 'positive' : 'negative' }}"> {{verified ? 'Verified' : 'Not Verified' }} </h1>
           </td>
         </tr>
       </tbody>
