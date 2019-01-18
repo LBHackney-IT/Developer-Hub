@@ -66,7 +66,7 @@ export const apis: IApi[] = [
       url: "https://g6bw0g0ojk.execute-api.eu-west-2.amazonaws.com/production/income",
       swagger_url: "not available",
       deployed: true, 
-      healthStatus: false,
+      healthStatus: true,
     },
     owner: {
       name: "Name",
