@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import {CognitoUser, AuthenticationDetails, CognitoUserPool, CognitoUserAttribute} from 'amazon-cognito-identity-js';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AlertService } from './alert.service';
 
 
 @Injectable({
@@ -9,7 +10,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AuthService {
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router, 
+    private route: ActivatedRoute,
+    private alertService: AlertService) {}
 
   private generatePoolData = () => {
     return {
@@ -28,6 +32,8 @@ export class AuthService {
 
   logIn = async (loginForm) => {
     let accessToken;
+    let router = this.router;
+    let alertService = this.alertService;
 
     const poolData = this.generatePoolData();
 
@@ -47,14 +53,18 @@ export class AuthService {
     const cognitoUser = new CognitoUser(userData);
     cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: function (result) {
-          console.log(result);
-          this.router.navigateByUrl("api-list");
+          router.navigateByUrl("api-list");
+          alertService.success("Successful Login")
         },
-        onFailure: function(err) {
-          console.log(err);
-        },
+        onFailure: function(err: Error) {
+          alertService.error(err.message);
+          
+        }
     });
+
+
 }
+
 
   register = async (registerForm) => {
     let username, password, firstname, lastname, organisation;
