@@ -10,7 +10,7 @@ export const environment = {
     clientId: 'fjnkqnloe7adg1b85kvdmmscm'
   },
   apiURL : {
-    tokenService: ''
+    tokenService: 'http://localhost:3000/'
   }
 };
 
