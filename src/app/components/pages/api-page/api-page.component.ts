@@ -34,7 +34,7 @@ export class ApiPageComponent implements OnInit {
     return this.api.hasOwnProperty('production');
   }
 
-  isApiCompliant = () => {
+  isCompliant = () => {
     const values: boolean[] = Object.values(this.api.compliant);
     return values.includes(false);
   }
@@ -77,8 +77,7 @@ export class ApiPageComponent implements OnInit {
     this.http.createApiKey(this.api.id)
     .subscribe(
       (response: Response) => {
-        // show in UI
-        this.getAPIKey();
+          this.getAPIKey();
       },
       (error) => {
         console.log(error);
@@ -89,10 +88,9 @@ export class ApiPageComponent implements OnInit {
     this.http.readApiKey(this.api.id)
     .subscribe(
       (response: Response) => {
-        if(response) {
-          console.log("response", response);
-          this.apiKey = response['apiKey'];
-          this.verified = response['verified'];
+        if(response.body) {
+          this.apiKey = response.body['apiKey'];
+          this.verified = response.body['verified'];
         }
     },
      (error) => {

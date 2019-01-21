@@ -10,12 +10,12 @@
       <tbody class="govuk-table__body">
 
         
-        <tr class="govuk-table__row" *ngIf='isStagingAvailiable()'>
+        <tr class="govuk-table__row" *ngIf="isDeployed('staging')">
           <th class="govuk-table__header" scope="row">Staging Base URL</th>
           <td class="govuk-table__cell">{{ api.staging.url }}</td>
         </tr>
 
-        <tr class="govuk-table__row" *ngIf='isStagingAvailiable()'>
+        <tr class="govuk-table__row" *ngIf="isDeployed('staging')">
             <th class="govuk-table__header" scope="row">Available in Staging</th>
             <td class="govuk-table__cell">
               <h1 class="govuk-tag govuk-!-margin-right-1 govuk-tag--{{isDeployed('staging') ? 'positive' : 'negative' }}"> {{isDeployed('staging') ? 'Yes' : 'No' }} </h1>
@@ -25,12 +25,12 @@
 
 
 
-        <tr class="govuk-table__row" *ngIf='isProductionAvailiable()'>
+        <tr class="govuk-table__row" *ngIf="isDeployed('production')">
           <th class="govuk-table__header" scope="row">Production Base URL</th>
           <td class="govuk-table__cell">{{ api.production.url }}</td>
         </tr>
 
-        <tr class="govuk-table__row" *ngIf='isProductionAvailiable()'>
+        <tr class="govuk-table__row" *ngIf="isDeployed('production')">
             <th class="govuk-table__header" scope="row">Available in Production</th>
             <td class="govuk-table__cell">
                 <h1 class="govuk-tag govuk-!-margin-right-1 govuk-tag--{{isDeployed('production') ? 'positive' : 'negative' }}"> {{isDeployed('production') ? 'Yes' : 'No' }} </h1>
@@ -75,7 +75,7 @@
   </div>
         
   <div class="govuk-grid-column-one-third">          
-    <h3 class="govuk-tag govuk-tag--{{isApiCompliant() ? 'negative' : 'positive' }}"> {{isApiCompliant() ? 'Non Compliant' : 'Compliant' }} </h3> 
+    <h3 class="govuk-tag govuk-tag--{{isCompliant() ? 'negative' : 'positive' }}"> {{isCompliant() ? 'Non Compliant' : 'Compliant' }} </h3> 
   </div>
   <div class="govuk-grid-column-full">         
     <p class="govuk-body"> Compliancy Text </p>   
