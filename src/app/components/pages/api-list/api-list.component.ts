@@ -9,13 +9,14 @@ import { ApiService } from '../../../services/api.service';
 })
 export class ApiListComponent implements OnInit {
   private apis;
+
   constructor(
     public apiService: ApiService
   ) { 
-      this.apis = apiService.getListOfApis();
   }
 
   ngOnInit() {
+    this.getListOfApis();
   }
 
   isApiCompliant = (api: IApi) => {
@@ -37,6 +38,17 @@ export class ApiListComponent implements OnInit {
     }
 
     return response;
+  }
+
+  getListOfApis = () => {
+    this.apiService.getListOfApis()
+    .subscribe(
+      (response: Response) => {
+        this.apis = response.body;
+      }, 
+      (error) => {
+        console.log(error);
+      });
   }
 
 }
