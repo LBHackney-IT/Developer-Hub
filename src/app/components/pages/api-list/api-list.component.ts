@@ -10,7 +10,7 @@ import { ApiService } from '../../../services/api.service';
 export class ApiListComponent implements OnInit {
   private apis;
   constructor(
-    private apiService: ApiService
+    public apiService: ApiService
   ) { 
       this.apis = apiService.getListOfApis();
   }
@@ -18,9 +18,25 @@ export class ApiListComponent implements OnInit {
   ngOnInit() {
   }
 
-  checkIfApiIsCompliant = (api: IApi) => {
+  isApiCompliant = (api: IApi) => {
     const values: boolean[] = Object.values(api.compliant);
     return values.includes(false);
+  }
+
+  isHealthy = (api: IApi, environment: string) => {
+    let response: boolean;
+    switch (environment) {
+      case 'staging': {
+        response = api.staging.healthStatus;
+        break;
+      }
+      case 'production': {
+        response = api.production.healthStatus;
+        break;
+      }
+    }
+
+    return response;
   }
 
 }
