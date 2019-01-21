@@ -9,12 +9,12 @@ export class ApiService {
 
   constructor() { }
   
-  getListOfApis = () => {
+  getListOfApis = () : IApi[] => {
     return apis;
   }
 
 
-  getApi = (id: string) => {
+  getApi = (id: string) : IApi => {
     return apis.find((api) => {
         return api.id == id;
     });
@@ -28,6 +28,27 @@ export class ApiService {
     });
 
     return transformedApis;
+  }
+
+  isHealthy = (api: IApi, environment: string) : boolean => {
+    let response: boolean;
+    switch (environment) {
+      case 'staging': {
+        response = api.staging.healthStatus;
+        break;
+      }
+      case 'production': {
+        response = api.production.healthStatus;
+        break;
+      }
+    }
+
+    return response;
+  }
+
+  isApiCompliant = (api: IApi) : boolean => {
+    const values: boolean[] = Object.values(api.compliant);
+    return values.includes(false);
   }
   
 }
