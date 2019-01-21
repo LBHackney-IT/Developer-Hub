@@ -24,7 +24,8 @@ import { TokenManagerComponent } from './components/pages/token-manager/token-ma
 import { HttpClientModule } from '@angular/common/http';
 import { AlertComponent } from './components/partials/alert/alert.component';
 import { FooterComponent } from './components/partials/footer/footer.component';
-import { HttpService } from './services/http.service';
+import { ApiKeyService } from './services/apiKey.service';
+import { ApiService } from './services/api.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +56,7 @@ import { HttpService } from './services/http.service';
     CommonModule, 
     HttpClientModule
   ],
-  providers: [HttpService],
+  providers: [ApiKeyService, ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
