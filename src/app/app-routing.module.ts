@@ -27,7 +27,7 @@ const routes: Routes = [
   {path: 'confirm-registration', component: ConfirmRegistrationComponent, pathMatch: 'full'},
   {path: 'change-password', component: ChangePasswordComponent, pathMatch: 'full'},
   {path: 'confirmation/:type', component: ConfirmationComponent, pathMatch: 'full'},
-  {path: 'token-manager', component: TokenManagerComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+  {path: 'key-manager', component: TokenManagerComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   {path: '**', component: NotFoundComponent}
 ];
 
