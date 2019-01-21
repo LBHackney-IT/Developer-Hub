@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../services/api.service';
+import { HttpService } from '../../../services/http.service';
+import { NgControlStatus } from '@angular/forms';
 
 @Component({
   selector: 'app-token-manager',
@@ -7,14 +9,27 @@ import { ApiService } from '../../../services/api.service';
   styleUrls: ['./token-manager.component.scss']
 })
 export class TokenManagerComponent implements OnInit {
-  private apis;
+  private apiKeys;
   constructor(
-    private apiService: ApiService
+    private httpService: HttpService
   ) { 
-    this.apis = this.apiService.getListOfApis();
+    this.requestApiKeys();
   }
 
   ngOnInit() {
+  }
+
+  requestApiKeys = () => {
+    this.httpService.readUserApiKeys()
+    .subscribe(
+      (response) => {
+        this.apiKeys = response
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
   }
 
 }

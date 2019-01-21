@@ -1,20 +1,18 @@
-<h2 class="govuk-heading-l">Access Control</h2>
+<h2 class="govuk-heading-l">Key Manager</h2>
                 
 <table class="govuk-table">
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th class="govuk-table__header" scope="col">API</th>
-      <th class="govuk-table__header" scope="col">Token</th>
       <th class="govuk-table__header" scope="col">API-Key</th>
 
     </tr>
   </thead>
   <tbody class="govuk-table__body">
     
-    <tr class="govuk-table__row" *ngFor="let api of apis">
-      <th class="govuk-table__header" scope="row">{{api.title}}</th>
-      <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state"> click to reveal</a> </td>
-      <td class="govuk-table__cell"> <a class="govuk-link govuk-link--no-visited-state" href="">Request API-Key </a> </td>
+    <tr class="govuk-table__row" *ngFor="let key of apiKeys">
+      <th class="govuk-table__header" scope="row">{{key.apiID}}</th>
+      <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state"> {{key.apiKey}}</a> </td>
     </tr>
   </tbody>
 </table>
