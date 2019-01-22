@@ -1,5 +1,7 @@
 @import '../../../../variables';
-
+// ** {
+//   word-wrap: break-word;
+// }
 .govuk-tag {
     &--positive {
       background: $hackney-green;
@@ -8,4 +10,8 @@
     &--negative {
       background: orange;
     }  
+}
+
+.line-through {
+  text-decoration: line-through;
 }

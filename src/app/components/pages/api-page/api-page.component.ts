@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { IApi } from '../../../interfaces/IApi';
-import { HttpService } from '../../../services/http.service';
+import { ApiKeyService } from '../../../services/apiKey.service';
 import { environment } from '../../../../environments/environment';
+import { compliancyConfigMap } from '../../../shared/config';
 
 @Component({
   selector: 'app-api-page',
@@ -17,12 +18,14 @@ export class ApiPageComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
-    private http: HttpService
+    private apiKeyService: ApiKeyService
   ) { }
 
   ngOnInit() {
     const apiId: string = this.route.snapshot.paramMap.get("id");
     this.api = this.apiService.getApi(apiId);
+    console.log(this.api);
+    this.generateCompliancyText();
     this.getAPIKey();
   }
 
@@ -51,7 +54,6 @@ export class ApiPageComponent implements OnInit {
         break;
       }
     }
-
     return response;
   }
  
@@ -67,14 +69,11 @@ export class ApiPageComponent implements OnInit {
         break;
       }
     }
-
     return response;
   }
 
-
-
   requestAPIKey = () => {
-    this.http.createApiKey(this.api.id)
+    this.apiKeyService.createApiKey(this.api.id)
     .subscribe(
       (response: Response) => {
           this.getAPIKey();
@@ -85,7 +84,7 @@ export class ApiPageComponent implements OnInit {
   }
 
   getAPIKey = () => {
-    this.http.readApiKey(this.api.id)
+    this.apiKeyService.readApiKey(this.api.id)
     .subscribe(
       (response: Response) => {
         if(response.body) {
@@ -96,5 +95,16 @@ export class ApiPageComponent implements OnInit {
      (error) => {
       console.log(error);
      });
+  }
+
+  generateCompliancyText = () => {
+    let keys = Object.keys(this.api.compliant);
+    return keys.map((id) => {
+      return {
+        id: id,
+        text: compliancyConfigMap[id],
+        compliant: this.api.compliant[id] 
+      }
+    });
   }
 }

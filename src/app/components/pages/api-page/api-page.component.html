@@ -47,7 +47,7 @@
           <th class="govuk-table__header" scope="row"> API Key</th>
           <td class="govuk-table__cell"> 
               <a class="govuk-link govuk-link--no-visited-state">{{ apiKey ? apiKey : "Request Below" }}</a>
-            <h1 *ngIf="verified != null" class="govuk-tag govuk-tag--{{verified ? 'positive' : 'negative' }}"> {{verified ? 'Verified' : 'Not Verified' }} </h1>
+            <h1 *ngIf="verified != null" class="govuk-tag govuk-!-margin-left-1 govuk-tag--{{verified ? 'positive' : 'negative' }}"> {{verified ? 'Verified' : 'Not Verified' }} </h1>
           </td>
         </tr>
       </tbody>
@@ -77,8 +77,10 @@
   <div class="govuk-grid-column-one-third">          
     <h3 class="govuk-tag govuk-tag--{{isCompliant() ? 'negative' : 'positive' }}"> {{isCompliant() ? 'Non Compliant' : 'Compliant' }} </h3> 
   </div>
-  <div class="govuk-grid-column-full">         
-    <p class="govuk-body"> Compliancy Text </p>   
+  <div class="govuk-grid-column-full">  
+      <ul class="govuk-list govuk-list--bullet">
+        <li *ngFor="let compliancy of generateCompliancyText()" [class.line-through] = "!compliancy.compliant">  {{compliancy.text}} </li>
+      </ul>       
   </div>
 
 </div>
