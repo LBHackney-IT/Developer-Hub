@@ -14,6 +14,7 @@ import { ApiPageComponent } from './components/pages/api-page/api-page.component
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { TokenManagerComponent } from './components/pages/token-manager/token-manager.component';
 import { AuthGuard } from './guards/auth.guard';
+import { AdminComponent } from './components/pages/admin/admin.component';
 
 const routes: Routes = [
   {path: '',  component: HomeComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'change-password', component: ChangePasswordComponent, pathMatch: 'full'},
   {path: 'confirmation/:type', component: ConfirmationComponent, pathMatch: 'full'},
   {path: 'key-manager', component: TokenManagerComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+  {path: 'admin', component: AdminComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   {path: '**', component: NotFoundComponent}
 ];
 
