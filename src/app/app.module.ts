@@ -26,6 +26,7 @@ import { AlertComponent } from './components/partials/alert/alert.component';
 import { FooterComponent } from './components/partials/footer/footer.component';
 import { ApiKeyService } from './services/apiKey.service';
 import { ApiService } from './services/api.service';
+import { AdminComponent } from './components/pages/admin/admin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import { ApiService } from './services/api.service';
     NotFoundComponent,
     TokenManagerComponent,
     AlertComponent,
-    FooterComponent
+    FooterComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
