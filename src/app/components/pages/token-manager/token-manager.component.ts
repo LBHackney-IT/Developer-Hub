@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../../services/api.service';
-import { HttpService } from '../../../services/http.service';
-import { NgControlStatus } from '@angular/forms';
+import { ApiKeyService } from '../../../services/apiKey.service';
 
 @Component({
   selector: 'app-token-manager',
@@ -11,7 +9,7 @@ import { NgControlStatus } from '@angular/forms';
 export class TokenManagerComponent implements OnInit {
   private apiKeys;
   constructor(
-    private httpService: HttpService
+    private apiKeyService: ApiKeyService
   ) { 
     this.requestApiKeys();
   }
@@ -20,7 +18,7 @@ export class TokenManagerComponent implements OnInit {
   }
 
   requestApiKeys = () => {
-    this.httpService.readUserApiKeys()
+    this.apiKeyService.readUserApiKeys()
     .subscribe(
       (response) => {
         this.apiKeys = response

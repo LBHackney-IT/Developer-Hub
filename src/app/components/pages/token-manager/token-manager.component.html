@@ -1,3 +1,7 @@
+<div class="govuk-grid-column-one-quarter">         
+    <app-side-navbar></app-side-navbar>
+  </div> 
+  <div class="govuk-grid-column-three-quarters"> 
 <h2 class="govuk-heading-l">Key Manager</h2>
                 
 <table class="govuk-table">
@@ -11,8 +15,9 @@
   <tbody class="govuk-table__body">
     
     <tr class="govuk-table__row" *ngFor="let key of apiKeys">
-      <th class="govuk-table__header" scope="row">{{key.apiID}}</th>
+      <th class="govuk-table__header" scope="row">{{key.api.title}}</th>
       <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state"> {{key.apiKey}}</a> </td>
     </tr>
   </tbody>
 </table>
+</div>
