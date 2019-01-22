@@ -12,7 +12,7 @@
         
         <tr class="govuk-table__row" *ngIf="isDeployed('staging')">
           <th class="govuk-table__header" scope="row">Staging Base URL</th>
-          <td class="govuk-table__cell">{{ api.staging.url }}</td>
+          <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state">{{ api.staging.url }}</a></td>
         </tr>
 
         <tr class="govuk-table__row" *ngIf="isDeployed('staging')">
@@ -27,7 +27,7 @@
 
         <tr class="govuk-table__row" *ngIf="isDeployed('production')">
           <th class="govuk-table__header" scope="row">Production Base URL</th>
-          <td class="govuk-table__cell">{{ api.production.url }}</td>
+          <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state">{{ api.production.url }}</a></td>
         </tr>
 
         <tr class="govuk-table__row" *ngIf="isDeployed('production')">
@@ -40,13 +40,13 @@
         
         <tr class="govuk-table__row" *ngIf="api.github_url">
           <th class="govuk-table__header" scope="row">GitHub URL</th>
-          <td class="govuk-table__cell">{{api.github_url }}</td>
+          <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state">{{api.github_url }}</a></td>
         </tr>
 
         <tr class="govuk-table__row" *ngIf="api.github_url">
-          <th class="govuk-table__header" scope="row">API Key</th>
+          <th class="govuk-table__header" scope="row"> API Key</th>
           <td class="govuk-table__cell"> 
-            {{ apiKey ? apiKey : "Request Below" }}
+              <a class="govuk-link govuk-link--no-visited-state">{{ apiKey ? apiKey : "Request Below" }}</a>
             <h1 *ngIf="verified != null" class="govuk-tag govuk-tag--{{verified ? 'positive' : 'negative' }}"> {{verified ? 'Verified' : 'Not Verified' }} </h1>
           </td>
         </tr>
