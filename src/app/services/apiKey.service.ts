@@ -5,7 +5,7 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class HttpService {
+export class ApiKeyService {
   constructor(
     private authService: AuthService,
     private httpClient: HttpClient
