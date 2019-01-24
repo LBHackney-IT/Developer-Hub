@@ -13,6 +13,7 @@ export class ConfirmRegistrationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.confirmRegistration();
   }
 
   confirmRegistration = () => {
