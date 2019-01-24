@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 
@@ -18,10 +18,15 @@ export class ChangePasswordComponent implements OnInit {
   ) { }
 
   changePasswordForm = new FormGroup({
-    password: new FormControl(''),
-    confirmPassword: new FormControl(''),
-  })
-
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8)
+    ]),
+    confirmPassword: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8)
+    ]),
+  });
   ngOnInit() {
   }
 

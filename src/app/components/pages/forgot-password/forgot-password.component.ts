@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import {CognitoUser, AuthenticationDetails, CognitoUserPool, CognitoUserAttribute, ICognitoUserAttributeData} from 'amazon-cognito-identity-js';
-import { environment } from '../../../../environments/environment';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 
 
@@ -17,7 +15,10 @@ export class ForgotPasswordComponent implements OnInit {
   ) { }
 
   forgotPasswordForm = new FormGroup({
-    emailAddress: new FormControl('')
+    emailAddress: new FormControl('', [
+      Validators.required,
+      Validators.email
+    ])
   });
 
   ngOnInit() {

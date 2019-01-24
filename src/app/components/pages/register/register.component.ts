@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import {CognitoUser, AuthenticationDetails, CognitoUserPool, CognitoUserAttribute, ICognitoUserAttributeData} from 'amazon-cognito-identity-js';
-import { environment } from '../../../../environments/environment';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
@@ -16,24 +14,41 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   registerForm = new FormGroup({
-    emailAddress: new FormControl(''),
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    organisation: new FormControl(''),
-    password: new FormControl(''),
-    confirmPassword: new FormControl(''),
+    emailAddress: new FormControl('', [
+      Validators.email,
+      Validators.required
+    ]),
+    firstName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3)
+    ]),
+    lastName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3)
+    ]),
+    organisation: new FormControl('', [
+      Validators.minLength(3)
+    ]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8)
+    ]),
+    confirmPassword: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8)
+    ]),
   });
 
   ngOnInit() {
   }
 
-  createCognitoUserAttributeData = (name: string, value: string) : CognitoUserAttribute => {
-    const data =  {
-      Name: name,
-      Value: value
-    };
-    return new CognitoUserAttribute(data);
-  }
+  // createCognitoUserAttributeData = (name: string, value: string): CognitoUserAttribute => {
+  //   const data =  {
+  //     Name: name,
+  //     Value: value
+  //   };
+  //   return new CognitoUserAttribute(data);
+  // }
 
   register = () => {
     this.authService.register(this.registerForm);
