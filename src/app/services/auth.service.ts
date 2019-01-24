@@ -3,13 +3,13 @@ import { environment } from '../../environments/environment';
 import {CognitoUser, AuthenticationDetails, CognitoUserPool, CognitoUserAttribute} from 'amazon-cognito-identity-js';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from './alert.service';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedIn = false;
 
   constructor(
     private router: Router,
