@@ -55,7 +55,7 @@ import { AdminComponent } from './components/pages/admin/admin.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    CommonModule, 
+    CommonModule,
     HttpClientModule
   ],
   providers: [ApiKeyService, ApiService],
