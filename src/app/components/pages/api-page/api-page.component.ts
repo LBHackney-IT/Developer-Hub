@@ -72,7 +72,6 @@ export class ApiPageComponent implements OnInit {
     this.apiKeyService.createApiKey(this.api.id)
     .subscribe(
       (response) => {
-        console.log('error', response);
           this.getAPIKey();
       },
       (error) => {
@@ -109,7 +108,6 @@ export class ApiPageComponent implements OnInit {
     this.apiService.getApi(id)
     .subscribe(
       (response) => {
-        console.log(response);
         this.api = response['body'];
         this.generateCompliancyText();
         this.getAPIKey();

@@ -1,7 +1,7 @@
 <div class="govuk-grid-column-one-quarter">            
   <app-side-navbar></app-side-navbar>  
 </div> 
-<div class="govuk-grid-column-three-quarters"> 
+<div class="govuk-grid-column-three-quarters" *ngIf="api"> 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
     <h1 class="govuk-heading-xl">{{ api?.title }}</h1>
@@ -13,7 +13,7 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    <table class="govuk-table">
+    <table class="govuk-table" >
       <tbody class="govuk-table__body">
 
         
