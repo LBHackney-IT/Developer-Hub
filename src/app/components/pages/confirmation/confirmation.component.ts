@@ -29,7 +29,12 @@ export class ConfirmationComponent implements OnInit {
         this.title = "Password Changed";
         this.message = "Please login with your new credentials";
         break;
-      }
+      };
+      case 'registration': {
+        this.title = "Registration";
+        this.message = "Please verify your email address";
+        break;
+      };
       default:
       this.title = "Title";
       this.message = "Message";
