@@ -3,7 +3,6 @@ import { ApiService } from '../../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { IApi } from '../../../interfaces/IApi';
 import { ApiKeyService } from '../../../services/apiKey.service';
-import { environment } from '../../../../environments/environment';
 import { compliancyConfigMap } from '../../../shared/config';
 
 @Component({
@@ -22,11 +21,8 @@ export class ApiPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const apiId: string = this.route.snapshot.paramMap.get("id");
-    this.api = this.apiService.getApi(apiId);
-    console.log(this.api);
-    this.generateCompliancyText();
-    this.getAPIKey();
+    const apiId: string = this.route.snapshot.paramMap.get('id');
+    this.getApi(apiId);
   }
 
   isStagingAvailiable = () => {
@@ -56,7 +52,7 @@ export class ApiPageComponent implements OnInit {
     }
     return response;
   }
- 
+
   isDeployed = (environment: string) => {
     let response: boolean;
     switch (environment) {
@@ -75,7 +71,8 @@ export class ApiPageComponent implements OnInit {
   requestAPIKey = () => {
     this.apiKeyService.createApiKey(this.api.id)
     .subscribe(
-      (response: Response) => {
+      (response) => {
+        console.log('error', response);
           this.getAPIKey();
       },
       (error) => {
@@ -87,7 +84,7 @@ export class ApiPageComponent implements OnInit {
     this.apiKeyService.readApiKey(this.api.id)
     .subscribe(
       (response: Response) => {
-        if(response.body) {
+        if (response.body) {
           this.apiKey = response.body['apiKey'];
           this.verified = response.body['verified'];
         }
@@ -98,13 +95,27 @@ export class ApiPageComponent implements OnInit {
   }
 
   generateCompliancyText = () => {
-    let keys = Object.keys(this.api.compliant);
+    const keys = Object.keys(this.api.compliant);
     return keys.map((id) => {
       return {
         id: id,
         text: compliancyConfigMap[id],
-        compliant: this.api.compliant[id] 
-      }
+        compliant: this.api.compliant[id]
+      };
     });
+  }
+
+  getApi = (id: string) => {
+    this.apiService.getApi(id)
+    .subscribe(
+      (response) => {
+        console.log(response);
+        this.api = response['body'];
+        this.generateCompliancyText();
+        this.getAPIKey();
+      },
+      (error) => {
+        console.log(error);
+      });
   }
 }
