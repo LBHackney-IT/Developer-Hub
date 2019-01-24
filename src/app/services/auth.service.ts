@@ -9,9 +9,10 @@ import { AlertService } from './alert.service';
   providedIn: 'root'
 })
 export class AuthService {
+  isLoggedIn = false;
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private route: ActivatedRoute,
     private alertService: AlertService) {}
 
@@ -22,7 +23,7 @@ export class AuthService {
     };
   }
 
-  private createCognitoUserAttributeData = (name: string, value: string) : CognitoUserAttribute => {
+  private createCognitoUserAttributeData = (name: string, value: string): CognitoUserAttribute => {
     const data =  {
       Name: name,
       Value: value
@@ -31,98 +32,123 @@ export class AuthService {
   }
 
   logIn = async (loginForm) => {
-    let accessToken;
-    let router = this.router;
-    let alertService = this.alertService;
+    try {
+      const router = this.router;
+      const alertService = this.alertService;
 
-    const poolData = this.generatePoolData();
+      const poolData = this.generatePoolData();
 
-    const userPool = new CognitoUserPool(poolData);
-      
-    const authenticationData = {
-      Username : loginForm.value.emailAddress,
-      Password : loginForm.value.password,
-    };
+      const userPool = new CognitoUserPool(poolData);
 
-    const authenticationDetails: AuthenticationDetails = new AuthenticationDetails(authenticationData);
-    const userData = {
-        Username : authenticationData.Username,
-        Pool : userPool,
-    };
+      const authenticationData = {
+        Username : loginForm.value.emailAddress,
+        Password : loginForm.value.password,
+      };
 
-    const cognitoUser = new CognitoUser(userData);
-    cognitoUser.authenticateUser(authenticationDetails, {
-        onSuccess: function (result) {
-          router.navigateByUrl("api-list");
-          alertService.success("Successful Login")
-        },
-        onFailure: function(err: Error) {
-          alertService.error(err.message);
-          
-        }
-    });
+      const authenticationDetails: AuthenticationDetails = new AuthenticationDetails(authenticationData);
+      const userData = {
+          Username : authenticationData.Username,
+          Pool : userPool,
+      };
 
+      const cognitoUser = new CognitoUser(userData);
+      cognitoUser.authenticateUser(authenticationDetails, {
+          onSuccess: function (result) {
+            alertService.success('Successful Login');
+            router.navigateByUrl('api-list');
+          },
+          onFailure: function(err: Error) {
+            alertService.error(err.message);
+            throw new Error(err.message);
+          }
+      });
 
+    } catch (error) {
+      const alertService = this.alertService;
+      alertService.error(error.message);
+    }
 }
 
 
   register = async (registerForm) => {
-    let username, password, firstname, lastname, organisation;
 
-    firstname =  registerForm.value.firstName;
-    lastname =  registerForm.value.lastName;
-    organisation =  registerForm.value.organisation;
-    username = registerForm.value.emailAddress;
+    try {
+      let username, password, firstname, lastname, organisation;
+      const router = this.router;
+      const alertService = this.alertService;
+      firstname =  registerForm.value.firstName;
+      lastname =  registerForm.value.lastName;
+      organisation =  registerForm.value.organisation;
+      username = registerForm.value.emailAddress;
 
-  if (registerForm.value.password != registerForm.value.confirmPassword) {
-    throw new Error("Passwords Do Not Match");
-  } else {
-    password =  registerForm.value.password;
-  }
-  const poolData = this.generatePoolData();
-  const userPool = new CognitoUserPool(poolData);
+      if (registerForm.value.password !== registerForm.value.confirmPassword) {
+        throw new Error('Passwords Do Not Match');
+      } else {
+        password =  registerForm.value.password;
+      }
 
-  let attributeList = [];
-  const attributeEmail = this.createCognitoUserAttributeData('email', username);
-  const attributeName = this.createCognitoUserAttributeData('name', firstname);
-  const attributeSurname = this.createCognitoUserAttributeData('custom:surname', lastname);
-  const attributeOrganisation = this.createCognitoUserAttributeData('custom:organisation', organisation);
+      const poolData = this.generatePoolData();
+      const userPool = new CognitoUserPool(poolData);
+      const attributeList = [];
+      const attributeEmail = this.createCognitoUserAttributeData('email', username);
+      const attributeName = this.createCognitoUserAttributeData('name', firstname);
+      const attributeSurname = this.createCognitoUserAttributeData('custom:surname', lastname);
+      const attributeOrganisation = this.createCognitoUserAttributeData('custom:organisation', organisation);
 
-  attributeList.push(attributeEmail);
-  attributeList.push(attributeName);
-  attributeList.push(attributeSurname);
-  attributeList.push(attributeOrganisation);
+      attributeList.push(attributeEmail);
+      attributeList.push(attributeName);
+      attributeList.push(attributeSurname);
+      attributeList.push(attributeOrganisation);
 
-  userPool.signUp(username, password, attributeList, null, function(err, result){
-    if (err) {
-      alert(err.message || JSON.stringify(err));
-      return;
+
+      await userPool.signUp(username, password, attributeList, null, function(err, result) {
+        if (err) {
+          alertService.error(err.message);
+          throw new Error(err.message);
+        }
+        const cognitoUser = result.user;
+
+        console.log('user name is ' + cognitoUser.getUsername());
+        alertService.success('Please check your email');
+        router.navigateByUrl('/confirmation/registration');
+      });
+
+    } catch (error) {
+      const alertService = this.alertService;
+      console.log(error);
+      alertService.error(error.message);
     }
-    const cognitoUser = result.user;
-    console.log('user name is ' + cognitoUser.getUsername());
-  });
-}
+  }
 
   forgotPassword = async (forgotPasswordForm) => {
-      
-  const poolData = this.generatePoolData();
-  const userPool = new CognitoUserPool(poolData);
-  const userData = {
-    Username : forgotPasswordForm.value.emailAddress,    
-    Pool : userPool,    
-  };
-  const cognitoUser = new CognitoUser(userData);
+    try {
+      const router = this.router;
+      const alertService = this.alertService;
+      const poolData = this.generatePoolData();
+      const userPool = new CognitoUserPool(poolData);
+      const userData = {
+        Username : forgotPasswordForm.value.emailAddress,
+        Pool : userPool,
+      };
+      const cognitoUser = new CognitoUser(userData);
 
-  cognitoUser.forgotPassword({
-      onSuccess: function(result) {
-        this.router.navigate(["/confirmation/forgot-password"]);
-      },
-      onFailure: function(err) {
-        // Show error
-        console.log(err);
-      },
-    });
-} 
+      cognitoUser.forgotPassword({
+          onSuccess: function(result) {
+            alertService.success('Please check your email');
+            router.navigateByUrl('/confirmation/forgot-password');
+        },
+          onFailure: function(err) {
+            alertService.error(err.message);
+            console.log(err);
+        },
+      });
+
+    } catch (error) {
+      const alertService = this.alertService;
+      alertService.error(error.message);
+      console.log(error);
+    }
+}
 
 getCurrentUser = () => {
   const poolData = this.generatePoolData();
@@ -130,53 +156,77 @@ getCurrentUser = () => {
   return userPool.getCurrentUser();
 }
 
-changePassword = async (changePasswordForm) => {
-  let password;
-
-  if (changePasswordForm.value.password != changePasswordForm.value.confirmPassword) {
-    throw new Error("Passwords Do Not Match");
-  } else {
-    password =  changePasswordForm.value.password;
+isUserLoggedIn = (): boolean  => {
+  const cognitoUser = this.getCurrentUser();
+  if ( cognitoUser == null) {
+    return false;
   }
-  
-  const poolData = this.generatePoolData();
-  const userPool = new CognitoUserPool(poolData);
-  const email = this.route.snapshot.paramMap.get("email");        
-  const code = this.route.snapshot.paramMap.get("code");
-  const userData = {          
-    Username : email,    
-    Pool : userPool,        
-  };
-  const cognitoUser = new CognitoUser(userData);
-  cognitoUser.confirmPassword(code, password, {
-    onSuccess: function () {
-      this.router.navigateByUrl("/confirmation/change-password");
-      },
-      onFailure: function(err) {
-        console.log(err);
-      this.router.navigateByUrl("/");
-      }
-  });
+  return true;
+}
+
+changePassword = async (changePasswordForm): Promise<any> => {
+  try {
+    let password;
+    const router = this.router;
+    const alertService = this.alertService;
+    if (changePasswordForm.value.password !== changePasswordForm.value.confirmPassword) {
+      throw new Error('Passwords Do Not Match');
+    } else {
+      password =  changePasswordForm.value.password;
+    }
+
+    const poolData = this.generatePoolData();
+    const userPool = new CognitoUserPool(poolData);
+    const email = this.route.snapshot.queryParamMap.get('email');
+    const code = this.route.snapshot.queryParamMap.get('code');
+    const userData = {
+      Username : email,
+      Pool : userPool
+    };
+    const cognitoUser = new CognitoUser(userData);
+    cognitoUser.confirmPassword(code, password, {
+      onSuccess: function () {
+        alertService.success('Success message');
+        router.navigateByUrl('/confirmation/change-password');
+        },
+        onFailure: function(err) {
+          console.log(err);
+        alertService.error(err.message);
+        router.navigateByUrl('/');
+        }
+    });
+
+  } catch (error) {
+    const alertService = this.alertService;
+    alertService.error(error.message);
+  }
+
 }
 
 confirmRegistration = async () => {
+  const router = this.router;
+  const alertService = this.alertService;
+
   const poolData = this.generatePoolData();
   const userPool = new CognitoUserPool(poolData);
-  
-  const email = this.route.snapshot.paramMap.get("email");        
-  const code = this.route.snapshot.paramMap.get("code");
+
+  const email = this.route.snapshot.queryParamMap.get('email');
+  const code = this.route.snapshot.queryParamMap.get('code');
   const userData = {
-      Username : email,    
-      Pool : userPool,    
+      Username : email,
+      Pool : userPool,
   };
 
   const cognitoUser = new CognitoUser(userData);
 
   cognitoUser.confirmRegistration(code, true, function(err, result) {
       if (err) {
-        this.router.navigateByUrl("/");
+        alertService.error('Error Message');
+        router.navigateByUrl('/');
       }
-        this.router.navigateByUrl("/login");
+      alertService.success('Success Message');
+
+      router.navigateByUrl('/login');
   });
 }
 
@@ -185,6 +235,44 @@ getCognitoUsername = (): string => {
   return cognitoUser.getUsername();
 }
 
+getSession = () => {
+  const cognitoUser: CognitoUser = this.getCurrentUser();
+}
 
+
+getUserEmail =  () => {
+
+  const cognitoUser: CognitoUser = this.getCurrentUser();
+
+  if (cognitoUser !== null) {
+    cognitoUser.getSession((getSessionError, data) => {
+      if (getSessionError) {
+        console.log('getSessionError', getSessionError.message);
+      }
+
+      cognitoUser.getUserAttributes((err, result) => {
+        if (err) {
+          console.log('err', err.message);
+        }
+        console.log(result);
+        const emailObject = result.find((item) => {
+          return item['Name'] === 'email';
+        });
+        localStorage.setItem('email', emailObject.getValue());
+      });
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+
+}
 
 }
