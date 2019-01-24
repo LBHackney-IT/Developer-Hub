@@ -8,12 +8,11 @@ import { ApiService } from '../../../services/api.service';
   styleUrls: ['./api-list.component.scss']
 })
 export class ApiListComponent implements OnInit {
-  private apis;
+  private apis: IApi[];
 
   constructor(
     public apiService: ApiService
-  ) { 
-  }
+  ) { }
 
   ngOnInit() {
     this.getListOfApis();
@@ -43,9 +42,9 @@ export class ApiListComponent implements OnInit {
   getListOfApis = () => {
     this.apiService.getListOfApis()
     .subscribe(
-      (response: Response) => {
-        this.apis = response.body;
-      }, 
+      (response) => {
+        this.apis = response['body'];
+      },
       (error) => {
         console.log(error);
       });
