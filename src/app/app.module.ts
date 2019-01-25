@@ -21,12 +21,15 @@ import { ApiPageComponent } from './components/pages/api-page/api-page.component
 import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { TokenManagerComponent } from './components/pages/token-manager/token-manager.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AlertComponent } from './components/partials/alert/alert.component';
 import { FooterComponent } from './components/partials/footer/footer.component';
 import { ApiKeyService } from './services/apiKey.service';
 import { ApiService } from './services/api.service';
 import { AdminComponent } from './components/pages/admin/admin.component';
+import { LogoutComponent } from './components/pages/logout/logout.component';
+import { ClickRevealComponent } from './components/partials/click-reveal/click-reveal.component';
+import { LambdaInterceptor } from './interceptors/http.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +52,9 @@ import { AdminComponent } from './components/pages/admin/admin.component';
     TokenManagerComponent,
     AlertComponent,
     FooterComponent,
-    AdminComponent
+    AdminComponent,
+    LogoutComponent,
+    ClickRevealComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,11 @@ import { AdminComponent } from './components/pages/admin/admin.component';
     CommonModule,
     HttpClientModule
   ],
-  providers: [ApiKeyService, ApiService],
+  providers: [
+    ApiKeyService,
+    ApiService,
+    { provide: HTTP_INTERCEPTORS, useClass: LambdaInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
