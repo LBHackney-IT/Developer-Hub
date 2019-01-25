@@ -18,6 +18,8 @@ export interface IApi {
         healthStatus: boolean
     };
     description: string;
+    approved: boolean;
+    stage?: string;
     github_url?: string;
     owner?: {
         product?: {
