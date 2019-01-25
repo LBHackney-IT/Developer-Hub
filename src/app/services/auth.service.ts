@@ -4,12 +4,15 @@ import {CognitoUser, AuthenticationDetails, CognitoUserPool, CognitoUserAttribut
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from './alert.service';
 import { Observable } from 'rxjs';
+import { IUser } from '../interfaces/IUser';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  private user: IUser = null;
 
   constructor(
     private router: Router,
@@ -29,6 +32,19 @@ export class AuthService {
       Value: value
     };
     return new CognitoUserAttribute(data);
+  }
+
+  setUser = (email: string, cognitoUsername: string, roles: string[]) => {
+    this.user.email = email;
+    this.user.cognitoUsername = cognitoUsername;
+    this.user.roles = roles;
+  }
+
+  getAttributeFromResponse = (response: object[], attribute: string) => {
+    const object = response.find((item) => {
+      return item['Name'] === attribute;
+    });
+    return object['Value'];
   }
 
   logIn = async (loginForm) => {
@@ -53,13 +69,18 @@ export class AuthService {
 
       const cognitoUser = new CognitoUser(userData);
       cognitoUser.authenticateUser(authenticationDetails, {
-          onSuccess: function (result) {
+          onSuccess: (result) => {
+            const payload = result.getIdToken().payload;
+            this.user = {};
+            this.user.email = payload['email'];
+            this.user.cognitoUsername = payload['cognito:username'];
+            this.user.roles = payload['cognito:groups'];
             alertService.success('Successful Login');
             router.navigateByUrl('api-list');
           },
           onFailure: function(err: Error) {
             alertService.error(err.message);
-            throw new Error(err.message);
+            console.log(err.message);
           }
       });
 
@@ -67,8 +88,16 @@ export class AuthService {
       const alertService = this.alertService;
       alertService.error(error.message);
     }
-}
+  }
 
+  logout = () => {
+    const cognitoUser = this.getCurrentUser();
+    if (cognitoUser != null) {
+      cognitoUser.signOut();
+    }
+
+    this.router.navigateByUrl('/');
+  }
 
   register = async (registerForm) => {
 
@@ -148,13 +177,13 @@ export class AuthService {
       alertService.error(error.message);
       console.log(error);
     }
-}
+  }
 
-getCurrentUser = () => {
-  const poolData = this.generatePoolData();
-  const userPool = new CognitoUserPool(poolData);
-  return userPool.getCurrentUser();
-}
+  getCurrentUser = (): CognitoUser => {
+    const poolData = this.generatePoolData();
+    const userPool = new CognitoUserPool(poolData);
+    return userPool.getCurrentUser();
+  }
 
 isUserLoggedIn = (): boolean  => {
   const cognitoUser = this.getCurrentUser();
@@ -162,6 +191,19 @@ isUserLoggedIn = (): boolean  => {
     return false;
   }
   return true;
+}
+
+refreshSession = (cognitoUser: CognitoUser) => {
+  cognitoUser.getSession((err, session) => {
+      const refreshToken = session.getRefreshToken();
+      cognitoUser.refreshSession(refreshToken, (refreshSessionErr, result) => {
+        const payload = result.getIdToken().payload;
+        this.user = {};
+        this.user.email = payload['email'];
+        this.user.cognitoUsername = payload['cognito:username'];
+        this.user.roles = payload['cognito:groups'];
+      });
+    });
 }
 
 changePassword = async (changePasswordForm): Promise<any> => {
@@ -225,7 +267,6 @@ confirmRegistration = async () => {
         router.navigateByUrl('/');
       }
       alertService.success('Success Message');
-
       router.navigateByUrl('/login');
   });
 }
@@ -235,44 +276,9 @@ getCognitoUsername = (): string => {
   return cognitoUser.getUsername();
 }
 
-getSession = () => {
-  const cognitoUser: CognitoUser = this.getCurrentUser();
-}
 
-
-getUserEmail =  () => {
-
-  const cognitoUser: CognitoUser = this.getCurrentUser();
-
-  if (cognitoUser !== null) {
-    cognitoUser.getSession((getSessionError, data) => {
-      if (getSessionError) {
-        console.log('getSessionError', getSessionError.message);
-      }
-
-      cognitoUser.getUserAttributes((err, result) => {
-        if (err) {
-          console.log('err', err.message);
-        }
-        console.log(result);
-        const emailObject = result.find((item) => {
-          return item['Name'] === 'email';
-        });
-        localStorage.setItem('email', emailObject.getValue());
-      });
-    });
-  }
-
-
-
-
-
-
-
-
-
-
-
+getUserAttribute =  (attribute: string) => {
+  return this.user[attribute];
 }
 
 }
