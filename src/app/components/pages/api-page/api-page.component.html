@@ -7,7 +7,8 @@
     <h1 class="govuk-heading-xl">{{ api?.title }}</h1>
   </div>
   <div class="govuk-grid-column-one-quarter">
-      <h1 class="govuk-tag"> {{ api?.internal ? 'Internal' : 'External'}} </h1>
+      <span class="govuk-tag"> {{ api?.internal ? 'Internal' : 'External'}} </span>
+      <span class="govuk-tag govuk-tag govuk-!-margin-top-2"> {{ api?.stage }} </span>
     </div>
 </div>
 
@@ -53,7 +54,9 @@
         <tr class="govuk-table__row" *ngIf="api.github_url">
           <th class="govuk-table__header" scope="row"> API Key</th>
           <td class="govuk-table__cell"> 
-              <a class="govuk-link govuk-link--no-visited-state">{{ apiKey ? apiKey : "Request Below" }}</a>
+              <!-- <a class="govuk-link govuk-link--no-visited-state"> {{ apiKey ? apiKey : 'Request Below'}}</a> -->
+              <a class="govuk-link govuk-link--no-visited-state" *ngIf="!apiKey">Request Below</a>
+              <app-click-reveal *ngIf="apiKey" [apiKey]="apiKey"></app-click-reveal>
             <h1 *ngIf="verified != null" class="govuk-tag govuk-!-margin-left-1 govuk-tag--{{verified ? 'positive' : 'negative' }}"> {{verified ? 'Verified' : 'Not Verified' }} </h1>
           </td>
         </tr>
