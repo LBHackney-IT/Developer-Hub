@@ -13,8 +13,8 @@ export class ApiKeyService {
 
   createApiKey =  (apiId: string) => {
     const cognitoUsername: string = this.authService.getCognitoUsername();
-    this.authService.getUserEmail();
-    const email = localStorage.getItem('email');
+
+    const email = this.authService.getUserAttribute('email');
     localStorage.removeItem('email');
 
     const payload = {
