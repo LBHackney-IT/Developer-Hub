@@ -42,13 +42,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  // createCognitoUserAttributeData = (name: string, value: string): CognitoUserAttribute => {
-  //   const data =  {
-  //     Name: name,
-  //     Value: value
-  //   };
-  //   return new CognitoUserAttribute(data);
-  // }
+  get f() { return this.registerForm.controls; }
 
   register = () => {
     this.authService.register(this.registerForm);

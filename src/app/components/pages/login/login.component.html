@@ -10,9 +10,15 @@
             name="emailaddress"
             formControlName="emailAddress"             
             value=""             
-            class="govuk-input"
+            [ngClass]="{'govuk-input': true, 'govuk-input--error': f.emailAddress.touched && f.emailAddress.invalid}"                        
             aria-labelledby="emailaddress-label"             
-            aria-required="true"/>          
+            aria-required="true"/>  
+            
+            <div *ngIf="f.emailAddress.touched && f.emailAddress.invalid" class="govuk-error-message">
+                
+              Email address is required
+              
+            </div>       
   </div>
   
   <div class="govuk-form-group">                
@@ -21,13 +27,21 @@
             autocomplete="off"          
             name="password"
             formControlName="password"
-            class="govuk-input"
+            [ngClass]="{'govuk-input': true, 'govuk-input--error': f.password.touched && f.password.invalid}"                                    
             aria-describedby="password-note"
-            aria-required="true"/>                
+            aria-required="true"/> 
+            
+            <div *ngIf="f.password.touched && f.password.invalid" class="govuk-error-message">             
+                Password is required      
+            </div> 
+                  
+            <div *ngIf="f.password.errors" class="govuk-error-message">
+                <div *ngIf="f.password.errors.minlength">Your password must be at least 8 characters and contain at least one number, lowercase letter, uppercase letter and special character.</div>   
+            </div>
   </div>
   <a routerLink="/forgot-password"  class="govuk-back-link">Forgot your password?</a>
 
   <div class="govuk-form-group">
-    <button id="submitButton" class="govuk-button" type="submit">Sign In</button>            
+    <button id="submitButton" class="govuk-button" type="submit" [disabled]="!loginForm.valid">Sign In</button>            
   </div>      
 </form>

@@ -30,6 +30,8 @@ export class ChangePasswordComponent implements OnInit {
   ngOnInit() {
   }
 
+  get f() { return this.changePasswordForm.controls; }
+
   changePassword = () => {
     this.authService.changePassword(this.changePasswordForm);
   }
