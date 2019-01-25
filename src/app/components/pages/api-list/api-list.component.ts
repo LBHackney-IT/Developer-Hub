@@ -8,7 +8,7 @@ import { ApiService } from '../../../services/api.service';
   styleUrls: ['./api-list.component.scss']
 })
 export class ApiListComponent implements OnInit {
-  private apis: IApi[];
+  apis: IApi[];
 
   constructor(
     public apiService: ApiService
@@ -16,27 +16,6 @@ export class ApiListComponent implements OnInit {
 
   ngOnInit() {
     this.getListOfApis();
-  }
-
-  isApiCompliant = (api: IApi) => {
-    const values: boolean[] = Object.values(api.compliant);
-    return values.includes(false);
-  }
-
-  isHealthy = (api: IApi, environment: string) => {
-    let response: boolean;
-    switch (environment) {
-      case 'staging': {
-        response = api.staging.healthStatus;
-        break;
-      }
-      case 'production': {
-        response = api.production.healthStatus;
-        break;
-      }
-    }
-
-    return response;
   }
 
   getListOfApis = () => {

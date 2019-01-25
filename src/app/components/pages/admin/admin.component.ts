@@ -10,7 +10,7 @@ import { AlertService } from '../../../services/alert.service';
 })
 export class AdminComponent implements OnInit {
 
-  private tokenObjects: object[];
+  tokenObjects: object[];
 
   constructor(
     private apiKeyService: ApiKeyService,

@@ -8,7 +8,7 @@ import { AuthService } from '../../../services/auth.service';
   styleUrls: ['./token-manager.component.scss']
 })
 export class TokenManagerComponent implements OnInit {
-  private apiKeys;
+  apiKeys;
   constructor(
     private apiKeyService: ApiKeyService,
     private authSerice: AuthService
