@@ -8,7 +8,7 @@
     </thead>
     <tbody class="govuk-table__body">
 
-      <tr *ngIf="tokenObjects.length === 0">
+      <tr *ngIf="!tokenObjects || tokenObjects.length < 1">
         <p> There are no API keys to verify</p>
       </tr>
       
