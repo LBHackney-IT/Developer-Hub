@@ -16,7 +16,9 @@
     
     <tr class="govuk-table__row" *ngFor="let key of apiKeys">
       <th class="govuk-table__header" scope="row">{{key.api.title}}</th>
-      <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state"> {{key.apiKey}}</a> </td>
+      <td class="govuk-table__cell">
+        <app-click-reveal *ngIf="key.apiKey" [apiKey]="key.apiKey"></app-click-reveal>
+      </td>
     </tr>
   </tbody>
 </table>
