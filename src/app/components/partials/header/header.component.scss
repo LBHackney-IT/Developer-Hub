@@ -1,4 +1,6 @@
 
+@import "../../../../variables";
+@import "../../../../assets/sass/hackney-stripes.scss";
 
 /* The dropdown container */
 .dropdown {
@@ -6,16 +8,16 @@
     overflow: hidden;
   }
   
-  /* Dropdown button */
-  .dropdown .dropbtn {
-    border: none;
-    outline: none;
-    color: white;
-    padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit; /* Important for vertical align on mobile phones */
-    margin: 0; /* Important for vertical align on mobile phones */
-  }
+//   /* Dropdown button */
+//   .dropdown .dropbtn {
+//     border: none;
+//     outline: none;
+//     color: white;
+//     padding: 14px 16px;
+//     background-color: inherit;
+//     font-family: inherit; /* Important for vertical align on mobile phones */
+//     margin: 0; /* Important for vertical align on mobile phones */
+//   }
   .dropdown-content {
     display: none;
     position: absolute;
@@ -30,7 +32,7 @@
   .dropdown-content a {
     float: none;
     color: black;
-    padding: 12px 16px;
+    padding: 12px 8px;
     text-decoration: none;
     display: block;
     text-align: left;
@@ -45,9 +47,6 @@
   .dropdown:hover .dropdown-content {
     display: block;
   }
-
-@import "../../../../variables";
-@import "../../../../assets/sass/hackney-stripes.scss";
 
 .page__header {
     @include hackney-stripes--bottom;

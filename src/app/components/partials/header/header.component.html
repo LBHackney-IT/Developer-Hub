@@ -67,42 +67,37 @@
             <a routerLink="/" class="govuk-header__link govuk-header__link--service-name">
               Developer Hub
             </a>   
-            <!-- <app-env-name class="govuk-body-s"></app-env-name> -->
         </div>
 
-        <div class="page__header__column page__header__column--id">
-            <!-- Display the current caller's name (if present) -->
-            <!-- <app-current-caller allowAnonymous="true" withPrefix="true"></app-current-caller> -->
 
-            <!-- Display the logged in agent's name and avatar. -->
-            <!-- <app-agent></app-agent> -->
-        </div>
 
         <!-- The Add Note form. -->
         <div class="dropdown">
-            <a class="dropbtn govuk-header__link govuk-header__link--service-name">
-              DROPDOWN
-              <i class="fa fa-caret-down"></i>
-            </a>
+        
+          <div class="page__header__column page__header__column--title">
+              <a class="govuk-header__link govuk-header__link--service-name ">
+                Dropdown
+                <i class="fa fa-caret-down"></i>  
+              </a>
+          </div>
+
             <div class="dropdown-content">
-                <a class="govuk-header__link" routerLink="/login">
+                <a class="govuk-header__link govuk-body-s" routerLink="/login">
                   Login
                 </a>
-                <a class="govuk-header__link" routerLink="/register">
+                <a class="govuk-header__link govuk-body-s" routerLink="/register">
                   Register
                 </a>
-                <a class="govuk-header__link" routerLink="/key-manager">
+                <a class="govuk-header__link govuk-body-s" routerLink="/key-manager">
                   Token Manager
                 </a>
-                <a class="govuk-header__link" routerLink="admin/key/verify">
+                <a class="govuk-header__link govuk-body-s" routerLink="admin/key/verify">
                   Admin
                 </a>
-                <a class="govuk-header__link" routerLink="/logout">
+                <a class="govuk-header__link govuk-body-s" routerLink="/logout">
                   Logout
                 </a>
-
             </div>
           </div> 
-
     </div>
 </header>
