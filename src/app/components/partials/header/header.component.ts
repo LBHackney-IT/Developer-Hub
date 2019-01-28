@@ -7,16 +7,16 @@ import { AuthService } from '../../../services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnChanges {
+export class HeaderComponent implements OnInit {
 
   private userName: string = null;
   constructor(
     private authService: AuthService
   ) { }
 
-  ngOnChanges() {
+  ngOnInit() {
     if (this.isUserLoggedIn()) {
-      this.userName = this.authService.getUserAttribute('email');
+      this.userName = this.authService.getUserAttribute('name');
     }
 
     console.log(this.userName);

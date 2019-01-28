@@ -15,7 +15,7 @@
         
           <div class="page__header__column page__header__column--title">
               <a class="govuk-header__link govuk-header__link--service-name ">
-                Dropdown
+                {{ userName === null ? 'Dropdown' : userName }}
                 <i class="fa fa-caret-down"></i>  
               </a>
           </div>
@@ -33,9 +33,9 @@
                 <a class="govuk-header__link govuk-body-s" routerLink="admin/key/verify">
                   Admin
                 </a>
-                <!-- <a class="govuk-header__link govuk-body-s" routerLink="/logout">
+                <a class="govuk-header__link govuk-body-s" routerLink="/logout">
                   Logout
-                </a> -->
+                </a>
             </div>
           </div> 
     </div>
