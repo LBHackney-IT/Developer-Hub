@@ -11,7 +11,7 @@ export class ApiListComponent implements OnInit {
   apis: IApi[];
 
   constructor(
-    public apiService: ApiService
+    private apiService: ApiService
   ) { }
 
   ngOnInit() {
