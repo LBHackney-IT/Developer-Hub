@@ -3,16 +3,14 @@ import { environment } from '../../environments/environment';
 import {CognitoUser, AuthenticationDetails, CognitoUserPool, CognitoUserAttribute} from 'amazon-cognito-identity-js';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from './alert.service';
-import { Observable } from 'rxjs';
 import { IUser } from '../interfaces/IUser';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private user: IUser = null;
+  user: IUser = null;
 
   constructor(
     private router: Router,
@@ -75,6 +73,8 @@ export class AuthService {
             this.user.email = payload['email'];
             this.user.cognitoUsername = payload['cognito:username'];
             this.user.roles = payload['cognito:groups'];
+            this.user.name = payload['name'];
+            this.user.surname = payload ['cognito:surname'];
             alertService.success('Successful Login');
             router.navigateByUrl('api-list');
           },
@@ -92,8 +92,11 @@ export class AuthService {
 
   logout = () => {
     const cognitoUser = this.getCurrentUser();
-    if (cognitoUser != null) {
+    if (cognitoUser !== null) {
       cognitoUser.signOut();
+      // window.localStorage.clear();
+      this.user = null;
+      console.log(this.user);
     }
 
     this.router.navigateByUrl('/');
@@ -186,11 +189,11 @@ export class AuthService {
   }
 
 isUserLoggedIn = (): boolean  => {
-  const cognitoUser = this.getCurrentUser();
-  if ( cognitoUser == null) {
-    return false;
+  if (this.user !== null) {
+    return true;
   }
-  return true;
+
+  return false;
 }
 
 refreshSession = (cognitoUser: CognitoUser) => {
@@ -198,10 +201,10 @@ refreshSession = (cognitoUser: CognitoUser) => {
       const refreshToken = session.getRefreshToken();
       cognitoUser.refreshSession(refreshToken, (refreshSessionErr, result) => {
         const payload = result.getIdToken().payload;
-        this.user = {};
-        this.user.email = payload['email'];
-        this.user.cognitoUsername = payload['cognito:username'];
-        this.user.roles = payload['cognito:groups'];
+        // this.user = {};
+        // this.user.email = payload['email'];
+        // this.user.cognitoUsername = payload['cognito:username'];
+        // this.user.roles = payload['cognito:groups'];
       });
     });
 }
