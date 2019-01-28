@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 
 
@@ -7,16 +7,19 @@ import { AuthService } from '../../../services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnChanges {
 
-  // private isUserLoggedIn: boolean;
+  private userName: string = null;
   constructor(
     private authService: AuthService
   ) { }
 
-  ngOnInit() {
-    // this.isUserLoggedIn = this.authService.isUserLoggedIn();
-    this.isUserLoggedIn();
+  ngOnChanges() {
+    if (this.isUserLoggedIn()) {
+      this.userName = this.authService.getUserAttribute('email');
+    }
+
+    console.log(this.userName);
   }
 
   isUserLoggedIn = (): boolean => {
