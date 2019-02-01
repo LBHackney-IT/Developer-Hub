@@ -1,7 +1,4 @@
-<div class="govuk-grid-column-one-quarter">            
-  <app-side-navbar></app-side-navbar>  
-</div> 
-<div class="govuk-grid-column-three-quarters" *ngIf="api"> 
+<app-column-layout [show]="api"> 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
     <h1 class="govuk-heading-xl">{{ api?.title }}</h1>
@@ -111,4 +108,4 @@
         <p class="govuk-body-m"> Email: {{api.owner.technical.contactDetails}} </p>
     </div>
   </details>
-  </div>
+</app-column-layout>

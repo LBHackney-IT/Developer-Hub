@@ -30,6 +30,7 @@ import { AdminComponent } from './components/pages/admin/admin.component';
 import { LogoutComponent } from './components/pages/logout/logout.component';
 import { ClickRevealComponent } from './components/partials/click-reveal/click-reveal.component';
 import { LambdaInterceptor } from './interceptors/http.interceptor';
+import { ColumnLayoutComponent } from './components/partials/column-layout/column-layout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +55,8 @@ import { LambdaInterceptor } from './interceptors/http.interceptor';
     FooterComponent,
     AdminComponent,
     LogoutComponent,
-    ClickRevealComponent
+    ClickRevealComponent,
+    ColumnLayoutComponent
   ],
   imports: [
     BrowserModule,
