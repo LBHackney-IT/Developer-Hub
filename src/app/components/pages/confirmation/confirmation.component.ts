@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IConfirmationPageText } from '../../../interfaces/IConfirmationPageText';
 
-
+/**
+ *
+ *
+ * @export
+ * @class ConfirmationComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-confirmation',
   templateUrl: './confirmation.component.html',
@@ -11,34 +18,64 @@ export class ConfirmationComponent implements OnInit {
   title: string;
   message: string;
 
+  confirmationTextMap = {
+    forgotPassword: {
+      title: 'Email Sent',
+      message: 'Please check your email'
+    },
+    changePassword: {
+      title: 'Password Changed',
+      message: 'Please login with your new credentials'
+    },
+    registration: {
+      title: 'Registration',
+      message: 'Please verify your email address',
+    },
+    default: {
+      title: 'Confirmation',
+      message: 'Thank you for confirming'
+    }
+  };
 
 
+
+  private assignMessage = (confirmationText: IConfirmationPageText) => {
+    this.title = confirmationText.title;
+    this.message = confirmationText.message;
+  }
+
+  /**
+   *Creates an instance of ConfirmationComponent.
+   * @param {ActivatedRoute} route
+   * @memberof ConfirmationComponent
+   */
   constructor(
     private route: ActivatedRoute,
   ) { }
 
+  /**
+   *
+   *
+   * @memberof ConfirmationComponent
+   */
   ngOnInit() {
     const type = this.route.snapshot.paramMap.get('type');
     switch (type) {
       case 'forgot-password': {
-        this.title = "Email Sent";
-        this.message = "Please check your email";
+        this.assignMessage(this.confirmationTextMap.forgotPassword);
         break;
-      };
+      }
       case 'change-password': {
-        this.title = "Password Changed";
-        this.message = "Please login with your new credentials";
+        this.assignMessage(this.confirmationTextMap.changePassword);
         break;
-      };
+      }
       case 'registration': {
-        this.title = "Registration";
-        this.message = "Please verify your email address";
+        this.assignMessage(this.confirmationTextMap.registration);
         break;
-      };
-      default:
-      this.title = "Title";
-      this.message = "Message";
-
+      }
+      default: {
+        this.assignMessage(this.confirmationTextMap.default);
+      }
     }
   }
 

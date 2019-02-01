@@ -2,38 +2,73 @@ import { Injectable } from '@angular/core';
 import { IApi } from '../interfaces/IApi';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { map } from 'rxjs/operators';
 
+/**
+ *
+ *
+ * @export
+ * @class ApiService
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+  /**
+   *
+   *
+   * @memberof ApiService
+   */
+  url = environment.apiURL.apiService;
+  /**
+   *
+   *
+   * @type {IApi[]}
+   * @memberof ApiService
+   */
   apis: IApi[];
   constructor(
     private httpClient: HttpClient
   ) { }
 
+  /**
+   *
+   *
+   * @memberof ApiService
+   */
   getListOfApis = () => {
-    return this.httpClient.get(environment.apiURL.apiService + 'api');
+    return this.httpClient.get(this.url + 'api')
+    .pipe(map((response) => response['body']));
   }
-
-  setListOfApis = (apis: IApi[]) => {
-    this.apis = apis;
-  }
-
+  /**
+   *
+   *
+   * @memberof ApiService
+   */
   getApi = (id: string) => {
-    return this.httpClient.get(environment.apiURL.apiService + 'api/' + id);
+    return this.httpClient.get(this.url + 'api/' + id)
+    .pipe(map((response) => response['body']));
   }
 
+  /**
+   *
+   *
+   * @memberof ApiService
+   */
   transformApiIntoDictionary = (apis: IApi[]) => {
     const transformedApis = apis.map((api) => {
       return {
         [api.id]: api
       };
     });
-
     return transformedApis;
   }
 
+  /**
+   *
+   *
+   * @memberof ApiService
+   */
   isHealthy = (api: IApi, environmentParam: string): boolean => {
     let response: boolean;
     switch (environmentParam) {
@@ -50,6 +85,11 @@ export class ApiService {
     return response;
   }
 
+  /**
+   *
+   *
+   * @memberof ApiService
+   */
   isApiCompliant = (api: IApi): boolean => {
     const values: boolean[] = Object.values(api.compliant);
     return values.includes(false);

@@ -3,6 +3,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 
+/**
+ * @export
+ * @class ChangePasswordComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
@@ -10,6 +15,13 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class ChangePasswordComponent implements OnInit {
 
+  /**
+   * @summary Creates an instance of ChangePasswordComponent.
+   * @param {ActivatedRoute} route
+   * @param {Router} router
+   * @param {AuthService} authService
+   * @memberof ChangePasswordComponent
+   */
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -17,7 +29,10 @@ export class ChangePasswordComponent implements OnInit {
 
   ) { }
 
-  changePasswordForm = new FormGroup({
+  /**
+   * @memberof ChangePasswordComponent
+   */
+  changePasswordForm: FormGroup = new FormGroup({
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(8)
@@ -27,12 +42,22 @@ export class ChangePasswordComponent implements OnInit {
       Validators.minLength(8)
     ]),
   });
+  /**
+   * @memberof ChangePasswordComponent
+   */
   ngOnInit() {
   }
 
+  /**
+   * @readonly
+   * @memberof ChangePasswordComponent
+   */
   get f() { return this.changePasswordForm.controls; }
 
-  changePassword = () => {
+  /**
+   * @memberof ChangePasswordComponent
+   */
+  changePassword = (): void => {
     this.authService.changePassword(this.changePasswordForm);
   }
 

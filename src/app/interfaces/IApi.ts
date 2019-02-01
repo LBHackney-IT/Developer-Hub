@@ -1,4 +1,10 @@
 import { ICompiancy } from './ICompiancy';
+/**
+ *
+ *
+ * @export
+ * @interface IApi
+ */
 export interface IApi {
     id: string;
     title: string;

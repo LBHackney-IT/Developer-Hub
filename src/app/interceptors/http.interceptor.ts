@@ -8,11 +8,31 @@ import { AuthService } from '../services/auth.service';
 import { CognitoUser } from 'amazon-cognito-identity-js';
 
 /** Pass untouched request through to the next request handler. */
+/**
+ *
+ *
+ * @export
+ * @class LambdaInterceptor
+ * @implements {HttpInterceptor}
+ */
 @Injectable()
 export class LambdaInterceptor implements HttpInterceptor {
 
+    /**
+     *Creates an instance of LambdaInterceptor.
+     * @param {AuthService} authService
+     * @memberof LambdaInterceptor
+     */
     constructor(private authService: AuthService) {}
 
+    /**
+     *
+     *
+     * @param {HttpRequest<any>} req
+     * @param {HttpHandler} next
+     * @returns {Observable<HttpEvent<any>>}
+     * @memberof LambdaInterceptor
+     */
     intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpEvent<any>> {
         let authToken;
@@ -34,8 +54,6 @@ export class LambdaInterceptor implements HttpInterceptor {
             // Get the auth token from the service.
             return next.handle(authReq);
         }
-
         return next.handle(req);
-
   }
 }

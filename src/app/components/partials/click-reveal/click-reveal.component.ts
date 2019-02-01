@@ -6,13 +6,34 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./click-reveal.component.scss']
 })
 export class ClickRevealComponent implements OnInit {
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof ClickRevealComponent
+   */
   @Input() apiKey: string;
+  /**
+   *
+   *
+   * @memberof ClickRevealComponent
+   */
   showKey = false;
   constructor() { }
 
+  /**
+   *
+   *
+   * @memberof ClickRevealComponent
+   */
   ngOnInit() {
   }
 
+  /**
+   *
+   *
+   * @memberof ClickRevealComponent
+   */
   toggleDisplay = () => {
     this.showKey = !this.showKey;
   }

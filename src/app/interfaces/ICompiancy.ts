@@ -1,3 +1,9 @@
+/**
+ *
+ *
+ * @export
+ * @interface ICompiancy
+ */
 export interface ICompiancy {
     revision_control: boolean;
     dependency_management: boolean;
