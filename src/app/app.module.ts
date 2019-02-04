@@ -31,6 +31,12 @@ import { LogoutComponent } from './components/pages/logout/logout.component';
 import { ClickRevealComponent } from './components/partials/click-reveal/click-reveal.component';
 import { LambdaInterceptor } from './interceptors/http.interceptor';
 import { ColumnLayoutComponent } from './components/partials/column-layout/column-layout.component';
+import { TabsComponent } from './components/partials/tabs/tabs.component';
+import { TabComponent } from './components/partials/tabs/tab/tab.component';
+import { ApiFormComponent } from './components/partials/api-form/api-form.component';
+import { AdminManageKeysComponent } from './components/partials/admin-manage-keys/admin-manage-keys.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +62,11 @@ import { ColumnLayoutComponent } from './components/partials/column-layout/colum
     AdminComponent,
     LogoutComponent,
     ClickRevealComponent,
-    ColumnLayoutComponent
+    ColumnLayoutComponent,
+    TabsComponent,
+    TabComponent,
+    ApiFormComponent,
+    AdminManageKeysComponent
   ],
   imports: [
     BrowserModule,
