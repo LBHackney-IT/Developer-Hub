@@ -59,7 +59,8 @@ export class ApiKeyService {
    */
   readUserApiKeys = () => {
     const cognitoUsername: string = this.authService.getCognitoUsername();
-    return this.httpClient.get(environment.apiURL.tokenService + 'api-key/' + cognitoUsername);
+    return this.httpClient.get(environment.apiURL.tokenService + 'api-key/' + cognitoUsername)
+    .pipe(map((response) => response['body']));
   }
 
   /**
@@ -68,7 +69,8 @@ export class ApiKeyService {
    * @memberof ApiKeyService
    */
   readAllUnverifiedApiKeys = () => {
-    return this.httpClient.get(environment.apiURL.tokenService + 'api-key/unverified');
+    return this.httpClient.get(environment.apiURL.tokenService + 'api-key/unverified')
+    .pipe(map((response) => response['body']));
   }
 
   /**
