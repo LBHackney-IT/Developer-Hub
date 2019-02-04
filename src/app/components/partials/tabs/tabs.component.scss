@@ -1,0 +1,16 @@
+.tabs {
+    display: flex;
+    align-items: stretch; /* Default */
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 0;
+    padding: 10px 10px;
+    
+    li {
+        display: block;
+        flex: 0 1 auto; /* Default */
+        list-style-type: none;
+        cursor: pointer;
+    }
+}
+
