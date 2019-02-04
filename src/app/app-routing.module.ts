@@ -30,7 +30,7 @@ const routes: Routes = [
   {path: 'change-password', component: ChangePasswordComponent, pathMatch: 'full'},
   {path: 'confirmation/:type', component: ConfirmationComponent, pathMatch: 'full'},
   {path: 'key-manager', component: TokenManagerComponent, pathMatch: 'full', canActivate: [AuthGuard]},
-  {path: 'admin/key/verify', component: AdminComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+  {path: 'admin', component: AdminComponent, pathMatch: 'full'},
   {path: 'logout', component: LogoutComponent, pathMatch: 'full', canActivate: [AuthGuard]},
 
   {path: '**', component: NotFoundComponent}
