@@ -1,30 +1,8 @@
-<table class="govuk-table">
-    <thead class="govuk-table__head">
-      <tr class="govuk-table__row">
-        <th class="govuk-table__header" scope="col">Email</th>
-        <th class="govuk-table__header" scope="col">API ID</th>
-        <th class="govuk-table__header" scope="col"></th>
-      </tr>
-    </thead>
-    <tbody class="govuk-table__body">
-
-      <tr *ngIf="!tokenObjects || tokenObjects.length < 1">
-        <p> There are no API keys to verify</p>
-      </tr>
-      
-      <tr *ngFor="let tokenObject of tokenObjects" class="govuk-table__row">
-        <th class="govuk-table__header" scope="row">{{tokenObject.email}}</th>
-        <td class="govuk-table__cell">{{tokenObject.apiID}}</td>
-        <td class="govuk-table__cell">    
-            <a class="govuk-button govuk-!-margin-0" (click)="verifyUser(tokenObject)" type="button">Verify</a> 
-        </td>
-      </tr>
-
-    </tbody>
-  </table>
-
-
-
-
-  
-
+<app-tabs>
+  <app-tab label="Manage Keys">
+    <app-admin-manage-keys></app-admin-manage-keys>
+  </app-tab>
+  <app-tab label="Manage API">
+    <app-api-form></app-api-form>
+  </app-tab>
+</app-tabs>
