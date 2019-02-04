@@ -42,43 +42,8 @@ export class AdminComponent implements OnInit {
    * @memberof AdminComponent
    */
   ngOnInit() {
-    this.getUnverifiedKeys();
   }
 
-  /**
-   * @returns void
-   * @public
-   * @memberof AdminComponent
-   */
-  verifyUser = (tokenObject): void => {
-    const apiID: string = tokenObject.apiID;
-    const cognitoUsername: string = tokenObject.cognitoUsername;
-    this.apiKeyService.verifyApiKey(apiID, cognitoUsername)
-    .subscribe(
-      (response) => {
-        this.tokenObjects = this.tokenObjects.filter((item) => {
-          return item !== tokenObject;
-        });
-      },
-      (error) => {
-        console.log(error);
-      });
-  }
 
-  /**
-   * @async
-   * @returns Promise<void>
-   * @memberof AdminComponent
-   */
-  getUnverifiedKeys = async (): Promise<void> => {
-    await this.apiKeyService.readAllUnverifiedApiKeys()
-    .subscribe(
-      (response) => {
-        this.tokenObjects = response['body'];
-      },
-      (error) => {
-        console.log(error);
-      });
-  }
 
 }
