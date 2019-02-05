@@ -21,7 +21,7 @@ export class ApiFormComponent implements OnInit {
       Validators.required
     ]),
     compliant: new FormGroup({
-      revision_control: new FormControl('true', [
+      revision_control: new FormControl('', [
         Validators.required
       ]),
       dependency_management: new FormControl('', [
@@ -71,7 +71,7 @@ export class ApiFormComponent implements OnInit {
       deployed: new FormControl('', [
         Validators.required
       ]),
-      healthStatus: new FormControl('', [
+      healthStatus: new FormControl('false', [
         Validators.required
       ])
     }),
@@ -92,7 +92,7 @@ export class ApiFormComponent implements OnInit {
     description: new FormControl('', [
       Validators.required
     ]),
-    approved: new FormControl('', [
+    approved: new FormControl('false', [
       Validators.required
     ]),
     stage: new FormControl('', [
@@ -132,10 +132,8 @@ export class ApiFormComponent implements OnInit {
   submitForm = () => {
     console.log('submit');
   }
-
-
-
   ngOnInit() {
+    console.log(this.f);
   }
 
 
