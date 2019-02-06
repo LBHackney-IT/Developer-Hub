@@ -149,6 +149,7 @@ export class ApiFormComponent implements OnInit {
     console.log('api from console' + this.api)
   }
 
+  // this function calls the ApiService to fetch the single API by passing the api.id in the url string
   getApiAndPatchValues = (id: string): void => {
     this.apiService.getApi(id)
     .subscribe(
@@ -161,6 +162,8 @@ export class ApiFormComponent implements OnInit {
       });
   }
 
+  //This function updates some of the values in the forms. 
+  // If all values are getting updated, change from patchValue() to setValue() for further validation at runtime
   patchValuesApi(): void {
     this.apiForm.patchValue({
       id: this.api.id,
