@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { ApiService } from '../../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { IApi } from 'src/app/interfaces/IApi';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-api-form',
@@ -145,20 +144,37 @@ export class ApiFormComponent implements OnInit {
 
     const id = this.activeRoute.snapshot.params['id'];
 
-    this.getApi(id);
+    this.getApiAndPatchValues(id);
 
     console.log('api from console' + this.api)
   }
 
-  getApi = (id: string): void => {
+  getApiAndPatchValues = (id: string): void => {
     this.apiService.getApi(id)
     .subscribe(
       (response) => {
         this.api = response;
+        this.patchValuesApi()
       },
       (error) => {
         console.log(error);
       });
+  }
+
+  patchValuesApi(): void {
+    this.apiForm.patchValue({
+      id: this.api.id,
+      title: this.api.title,
+      summary: this.api.summary,
+      internal: this.api.internal,
+      staging: this.api.staging,
+      production: this.api.production,
+      description: this.api.description,
+      approved: this.api.approved,
+      stage: this.api.stage,
+      github_url: this.api.github_url,
+      owner: this.api.owner,
+    })
   }
 
 
