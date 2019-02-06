@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { ApiService } from '../../../services/api.service';
+import { ActivatedRoute } from '@angular/router';
+import { IApi } from 'src/app/interfaces/IApi';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-api-form',
@@ -8,13 +12,17 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 })
 export class ApiFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private apiService: ApiService,
+              private activeRoute: ActivatedRoute) { }
 
-  apiForm = new FormGroup({
+  
+    api: IApi;
+  
+              apiForm = new FormGroup({
     id: new FormControl('id', [
       Validators.required
     ]),
-    title: new FormControl('title', [
+    title: new FormControl('', [
       Validators.required
     ]),
     summary: new FormControl('summary', [
@@ -134,6 +142,23 @@ export class ApiFormComponent implements OnInit {
   }
   ngOnInit() {
     console.log(this.f);
+
+    const id = this.activeRoute.snapshot.params['id'];
+
+    this.getApi(id);
+
+    console.log('api from console' + this.api)
+  }
+
+  getApi = (id: string): void => {
+    this.apiService.getApi(id)
+    .subscribe(
+      (response) => {
+        this.api = response;
+      },
+      (error) => {
+        console.log(error);
+      });
   }
 
 
