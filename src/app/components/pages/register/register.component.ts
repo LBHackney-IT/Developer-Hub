@@ -25,6 +25,8 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService
   ) { }
 
+  regEx: string = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
+
   /**
    *
    *
@@ -49,12 +51,12 @@ export class RegisterComponent implements OnInit {
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
-      Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")
+      Validators.pattern(this.regEx)
     ]),
     confirmPassword: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
-      Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")
+      Validators.pattern(this.regEx)
     ]),
   });
 
