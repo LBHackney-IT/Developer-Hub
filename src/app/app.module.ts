@@ -35,6 +35,10 @@ import { TabsComponent } from './components/partials/tabs/tabs.component';
 import { TabComponent } from './components/partials/tabs/tab/tab.component';
 import { ApiFormComponent } from './components/partials/api-form/api-form.component';
 import { AdminManageKeysComponent } from './components/partials/admin-manage-keys/admin-manage-keys.component';
+import { DocumentationComponent } from './components/pages/documentation/documentation.component';
+import { SwaggerEndpointItemComponent } from './components/partials/swagger-endpoint-item/swagger-endpoint-item.component';
+import { SwaggerEndpointItemsComponent } from './components/partials/swagger-endpoint-items/swagger-endpoint-items.component';
+import { SwaggerEndpointPathComponent } from './components/partials/swagger-endpoint-path/swagger-endpoint-path.component';
 
 
 @NgModule({
@@ -66,7 +70,11 @@ import { AdminManageKeysComponent } from './components/partials/admin-manage-key
     TabsComponent,
     TabComponent,
     ApiFormComponent,
-    AdminManageKeysComponent
+    AdminManageKeysComponent,
+    DocumentationComponent,
+    SwaggerEndpointItemComponent,
+    SwaggerEndpointItemsComponent,
+    SwaggerEndpointPathComponent
   ],
   imports: [
     BrowserModule,
