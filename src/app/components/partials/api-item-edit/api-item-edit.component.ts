@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { IApi } from '../../../interfaces/IApi';
 import { ApiService } from '../../../services/api.service';
 
@@ -8,7 +8,7 @@ import { ApiService } from '../../../services/api.service';
   styleUrls: ['./api-item-edit.component.scss']
 })
 export class ApiItemEditComponent implements OnInit {
-api: IApi;
+@Input() api: IApi;
 
   constructor(private apiService: ApiService) { }
 
