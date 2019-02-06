@@ -27,12 +27,17 @@
 
         <tbody class="govuk-table__body">
           <tr class="govuk-table__row" *ngFor="let path of swaggerInfoItem.paths">
-            <th class="govuk-table__header" scope="row">    
+
+            <th class="govuk-table__header" scope="row">
               <strong class="govuk-tag">
-                  {{ getRequestType(path) | uppercase }}
+                {{ getRequestType(path) | uppercase }}
               </strong>
             </th>
-            <td class="govuk-table__cell govuk-caption-m">{{getApiName(path)}}</td>
+            <td class="govuk-table__cell govuk-caption-m">
+              <a class="govuk-link" routerLink="/apiID/endpoints/endpointID">
+                {{getApiName(path)}}
+              </a>
+            </td>
           </tr>
 
           <!-- <app-swagger-endpoint-path *ngFor="let path of swaggerInfoItem.paths" [swaggerPath]="path"></app-swagger-endpoint-path> -->
