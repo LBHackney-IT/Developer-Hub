@@ -29,7 +29,6 @@ export class SwaggerEndpointItemComponent implements OnInit {
 
   getRequestType = (path): string => {
     const apiName = this.getApiName(path);
-    console.log(path);
     return Object.keys(path[apiName])[0];
   }
 

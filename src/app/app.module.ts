@@ -41,6 +41,8 @@ import { SwaggerEndpointItemsComponent } from './components/partials/swagger-end
 import { SwaggerEndpointPathComponent } from './components/partials/swagger-endpoint-path/swagger-endpoint-path.component';
 import { AdminApiListComponent } from './components/pages/admin-api-list/admin-api-list.component';
 import { ApiItemEditComponent } from './components/partials/api-item-edit/api-item-edit.component';
+import { SwaggerEndpointPageComponent } from './components/pages/swagger-endpoint-page/swagger-endpoint-page.component';
+
 
 
 @NgModule({
@@ -78,7 +80,8 @@ import { ApiItemEditComponent } from './components/partials/api-item-edit/api-it
     SwaggerEndpointItemsComponent,
     SwaggerEndpointPathComponent,
     AdminApiListComponent,
-    ApiItemEditComponent
+    ApiItemEditComponent,
+    SwaggerEndpointPageComponent
   ],
   imports: [
     BrowserModule,
