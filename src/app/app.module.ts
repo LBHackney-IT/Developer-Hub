@@ -39,6 +39,7 @@ import { DocumentationComponent } from './components/pages/documentation/documen
 import { SwaggerEndpointItemComponent } from './components/partials/swagger-endpoint-item/swagger-endpoint-item.component';
 import { SwaggerEndpointItemsComponent } from './components/partials/swagger-endpoint-items/swagger-endpoint-items.component';
 import { SwaggerEndpointPathComponent } from './components/partials/swagger-endpoint-path/swagger-endpoint-path.component';
+import { AdminApiListComponent } from './components/pages/admin-api-list/admin-api-list.component';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { SwaggerEndpointPathComponent } from './components/partials/swagger-endp
     DocumentationComponent,
     SwaggerEndpointItemComponent,
     SwaggerEndpointItemsComponent,
-    SwaggerEndpointPathComponent
+    SwaggerEndpointPathComponent,
+    AdminApiListComponent
   ],
   imports: [
     BrowserModule,

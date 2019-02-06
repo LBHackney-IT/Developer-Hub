@@ -94,8 +94,8 @@
               name="confirmPassword"
               formControlName="confirmPassword"
               [ngClass]="{'govuk-input': true, 'govuk-input--error': f.confirmPassword.touched && f.confirmPassword.invalid}"
-             aria-required="true" 
-             pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"/>             
+              aria-required="true" 
+              pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"/>             
              <div *ngIf="f.confirmPassword.touched && f.confirmPassword.invalid" class="govuk-error-message">    
               Please confirm password   
             </div> 
