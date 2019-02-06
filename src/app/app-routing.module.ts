@@ -17,6 +17,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { AdminComponent } from './components/pages/admin/admin.component';
 import { LogoutComponent } from './components/pages/logout/logout.component';
 import { DocumentationComponent } from './components/pages/documentation/documentation.component';
+import { SwaggerEndpointPageComponent } from './components/pages/swagger-endpoint-page/swagger-endpoint-page.component';
 
 const routes: Routes = [
   {path: '',  component: HomeComponent},
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path: 'key-manager', component: TokenManagerComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   {path: 'admin', component: AdminComponent, pathMatch: 'full'},
   {path: 'documentation', component: DocumentationComponent, pathMatch: 'full'},
+  {path: 'apiID/endpoints/endpointID', component: SwaggerEndpointPageComponent, pathMatch: 'full'},
   {path: 'logout', component: LogoutComponent, pathMatch: 'full', canActivate: [AuthGuard]},
 
   {path: '**', component: NotFoundComponent}
