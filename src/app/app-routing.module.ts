@@ -16,6 +16,7 @@ import { TokenManagerComponent } from './components/pages/token-manager/token-ma
 import { AuthGuard } from './guards/auth.guard';
 import { AdminComponent } from './components/pages/admin/admin.component';
 import { LogoutComponent } from './components/pages/logout/logout.component';
+import { DocumentationComponent } from './components/pages/documentation/documentation.component';
 
 const routes: Routes = [
   {path: '',  component: HomeComponent},
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path: 'confirmation/:type', component: ConfirmationComponent, pathMatch: 'full'},
   {path: 'key-manager', component: TokenManagerComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   {path: 'admin', component: AdminComponent, pathMatch: 'full'},
+  {path: 'documentation', component: DocumentationComponent, pathMatch: 'full'},
   {path: 'logout', component: LogoutComponent, pathMatch: 'full', canActivate: [AuthGuard]},
 
   {path: '**', component: NotFoundComponent}
