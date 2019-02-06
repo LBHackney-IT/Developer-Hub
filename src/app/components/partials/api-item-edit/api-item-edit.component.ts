@@ -15,4 +15,9 @@ export class ApiItemEditComponent implements OnInit {
   ngOnInit() {
   }
 
+  // redirect to the API form page using the API's id
+  onEditApi(id: string) {
+
+  }
+
 }

@@ -17,6 +17,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { AdminComponent } from './components/pages/admin/admin.component';
 import { LogoutComponent } from './components/pages/logout/logout.component';
 import { DocumentationComponent } from './components/pages/documentation/documentation.component';
+import { ApiFormComponent } from './components/partials/api-form/api-form.component';
 
 const routes: Routes = [
   {path: '',  component: HomeComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'api/:id',  component: ApiPageComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   {path: 'api-guide',  component: ApiGuideComponent, pathMatch: 'full'},
   {path: 'api-checklist',  component: ApiChecklistComponent, pathMatch: 'full'},
+  {path: 'api-form/:id', component: ApiFormComponent, pathMatch: 'full'},
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
   {path: 'register', component: RegisterComponent, pathMatch: 'full'},
   {path: 'forgot-password', component: ForgotPasswordComponent, pathMatch: 'full'},
