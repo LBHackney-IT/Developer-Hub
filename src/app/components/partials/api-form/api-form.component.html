@@ -125,55 +125,88 @@
       </label>
     </div>
     <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="build_run_stage" name="build_run_stage" type="checkbox"
+      <input 
+        class="govuk-checkboxes__input" 
+        id="build_run_stage" 
+        name="build_run_stage" 
+        type="checkbox"
         formControlName="build_run_stage">
       <label class="govuk-label govuk-checkboxes__label" for="build_run_stage">
         build_run_stage
       </label>
     </div>
     <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="stateless_process" name="stateless_process" type="checkbox"
+      <input 
+        class="govuk-checkboxes__input" 
+        id="stateless_process" 
+        name="stateless_process" 
+        type="checkbox"
         formControlName="stateless_process">
       <label class="govuk-label govuk-checkboxes__label" for="stateless_process">
         stateless_process
       </label>
     </div>
     <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="export_services" name="export_services" type="checkbox"
+      <input 
+        class="govuk-checkboxes__input" 
+        id="export_services" 
+        name="export_services" 
+        type="checkbox"
         formControlName="export_services">
       <label class="govuk-label govuk-checkboxes__label" for="export_services">
         export_services
       </label>
     </div>
     <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="scalable_process" name="scalable_process" type="checkbox"
+      <input 
+        class="govuk-checkboxes__input" 
+        id="scalable_process" 
+        name="scalable_process" 
+        type="checkbox"
         formControlName="scalable_process">
       <label class="govuk-label govuk-checkboxes__label" for="scalable_process">
         scalable_process
       </label>
     </div>
     <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="rapid_start_shutdown" name="rapid_start_shutdown" type="checkbox"
+      <input 
+        class="govuk-checkboxes__input" 
+        id="rapid_start_shutdown" 
+        name="rapid_start_shutdown" 
+        type="checkbox"
         formControlName="rapid_start_shutdown">
       <label class="govuk-label govuk-checkboxes__label" for="rapid_start_shutdown">
         rapid_start_shutdown
       </label>
     </div>
     <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="maintain_consistency_between_stages" name="maintain_consistency_between_stages"
-        type="checkbox" formControlName="maintain_consistency_between_stages">
+      <input 
+        class="govuk-checkboxes__input" 
+        id="maintain_consistency_between_stages" 
+        name="maintain_consistency_between_stages"
+        type="checkbox" 
+        formControlName="maintain_consistency_between_stages">
       <label class="govuk-label govuk-checkboxes__label" for="maintain_consistency_between_stages">
         maintain_consistency_between_stages
       </label>
     </div>
     <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="logging" name="logging" type="checkbox" formControlName="logging">
+      <input 
+        class="govuk-checkboxes__input" 
+        id="logging" 
+        name="logging" 
+        type="checkbox" 
+        formControlName="logging">
       <label class="govuk-label govuk-checkboxes__label" for="logging">
         logging
       </label>
     </div>
     <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="admin_management_process" name="admin_management_process" type="checkbox"
+      <input 
+        class="govuk-checkboxes__input" 
+        id="admin_management_process" 
+        name="admin_management_process" 
+        type="checkbox"
         formControlName="admin_management_process">
       <label class="govuk-label govuk-checkboxes__label" for="admin_management_process">
         admin_management_process
@@ -186,7 +219,13 @@
 
     <div class="govuk-radios govuk-radios--inline">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="internal" name="internal" type="radio" value="true" formControlName="internal">
+        <input 
+          class="govuk-radios__input" 
+          id="internal" 
+          name="internal" 
+          type="radio" 
+          value="true" 
+          formControlName="internal">
         <label class="govuk-label govuk-radios__label" for="internal">
           <strong class="govuk-tag">
             Internal
@@ -194,7 +233,13 @@
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="external" name="internal" type="radio" value="false" formControlName="internal">
+        <input 
+          class="govuk-radios__input" 
+          id="external" 
+          name="internal" 
+          type="radio" 
+          value="false" 
+          formControlName="internal">
         <label class="govuk-label govuk-radios__label" for="external">
           <strong class="govuk-tag">
             External
@@ -210,24 +255,42 @@
       <label class="govuk-label" for="url">
         Url
       </label>
-      <input type="url" autocomplete="off" id="url" name="url" formControlName="url" [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.staging.controls.url.touched && f.staging.controls.url.invalid}"
-        class="govuk-input" aria-required="true" />
+      <input 
+        type="url" 
+        autocomplete="off" 
+        id="url" 
+        name="url" 
+        formControlName="url" 
+        [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.staging.controls.url.touched && f.staging.controls.url.invalid}"
+        class="govuk-input" 
+        aria-required="true" />
     </div>
 
     <div class="govuk-form-group">
       <label class="govuk-label" for="url">
         swagger_url
       </label>
-      <input type="swagger_url" autocomplete="swagger_url" id="swagger_url" name="swagger_url" formControlName="swagger_url"
+      <input 
+        type="swagger_url" 
+        autocomplete="swagger_url" 
+        id="swagger_url" 
+        name="swagger_url" 
+        formControlName="swagger_url"
         [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.staging.controls.swagger_url.touched && f.staging.controls.swagger_url.invalid}"
-        class="govuk-input" aria-required="true" />
+        class="govuk-input" 
+        aria-required="true" />
     </div>
 
     <div class="govuk-form-group">
       <label class="govuk-label" for="url">
         swagger_url
       </label>
-      <input type="swagger_url" autocomplete="swagger_url" id="swagger_url" name="swagger_url" formControlName="swagger_url"
+      <input 
+        type="swagger_url" 
+        autocomplete="swagger_url" 
+        id="swagger_url" 
+        name="swagger_url" 
+        formControlName="swagger_url"
         [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.staging.controls.swagger_url.touched && f.staging.controls.swagger_url.invalid}"
         class="govuk-input" aria-required="true" />
     </div>
@@ -236,14 +299,24 @@
       <h3 class="govuk-heading-m"> Has this application been deployed? </h3>
       <div class="govuk-radios govuk-radios--inline">
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="deployed_true" name="deployed" type="radio" value="true"
+          <input 
+            class="govuk-radios__input" 
+            id="deployed_true" 
+            name="deployed" 
+            type="radio" 
+            value="true"
             formControlName="deployed">
           <label class="govuk-label govuk-radios__label" for="deployed_true">
             Yes
           </label>
         </div>
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="deployed_false" name="deployed" type="radio" value="false"
+          <input 
+            class="govuk-radios__input" 
+            id="deployed_false" 
+            name="deployed" 
+            type="radio" 
+            value="false"
             formControlName="deployed">
           <label class="govuk-label govuk-radios__label" for="deployed_false">
             No
@@ -259,31 +332,54 @@
       <label class="govuk-label" for="url">
         Url
       </label>
-      <input type="url" autocomplete="off" id="url" name="url" formControlName="url" [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.production.controls.url.touched && f.production.controls.url.invalid}"
-        class="govuk-input" aria-required="true" />
+      <input 
+        type="url" 
+        autocomplete="off" 
+        id="url" 
+        name="url" 
+        formControlName="url" 
+        [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.production.controls.url.touched && f.production.controls.url.invalid}"
+        class="govuk-input" 
+        aria-required="true" />
     </div>
 
     <div class="govuk-form-group">
       <label class="govuk-label" for="url">
         swagger_url
       </label>
-      <input type="swagger_url" autocomplete="swagger_url" id="swagger_url" name="swagger_url" formControlName="swagger_url"
+      <input 
+        type="swagger_url" 
+        autocomplete="swagger_url" 
+        id="swagger_url" 
+        name="swagger_url" 
+        formControlName="swagger_url"
         [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.production.controls.swagger_url.touched && f.production.controls.swagger_url.invalid}"
-        class="govuk-input" aria-required="true" />
+        class="govuk-input" 
+        aria-required="true" />
     </div>
 
     <div class="govuk-form-group">
       <h3 class="govuk-heading-m"> Has this application been deployed? </h3>
       <div class="govuk-radios govuk-radios--inline">
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="deployed_true" name="deployed" type="radio" value="true"
+          <input 
+            class="govuk-radios__input" 
+            id="deployed_true" 
+            name="deployed" 
+            type="radio" 
+            value="true"
             formControlName="deployed">
           <label class="govuk-label govuk-radios__label" for="deployed_true">
             Yes
           </label>
         </div>
         <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="deployed_false" name="deployed" type="radio" value="false"
+          <input 
+            class="govuk-radios__input" 
+            id="deployed_false" 
+            name="deployed" 
+            type="radio" 
+            value="false"
             formControlName="deployed">
           <label class="govuk-label govuk-radios__label" for="deployed_false">
             No
@@ -297,8 +393,15 @@
       <label class="govuk-label" for="github_url">
           github_url
       </label>
-      <input type="github_url" autocomplete="off" id="github_url" name="github_url" formControlName="github_url" [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.github_url.touched && f.github_url.invalid}"
-        class="govuk-input" aria-required="true" />
+      <input 
+        type="github_url" 
+        autocomplete="off" 
+        id="github_url" 
+        name="github_url" 
+        formControlName="github_url" 
+        [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.github_url.touched && f.github_url.invalid}"
+        class="govuk-input" 
+        aria-required="true" />
   
       <div *ngIf="f.github_url.touched && f.github_url.invalid" class="govuk-error-message">
           github_url is required
@@ -309,7 +412,13 @@
     <h3 class="govuk-heading-m"> What stage is this spplcation in? </h3>
     <div class="govuk-radios govuk-radios--inline">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="stage_alpha" name="stage" type="radio" value="alpha" formControlName="stage">
+        <input 
+          class="govuk-radios__input" 
+          id="stage_alpha" 
+          name="stage" 
+          type="radio" 
+          value="alpha" 
+          formControlName="stage">
         <label class="govuk-label govuk-radios__label" for="stage_alpha">
           <strong class="govuk-tag">
             Alpha
@@ -317,7 +426,13 @@
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="external" name="internal" type="radio" value="false" formControlName="internal">
+        <input 
+          class="govuk-radios__input" 
+          id="external" 
+          name="internal" 
+          type="radio" 
+          value="false" 
+          formControlName="internal">
         <label class="govuk-label govuk-radios__label" for="external">
           <strong class="govuk-tag">
             Beta
@@ -325,7 +440,13 @@
         </label>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="external" name="internal" type="radio" value="false" formControlName="internal">
+        <input 
+          class="govuk-radios__input" 
+          id="external" 
+          name="internal" 
+          type="radio" 
+          value="false" 
+          formControlName="internal">
         <label class="govuk-label govuk-radios__label" for="external">
           <strong class="govuk-tag">
             Live
@@ -336,6 +457,10 @@
   </div>
 
   <div class="govuk-form-group">
-    <button id="submitButton" class="govuk-button" type="submit" [disabled]="!apiForm.valid">Change your password</button>
+    <button 
+      id="submitButton" 
+      class="govuk-button" 
+      type="submit" 
+      [disabled]="!apiForm.valid">Change your password</button>
   </div>
 </form>
