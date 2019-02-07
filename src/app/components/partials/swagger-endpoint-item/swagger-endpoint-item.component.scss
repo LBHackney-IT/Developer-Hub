@@ -1,3 +1,5 @@
+@import '../../../../variables';
+
 a:link {
     text-decoration: none;
   }
@@ -7,7 +9,18 @@ a:link {
   }
 
   .red-background {
-
+    background-color: #b10e1e !important;
   }
 
-  
+  .post-background {
+    background-color: #ffbf47 !important;
+  }
+
+  .endpoints:hover {
+    background-color: #c9d3cea1;
+  }
+
+  .align-right {
+    text-align: right;
+  }
+

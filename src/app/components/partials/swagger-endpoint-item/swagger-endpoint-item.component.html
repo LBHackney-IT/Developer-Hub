@@ -1,7 +1,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <div class="govuk-grid-row" (click)="toggleDescription()">
-      <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-grid-column-two-thirds endpoints">
         <h3 class="govuk-heading-m">
           {{swaggerInfoItem.name}}
         </h3>
@@ -15,8 +15,7 @@
 
 
 
-    <div class="govuk-width-container" *ngIf="showDescription">
-      <div class="govuk-row">
+    <div class="govuk-row" *ngIf="showDescription">
       <div class="govuk-column-two-third align-right">
       <table class="govuk-table">
         <thead class="govuk-table__head">
@@ -48,6 +47,5 @@
       </table>
     </div>
     </div>
-  </div>
   </div>
 </div>
