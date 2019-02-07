@@ -1,466 +1,467 @@
 <h2 class="govuk-heading-l">API Form</h2>
+<div *ngIf="api !== null">
+  <form class="form js-form" 
+        [formGroup]="apiForm" 
+        (ngSubmit)="submitForm()">
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="id">
+        ID
+      </label>
+      <input 
+            type="text" 
+            autocomplete="off" 
+            id="id" 
+            name="id" 
+            formControlName="id" 
+            [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.id.touched && f.id.invalid}"
+            aria-describedby="id" 
+            aria-required="true" />
 
-<form class="form js-form" 
-      [formGroup]="apiForm" 
-      (ngSubmit)="submitForm()">
-  <div class="govuk-form-group">
-    <label class="govuk-label" for="id">
-      ID
-    </label>
-    <input 
-          type="text" 
-          autocomplete="off" 
-          id="id" 
-          name="id" 
-          formControlName="id" 
-          [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.id.touched && f.id.invalid}"
-          aria-describedby="id" 
-          aria-required="true" />
-
-    <div *ngIf="f.id.touched && f.id.invalid" class="govuk-error-message">
-      Id is required
+      <div *ngIf="f.id.touched && f.id.invalid" class="govuk-error-message">
+        Id is required
+      </div>
     </div>
-  </div>
 
-  <div class="govuk-form-group">
-    <label class="govuk-label" for="title">
-      Title
-    </label>
-    <input 
-          type="title" 
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="title">
+        Title
+      </label>
+      <input 
+            type="title" 
+            autocomplete="off" 
+            id="title" 
+            name="title" 
+            formControlName="title" 
+            [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.title.touched && f.title.invalid}"
+            class="govuk-input" 
+            aria-required="true" />
+
+      <div *ngIf="f.title.touched && f.title.invalid" class="govuk-error-message">
+        Title is required
+      </div>
+    </div>
+
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="title">
+        Summary
+      </label>
+      <textarea 
+        class="govuk-textarea" 
+        id="summary" 
+        name="summary" 
+        formControlName="summary" 
+        rows="2" 
+        aria-required="true"
+        [ngClass]="{'govuk-textarea': true, 'govuk-!-width-two-thirds': true, 'govuk-textarea--error': f.summary.touched && f.summary.invalid}"></textarea>
+      <div *ngIf="f.summary.touched && f.summary.invalid" class="govuk-error-message">
+        Summary is required
+      </div>
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="title">
+        description
+      </label>
+      <textarea 
+        class="govuk-textarea" 
+        id="description" 
+        name="description" 
+        formControlName="description" 
+        rows="4"
+        aria-required="true" 
+        [ngClass]="{'govuk-textarea': true, 'govuk-!-width-two-thirds': true, 'govuk-textarea--error': f.description.touched && f.description.invalid}"></textarea>
+      <div *ngIf="f.description.touched && f.description.invalid" class="govuk-error-message">
+        Description is required
+      </div>
+    </div>
+
+    <div formGroupName="compliant" class="govuk-form-group">
+      <h3 class="govuk-heading-m"> Compliancy </h3>
+
+      <div class="govuk-checkboxes__item">
+        <input 
+          class="govuk-checkboxes__input" 
+          id="revision_control" 
+          name="revision_control" 
+          type="checkbox"
+          formControlName="revision_control">
+        <label class="govuk-label govuk-checkboxes__label" for="revision_control">
+          revision_control
+        </label>
+
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input 
+          class="govuk-checkboxes__input" 
+          id="dependency_management" 
+          name="dependency_management" 
+          type="checkbox"
+          formControlName="dependency_management">
+        <label class="govuk-label govuk-checkboxes__label" for="dependency_management">
+          dependency_management
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input 
+          class="govuk-checkboxes__input" 
+          id="environment_config" 
+          name="environment_config" 
+          type="checkbox"
+          formControlName="environment_config">
+        <label class="govuk-label govuk-checkboxes__label" for="dependency_management">
+          environment_config
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input 
+          class="govuk-checkboxes__input" 
+          id="decoupled_services" 
+          name="decoupled_services" 
+          type="checkbox"
+          formControlName="decoupled_services">
+        <label class="govuk-label govuk-checkboxes__label" for="dependency_management">
+          decoupled_services
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input 
+          class="govuk-checkboxes__input" 
+          id="build_run_stage" 
+          name="build_run_stage" 
+          type="checkbox"
+          formControlName="build_run_stage">
+        <label class="govuk-label govuk-checkboxes__label" for="build_run_stage">
+          build_run_stage
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input 
+          class="govuk-checkboxes__input" 
+          id="stateless_process" 
+          name="stateless_process" 
+          type="checkbox"
+          formControlName="stateless_process">
+        <label class="govuk-label govuk-checkboxes__label" for="stateless_process">
+          stateless_process
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input 
+          class="govuk-checkboxes__input" 
+          id="export_services" 
+          name="export_services" 
+          type="checkbox"
+          formControlName="export_services">
+        <label class="govuk-label govuk-checkboxes__label" for="export_services">
+          export_services
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input 
+          class="govuk-checkboxes__input" 
+          id="scalable_process" 
+          name="scalable_process" 
+          type="checkbox"
+          formControlName="scalable_process">
+        <label class="govuk-label govuk-checkboxes__label" for="scalable_process">
+          scalable_process
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input 
+          class="govuk-checkboxes__input" 
+          id="rapid_start_shutdown" 
+          name="rapid_start_shutdown" 
+          type="checkbox"
+          formControlName="rapid_start_shutdown">
+        <label class="govuk-label govuk-checkboxes__label" for="rapid_start_shutdown">
+          rapid_start_shutdown
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input 
+          class="govuk-checkboxes__input" 
+          id="maintain_consistency_between_stages" 
+          name="maintain_consistency_between_stages"
+          type="checkbox" 
+          formControlName="maintain_consistency_between_stages">
+        <label class="govuk-label govuk-checkboxes__label" for="maintain_consistency_between_stages">
+          maintain_consistency_between_stages
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input 
+          class="govuk-checkboxes__input" 
+          id="logging" 
+          name="logging" 
+          type="checkbox" 
+          formControlName="logging">
+        <label class="govuk-label govuk-checkboxes__label" for="logging">
+          logging
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input 
+          class="govuk-checkboxes__input" 
+          id="admin_management_process" 
+          name="admin_management_process" 
+          type="checkbox"
+          formControlName="admin_management_process">
+        <label class="govuk-label govuk-checkboxes__label" for="admin_management_process">
+          admin_management_process
+        </label>
+      </div>
+    </div>
+
+    <div class="govuk-form-group">
+      <h3 class="govuk-heading-m"> Internal/External </h3>
+
+      <div class="govuk-radios govuk-radios--inline">
+        <div class="govuk-radios__item">
+          <input 
+            class="govuk-radios__input" 
+            id="internal" 
+            name="internal" 
+            type="radio" 
+            value="true" 
+            formControlName="internal">
+          <label class="govuk-label govuk-radios__label" for="internal">
+            <strong class="govuk-tag">
+              Internal
+            </strong>
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input 
+            class="govuk-radios__input" 
+            id="external" 
+            name="internal" 
+            type="radio" 
+            value="false" 
+            formControlName="internal">
+          <label class="govuk-label govuk-radios__label" for="external">
+            <strong class="govuk-tag">
+              External
+            </strong>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-form-group" formGroupName="staging">
+      <h3 class="govuk-heading-m"> Staging </h3>
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="url">
+          Url
+        </label>
+        <input 
+          type="url" 
           autocomplete="off" 
-          id="title" 
-          name="title" 
-          formControlName="title" 
-          [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.title.touched && f.title.invalid}"
+          id="url" 
+          name="url" 
+          formControlName="url" 
+          [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.staging.controls.url.touched && f.staging.controls.url.invalid}"
           class="govuk-input" 
           aria-required="true" />
-
-    <div *ngIf="f.title.touched && f.title.invalid" class="govuk-error-message">
-      Title is required
-    </div>
-  </div>
-
-
-  <div class="govuk-form-group">
-    <label class="govuk-label" for="title">
-      Summary
-    </label>
-    <textarea 
-      class="govuk-textarea" 
-      id="summary" 
-      name="summary" 
-      formControlName="summary" 
-      rows="2" 
-      aria-required="true"
-      [ngClass]="{'govuk-textarea': true, 'govuk-!-width-two-thirds': true, 'govuk-textarea--error': f.summary.touched && f.summary.invalid}"></textarea>
-    <div *ngIf="f.summary.touched && f.summary.invalid" class="govuk-error-message">
-      Summary is required
-    </div>
-  </div>
-
-  <div class="govuk-form-group">
-    <label class="govuk-label" for="title">
-      description
-    </label>
-    <textarea 
-      class="govuk-textarea" 
-      id="description" 
-      name="description" 
-      formControlName="description" 
-      rows="4"
-      aria-required="true" 
-      [ngClass]="{'govuk-textarea': true, 'govuk-!-width-two-thirds': true, 'govuk-textarea--error': f.description.touched && f.description.invalid}"></textarea>
-    <div *ngIf="f.description.touched && f.description.invalid" class="govuk-error-message">
-      Description is required
-    </div>
-  </div>
-
-  <div formGroupName="compliant" class="govuk-form-group">
-    <h3 class="govuk-heading-m"> Compliancy </h3>
-
-    <div class="govuk-checkboxes__item">
-      <input 
-        class="govuk-checkboxes__input" 
-        id="revision_control" 
-        name="revision_control" 
-        type="checkbox"
-        formControlName="revision_control">
-      <label class="govuk-label govuk-checkboxes__label" for="revision_control">
-        revision_control
-      </label>
-
-    </div>
-    <div class="govuk-checkboxes__item">
-      <input 
-        class="govuk-checkboxes__input" 
-        id="dependency_management" 
-        name="dependency_management" 
-        type="checkbox"
-        formControlName="dependency_management">
-      <label class="govuk-label govuk-checkboxes__label" for="dependency_management">
-        dependency_management
-      </label>
-    </div>
-    <div class="govuk-checkboxes__item">
-      <input 
-        class="govuk-checkboxes__input" 
-        id="environment_config" 
-        name="environment_config" 
-        type="checkbox"
-        formControlName="environment_config">
-      <label class="govuk-label govuk-checkboxes__label" for="dependency_management">
-        environment_config
-      </label>
-    </div>
-    <div class="govuk-checkboxes__item">
-      <input 
-        class="govuk-checkboxes__input" 
-        id="decoupled_services" 
-        name="decoupled_services" 
-        type="checkbox"
-        formControlName="decoupled_services">
-      <label class="govuk-label govuk-checkboxes__label" for="dependency_management">
-        decoupled_services
-      </label>
-    </div>
-    <div class="govuk-checkboxes__item">
-      <input 
-        class="govuk-checkboxes__input" 
-        id="build_run_stage" 
-        name="build_run_stage" 
-        type="checkbox"
-        formControlName="build_run_stage">
-      <label class="govuk-label govuk-checkboxes__label" for="build_run_stage">
-        build_run_stage
-      </label>
-    </div>
-    <div class="govuk-checkboxes__item">
-      <input 
-        class="govuk-checkboxes__input" 
-        id="stateless_process" 
-        name="stateless_process" 
-        type="checkbox"
-        formControlName="stateless_process">
-      <label class="govuk-label govuk-checkboxes__label" for="stateless_process">
-        stateless_process
-      </label>
-    </div>
-    <div class="govuk-checkboxes__item">
-      <input 
-        class="govuk-checkboxes__input" 
-        id="export_services" 
-        name="export_services" 
-        type="checkbox"
-        formControlName="export_services">
-      <label class="govuk-label govuk-checkboxes__label" for="export_services">
-        export_services
-      </label>
-    </div>
-    <div class="govuk-checkboxes__item">
-      <input 
-        class="govuk-checkboxes__input" 
-        id="scalable_process" 
-        name="scalable_process" 
-        type="checkbox"
-        formControlName="scalable_process">
-      <label class="govuk-label govuk-checkboxes__label" for="scalable_process">
-        scalable_process
-      </label>
-    </div>
-    <div class="govuk-checkboxes__item">
-      <input 
-        class="govuk-checkboxes__input" 
-        id="rapid_start_shutdown" 
-        name="rapid_start_shutdown" 
-        type="checkbox"
-        formControlName="rapid_start_shutdown">
-      <label class="govuk-label govuk-checkboxes__label" for="rapid_start_shutdown">
-        rapid_start_shutdown
-      </label>
-    </div>
-    <div class="govuk-checkboxes__item">
-      <input 
-        class="govuk-checkboxes__input" 
-        id="maintain_consistency_between_stages" 
-        name="maintain_consistency_between_stages"
-        type="checkbox" 
-        formControlName="maintain_consistency_between_stages">
-      <label class="govuk-label govuk-checkboxes__label" for="maintain_consistency_between_stages">
-        maintain_consistency_between_stages
-      </label>
-    </div>
-    <div class="govuk-checkboxes__item">
-      <input 
-        class="govuk-checkboxes__input" 
-        id="logging" 
-        name="logging" 
-        type="checkbox" 
-        formControlName="logging">
-      <label class="govuk-label govuk-checkboxes__label" for="logging">
-        logging
-      </label>
-    </div>
-    <div class="govuk-checkboxes__item">
-      <input 
-        class="govuk-checkboxes__input" 
-        id="admin_management_process" 
-        name="admin_management_process" 
-        type="checkbox"
-        formControlName="admin_management_process">
-      <label class="govuk-label govuk-checkboxes__label" for="admin_management_process">
-        admin_management_process
-      </label>
-    </div>
-  </div>
-
-  <div class="govuk-form-group">
-    <h3 class="govuk-heading-m"> Internal/External </h3>
-
-    <div class="govuk-radios govuk-radios--inline">
-      <div class="govuk-radios__item">
-        <input 
-          class="govuk-radios__input" 
-          id="internal" 
-          name="internal" 
-          type="radio" 
-          value="true" 
-          formControlName="internal">
-        <label class="govuk-label govuk-radios__label" for="internal">
-          <strong class="govuk-tag">
-            Internal
-          </strong>
-        </label>
       </div>
-      <div class="govuk-radios__item">
-        <input 
-          class="govuk-radios__input" 
-          id="external" 
-          name="internal" 
-          type="radio" 
-          value="false" 
-          formControlName="internal">
-        <label class="govuk-label govuk-radios__label" for="external">
-          <strong class="govuk-tag">
-            External
-          </strong>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="url">
+          swagger_url
         </label>
+        <input 
+          type="swagger_url" 
+          autocomplete="swagger_url" 
+          id="swagger_url" 
+          name="swagger_url" 
+          formControlName="swagger_url"
+          [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.staging.controls.swagger_url.touched && f.staging.controls.swagger_url.invalid}"
+          class="govuk-input" 
+          aria-required="true" />
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="url">
+          swagger_url
+        </label>
+        <input 
+          type="swagger_url" 
+          autocomplete="swagger_url" 
+          id="swagger_url" 
+          name="swagger_url" 
+          formControlName="swagger_url"
+          [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.staging.controls.swagger_url.touched && f.staging.controls.swagger_url.invalid}"
+          class="govuk-input" aria-required="true" />
+      </div>
+
+      <div class="govuk-form-group">
+        <h3 class="govuk-heading-m"> Has this application been deployed? </h3>
+        <div class="govuk-radios govuk-radios--inline">
+          <div class="govuk-radios__item">
+            <input 
+              class="govuk-radios__input" 
+              id="deployed_true" 
+              name="deployed" 
+              type="radio" 
+              value="true"
+              formControlName="deployed">
+            <label class="govuk-label govuk-radios__label" for="deployed_true">
+              Yes
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input 
+              class="govuk-radios__input" 
+              id="deployed_false" 
+              name="deployed" 
+              type="radio" 
+              value="false"
+              formControlName="deployed">
+            <label class="govuk-label govuk-radios__label" for="deployed_false">
+              No
+            </label>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="govuk-form-group" formGroupName="staging">
-    <h3 class="govuk-heading-m"> Staging </h3>
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="url">
-        Url
-      </label>
-      <input 
-        type="url" 
-        autocomplete="off" 
-        id="url" 
-        name="url" 
-        formControlName="url" 
-        [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.staging.controls.url.touched && f.staging.controls.url.invalid}"
-        class="govuk-input" 
-        aria-required="true" />
+    <div class="govuk-form-group" formGroupName="production">
+      <h3 class="govuk-heading-m"> Staging </h3>
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="url">
+          Url
+        </label>
+        <input 
+          type="url" 
+          autocomplete="off" 
+          id="url" 
+          name="url" 
+          formControlName="url" 
+          [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.production.controls.url.touched && f.production.controls.url.invalid}"
+          class="govuk-input" 
+          aria-required="true" />
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="url">
+          swagger_url
+        </label>
+        <input 
+          type="swagger_url" 
+          autocomplete="swagger_url" 
+          id="swagger_url" 
+          name="swagger_url" 
+          formControlName="swagger_url"
+          [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.production.controls.swagger_url.touched && f.production.controls.swagger_url.invalid}"
+          class="govuk-input" 
+          aria-required="true" />
+      </div>
+
+      <div class="govuk-form-group">
+        <h3 class="govuk-heading-m"> Has this application been deployed? </h3>
+        <div class="govuk-radios govuk-radios--inline">
+          <div class="govuk-radios__item">
+            <input 
+              class="govuk-radios__input" 
+              id="deployed_true" 
+              name="deployed" 
+              type="radio" 
+              value="true"
+              formControlName="deployed">
+            <label class="govuk-label govuk-radios__label" for="deployed_true">
+              Yes
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input 
+              class="govuk-radios__input" 
+              id="deployed_false" 
+              name="deployed" 
+              type="radio" 
+              value="false"
+              formControlName="deployed">
+            <label class="govuk-label govuk-radios__label" for="deployed_false">
+              No
+            </label>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="govuk-form-group">
-      <label class="govuk-label" for="url">
-        swagger_url
-      </label>
-      <input 
-        type="swagger_url" 
-        autocomplete="swagger_url" 
-        id="swagger_url" 
-        name="swagger_url" 
-        formControlName="swagger_url"
-        [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.staging.controls.swagger_url.touched && f.staging.controls.swagger_url.invalid}"
-        class="govuk-input" 
-        aria-required="true" />
-    </div>
+        <label class="govuk-label" for="github_url">
+            github_url
+        </label>
+        <input 
+          type="github_url" 
+          autocomplete="off" 
+          id="github_url" 
+          name="github_url" 
+          formControlName="github_url" 
+          [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.github_url.touched && f.github_url.invalid}"
+          class="govuk-input" 
+          aria-required="true" />
+    
+        <div *ngIf="f.github_url.touched && f.github_url.invalid" class="govuk-error-message">
+            github_url is required
+        </div>
+      </div>
 
     <div class="govuk-form-group">
-      <label class="govuk-label" for="url">
-        swagger_url
-      </label>
-      <input 
-        type="swagger_url" 
-        autocomplete="swagger_url" 
-        id="swagger_url" 
-        name="swagger_url" 
-        formControlName="swagger_url"
-        [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.staging.controls.swagger_url.touched && f.staging.controls.swagger_url.invalid}"
-        class="govuk-input" aria-required="true" />
-    </div>
-
-    <div class="govuk-form-group">
-      <h3 class="govuk-heading-m"> Has this application been deployed? </h3>
+      <h3 class="govuk-heading-m"> What stage is this spplcation in? </h3>
       <div class="govuk-radios govuk-radios--inline">
         <div class="govuk-radios__item">
           <input 
             class="govuk-radios__input" 
-            id="deployed_true" 
-            name="deployed" 
+            id="stage_alpha" 
+            name="stage" 
             type="radio" 
-            value="true"
-            formControlName="deployed">
-          <label class="govuk-label govuk-radios__label" for="deployed_true">
-            Yes
+            value="alpha" 
+            formControlName="stage">
+          <label class="govuk-label govuk-radios__label" for="stage_alpha">
+            <strong class="govuk-tag">
+              Alpha
+            </strong>
           </label>
         </div>
         <div class="govuk-radios__item">
           <input 
             class="govuk-radios__input" 
-            id="deployed_false" 
-            name="deployed" 
+            id="external" 
+            name="internal" 
             type="radio" 
-            value="false"
-            formControlName="deployed">
-          <label class="govuk-label govuk-radios__label" for="deployed_false">
-            No
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="govuk-form-group" formGroupName="production">
-    <h3 class="govuk-heading-m"> Staging </h3>
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="url">
-        Url
-      </label>
-      <input 
-        type="url" 
-        autocomplete="off" 
-        id="url" 
-        name="url" 
-        formControlName="url" 
-        [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.production.controls.url.touched && f.production.controls.url.invalid}"
-        class="govuk-input" 
-        aria-required="true" />
-    </div>
-
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="url">
-        swagger_url
-      </label>
-      <input 
-        type="swagger_url" 
-        autocomplete="swagger_url" 
-        id="swagger_url" 
-        name="swagger_url" 
-        formControlName="swagger_url"
-        [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.production.controls.swagger_url.touched && f.production.controls.swagger_url.invalid}"
-        class="govuk-input" 
-        aria-required="true" />
-    </div>
-
-    <div class="govuk-form-group">
-      <h3 class="govuk-heading-m"> Has this application been deployed? </h3>
-      <div class="govuk-radios govuk-radios--inline">
-        <div class="govuk-radios__item">
-          <input 
-            class="govuk-radios__input" 
-            id="deployed_true" 
-            name="deployed" 
-            type="radio" 
-            value="true"
-            formControlName="deployed">
-          <label class="govuk-label govuk-radios__label" for="deployed_true">
-            Yes
+            value="false" 
+            formControlName="internal">
+          <label class="govuk-label govuk-radios__label" for="external">
+            <strong class="govuk-tag">
+              Beta
+            </strong>
           </label>
         </div>
         <div class="govuk-radios__item">
           <input 
             class="govuk-radios__input" 
-            id="deployed_false" 
-            name="deployed" 
+            id="external" 
+            name="internal" 
             type="radio" 
-            value="false"
-            formControlName="deployed">
-          <label class="govuk-label govuk-radios__label" for="deployed_false">
-            No
+            value="false" 
+            formControlName="internal">
+          <label class="govuk-label govuk-radios__label" for="external">
+            <strong class="govuk-tag">
+              Live
+            </strong>
           </label>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="govuk-form-group">
-      <label class="govuk-label" for="github_url">
-          github_url
-      </label>
-      <input 
-        type="github_url" 
-        autocomplete="off" 
-        id="github_url" 
-        name="github_url" 
-        formControlName="github_url" 
-        [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'govuk-input--error': f.github_url.touched && f.github_url.invalid}"
-        class="govuk-input" 
-        aria-required="true" />
-  
-      <div *ngIf="f.github_url.touched && f.github_url.invalid" class="govuk-error-message">
-          github_url is required
-      </div>
+    <div class="govuk-form-group">
+      <button 
+        id="submitButton" 
+        class="govuk-button" 
+        type="submit" 
+        [disabled]="!apiForm.valid">Change your password</button>
     </div>
-
-  <div class="govuk-form-group">
-    <h3 class="govuk-heading-m"> What stage is this spplcation in? </h3>
-    <div class="govuk-radios govuk-radios--inline">
-      <div class="govuk-radios__item">
-        <input 
-          class="govuk-radios__input" 
-          id="stage_alpha" 
-          name="stage" 
-          type="radio" 
-          value="alpha" 
-          formControlName="stage">
-        <label class="govuk-label govuk-radios__label" for="stage_alpha">
-          <strong class="govuk-tag">
-            Alpha
-          </strong>
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input 
-          class="govuk-radios__input" 
-          id="external" 
-          name="internal" 
-          type="radio" 
-          value="false" 
-          formControlName="internal">
-        <label class="govuk-label govuk-radios__label" for="external">
-          <strong class="govuk-tag">
-            Beta
-          </strong>
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input 
-          class="govuk-radios__input" 
-          id="external" 
-          name="internal" 
-          type="radio" 
-          value="false" 
-          formControlName="internal">
-        <label class="govuk-label govuk-radios__label" for="external">
-          <strong class="govuk-tag">
-            Live
-          </strong>
-        </label>
-      </div>
-    </div>
-  </div>
-
-  <div class="govuk-form-group">
-    <button 
-      id="submitButton" 
-      class="govuk-button" 
-      type="submit" 
-      [disabled]="!apiForm.valid">Change your password</button>
-  </div>
-</form>
+  </form>
+</div>
