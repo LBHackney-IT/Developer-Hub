@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IApi } from '../../../interfaces/IApi';
-import { ApiService } from '../../../services/api.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,8 +10,7 @@ import { Router } from '@angular/router';
 export class ApiItemEditComponent implements OnInit {
 @Input() api: IApi;
 
-  constructor(private apiService: ApiService,
-              private router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
