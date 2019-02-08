@@ -76,12 +76,13 @@
               [ngClass]="{'govuk-input': true, 'govuk-input--error': f.password.touched && f.password.invalid}"            
               class="govuk-input"
               aria-describedby="password-note"
-              aria-required="true"/>
+              aria-required="true"
+              pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" />
               <div *ngIf="f.password.touched && f.password.invalid" class="govuk-error-message">     
                 Password is required   
               </div> 
               <div *ngIf="f.password.errors" class="govuk-error-message">
-                  <div *ngIf="f.password.errors.minlength">Your password must be at least 8 characters and contain at least one number, lowercase letter, uppercase letter and special character.</div>
+                  <div *ngIf="f.password.errors.minlength || f.password.errors.pattern">Your password must be at least 8 characters and contain at least one number, lowercase letter, uppercase letter and special character.</div>
               </div>
     </div>
 
@@ -93,8 +94,8 @@
               name="confirmPassword"
               formControlName="confirmPassword"
               [ngClass]="{'govuk-input': true, 'govuk-input--error': f.confirmPassword.touched && f.confirmPassword.invalid}"
-             aria-required="true"/>   
-             
+              aria-required="true" 
+              pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"/>             
              <div *ngIf="f.confirmPassword.touched && f.confirmPassword.invalid" class="govuk-error-message">    
               Please confirm password   
             </div> 
