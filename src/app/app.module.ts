@@ -42,7 +42,7 @@ import { SwaggerEndpointPathComponent } from './components/partials/swagger-endp
 import { AdminApiListComponent } from './components/pages/admin-api-list/admin-api-list.component';
 import { ApiItemEditComponent } from './components/partials/api-item-edit/api-item-edit.component';
 import { SwaggerEndpointPageComponent } from './components/pages/swagger-endpoint-page/swagger-endpoint-page.component';
-
+import { ApiDataParser } from './services/apiDataParser.service'
 
 
 @NgModule({
@@ -93,6 +93,7 @@ import { SwaggerEndpointPageComponent } from './components/pages/swagger-endpoin
   providers: [
     ApiKeyService,
     ApiService,
+    ApiDataParser,
     { provide: HTTP_INTERCEPTORS, useClass: LambdaInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
