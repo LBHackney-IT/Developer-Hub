@@ -3,47 +3,55 @@
     <div class="govuk-grid-row" (click)="toggleDescription()">
       <div class="govuk-grid-column-two-thirds endpoints">
         <h3 class="govuk-heading-m">
-          {{swaggerInfoItem.name}}
+          {{ swaggerInfoItem.name }}
         </h3>
       </div>
       <div class="govuk-grid-column-one-third align-right">
         <strong class="govuk-tag green-background">
-          {{ getNumberOfEndpoints()}} Endpoints
+          {{ getNumberOfEndpoints() }} Endpoints
         </strong>
       </div>
     </div>
 
     <div class="govuk-row" *ngIf="showDescription">
       <div class="govuk-column-two-thirds">
-      <table class="govuk-table">
-        <thead class="govuk-table__head">
-          <!-- <tr class="govuk-table__row">
-            <th class="govuk-table__header" scope="col">Method</th>
-            <th class="govuk-table__header" scope="col">Endpoint</th>
-          </tr> -->
-        </thead>
-
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row" *ngFor="let path of swaggerInfoItem.paths">
-
-            <th class="govuk-table__header" scope="row">
-              <strong 
-              class="govuk-tag"
-              [ngClass]="{'green-background': getRequestType(path) === 'GET' }">
-                {{ getRequestType(path) }}
-              </strong>
-            </th>
-            <td class="govuk-table__cell govuk-caption-m">
-              <a class="govuk-link" routerLink="/apiID/endpoints/endpointID">
-                {{getApiName(path)}}
-              </a>
-            </td>
-          </tr>
-
-          <!-- <app-swagger-endpoint-path *ngFor="let path of swaggerInfoItem.paths" [swaggerPath]="path"></app-swagger-endpoint-path> -->
-        </tbody>
-      </table>
-    </div>
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="col">Request</th>
+              <th
+                class="govuk-table__header govuk-table__header--numeric"
+                scope="col"
+              >
+                Endpoint
+              </th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr
+              class="govuk-table__row"
+              *ngFor="let path of swaggerInfoItem.paths"
+            >
+              <th class="govuk-table__header" scope="row">
+                <strong
+                  class="govuk-tag"
+                  [ngClass]="{
+                    'green-background': getRequestType(path) === 'GET'
+                  }"
+                >
+                  {{ getRequestType(path) }}
+                </strong>
+              </th>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" routerLink="/apiID/endpoints/endpointID">
+                  {{ getApiName(path) }}
+                </a>
+              </td>
+            </tr>
+            <!-- <app-swagger-endpoint-path *ngFor="let path of swaggerInfoItem.paths" [swaggerPath]="path"></app-swagger-endpoint-path> -->
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
