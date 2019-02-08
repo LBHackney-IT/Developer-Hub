@@ -12,15 +12,21 @@ a:link {
     background-color: #b10e1e !important;
   }
 
-  .post-background {
+  .yellow-background {
     background-color: #ffbf47 !important;
-  }
-
-  .endpoints:hover {
-    background-color: #c9d3cea1;
   }
 
   .align-right {
     text-align: right;
+  }
+
+  .table-api {
+    width: 85%;
+  }
+
+  .api-title a:hover, a:focus {
+    cursor: pointer;
+    background-color: #006434;
+    color: white;
   }
 
