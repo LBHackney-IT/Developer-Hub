@@ -8,7 +8,7 @@
       </div>
       <div class="govuk-grid-column-one-third align-right">
         <strong class="govuk-tag">
-          {{ getNumberOfEndpoints()}} Endpoints
+          {{ swaggerInfoItem.endpoints.length }} Endpoints
         </strong>
       </div>
     </div>
@@ -26,16 +26,16 @@
         </thead>
 
         <tbody class="govuk-table__body">
-          <tr class="govuk-table__row" *ngFor="let path of swaggerInfoItem.paths">
+          <tr class="govuk-table__row" *ngFor="let endpoint of swaggerInfoItem.endpoints">
 
             <th class="govuk-table__header" scope="row">
               <strong class="govuk-tag">
-                {{ getRequestType(path) | uppercase }}
+                {{ endpoint.method | uppercase }}
               </strong>
             </th>
             <td class="govuk-table__cell govuk-caption-m">
               <a class="govuk-link" routerLink="/apiID/endpoints/endpointID">
-                {{getApiName(path)}}
+                {{ endpoint.name }}
               </a>
             </td>
           </tr>
