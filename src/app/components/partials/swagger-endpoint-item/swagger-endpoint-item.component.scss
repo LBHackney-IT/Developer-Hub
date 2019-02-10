@@ -22,11 +22,28 @@ a:link {
 
   .table-api {
     width: 85%;
+    position: relative;
+    left: 5%;
   }
 
-  .api-title a:hover, a:focus {
+  .accordion {
+    border: 1px solid rgba(0, 0, 0, 0.781);
+    border-radius: 10px;
+    margin: 5px 0;
+    position: relative;
+  }
+
+  .endpoint-api-column {
+    position: relative;
+  }
+
+  .api-panel {
+    position: relative;
+    top: 10px;
+  }
+
+  .api-title-link:hover, .api-panel:hover {
+    text-decoration: underline;
     cursor: pointer;
-    background-color: #006434;
-    color: white;
   }
 
