@@ -6,11 +6,12 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./swagger-endpoint-item.component.scss']
 })
 export class SwaggerEndpointItemComponent implements OnInit {
-  @Input() swaggerInfoItem: object;
+  @Input() api: object;
   showDescription = false;
   showApiInfo = false;
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit() {
   }

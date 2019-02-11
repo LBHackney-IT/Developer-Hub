@@ -2,5 +2,5 @@
         <input class="govuk-input" id="name" placeholder="search"
         [(ngModel)]="queryString">
 </div>
-<app-swagger-endpoint-item *ngFor="let swaggerInfoItem of swaggerInfoItems | SearchPipe: queryString" [swaggerInfoItem]="swaggerInfoItem"></app-swagger-endpoint-item>
+<app-swagger-endpoint-item *ngFor="let api of apiList | SearchPipe: queryString" [api]="api"></app-swagger-endpoint-item>
 

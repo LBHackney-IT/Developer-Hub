@@ -1,16 +1,16 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-   <div class="govuk-grid-row accordion" *ngIf="swaggerInfoItem.endpoints.length" (click)="toggleDescription()">
+   <div class="govuk-grid-row accordion" *ngIf="api.paths.length"(click)="toggleDescription()">
       <div class="govuk-grid-column-two-thirds endpoint-api-column">
             <h3 class="govuk-heading-m api-panel">
                 <a class="api-title-link">
-                    {{ swaggerInfoItem.name }}
+                    {{ api.title }}
                 </a>
               </h3>
       </div>
       <div class="govuk-grid-column-one-third align-right endpoint-api-column">
         <strong class="govuk-body api-panel">
-          {{ swaggerInfoItem.endpoints.length }} Endpoints
+          {{ api.paths.length }} Endpoints
         </strong>
       </div>
     </div>
@@ -33,24 +33,24 @@
           <tbody class="govuk-table__body">
             <tr
               class="govuk-table__row"
-              *ngFor="let endpoint of swaggerInfoItem.endpoints"
+              *ngFor="let endpoint of api.paths"
             >
               <th class="govuk-table__header" scope="row">
                 <strong
                   class="govuk-tag"
                   [ngClass]="{
-                      'green-background': endpoint.method.toUpperCase() === 'GET',
-                      'yellow-background': endpoint.method.toUpperCase() === 'POST',
-                      'yellow-background': endpoint.method.toUpperCase() === 'PUT',
-                      'red-background': endpoint.method.toUpperCase() === 'DELETE'
+                      'green-background': endpoint.requestType.toLowerCase() === 'get',
+                      'yellow-background': endpoint.requestType.toLowerCase() === 'post',
+                      'yellow-background': endpoint.requestType.toLowerCase === 'put',
+                      'red-background': endpoint.requestType.toLowerCase() === 'delete'
                     }"
                 >
-                  {{ endpoint.method }}
+                  {{ endpoint.requestType }}
                 </strong>
               </th>
               <td class="govuk-table__cell govuk-table__cell--numeric">
                 <a class="govuk-link" routerLink="/apiID/endpoints/endpointID">
-                  {{ endpoint.name }}
+                  {{ endpoint.url }}
                 </a>
               </td>
             </tr>
