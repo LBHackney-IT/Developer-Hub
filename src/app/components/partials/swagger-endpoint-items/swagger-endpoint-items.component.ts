@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { swaggerJson } from '../../../shared/swagger';
-import { ApiDataParser } from '../../../services/apiDataParser.service'
+import { ApiDataParser } from '../../../services/apiDataParser.service';
 
 @Component({
   selector: 'app-swagger-endpoint-items',
@@ -10,9 +10,8 @@ import { ApiDataParser } from '../../../services/apiDataParser.service'
 export class SwaggerEndpointItemsComponent implements OnInit {
   swaggerInfoItems: object[] = swaggerJson;
   
-  constructor(apiDataParser: ApiDataParser) { 
-    this.swaggerInfoItems = apiDataParser.parse(swaggerJson)
-    console.log(this.swaggerInfoItems)
+  constructor(private apiDataParser: ApiDataParser) { 
+    this.swaggerInfoItems = apiDataParser.parse(swaggerJson);
   }
 
   ngOnInit() {

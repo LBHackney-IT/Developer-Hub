@@ -11,12 +11,12 @@ export class SearchPipe implements PipeTransform {
     transform = (apiData: any, formInput: string) => {
         console.log(formInput)
         if (formInput && !this.isEmpty(formInput)) {
-            return this.searchService.search(apiData, formInput)
+            return this.searchService.search(apiData, formInput);
         }
-        return apiData
+        return apiData;
     }
 
     private isEmpty = (input: string) => {
-        return (input.replace(/\s/g, "").length > 0 ? false : true)
+        return (input.replace(/\s/g, "").length > 0 ? false : true);
     }
 }
