@@ -1,12 +1,10 @@
 @import '../../../../variables';
 
-$swagger-method-delete: 	#df3034;
-$swagger-method-put-patch: #f47738;
-$swagger-method-post: #006435;
-$swagger-method-get: #005ea5;
-
-a:link {
-    text-decoration: none;
+a {
+    &:link,
+    &:visited{
+      text-decoration: none;
+    }
   }
 
   .post-request {
