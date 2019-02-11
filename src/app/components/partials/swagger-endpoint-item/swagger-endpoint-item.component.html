@@ -1,48 +1,62 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    <div class="govuk-grid-row" *ngIf="swaggerInfoItem.endpoints.length" (click)="toggleDescription()">
-      <div class="govuk-grid-column-two-thirds">
-        <h3 class="govuk-heading-m">
-          {{swaggerInfoItem.name}}
-        </h3>
+   <div class="govuk-grid-row accordion" *ngIf="swaggerInfoItem.endpoints.length" (click)="toggleDescription()">
+      <div class="govuk-grid-column-two-thirds endpoint-api-column">
+            <h3 class="govuk-heading-m api-panel">
+                <a class="api-title-link">
+                    {{ swaggerInfoItem.name }}
+                </a>
+              </h3>
       </div>
-      <div class="govuk-grid-column-one-third align-right">
-        <strong class="govuk-tag">
+      <div class="govuk-grid-column-one-third align-right endpoint-api-column">
+        <strong class="govuk-body api-panel">
           {{ swaggerInfoItem.endpoints.length }} Endpoints
         </strong>
       </div>
     </div>
 
 
-
-    <div class="govuk-grid-row" *ngIf="showDescription">
-      <table class="govuk-table">
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th class="govuk-table__header" scope="col">Method</th>
-            <th class="govuk-table__header" scope="col">Endpoint</th>
-            <th class="govuk-table__header" scope="col">Summary</th>
-          </tr>
-        </thead>
-
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row" *ngFor="let endpoint of swaggerInfoItem.endpoints">
-
-            <th class="govuk-table__header" scope="row">
-              <strong class="govuk-tag">
-                {{ endpoint.method | uppercase }}
-              </strong>
-            </th>
-            <td class="govuk-table__cell govuk-caption-m">
-              <a class="govuk-link" routerLink="/apiID/endpoints/endpointID">
-                {{ endpoint.name }}
-              </a>
-            </td>
-          </tr>
-
-          <!-- <app-swagger-endpoint-path *ngFor="let path of swaggerInfoItem.paths" [swaggerPath]="path"></app-swagger-endpoint-path> -->
-        </tbody>
-      </table>
+    <div class="govuk-row" *ngIf="showDescription">
+      <div class="govuk-column-two-thirds table-api">
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="col">Request</th>
+              <th
+                class="govuk-table__header govuk-table__header--numeric"
+                scope="col"
+              >
+                Endpoint
+              </th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr
+              class="govuk-table__row"
+              *ngFor="let endpoint of swaggerInfoItem.endpoints"
+            >
+              <th class="govuk-table__header" scope="row">
+                <strong
+                  class="govuk-tag"
+                  [ngClass]="{
+                      'green-background': endpoint.method.toUpperCase() === 'GET',
+                      'yellow-background': endpoint.method.toUpperCase() === 'POST',
+                      'yellow-background': endpoint.method.toUpperCase() === 'PUT',
+                      'red-background': endpoint.method.toUpperCase() === 'DELETE'
+                    }"
+                >
+                  {{ endpoint.method }}
+                </strong>
+              </th>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                <a class="govuk-link" routerLink="/apiID/endpoints/endpointID">
+                  {{ endpoint.name }}
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
