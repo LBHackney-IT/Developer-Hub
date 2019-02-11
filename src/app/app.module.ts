@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,7 +16,7 @@ import { RegisterComponent } from './components/pages/register/register.componen
 import { ForgotPasswordComponent } from './components/pages/forgot-password/forgot-password.component';
 import { ConfirmRegistrationComponent } from './components/pages/confirm-registration/confirm-registration.component';
 import { ChangePasswordComponent } from './components/pages/change-password/change-password.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationComponent } from './components/pages/confirmation/confirmation.component';
 import { ApiPageComponent } from './components/pages/api-page/api-page.component';
 import { CommonModule } from '@angular/common';
@@ -43,7 +44,8 @@ import { AdminApiListComponent } from './components/pages/admin-api-list/admin-a
 import { ApiItemEditComponent } from './components/partials/api-item-edit/api-item-edit.component';
 import { SwaggerEndpointPageComponent } from './components/pages/swagger-endpoint-page/swagger-endpoint-page.component';
 import { ApiDataParser } from './services/apiDataParser.service'
-
+import { SearchPipe } from './components/partials/swagger-endpoint-items/pipe'
+import { ApiSearch } from './services/apiSearch.service';
 
 @NgModule({
   declarations: [
@@ -81,19 +83,22 @@ import { ApiDataParser } from './services/apiDataParser.service'
     SwaggerEndpointPathComponent,
     AdminApiListComponent,
     ApiItemEditComponent,
-    SwaggerEndpointPageComponent
+    SwaggerEndpointPageComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     ApiKeyService,
     ApiService,
     ApiDataParser,
+    ApiSearch,
     { provide: HTTP_INTERCEPTORS, useClass: LambdaInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
