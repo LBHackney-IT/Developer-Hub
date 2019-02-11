@@ -1,19 +1,28 @@
 @import '../../../../variables';
 
+$swagger-method-delete: 	#df3034;
+$swagger-method-put-patch: #f47738;
+$swagger-method-post: #006435;
+$swagger-method-get: #005ea5;
+
 a:link {
     text-decoration: none;
   }
 
-  .green-background {
-    background-color:	#006435 !important;
+  .post-request {
+    background-color: $swagger-method-post;
   }
 
-  .red-background {
-    background-color: #b10e1e !important;
+  .delete-request {
+    background-color: $swagger-method-delete
   }
 
-  .yellow-background {
-    background-color: #ffbf47 !important;
+  .put-patch-request {
+    background-color: $swagger-method-put-patch
+  }
+
+  .get-request {
+    background-color: $swagger-method-get;
   }
 
   .align-right {
