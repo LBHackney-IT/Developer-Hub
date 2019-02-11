@@ -1,4 +1,3 @@
-import { ApiModel } from './apiDataParser.service';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -26,21 +25,38 @@ export class ApiSearch {
 
     private getMatchingEndpoints = (word: string) => {
         for (var i=0; i<this.apiData.length; i++) {
-            let matchingEndpoints = this.apiData[i].endpoints.filter(function (element: any) {
+            let matchingEndpoints = this.apiData[i].paths.filter(function (element: any) {
                 return element.tags.toString().toLowerCase().indexOf(word) > -1 ||
-                    element.name.toLowerCase().indexOf(word) > -1 ||
+                    element.url.toLowerCase().indexOf(word) > -1 ||
                     element.summary.toLowerCase().indexOf(word) > -1;
             })
-            this.resultApiData[i].endpoints = matchingEndpoints;
+            this.resultApiData[i].paths = matchingEndpoints;
         }
     }
 
     private populateLocalApiParentData = () => {
         this.apiData.forEach(api => {
             let emptyApi = new ApiModel;
-            emptyApi.name = api.name;
-            emptyApi.endpoints = [];
+            emptyApi.title = api.title;
+            emptyApi.paths = [];
             this.resultApiData.push(emptyApi);
         });
     }
+}
+
+export class ApiModel {
+    title: string;
+    description: string;
+    id: string;
+    lastUpdated: number;
+    paths: ApiEndpointModel[];
+}
+
+export class ApiEndpointModel {
+    name: string;
+    method: string;
+    summary: string;
+    parameters: any;
+    responses: any;
+    tags: string[];
 }
