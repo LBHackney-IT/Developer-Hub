@@ -1,6 +1,6 @@
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/partials/header/header.component';
@@ -46,7 +46,13 @@ import { SwaggerEndpointPageComponent } from './components/pages/swagger-endpoin
 import { ApiDataParser } from './services/apiDataParser.service'
 import { SearchPipe } from './components/partials/swagger-endpoint-items/pipe'
 import { ApiSearch } from './services/apiSearch.service';
+import { AppInitService } from './services/app-init.service';
 
+export function initializeApp1(appInitService: AppInitService) {
+  return (): Promise<any> => {
+    return appInitService.Init();
+  }
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -99,7 +105,9 @@ import { ApiSearch } from './services/apiSearch.service';
     ApiService,
     ApiDataParser,
     ApiSearch,
-    { provide: HTTP_INTERCEPTORS, useClass: LambdaInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: LambdaInterceptor, multi: true },
+    AppInitService,
+    { provide: APP_INITIALIZER, useFactory: initializeApp1, deps: [AppInitService], multi: true}
   ],
   bootstrap: [AppComponent]
 })
