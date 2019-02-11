@@ -12,15 +12,38 @@ a:link {
     background-color: #b10e1e !important;
   }
 
-  .post-background {
+  .yellow-background {
     background-color: #ffbf47 !important;
-  }
-
-  .endpoints:hover {
-    background-color: #c9d3cea1;
   }
 
   .align-right {
     text-align: right;
+  }
+
+  .table-api {
+    width: 85%;
+    position: relative;
+    left: 5%;
+  }
+
+  .accordion {
+    border: 1px solid rgba(0, 0, 0, 0.781);
+    border-radius: 10px;
+    margin: 5px 0;
+    position: relative;
+  }
+
+  .endpoint-api-column {
+    position: relative;
+  }
+
+  .api-panel {
+    position: relative;
+    top: 10px;
+  }
+
+  .api-title-link:hover, .api-panel:hover {
+    text-decoration: underline;
+    cursor: pointer;
   }
 
