@@ -1,15 +1,15 @@
-<app-column-layout [show]="true">
+<app-column-layout [show]="apiEndpoint">
   <h2 class="govuk-heading-l"> Endpoint Title </h2>
   <p class="govuk-body-l">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Velit euismod in pellentesque massa placerat duis ultricies lacus. Feugiat scelerisque varius morbi enim nunc faucibus.
+    {{ path.summary }}
   </p>
 
   <h3 class="govuk-heading-m"> Endpoint </h3>
   <div class="govuk-inset-text">
       <strong class="govuk-tag">
-          GET
+          {{ path.requestType | uppercase }}
         </strong>
-        <span class="govuk-body">/api/v1/inspections</span>
+        <span class="govuk-body">{{ path.url }}</span>
   </div>
 
 

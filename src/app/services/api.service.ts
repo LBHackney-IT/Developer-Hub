@@ -52,7 +52,7 @@ export class ApiService {
   }
 
   getApiEndpoint = (apiID: string, endpointID: string) => {
-    const params = new HttpParams().set('pathID', endpointID);
+    const params = new HttpParams().set('pathId', endpointID);
     return this.httpClient.get(this.url + 'swagger-paths/' + apiID, {params: params})
     .pipe(map((response) => response['body']));
   }

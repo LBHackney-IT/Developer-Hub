@@ -8,6 +8,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./swagger-endpoint-page.component.scss']
 })
 export class SwaggerEndpointPageComponent implements OnInit {
+  private apiEndpoint;
+  private path;
 
   constructor(
     private apiService: ApiService,
@@ -16,14 +18,16 @@ export class SwaggerEndpointPageComponent implements OnInit {
   ngOnInit() {
     const apiID = this.route.snapshot.paramMap.get('apiID');
     const endpointID = this.route.snapshot.paramMap.get('endpointID');
-    console.log(apiID, endpointID);
-    // this.getEndpoint
+    this.getEndpoint(apiID, endpointID);
+    console.log(this.apiEndpoint, this.path);
   }
 
-  getEndpoint = async (apiId: string, endpointId: string) => {
+ getEndpoint = async (apiId: string, endpointId: string) => {
     await this.apiService.getApiEndpoint(apiId, endpointId)
     .subscribe(
       (response) => {
+        this.apiEndpoint = response;
+        this.path = this.apiEndpoint['paths'][0];
       console.log(response);
     },
     (error) => {
