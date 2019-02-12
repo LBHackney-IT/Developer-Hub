@@ -39,7 +39,7 @@
                 *ngFor="let endpoint of api.paths"
               >
                 <th class="govuk-table__header" scope="row">
-                  <a class="govuk-link" routerLink="/apiID/endpoints/endpointID">
+                  <a class="govuk-link" routerLink="/{{api.id}}/endpoints/{{endpoint.id}}">
                     {{ endpoint.url }}
                   </a>
                 </th>
