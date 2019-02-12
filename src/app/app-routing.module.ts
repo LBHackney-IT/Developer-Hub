@@ -37,7 +37,7 @@ const routes: Routes = [
   {path: 'key-manager', component: TokenManagerComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   {path: 'admin', component: AdminComponent, pathMatch: 'full'},
   {path: 'documentation', component: DocumentationComponent, pathMatch: 'full'},
-  {path: 'apiID/endpoints/endpointID', component: SwaggerEndpointPageComponent, pathMatch: 'full'},
+  {path: ':apiID/endpoints/:endpointID', component: SwaggerEndpointPageComponent, pathMatch: 'full'},
   {path: 'logout', component: LogoutComponent, pathMatch: 'full', canActivate: [AuthGuard]},
 
   {path: '**', component: NotFoundComponent}

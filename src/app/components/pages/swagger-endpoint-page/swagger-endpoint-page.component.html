@@ -1,40 +1,64 @@
-<app-column-layout [show]="true">
-  <h2 class="govuk-heading-l">Get get work orders in a block</h2>
+
+<app-column-layout [show]="apiEndpoint">
+  <h2 class="govuk-heading-l"> {{ apiEndpoint?.title }} </h2>
   <p class="govuk-body-l">
-      Gets work orders raised against a block and against any property in the block, including sub-blocks and facilities
+    {{ path?.summary }}
   </p>
 
   <h3 class="govuk-heading-m"> Endpoint </h3>
   <div class="govuk-inset-text">
-      <strong class="govuk-tag">
-          GET
-        </strong>
-        <span class="govuk-body">/v1/properties/{{'{'}}propertyReference{{'}'}}/hierarchy</span>
+    <strong class="govuk-tag">
+      {{ path?.requestType | uppercase }}
+    </strong>
+    <span class="govuk-body">{{ path?.url }}</span>
   </div>
 
 
   <h3 class="govuk-heading-m">Request Parameters</h3>
 
-  <h3 class="govuk-heading-s">PropertyReference</h3>
-  <p class="govuk-body-m">A reference identifies a property in Universal House<p>
   <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <!--tr class="govuk-table__row">
-          <th class="govuk-table__header" scope="col">Header Field</th>
-          <th class="govuk-table__header" scope="col">Value</th>
-        </tr-->
-      </thead>
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <th class="govuk-table__header" scope="row">Authorization</th>
-          <td class="govuk-table__cell">Authorization	Required. A valid access token generated.</td>
-        </tr>
-      </tbody>
-    </table>
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="col">Parameters</th>
+        <th class="govuk-table__header" scope="col">In</th>
+        <th class="govuk-table__header" scope="col">Required</th>
+        <th class="govuk-table__header" scope="col">Value</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row" *ngFor="let parameter of getParameters()">
+          <td class="govuk-table__cell"> {{parameter?.name}}</td>
+          <td class="govuk-table__cell"> {{parameter?.in}}</td>
+          <td class="govuk-table__cell"> {{parameter?.required}}</td>
+          <td class="govuk-table__cell"> {{parameter?.type}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="govuk-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="col">Header Field</th>
+        <th class="govuk-table__header" scope="col">Value</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row">Authorization</th>
+        <td class="govuk-table__cell">Authorization Required. A valid access token generated.</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h3 class="govuk-heading-m">Example</h3>
+
+  <div class="govuk-inset-text">
+      <span class="govuk-caption">
+          curl -X {{ path?.requestType | uppercase }}  "https://example.com/ {{ path?.url }} -H "Authorization: Bearer"
+      </span>
+    </div>
 
   <a routerLink="/documentation" class="govuk-back-link">All Endpoints</a>
-  
-
-
 
 </app-column-layout>

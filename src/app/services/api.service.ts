@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IApi } from '../interfaces/IApi';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
 
@@ -48,6 +48,12 @@ export class ApiService {
    */
   getApi = (id: string) => {
     return this.httpClient.get(this.url + 'api/' + id)
+    .pipe(map((response) => response['body']));
+  }
+
+  getApiEndpoint = (apiID: string, endpointID: string) => {
+    const params = new HttpParams().set('pathId', endpointID);
+    return this.httpClient.get(this.url + 'swagger-paths/' + apiID, {params: params})
     .pipe(map((response) => response['body']));
   }
 
