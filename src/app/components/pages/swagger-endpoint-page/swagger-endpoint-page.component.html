@@ -1,7 +1,7 @@
 <app-column-layout [show]="true">
-  <h2 class="govuk-heading-l"> Endpoint Title </h2>
+  <h2 class="govuk-heading-l">Get get work orders in a block</h2>
   <p class="govuk-body-l">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Velit euismod in pellentesque massa placerat duis ultricies lacus. Feugiat scelerisque varius morbi enim nunc faucibus.
+      Gets work orders raised against a block and against any property in the block, including sub-blocks and facilities
   </p>
 
   <h3 class="govuk-heading-m"> Endpoint </h3>
@@ -9,19 +9,20 @@
       <strong class="govuk-tag">
           GET
         </strong>
-        <span class="govuk-body">/api/v1/inspections</span>
+        <span class="govuk-body">/v1/properties/{{'{'}}propertyReference{{'}'}}/hierarchy</span>
   </div>
 
 
   <h3 class="govuk-heading-m">Request Parameters</h3>
 
-  <h3 class="govuk-heading-s">Header Fields</h3>
+  <h3 class="govuk-heading-s">PropertyReference</h3>
+  <p class="govuk-body-m">A reference identifies a property in Universal House<p>
   <table class="govuk-table">
       <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
+        <!--tr class="govuk-table__row">
           <th class="govuk-table__header" scope="col">Header Field</th>
           <th class="govuk-table__header" scope="col">Value</th>
-        </tr>
+        </tr-->
       </thead>
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
