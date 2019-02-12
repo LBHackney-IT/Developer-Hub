@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiService } from '../../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { IApi } from 'src/app/interfaces/IApi';
+import { compliancyConfigMap } from '../../../shared/config';
 
 @Component({
   selector: 'app-api-form',
@@ -12,12 +13,12 @@ import { IApi } from 'src/app/interfaces/IApi';
 export class ApiFormComponent implements OnInit {
 
   constructor(private apiService: ApiService,
-              private activeRoute: ActivatedRoute) { }
+    private activeRoute: ActivatedRoute) { }
 
-  
-    api: IApi;
-  
-              apiForm = new FormGroup({
+
+  api: IApi;
+
+  apiForm = new FormGroup({
     id: new FormControl('id', [
       Validators.required
     ]),
@@ -65,7 +66,7 @@ export class ApiFormComponent implements OnInit {
         Validators.required
       ])
     }),
-    internal: new FormControl('', [
+    internal: new FormControl(null, [
       Validators.required
     ]),
     staging: new FormGroup({
@@ -75,10 +76,10 @@ export class ApiFormComponent implements OnInit {
       swagger_url: new FormControl('', [
         Validators.required
       ]),
-      deployed: new FormControl('', [
+      deployed: new FormControl(null, [
         Validators.required
       ]),
-      healthStatus: new FormControl('false', [
+      healthStatus: new FormControl(null, [
         Validators.required
       ])
     }),
@@ -89,7 +90,7 @@ export class ApiFormComponent implements OnInit {
       swagger_url: new FormControl('', [
         Validators.required
       ]),
-      deployed: new FormControl('', [
+      deployed: new FormControl(null, [
         Validators.required
       ]),
       healthStatus: new FormControl('', [
@@ -128,42 +129,68 @@ export class ApiFormComponent implements OnInit {
     }),
   });
 
-    /**
-   *
-   *
-   * @readonly
-   * @memberof RegisterComponent
-   */
+  /**
+ *
+ *
+ * @readonly
+ * @memberof RegisterComponent
+ */
   get f() { return this.apiForm.controls; }
 
   submitForm = () => {
     console.log('submit');
   }
+
   ngOnInit() {
-    console.log(this.f);
-
     const id = this.activeRoute.snapshot.params['id'];
-
     this.getApiAndPatchValues(id);
-
-    console.log('api from console' + this.api)
   }
 
-  // this function calls the ApiService to fetch the single API by passing the api.id in the url string
+
+  /**
+   * @summary this function calls the ApiService
+   * to fetch the single API
+   * by passing the api.id in the url string
+   * @param {id}
+   * @memberof ApiFormComponent
+   */
   getApiAndPatchValues = (id: string): void => {
     this.apiService.getApi(id)
-    .subscribe(
-      (response) => {
-        this.api = response;
-        this.patchValuesApi()
-      },
-      (error) => {
-        console.log(error);
-      });
+      .subscribe(
+        (response) => {
+          this.api = response;
+          this.patchValuesApi();
+          console.log(this.api);
+        },
+        (error) => {
+          console.log(error);
+        });
   }
 
-  //This function updates some of the values in the forms. 
-  // If all values are getting updated, change from patchValue() to setValue() for further validation at runtime
+  generateCompliancyObjects = (): object[] => {
+    const compliantFormGroup = this.apiForm.controls.compliant as FormGroup;
+    const compliantControls = compliantFormGroup.controls;
+    const compliantObject = Object.keys(compliantControls);
+    return compliantObject.map((id) => {
+      return {
+        id: id,
+        text:  compliancyConfigMap[id]
+      };
+    }).sort((a: {id: string, text: string} , b) => {
+      return a.text.charCodeAt(0) - b.text.charCodeAt(0);
+    });
+  }
+
+
+  /**
+   * @summary This function updates
+   * some of the values in the forms.
+   * If all values are getting updated, change
+   * from patchValue() to setValue() for further
+   * validation at runtime
+   *
+   * @memberof ApiFormComponent
+   */
   patchValuesApi(): void {
     this.apiForm.patchValue({
       id: this.api.id,
@@ -177,7 +204,8 @@ export class ApiFormComponent implements OnInit {
       stage: this.api.stage,
       github_url: this.api.github_url,
       owner: this.api.owner,
-    })
+      compliant: this.api.compliant
+    });
   }
 
 
