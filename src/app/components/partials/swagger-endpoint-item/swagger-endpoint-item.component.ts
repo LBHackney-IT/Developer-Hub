@@ -11,9 +11,7 @@ export class SwaggerEndpointItemComponent implements OnInit {
   showDescription = false;
   showApiInfo = false;
 
-  constructor() {
-    console.log(this.api);
-  }
+  constructor() {}
 
   ngOnInit() {
   }

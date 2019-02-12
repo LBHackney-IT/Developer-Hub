@@ -35,4 +35,8 @@ export class SwaggerEndpointPageComponent implements OnInit {
     }
     );
   }
+
+  getParameters = (): object[] => {
+    return this.path.parameters;
+  }
 }
