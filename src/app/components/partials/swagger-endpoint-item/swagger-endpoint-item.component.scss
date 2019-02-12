@@ -1,19 +1,26 @@
 @import '../../../../variables';
 
-a:link {
-    text-decoration: none;
+a {
+    &:link,
+    &:visited{
+      text-decoration: none;
+    }
   }
 
-  .green-background {
-    background-color:	#006435 !important;
+  .post-request {
+    background-color: $swagger-method-post;
   }
 
-  .red-background {
-    background-color: #b10e1e !important;
+  .delete-request {
+    background-color: $swagger-method-delete
   }
 
-  .yellow-background {
-    background-color: #ffbf47 !important;
+  .put-patch-request {
+    background-color: $swagger-method-put-patch
+  }
+
+  .get-request {
+    background-color: $swagger-method-get;
   }
 
   .align-right {
@@ -27,8 +34,7 @@ a:link {
   }
 
   .accordion {
-    border: 1px solid rgba(0, 0, 0, 0.781);
-    border-radius: 10px;
+    border: 1px solid #DEE0E2;
     margin: 5px 0;
     position: relative;
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { swaggerJson } from '../../../shared/swagger';
 
 @Component({
   selector: 'app-swagger-endpoint-item',

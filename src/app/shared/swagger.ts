@@ -39,7 +39,7 @@ export const swaggerJson = [
     {
     "id": "V1Work_ordersByWorkOrderReferenceAppointmentsGet",
     "url": "/v1/work_orders/{workOrderReference}/appointments",
-    "requestType": "get",
+    "requestType": "put",
     "tags": [
     "Appointments"
     ],
@@ -68,7 +68,7 @@ export const swaggerJson = [
     {
     "id": "V1Work_ordersByWorkOrderReferenceAppointmentsLatestGet",
     "url": "/v1/work_orders/{workOrderReference}/appointments/latest",
-    "requestType": "get",
+    "requestType": "post",
     "tags": [
     "Appointments"
     ],
@@ -97,7 +97,7 @@ export const swaggerJson = [
     {
     "id": "V1NotesFeedGet",
     "url": "/v1/notes/feed",
-    "requestType": "get",
+    "requestType": "delete",
     "tags": [
     "Notes"
     ],

@@ -1,12 +1,16 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-   <div class="govuk-grid-row accordion" *ngIf="api.paths.length"(click)="toggleDescription()">
+    <div
+      class="govuk-grid-row accordion"
+      *ngIf="api.paths.length"
+      (click)="toggleDescription()"
+    >
       <div class="govuk-grid-column-two-thirds endpoint-api-column">
-            <h3 class="govuk-heading-m api-panel">
-                <a class="api-title-link">
-                    {{ api.title }}
-                </a>
-              </h3>
+        <h3 class="govuk-heading-m api-panel">
+          <a class="api-title-link">
+            {{ api.title }}
+          </a>
+        </h3>
       </div>
       <div class="govuk-grid-column-one-third align-right endpoint-api-column">
         <strong class="govuk-body api-panel">
@@ -15,48 +19,49 @@
       </div>
     </div>
 
-
     <div class="govuk-row" *ngIf="showDescription">
-      <div class="govuk-column-two-thirds table-api">
-        <table class="govuk-table">
-          <thead class="govuk-table__head">
-            <tr class="govuk-table__row">
-              <th class="govuk-table__header" scope="col">Request</th>
-              <th
-                class="govuk-table__header govuk-table__header--numeric"
-                scope="col"
+        <div class="govuk-column-two-thirds table-api">
+          <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="col">Endpoint</th>
+                <th
+                  class="govuk-table__header govuk-table__header--numeric"
+                  scope="col"
+                >
+                  Method
+                </th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr
+                class="govuk-table__row"
+                *ngFor="let endpoint of api.paths"
               >
-                Endpoint
-              </th>
-            </tr>
-          </thead>
-          <tbody class="govuk-table__body">
-            <tr
-              class="govuk-table__row"
-              *ngFor="let endpoint of api.paths"
-            >
-              <th class="govuk-table__header" scope="row">
-                <strong
-                  class="govuk-tag"
-                  [ngClass]="{
+                <th class="govuk-table__header" scope="row">
+                  <a class="govuk-link" routerLink="/apiID/endpoints/endpointID">
+                    {{ endpoint.url }}
+                  </a>
+                </th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <strong
+                    class="govuk-tag"
+                    [ngClass]="{
                       'green-background': endpoint.requestType.toLowerCase() === 'get',
                       'yellow-background': endpoint.requestType.toLowerCase() === 'post',
-                      'yellow-background': endpoint.requestType.toLowerCase === 'put',
+                      'yellow-background': endpoint.requestType.toLowerCase() === 'put',
                       'red-background': endpoint.requestType.toLowerCase() === 'delete'
                     }"
-                >
-                  {{ endpoint.requestType }}
-                </strong>
-              </th>
-              <td class="govuk-table__cell govuk-table__cell--numeric">
-                <a class="govuk-link" routerLink="/apiID/endpoints/endpointID">
-                  {{ endpoint.url }}
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                  >
+                    {{ endpoint.requestType }}
+                  </strong>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+  
