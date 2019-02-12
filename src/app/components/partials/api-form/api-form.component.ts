@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { ApiService } from '../../../services/api.service';
+import { ActivatedRoute } from '@angular/router';
+import { IApi } from 'src/app/interfaces/IApi';
 
 @Component({
   selector: 'app-api-form',
@@ -8,13 +11,17 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 })
 export class ApiFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private apiService: ApiService,
+              private activeRoute: ActivatedRoute) { }
 
-  apiForm = new FormGroup({
+  
+    api: IApi;
+  
+              apiForm = new FormGroup({
     id: new FormControl('id', [
       Validators.required
     ]),
-    title: new FormControl('title', [
+    title: new FormControl('', [
       Validators.required
     ]),
     summary: new FormControl('summary', [
@@ -134,6 +141,43 @@ export class ApiFormComponent implements OnInit {
   }
   ngOnInit() {
     console.log(this.f);
+
+    const id = this.activeRoute.snapshot.params['id'];
+
+    this.getApiAndPatchValues(id);
+
+    console.log('api from console' + this.api)
+  }
+
+  // this function calls the ApiService to fetch the single API by passing the api.id in the url string
+  getApiAndPatchValues = (id: string): void => {
+    this.apiService.getApi(id)
+    .subscribe(
+      (response) => {
+        this.api = response;
+        this.patchValuesApi()
+      },
+      (error) => {
+        console.log(error);
+      });
+  }
+
+  //This function updates some of the values in the forms. 
+  // If all values are getting updated, change from patchValue() to setValue() for further validation at runtime
+  patchValuesApi(): void {
+    this.apiForm.patchValue({
+      id: this.api.id,
+      title: this.api.title,
+      summary: this.api.summary,
+      internal: this.api.internal,
+      staging: this.api.staging,
+      production: this.api.production,
+      description: this.api.description,
+      approved: this.api.approved,
+      stage: this.api.stage,
+      github_url: this.api.github_url,
+      owner: this.api.owner,
+    })
   }
 
 

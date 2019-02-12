@@ -19,6 +19,7 @@ export class ApiService {
    *
    * @memberof ApiService
    */
+  // Correct URL not used for catching data yet
   url = environment.apiURL.apiService;
   /**
    *

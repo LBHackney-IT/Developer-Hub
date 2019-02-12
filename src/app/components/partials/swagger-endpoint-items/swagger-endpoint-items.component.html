@@ -1,2 +1,10 @@
-<app-swagger-endpoint-item *ngFor="let swaggerInfoItem of swaggerInfoItems" [swaggerInfoItem]="swaggerInfoItem"></app-swagger-endpoint-item>
+<div class="govuk-form-group">
+        <input class="govuk-input" id="name" placeholder="search"
+        [(ngModel)]="queryString">
+</div>
+<app-swagger-endpoint-item *ngFor="let api of apiList | SearchPipe: queryString" [api]="api"></app-swagger-endpoint-item>
+
+<div class="filler">
+  
+        </div>
 

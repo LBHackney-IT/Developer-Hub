@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { swaggerJson } from '../../../shared/swagger';
+import { ApiDataParser } from '../../../services/apiDataParser.service';
 
 @Component({
   selector: 'app-swagger-endpoint-items',
@@ -7,12 +8,15 @@ import { swaggerJson } from '../../../shared/swagger';
   styleUrls: ['./swagger-endpoint-items.component.scss']
 })
 export class SwaggerEndpointItemsComponent implements OnInit {
-  swaggerInfoItems: object[] = swaggerJson;
-  constructor() { }
+  apiList: object[] = swaggerJson;
+  
+  constructor(private apiDataParserService: ApiDataParser) { 
+    this.apiList = apiDataParserService.parse(swaggerJson);
+  }
 
   ngOnInit() {
   }
 
-
-
+  
+  
 }

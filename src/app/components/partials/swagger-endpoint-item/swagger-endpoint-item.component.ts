@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { swaggerJson } from '../../../shared/swagger';
 
 @Component({
   selector: 'app-swagger-endpoint-item',
@@ -6,11 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./swagger-endpoint-item.component.scss']
 })
 export class SwaggerEndpointItemComponent implements OnInit {
-  @Input() swaggerInfoItem: object;
+  @Input() api: object;
   showDescription = false;
   showApiInfo = false;
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit() {
   }
@@ -18,20 +20,4 @@ export class SwaggerEndpointItemComponent implements OnInit {
   toggleDescription = () => {
     this.showDescription = !this.showDescription;
   }
-
-  getNumberOfEndpoints = (): number => {
-    return this.swaggerInfoItem['paths'].length;
-  }
-
-  getApiName = (path): string => {
-    return Object.keys(path)[0];
-  }
-
-  getRequestType = (path): string => {
-    const apiName = this.getApiName(path);
-    return Object.keys(path[apiName])[0];
-  }
-
-
-
 }
