@@ -47,10 +47,10 @@
                   <strong
                     class="govuk-tag"
                     [ngClass]="{
-                      'green-background': endpoint.requestType.toLowerCase() === 'get',
-                      'yellow-background': endpoint.requestType.toLowerCase() === 'post',
-                      'yellow-background': endpoint.requestType.toLowerCase() === 'put',
-                      'red-background': endpoint.requestType.toLowerCase() === 'delete'
+                      'get-request': endpoint.requestType.toLowerCase() === 'get',
+                      'post-request': endpoint.requestType.toLowerCase() === 'post',
+                      'put-patch-request': endpoint.requestType.toLowerCase() === 'put',
+                      'delete-request': endpoint.requestType.toLowerCase() === 'delete'
                     }"
                   >
                     {{ endpoint.requestType }}
