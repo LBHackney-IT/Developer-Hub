@@ -1,4 +1,222 @@
 export const swaggerJson = [
+    
+        {  
+           "title":"RentAccount API",
+           "paths":[  
+              {  
+                 "url":"/v1/AccountPaymentAgreement",
+                 "requestType":"get",
+                 "parameters":[  
+                    {  
+                       "name":"TagRef",
+                       "in":"query",
+                       "required":false,
+                       "type":"string"
+                    }
+                 ],
+                 "responses":{  
+                    "200":{  
+                       "description":"Success"
+                    }
+                 },
+                 "tags":[  
+                    "AccountPaymentAgreement",
+                    "RentAccount API"
+                 ]
+              },
+              {  
+                 "url":"/v1/Accounts/VerifyHousingAccountLoginDetail",
+                 "requestType":"get",
+                 "summary":"Verify Housing Account Details by Payment Reference and postcode.",
+                 "parameters":[  
+                    {  
+                       "name":"parisReference",
+                       "in":"query",
+                       "description":"Payment reference number for Account",
+                       "required":false,
+                       "type":"string"
+                    },
+                    {  
+                       "name":"postcode",
+                       "in":"query",
+                       "description":"postcode for the Property",
+                       "required":false,
+                       "type":"string"
+                    }
+                 ],
+                 "responses":{  
+                    "200":{  
+                       "description":"Success"
+                    }
+                 },
+                 "tags":[  
+                    "Accounts",
+                    "RentAccount API"
+                 ]
+              },
+              {  
+                 "url":"/v1/Accounts/AccountDetailsByPaymentorTagReference",
+                 "requestType":"get",
+                 "summary":"Verify Housing Account Details by Payment Reference and postcode.",
+                 "parameters":[  
+                    {  
+                       "name":"referencenumber",
+                       "in":"query",
+                       "description":"Payment reference number for Account",
+                       "required":false,
+                       "type":"string"
+                    }
+                 ],
+                 "responses":{  
+                    "200":{  
+                       "description":"Success"
+                    }
+                 },
+                 "tags":[  
+                    "Accounts",
+                    "RentAccount API"
+                 ]
+              },
+              {  
+                 "url":"/v1/Accounts/GetDebItemsByTagReference",
+                 "requestType":"get",
+                 "parameters":[  
+                    {  
+                       "name":"tagReference",
+                       "in":"query",
+                       "required":false,
+                       "type":"string"
+                    }
+                 ],
+                 "responses":{  
+                    "200":{  
+                       "description":"Success"
+                    }
+                 },
+                 "tags":[  
+                    "Accounts",
+                    "RentAccount API"
+                 ]
+              },
+              {  
+                 "url":"/v1/Accounts/GetAccountsAndNotifications",
+                 "requestType":"get",
+                 "summary":"Get all accounts that have notifications on.",
+                 "parameters":[  
+                    {  
+                       "name":"type",
+                       "in":"query",
+                       "description":"1 - Rent account; 2 - Lease account",
+                       "required":false,
+                       "type":"string"
+                    }
+                 ],
+                 "responses":{  
+                    "200":{  
+                       "description":"Success"
+                    }
+                 },
+                 "tags":[  
+                    "Accounts",
+                    "RentAccount API"
+                 ]
+              },
+              {  
+                 "url":"/v1/Accounts/RecordLogin",
+                 "requestType":"post",
+                 "summary":"Creates a login entry in the housing account audits entity",
+                 "parameters":[  
+                    {  
+                       "name":"login",
+                       "in":"body",
+                       "required":false,
+                       "schema":{  
+                          "$ref":"#/definitions/LoginEntry"
+                       }
+                    }
+                 ],
+                 "responses":{  
+                    "200":{  
+                       "description":"Success"
+                    }
+                 },
+                 "tags":[  
+                    "Accounts",
+                    "RentAccount API"
+                 ]
+              },
+              {  
+                 "url":"/v1/Accounts/LinkCSSOAccount",
+                 "requestType":"post",
+                 "summary":"Links a housing account to a CSSO account",
+                 "parameters":[  
+                    {  
+                       "name":"accounts",
+                       "in":"body",
+                       "description":"Accounts.",
+                       "required":false,
+                       "schema":{  
+                          "$ref":"#/definitions/AccountLink"
+                       }
+                    }
+                 ],
+                 "responses":{  
+                    "200":{  
+                       "description":"Success"
+                    }
+                 },
+                 "tags":[  
+                    "Accounts",
+                    "RentAccount API"
+                 ]
+              },
+              {  
+                 "url":"/v1/Notifications",
+                 "requestType":"get",
+                 "parameters":[  
+                    {  
+                       "name":"tagReference",
+                       "in":"query",
+                       "required":false,
+                       "type":"string"
+                    }
+                 ],
+                 "responses":{  
+                    "200":{  
+                       "description":"Success"
+                    }
+                 },
+                 "tags":[  
+                    "Notifications",
+                    "RentAccount API"
+                 ]
+              },
+              {  
+                 "url":"/v1/Transactions",
+                 "requestType":"get",
+                 "parameters":[  
+                    {  
+                       "name":"tagReference",
+                       "in":"query",
+                       "required":false,
+                       "type":"string"
+                    }
+                 ],
+                 "responses":{  
+                    "200":{  
+                       "description":"Success"
+                    }
+                 },
+                 "tags":[  
+                    "Transactions",
+                    "RentAccount API"
+                 ]
+              }
+           ]
+        },
+     
+
+    //
     {
     "id": "repairs",
     "title": "Repairs API",
