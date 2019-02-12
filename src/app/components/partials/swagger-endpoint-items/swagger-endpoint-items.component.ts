@@ -8,15 +8,15 @@ import { ApiDataParser } from '../../../services/apiDataParser.service';
   styleUrls: ['./swagger-endpoint-items.component.scss']
 })
 export class SwaggerEndpointItemsComponent implements OnInit {
-  swaggerInfoItems: object[] = swaggerJson;
+  apiList: object[] = swaggerJson;
   
-  constructor(private apiDataParser: ApiDataParser) { 
-    this.swaggerInfoItems = apiDataParser.parse(swaggerJson);
+  constructor(private apiDataParserService: ApiDataParser) { 
+    this.apiList = apiDataParserService.parse(swaggerJson);
   }
 
   ngOnInit() {
   }
 
-
+  
   
 }

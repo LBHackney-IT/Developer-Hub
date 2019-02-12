@@ -19,7 +19,8 @@ export class ApiService {
    *
    * @memberof ApiService
    */
-  url = environment.apiURL.apiService;
+  // Correct URL not used for catching data yet
+  url = `${environment.apiURL.apiService}/swagger-paths`;
   /**
    *
    *
@@ -37,7 +38,7 @@ export class ApiService {
    * @memberof ApiService
    */
   getListOfApis = () => {
-    return this.httpClient.get(this.url + 'api')
+    return this.httpClient.get(this.url)
     .pipe(map((response) => response['body']));
   }
   /**

@@ -99,7 +99,7 @@ import { ApiSearch } from './services/apiSearch.service';
     ApiService,
     ApiDataParser,
     ApiSearch,
-    { provide: HTTP_INTERCEPTORS, useClass: LambdaInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: LambdaInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

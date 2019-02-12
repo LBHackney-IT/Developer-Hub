@@ -2,65 +2,66 @@
   <div class="govuk-grid-column-full">
     <div
       class="govuk-grid-row accordion"
-      *ngIf="swaggerInfoItem.endpoints.length"
+      *ngIf="api.paths.length"
       (click)="toggleDescription()"
     >
       <div class="govuk-grid-column-two-thirds endpoint-api-column">
         <h3 class="govuk-heading-m api-panel">
           <a class="api-title-link">
-            {{ swaggerInfoItem.name }}
+            {{ api.title }}
           </a>
         </h3>
       </div>
       <div class="govuk-grid-column-one-third align-right endpoint-api-column">
         <strong class="govuk-body api-panel">
-          {{ swaggerInfoItem.endpoints.length }} Endpoints
+          {{ api.paths.length }} Endpoints
         </strong>
       </div>
     </div>
 
     <div class="govuk-row" *ngIf="showDescription">
-      <div class="govuk-column-two-thirds table-api">
-        <table class="govuk-table">
-          <thead class="govuk-table__head">
-            <tr class="govuk-table__row">
-              <th class="govuk-table__header" scope="col">Endpoint</th>
-              <th
-                class="govuk-table__header govuk-table__header--numeric"
-                scope="col"
-              >
-                Method
-              </th>
-            </tr>
-          </thead>
-          <tbody class="govuk-table__body">
-            <tr
-              class="govuk-table__row"
-              *ngFor="let endpoint of swaggerInfoItem.endpoints"
-            >
-              <th class="govuk-table__header" scope="row">
-                <a class="govuk-link" routerLink="/apiID/endpoints/endpointID">
-                  {{ endpoint.name }}
-                </a>
-              </th>
-              <td class="govuk-table__cell govuk-table__cell--numeric">
-                <strong
-                  class="govuk-tag"
-                  [ngClass]="{
-                    'get-request': endpoint.method.toUpperCase() === 'GET',
-                    'post-request': endpoint.method.toUpperCase() === 'POST',
-                    'put-patch-request': endpoint.method.toUpperCase() === 'PUT',
-                    'put-patch-request': endpoint.method.toUpperCase() === 'PATCH',
-                    'delete-request': endpoint.method.toUpperCase() === 'DELETE'
-                  }"
+        <div class="govuk-column-two-thirds table-api">
+          <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="col">Endpoint</th>
+                <th
+                  class="govuk-table__header govuk-table__header--numeric"
+                  scope="col"
                 >
-                  {{ endpoint.method }}
-                </strong>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                  Method
+                </th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr
+                class="govuk-table__row"
+                *ngFor="let endpoint of api.paths"
+              >
+                <th class="govuk-table__header" scope="row">
+                  <a class="govuk-link" routerLink="/apiID/endpoints/endpointID">
+                    {{ endpoint.url }}
+                  </a>
+                </th>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                  <strong
+                    class="govuk-tag"
+                    [ngClass]="{
+                      'get-request': endpoint.requestType.toLowerCase() === 'get',
+                      'post-request': endpoint.requestType.toLowerCase() === 'post',
+                      'put-patch-request': endpoint.requestType.toLowerCase() === 'put',
+                      'delete-request': endpoint.requestType.toLowerCase() === 'delete'
+                    }"
+                  >
+                    {{ endpoint.requestType }}
+                  </strong>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+  

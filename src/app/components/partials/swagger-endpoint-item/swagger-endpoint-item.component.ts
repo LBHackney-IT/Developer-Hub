@@ -7,11 +7,12 @@ import { swaggerJson } from '../../../shared/swagger';
   styleUrls: ['./swagger-endpoint-item.component.scss']
 })
 export class SwaggerEndpointItemComponent implements OnInit {
-  @Input() swaggerInfoItem: object;
+  @Input() api: object;
   showDescription = false;
   showApiInfo = false;
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit() {
   }
