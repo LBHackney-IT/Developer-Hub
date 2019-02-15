@@ -57,7 +57,7 @@ export class ApiService {
    * @memberof ApiService
    */
   putApi = (api: IApi) => {
-    return this.httpClient.post(this.url, api);
+    return this.httpClient.post(this.url + 'api', api);
   }
 
   /**
