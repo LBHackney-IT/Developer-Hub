@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
+import { ISwagger } from '../../../interfaces/ISwagger';
+import { IPath } from '../../../interfaces/IPath';
+import { IPathParameter } from '../../../interfaces/IPathParameters';
 
 @Component({
   selector: 'app-swagger-endpoint-page',
@@ -8,8 +11,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./swagger-endpoint-page.component.scss']
 })
 export class SwaggerEndpointPageComponent implements OnInit {
-  private apiEndpoint;
-  private path;
+  private apiEndpoint: ISwagger;
+  private path: IPath;
 
   constructor(
     private apiService: ApiService,
@@ -36,7 +39,7 @@ export class SwaggerEndpointPageComponent implements OnInit {
     );
   }
 
-  getParameters = (): object[] => {
-    return this.path.parameters;
+  getParameters = (path: IPath): IPathParameter[] => {
+    return path.parameters;
   }
 }

@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService
   ) { }
 
-  regEx: string = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
+  regEx = '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$';
 
   /**
    *
