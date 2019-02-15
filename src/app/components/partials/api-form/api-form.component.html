@@ -1,13 +1,17 @@
-<h2 class="govuk-heading-l">Edit: {{ this.api?.title }}</h2>
+<span class="govuk-heading-l">{{ this.api?.title }}             
+  <strong class="govuk-tag">
+    Edit
+  </strong>
+</span>
 <div *ngIf="api">
 
-  <a routerLink="/admin" class="govuk-back-link">Edit Apis</a>
+  <a routerLink="/admin" class="govuk-back-link">Back To Api Management Page</a>
 
   <form class="form js-form" [formGroup]="apiForm" (ngSubmit)="submitForm()">
-      
-    <h3 class="govuk-heading-m"> General Details </h3>
-    
-    
+
+    <h2 class="govuk-heading-m"> General Details </h2>
+
+
     <div class="govuk-form-group">
       <label class="govuk-label" for="id">
         ID
@@ -56,27 +60,56 @@
     </div>
 
     <div class="govuk-form-group">
-        <h3 class="govuk-heading-m"> Is this application internally or externally facing? </h3>
-  
-        <div class="govuk-radios govuk-radios--inline">
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="internal" name="internal" type="radio" [value]="true" formControlName="internal">
-            <label class="govuk-label govuk-radios__label" for="internal">
-              <strong class="govuk-tag">
-                Internal
-              </strong>
-            </label>
-          </div>
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="external" name="internal" type="radio" [value]="false" formControlName="internal">
-            <label class="govuk-label govuk-radios__label" for="external">
-              <strong class="govuk-tag">
-                External
-              </strong>
-            </label>
-          </div>
+      <h3 class="govuk-heading-m"> Is this application internally or externally facing? </h3>
+
+      <div class="govuk-radios govuk-radios--inline">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="internal" name="internal" type="radio" [value]="true" formControlName="internal">
+          <label class="govuk-label govuk-radios__label" for="internal">
+            <strong class="govuk-tag">
+              Internal
+            </strong>
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="external" name="internal" type="radio" [value]="false" formControlName="internal">
+          <label class="govuk-label govuk-radios__label" for="external">
+            <strong class="govuk-tag">
+              External
+            </strong>
+          </label>
         </div>
       </div>
+    </div>
+    <div class="govuk-form-group">
+      <h3 class="govuk-heading-m"> What stage is this application in? </h3>
+      <div class="govuk-radios govuk-radios--inline">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="stage_alpha" name="stage" type="radio" value="alpha" formControlName="stage">
+          <label class="govuk-label govuk-radios__label" for="stage_alpha">
+            <strong class="govuk-tag">
+              Alpha
+            </strong>
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="external" name="stage" type="radio" value="beta" formControlName="stage">
+          <label class="govuk-label govuk-radios__label" for="external">
+            <strong class="govuk-tag">
+              Beta
+            </strong>
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="external" name="stage" type="radio" value="live" formControlName="stage">
+          <label class="govuk-label govuk-radios__label" for="external">
+            <strong class="govuk-tag">
+              Live
+            </strong>
+          </label>
+        </div>
+      </div>
+    </div>
 
     <div formGroupName="compliant" class="govuk-form-group">
       <h3 class="govuk-heading-m"> Compliancy </h3>
@@ -114,15 +147,13 @@
         <h3 class="govuk-heading-s"> Has this application been deployed? </h3>
         <div class="govuk-radios govuk-radios--inline">
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="staging_deployed_true" type="radio" [value]="true"
-              formControlName="deployed">
+            <input class="govuk-radios__input" id="staging_deployed_true" type="radio" [value]="true" formControlName="deployed">
             <label class="govuk-label govuk-radios__label" for="staging_deployed_true">
               Yes
             </label>
           </div>
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="staging_deployed_false" type="radio" [value]="false"
-              formControlName="deployed">
+            <input class="govuk-radios__input" id="staging_deployed_false" type="radio" [value]="false" formControlName="deployed">
             <label class="govuk-label govuk-radios__label" for="staging_deployed_false">
               No
             </label>
@@ -182,36 +213,6 @@
 
       <div *ngIf="f.github_url.touched && f.github_url.invalid" class="govuk-error-message">
         Github URL is required
-      </div>
-    </div>
-
-    <div class="govuk-form-group">
-      <h3 class="govuk-heading-s"> What stage is this application in? </h3>
-      <div class="govuk-radios govuk-radios--inline">
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="stage_alpha" name="stage" type="radio" value="alpha" formControlName="stage">
-          <label class="govuk-label govuk-radios__label" for="stage_alpha">
-            <strong class="govuk-tag">
-              Alpha
-            </strong>
-          </label>
-        </div>
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="external" name="stage" type="radio" value="beta" formControlName="stage">
-          <label class="govuk-label govuk-radios__label" for="external">
-            <strong class="govuk-tag">
-              Beta
-            </strong>
-          </label>
-        </div>
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="external" name="stage" type="radio" value="live" formControlName="stage">
-          <label class="govuk-label govuk-radios__label" for="external">
-            <strong class="govuk-tag">
-              Live
-            </strong>
-          </label>
-        </div>
       </div>
     </div>
 
