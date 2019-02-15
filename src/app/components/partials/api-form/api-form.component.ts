@@ -138,7 +138,14 @@ export class ApiFormComponent implements OnInit {
   get f() { return this.apiForm.controls; }
 
   submitForm = () => {
-    console.log('submit');
+    const api: IApi = this.apiForm.getRawValue();
+    this.apiService.putApi(api).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      });
   }
 
   ngOnInit() {
@@ -160,13 +167,19 @@ export class ApiFormComponent implements OnInit {
         (response) => {
           this.api = response;
           this.patchValuesApi();
-          console.log(this.api);
         },
         (error) => {
           console.log(error);
         });
   }
 
+  /**
+   * This creates an object with compliancy ID and the compliancyConfigMap
+   * to retrieve the text for each compliancy.
+   * It then sorts  the array of objects in ascending order based on the first character.
+   *
+   * @memberof ApiFormComponent
+   */
   generateCompliancyObjects = (): object[] => {
     const compliantFormGroup = this.apiForm.controls.compliant as FormGroup;
     const compliantControls = compliantFormGroup.controls;
@@ -176,7 +189,7 @@ export class ApiFormComponent implements OnInit {
         id: id,
         text:  compliancyConfigMap[id]
       };
-    }).sort((a: {id: string, text: string} , b) => {
+    }).sort((a, b) => {
       return a.text.charCodeAt(0) - b.text.charCodeAt(0);
     });
   }
