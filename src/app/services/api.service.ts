@@ -51,6 +51,20 @@ export class ApiService {
     .pipe(map((response) => response['body']));
   }
 
+  /**
+   * Creates and Edits Apis
+   *
+   * @memberof ApiService
+   */
+  putApi = (api: IApi) => {
+    return this.httpClient.post(this.url, api);
+  }
+
+  /**
+   *
+   *
+   * @memberof ApiService
+   */
   getApiEndpoint = (apiID: string, endpointID: string) => {
     const params = new HttpParams().set('pathId', endpointID);
     return this.httpClient.get(this.url + 'swagger-paths/' + apiID, {params: params})
