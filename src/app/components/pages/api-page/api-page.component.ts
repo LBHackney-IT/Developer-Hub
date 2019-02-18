@@ -4,6 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { IApi } from '../../../interfaces/IApi';
 import { ApiKeyService } from '../../../services/apiKey.service';
 import { compliancyConfigMap } from '../../../shared/config';
+import { select, Store } from '@ngrx/store';
+import { IAppState } from 'src/app/store/state/app.state';
+import { IApiState } from '../../../store/state/api.state';
+import { selectApiList } from '../../../store/selectors/api.selectors';
+import { GetApiList } from '../../../store/actions/api.actions';
 
 /**
  * @export
@@ -44,7 +49,8 @@ export class ApiPageComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
-    private apiKeyService: ApiKeyService
+    private apiKeyService: ApiKeyService,
+    private store: Store<IAppState>
   ) { }
 
   /**
@@ -182,15 +188,16 @@ export class ApiPageComponent implements OnInit {
    * @memberof ApiPageComponent
    */
   getApi = (id: string): void => {
-    this.apiService.getApi(id)
-    .subscribe(
-      (response) => {
-        this.api = response;
-        this.generateCompliancyText();
-        this.getAPIKey();
-      },
-      (error) => {
-        console.log(error);
-      });
+    this.store.pipe(select(selectApiList)).subscribe((response: IApi[]) => {
+      const apis: IApi[] = response;
+
+      const api = apis.find(item => item.id === id);
+
+      if (!api) {
+        this.store.dispatch(new GetApiList());
+      }
+
+      this.api = api;
+    });
   }
 }
