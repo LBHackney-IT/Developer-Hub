@@ -346,7 +346,13 @@ export class AuthService {
 
 
   getUserAttribute = (attribute: string) => {
-    return this.user[attribute];
+    let user: IUser;
+    this.store.pipe(select(selectUser)).subscribe(
+      (response) => {
+        user = response;
+      });
+
+    return user[attribute];
   }
 
 }
