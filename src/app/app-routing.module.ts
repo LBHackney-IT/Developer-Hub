@@ -19,6 +19,7 @@ import { LogoutComponent } from './components/pages/logout/logout.component';
 import { DocumentationComponent } from './components/pages/documentation/documentation.component';
 import { ApiFormComponent } from './components/partials/api-form/api-form.component';
 import { SwaggerEndpointPageComponent } from './components/pages/swagger-endpoint-page/swagger-endpoint-page.component';
+import { AdminGuard } from './guards/admin.guard';
 
 
 const routes: Routes = [
@@ -35,11 +36,10 @@ const routes: Routes = [
   {path: 'change-password', component: ChangePasswordComponent, pathMatch: 'full'},
   {path: 'confirmation/:type', component: ConfirmationComponent, pathMatch: 'full'},
   {path: 'key-manager', component: TokenManagerComponent, pathMatch: 'full', canActivate: [AuthGuard]},
-  {path: 'admin', component: AdminComponent, pathMatch: 'full'},
+  {path: 'admin', component: AdminComponent, pathMatch: 'full', canActivate: [AuthGuard, AdminGuard]},
   {path: 'documentation', component: DocumentationComponent, pathMatch: 'full'},
   {path: ':apiID/endpoints/:endpointID', component: SwaggerEndpointPageComponent, pathMatch: 'full'},
   {path: 'logout', component: LogoutComponent, pathMatch: 'full', canActivate: [AuthGuard]},
-
   {path: '**', component: NotFoundComponent}
 ];
 
