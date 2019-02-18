@@ -33,19 +33,18 @@ export class AdminGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
       const currentUser: CognitoUser = this.authService.getCurrentUser();
       let isUserLoggedIn: boolean;
-      let userInfo: IUser;
+      let userRole: string[];
       this.authService.isUserLoggedIn().subscribe((response) => {
         isUserLoggedIn = response;
       });
 
       if (currentUser && isUserLoggedIn) {
-        this.authService.getUserObject().subscribe((response) => {
-          userInfo = response;
+        userRole = this.authService.getUserAttribute('roles');
+        userRole = userRole.map((item) => {
+          return item.toLowerCase();
         });
-        return userInfo.roles.includes('admin');
+        return userRole.includes('admin');
       }
-
       return false;
-
   }
 }
