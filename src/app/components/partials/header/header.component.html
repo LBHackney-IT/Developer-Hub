@@ -2,20 +2,37 @@
     <div class="page__header__inner">  
       <div class="page__header__column page__header__column--logo">    
         <img class="page__header__logo" src="/assets/images/hackney.png" alt="Hackney">  
+        <div class="page__header__column page__header__column--title">
+          <a routerLink="/" class="govuk-header__link govuk-header__link--service-name">
+            Developer Hub
+          </a>   
+      </div>
       </div>
 
-        <div class="page__header__column page__header__column--title">
-            <a routerLink="/" class="govuk-header__link govuk-header__link--service-name">
-              Developer Hub
-            </a>   
-        </div>
+      <nav class="header__navbar">
+        <ul class="header__navbar-list">
+          <li><a routerLink="/">Home</a></li>
+          <li><a routerLink="/api-list">APIs</a></li>
+          <li><a routerLink="/documentation">Documentation</a></li>
+          <li><a routerLink="/api-checklist">API Checklist</a></li>
+          <li><a routerLink="/api-guide">API Guide</a></li>
+          <li></li>
+        </ul>
+      </nav>
+
+      <div class="header__btn-login">
+        <a class="">
+          {{ userName === null ? 'Sign In' : userName }}
+          <i class="fa fa-caret-down"></i>  
+        </a>
+      </div>
 
         <!-- The Add Note form. -->
-        <div class="dropdown">
+        <!-- <div class="dropdown">
         
           <div class="page__header__column page__header__column--title">
               <a class="govuk-header__link govuk-header__link--service-name ">
-                {{ userName === null ? 'Username' : userName }}
+                {{ userName === null ? 'Sign In' : userName }}
                 <i class="fa fa-caret-down"></i>  
               </a>
           </div>
@@ -37,6 +54,6 @@
                   Logout
                 </a>
             </div>
-          </div> 
+          </div>  -->
     </div>
 </header>

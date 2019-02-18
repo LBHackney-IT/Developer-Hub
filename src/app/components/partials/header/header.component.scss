@@ -1,52 +1,51 @@
+@import '../../../../assets/sass/abstracts/variables';
 
-@import "../../../../variables";
-@import "../../../../assets/sass/hackney-stripes.scss";
+@import '../../../../assets/sass/utilities/hackney-stripes';
+// @import "utilities/hackney-stripes.scss";
 
 /* The dropdown container */
-.dropdown {
-    float: left;
-    overflow: hidden;
-  }
-  
-//   /* Dropdown button */
-//   .dropdown .dropbtn {
-//     border: none;
-//     outline: none;
-//     color: white;
-//     padding: 14px 16px;
-//     background-color: inherit;
-//     font-family: inherit; /* Important for vertical align on mobile phones */
-//     margin: 0; /* Important for vertical align on mobile phones */
+// .dropdown {
+//     overflow: hidden;
 //   }
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    float: right;
-  }
   
-  /* Links inside the dropdown */
-  .dropdown-content a {
-    float: none;
-    color: black;
-    padding: 12px 8px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
+// //   /* Dropdown button */
+// //   .dropdown .dropbtn {
+// //     border: none;
+// //     outline: none;
+// //     color: white;
+// //     padding: 14px 16px;
+// //     background-color: inherit;
+// //     font-family: inherit; /* Important for vertical align on mobile phones */
+// //     margin: 0; /* Important for vertical align on mobile phones */
+// //   }
+//   .dropdown-content {
+//     position: absolute;
+//     background-color: #f9f9f9;
+//     min-width: 160px;
+//     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+//     z-index: 1;
+//     float: right;
+//   }
   
-  /* Add a grey background color to dropdown links on hover */
-  .dropdown-content a:hover {
-    background-color: #ddd;
-  }
+//   /* Links inside the dropdown */
+//   .dropdown-content a {
+//     float: none;
+//     color: black;
+//     padding: 12px 8px;
+//     text-decoration: none;
+//     display: block;
+//     text-align: left;
+//   }
   
-  /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
+//   /* Add a grey background color to dropdown links on hover */
+//   .dropdown-content a:hover {
+//     background-color: #ddd;
+//   }
+  
+//   /* Show the dropdown menu on hover */
+//   .dropdown:hover .dropdown-content {
+//     display: block;
+//   }
 
 .page__header {
     @include hackney-stripes--bottom;
@@ -55,33 +54,101 @@
     color: $page-header-text-colour;
     padding: $page-header-padding;
 
+    display: flex;
+    justify-content: space-around;
+
+
     p {
         color: inherit;
     }
-}
-@media (min-width: 520px) {
-    .page__header__inner {
-        display: flex;
-        align-items: center;
+
+    &__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      flex: 1;
+      padding: .5rem;
     }
-}
 
-.page__header__column--logo {
-    flex-basis: 300px;
-    /* see https://stackoverflow.com/.../what-are-the-differences-between-flex-basis-and-width */
-}
+    &__column {
+      
+    }
 
-.page__header__column--title {
-    flex-grow: 1;
-}
+    &__sidenavbar {
+      flex: 0 0 50%;
+    }
 
-.page__header__column--id {
+    &column--logo {
+      /* see https://stackoverflow.com/.../what-are-the-differences-between-flex-basis-and-width */
+    }
+
+    &__column--title {
+    }
+
+    &__column--id {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+  }
+  
+    &__logo {
+        max-height: 40px;
+    }
+
+}
+// @media (min-width: 520px) {
+//     .page__header__inner {
+//         display: flex;
+//         align-items: center;
+//     }
+// }
+
+
+.header__navbar {
+  
+  display: flex;
+  justify-content: space-around;
+
+  &-list {
+    list-style: none;
     display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-between;
+    text-transform: uppercase;
+    color: $hackney-white;
+    font-size: 1.2rem;
+  }
+
+  &-list li > a {
+    margin: 0 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    padding: .5rem;
+
+    transition: all .2s;
+  }
+
+
+  &-list li:not(:last-child) {
+    margin-right: 2.5rem;
+  }
+
+  &-list li:last-child {
+    margin-left: auto;
+  }
 }
 
-.page__header__logo {
-    max-height: 40px;
+.header__btn-login {
+  font-size: 1.25rem;
+  color: inherit;
+  text-transform: uppercase;
+  transition: all .2s;
+  padding: .5rem;
+}
+
+.header__navbar-list li a:hover,
+.header__btn-login:hover {
+  outline: none;
+  border: 3px solid $hackney-lines-mid;
+  box-sizing: content-box;
 }
