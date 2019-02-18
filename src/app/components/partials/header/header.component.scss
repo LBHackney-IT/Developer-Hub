@@ -54,34 +54,24 @@
   color: $page-header-text-colour;
   padding: $page-header-padding;
 
-  display: flex;
-  justify-content: space-around;
-
   p {
     color: inherit;
   }
 
   &__inner {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
 
-    flex: 1;
-    padding: 0.5rem;
+    max-width: 960px;
+    margin: 0 auto;
   }
 
-  &__column {
+  &__hackney-logo {
+    margin-bottom: 1rem;
   }
 
   &__sidenavbar {
-    flex: 0 0 50%;
-  }
 
-  &column--logo {
-    /* see https://stackoverflow.com/.../what-are-the-differences-between-flex-basis-and-width */
-  }
-
-  &__column--title {
   }
 
   &__column--id {
@@ -91,8 +81,8 @@
     justify-content: space-between;
   }
 
-  &__logo {
-    max-height: 40px;
+  &__hackney-image {
+    max-height: 28px;
   }
 }
 // @media (min-width: 520px) {
@@ -104,11 +94,15 @@
 
 .header__navbar {
   display: flex;
-  justify-content: space-around;
+
+  padding: 2rem 0;
 
   &-list {
     list-style: none;
+
     display: flex;
+    justify-content: center;
+
     text-transform: uppercase;
     color: $hackney-white;
     font-size: 1.2rem;
@@ -123,15 +117,7 @@
     transition: all 0.2s;
   }
 
-  &-list li:not(:last-child) {
-    margin-right: 2.5rem;
-  }
-
-  &-list li:last-child {
-    margin-left: auto;
-  }
-
-  &_btn-login {
+  &-btn-login {
     font-size: 1.25rem;
     color: inherit;
     text-transform: uppercase;
@@ -139,10 +125,14 @@
     padding: 0.5rem;
   }
 
-  &__navbar-list li a:hover,
-  &__btn-login:hover {
+  &-list li a:hover,
+  &-btn-login:hover {
     outline: none;
     border: 3px solid $hackney-lines-mid;
     box-sizing: content-box;
+  }
+
+  &-list li:last-child a {
+    align-self: flex-end;
   }
 }
