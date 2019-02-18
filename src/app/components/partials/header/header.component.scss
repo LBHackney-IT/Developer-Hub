@@ -1,13 +1,13 @@
-@import '../../../../assets/sass/abstracts/variables';
+@import "../../../../assets/sass/abstracts/variables";
 
-@import '../../../../assets/sass/utilities/hackney-stripes';
+@import "../../../../assets/sass/utilities/hackney-stripes";
 // @import "utilities/hackney-stripes.scss";
 
 /* The dropdown container */
 // .dropdown {
 //     overflow: hidden;
 //   }
-  
+
 // //   /* Dropdown button */
 // //   .dropdown .dropbtn {
 // //     border: none;
@@ -26,7 +26,7 @@
 //     z-index: 1;
 //     float: right;
 //   }
-  
+
 //   /* Links inside the dropdown */
 //   .dropdown-content a {
 //     float: none;
@@ -36,67 +36,64 @@
 //     display: block;
 //     text-align: left;
 //   }
-  
+
 //   /* Add a grey background color to dropdown links on hover */
 //   .dropdown-content a:hover {
 //     background-color: #ddd;
 //   }
-  
+
 //   /* Show the dropdown menu on hover */
 //   .dropdown:hover .dropdown-content {
 //     display: block;
 //   }
 
 .page__header {
-    @include hackney-stripes--bottom;
+  @include hackney-stripes--bottom;
 
-    background: $page-header-bg-colour;
-    color: $page-header-text-colour;
-    padding: $page-header-padding;
+  background: $page-header-bg-colour;
+  color: $page-header-text-colour;
+  padding: $page-header-padding;
 
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 
-
-    p {
-        color: inherit;
-    }
-
-    &__inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      flex: 1;
-      padding: .5rem;
-    }
-
-    &__column {
-      
-    }
-
-    &__sidenavbar {
-      flex: 0 0 50%;
-    }
-
-    &column--logo {
-      /* see https://stackoverflow.com/.../what-are-the-differences-between-flex-basis-and-width */
-    }
-
-    &__column--title {
-    }
-
-    &__column--id {
-      display: flex;
-      flex-wrap: nowrap;
-      align-items: center;
-      justify-content: space-between;
+  p {
+    color: inherit;
   }
-  
-    &__logo {
-        max-height: 40px;
-    }
 
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    flex: 1;
+    padding: 0.5rem;
+  }
+
+  &__column {
+  }
+
+  &__sidenavbar {
+    flex: 0 0 50%;
+  }
+
+  &column--logo {
+    /* see https://stackoverflow.com/.../what-are-the-differences-between-flex-basis-and-width */
+  }
+
+  &__column--title {
+  }
+
+  &__column--id {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    max-height: 40px;
+  }
 }
 // @media (min-width: 520px) {
 //     .page__header__inner {
@@ -105,9 +102,7 @@
 //     }
 // }
 
-
 .header__navbar {
-  
   display: flex;
   justify-content: space-around;
 
@@ -123,11 +118,10 @@
     margin: 0 1.5rem;
     text-decoration: none;
     color: inherit;
-    padding: .5rem;
+    padding: 0.5rem;
 
-    transition: all .2s;
+    transition: all 0.2s;
   }
-
 
   &-list li:not(:last-child) {
     margin-right: 2.5rem;
@@ -136,19 +130,19 @@
   &-list li:last-child {
     margin-left: auto;
   }
-}
 
-.header__btn-login {
-  font-size: 1.25rem;
-  color: inherit;
-  text-transform: uppercase;
-  transition: all .2s;
-  padding: .5rem;
-}
+  &_btn-login {
+    font-size: 1.25rem;
+    color: inherit;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    padding: 0.5rem;
+  }
 
-.header__navbar-list li a:hover,
-.header__btn-login:hover {
-  outline: none;
-  border: 3px solid $hackney-lines-mid;
-  box-sizing: content-box;
+  &__navbar-list li a:hover,
+  &__btn-login:hover {
+    outline: none;
+    border: 3px solid $hackney-lines-mid;
+    box-sizing: content-box;
+  }
 }
