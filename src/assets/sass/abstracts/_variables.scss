@@ -2,6 +2,7 @@
 $hackney-black: #000;
 $hackney-white: #FFF;
 $hackney-green: #00694F;
+$hackney-background: #ffffff;
 
 $hackney-lines-dark: #00664F;
 $hackney-lines-mid: #00B140;
@@ -20,6 +21,20 @@ $swagger-method-get: #005ea5;
 
 $color-govuk-light-grey: #DEE0E2;
 
+
+////// HACKNEY STRIPES
+$hackney-stripes-dark-colour: #00664F !default;
+$hackney-stripes-middle-colour: #00B140 !default;
+$hackney-stripes-light-colour: #A4D65E !default;
+
+$hackney-stripe-width: 4px !default;
+$hackney-stripe-spacing: $hackney-stripe-width * 2 !default;
+
+$middle-stripe-width: $hackney-stripe-width;
+$light-stripe-width: $hackney-stripe-width / 2;
+$dark-stripe-width: $hackney-stripe-width * 2;
+
+$middle-stripe-style: $middle-stripe-width solid $hackney-stripes-middle-colour;
 
 ////// BOXING
 $container-padding: 4.5rem 4.5rem;
