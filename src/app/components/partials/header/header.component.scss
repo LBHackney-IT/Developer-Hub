@@ -75,15 +75,15 @@
     width: auto;
   }
 
-  &__sidenavbar {
-  }
+  // &__sidenavbar {
+  // }
 
-  &__column--id {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-between;
-  }
+  // &__column--id {
+  //   display: flex;
+  //   flex-wrap: nowrap;
+  //   align-items: center;
+  //   justify-content: space-between;
+  // }
 
   //////////////////////////////////////
   // NAVBAR
@@ -109,6 +109,8 @@
     &-list li > a {
       text-decoration: none;
       color: inherit;
+      font-weight: 700;
+
       padding: 1rem;
       cursor: pointer;
       border: 3px solid transparent;
