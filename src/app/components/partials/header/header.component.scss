@@ -47,27 +47,39 @@
 //     display: block;
 //   }
 
-.page__header {
+
+/// CONTAINER
+.header {
   @include hackney-stripes--bottom;
 
   background: $page-header-bg-colour;
   color: $page-header-text-colour;
-  padding: $page-header-padding;
+  width: 100%;
 
   p {
     color: inherit;
   }
 
+  // INNER CONTAINER (CHILDREN: HACKNEY-LOGO E NAVBAR)
   &__inner {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
 
     max-width: 960px;
     margin: 0 auto;
+    padding: $container-padding;
   }
 
   &__hackney-logo {
+    display: inline-block;
+    align-self: flex-start;
     margin-bottom: 1rem;
+  }
+
+  &__hackney-image {
+    height: 2.8rem;
+    width: auto;
   }
 
   &__sidenavbar {
@@ -81,9 +93,57 @@
     justify-content: space-between;
   }
 
-  &__hackney-image {
-    max-height: 28px;
+  
+
+  //////////////////////////////////////
+  // NAVBAR
+
+  &__navbar {
+    display: flex;
+  
+    padding: 2rem 0;
+    width: 100%;
+  
+    &-list {
+      width: 100%;
+      list-style: none;
+  
+      display: flex;
+      justify-content: space-between;
+  
+      text-transform: uppercase;
+      color: $hackney-white;
+      font-size: 1.2em;
+    }
+  
+    &-list li > a {
+      text-decoration: none;
+      color: inherit;
+      padding: 1rem;
+      cursor: pointer;
+  
+      transition: all 0.2s;
+    }
+  
+    &-btn-login {
+      color: inherit;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      padding: 0.5rem;
+    }
+  
+    &-list li a:hover,
+    &-btn-login:hover {
+      border: 3px solid $hackney-lines-mid;
+      box-sizing: content-box;
+    }
+  
+    &-list li:last-child a {
+      align-self: flex-end;
+    }
+
   }
+  
 }
 // @media (min-width: 520px) {
 //     .page__header__inner {
@@ -92,47 +152,3 @@
 //     }
 // }
 
-.header__navbar {
-  display: flex;
-
-  padding: 2rem 0;
-
-  &-list {
-    list-style: none;
-
-    display: flex;
-    justify-content: center;
-
-    text-transform: uppercase;
-    color: $hackney-white;
-    font-size: 1.2rem;
-  }
-
-  &-list li > a {
-    margin: 0 1.5rem;
-    text-decoration: none;
-    color: inherit;
-    padding: 0.5rem;
-
-    transition: all 0.2s;
-  }
-
-  &-btn-login {
-    font-size: 1.25rem;
-    color: inherit;
-    text-transform: uppercase;
-    transition: all 0.2s;
-    padding: 0.5rem;
-  }
-
-  &-list li a:hover,
-  &-btn-login:hover {
-    outline: none;
-    border: 3px solid $hackney-lines-mid;
-    box-sizing: content-box;
-  }
-
-  &-list li:last-child a {
-    align-self: flex-end;
-  }
-}
