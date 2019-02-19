@@ -47,8 +47,12 @@
 //     display: block;
 //   }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
-/// CONTAINER
 .header {
   @include hackney-stripes--bottom;
 
@@ -58,17 +62,6 @@
 
   p {
     color: inherit;
-  }
-
-  // INNER CONTAINER (CHILDREN: HACKNEY-LOGO E NAVBAR)
-  &__inner {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    max-width: 960px;
-    margin: 0 auto;
-    padding: $container-padding;
   }
 
   &__hackney-logo {
@@ -83,7 +76,6 @@
   }
 
   &__sidenavbar {
-
   }
 
   &__column--id {
@@ -93,58 +85,54 @@
     justify-content: space-between;
   }
 
-  
-
   //////////////////////////////////////
   // NAVBAR
 
   &__navbar {
     display: flex;
-  
+
     padding: 2rem 0;
     width: 100%;
-  
+
     &-list {
       width: 100%;
       list-style: none;
-  
+
       display: flex;
       justify-content: space-between;
-  
+
       text-transform: uppercase;
       color: $hackney-white;
       font-size: 1.2em;
     }
-  
+
     &-list li > a {
       text-decoration: none;
       color: inherit;
       padding: 1rem;
       cursor: pointer;
       border: 3px solid transparent;
-  
+
       transition: all 0.2s;
     }
-  
+
     &-btn-login {
       color: inherit;
       text-transform: uppercase;
       transition: all 0.2s;
       padding: 0.5rem;
     }
-  
+
     &-list li a:hover,
     &-btn-login:hover {
       border: 3px solid $hackney-lines-mid;
       box-sizing: content-box;
     }
-  
+
     &-list li:last-child a {
       align-self: flex-end;
     }
-
   }
-  
 }
 // @media (min-width: 520px) {
 //     .page__header__inner {
@@ -152,4 +140,3 @@
 //         align-items: center;
 //     }
 // }
-
