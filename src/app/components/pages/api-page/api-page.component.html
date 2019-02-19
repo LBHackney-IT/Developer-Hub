@@ -1,7 +1,7 @@
 <app-column-layout [show]="api"> 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
-    <h1 class="govuk-heading-xl">{{ api?.title }}</h1>
+    <h1 class="heading-huge">{{ api?.title }}</h1>
   </div>
   <div class="govuk-grid-column-one-quarter">
       <span class="govuk-tag"> {{ api?.internal ? 'Internal' : 'External'}} </span>
@@ -69,22 +69,22 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    <h3 class="govuk-heading-l"> Overview</h3>
-    <p class="govuk-body"> {{ api.description }} </p>
+    <h3 class="heading-large"> Overview</h3>
+    <p class="paragraph-text"> {{ api.description }} </p>
   </div>
 </div>
 
 <div class="govuk-grid-row">
         
   <div class="govuk-grid-column-two-thirds">      
-    <h3 class="govuk-heading-l"> Compliance</h3>   
+    <h3 class="heading-large"> Compliance</h3>   
   </div>
         
   <div class="govuk-grid-column-one-third">          
     <h3 class="govuk-tag govuk-tag--{{isCompliant() ? 'negative' : 'positive' }}"> {{isCompliant() ? 'Non Compliant' : 'Compliant' }} </h3> 
   </div>
   <div class="govuk-grid-column-full">  
-      <ul class="govuk-list govuk-list--bullet">
+      <ul class="list-style-none">
         <li *ngFor="let compliancy of generateCompliancyText()" [class.line-through] = "!compliancy.compliant">  {{compliancy.text}} </li>
       </ul>       
   </div>
@@ -99,13 +99,13 @@
       </span>
     </summary>
     <div class="govuk-details__text">
-        <h3 class="govuk-heading-m"> Product Owner</h3>
-        <p class="govuk-body-m"> Name: {{api.owner.product.name}} </p>
-        <p class="govuk-body-m"> Email: {{api.owner.product.contactDetails}} </p>
+        <h3 class="heading-medium"> Product Owner</h3>
+        <p class="paragraph-text"> Name: {{api.owner.product.name}} </p>
+        <p class="paragraph-text"> Email: {{api.owner.product.contactDetails}} </p>
 
-        <h3 class="govuk-heading-m"> Technical Owner</h3>
-        <p class="govuk-body-m"> Name: {{api.owner.technical.name}} </p>
-        <p class="govuk-body-m"> Email: {{api.owner.technical.contactDetails}} </p>
+        <h3 class="heading-medium"> Technical Owner</h3>
+        <p class="paragraph-text"> Name: {{api.owner.technical.name}} </p>
+        <p class="paragraph-text"> Email: {{api.owner.technical.contactDetails}} </p>
     </div>
   </details>
 </app-column-layout>
