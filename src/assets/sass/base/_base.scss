@@ -1,14 +1,35 @@
-:root {
-    font-family: "nta", Arial, sans-serif;
-}
 
 * {
     margin: 0;
     padding: 0;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
 html {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    font-weight: 400;
+    line-height: 1.6;
+    min-height: 100vh;
+    font-size: 1.6rem;
+}
+
+p {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.25;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
 }
