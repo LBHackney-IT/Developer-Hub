@@ -1,50 +1,64 @@
-<div class="govuk-grid-column-one-quarter">
-        <app-side-navbar></app-side-navbar>
-</div> 
-<div class="govuk-grid-column-three-quarters">          
-    <div class="govuk-grid-row">
-         <h1 class="govuk-heading-xl">Hackney API Developer Hub</h1>
-         <h3 class="govuk-heading-m">Overview</h3>
-            <p class="govuk-body">The Hackney API Developer Hub will provide information and instructions on:</p>
-            <ul class="govuk-list govuk-list--bullet">
-				<li>What APIs are</li>
-				<li>Why might you need an API?</li>
-                <li>How to create APIs according to the HackIt API playbook</li>
-                <li>What the API platform is</li>
-                <li>A list of the available APIs</li>
-            </ul>
-            
-            <h3 class="govuk-heading-m">What is an API?</h3>
-            <p class="govuk-body">Each time you tell your smart speaker to "turn on the living room light" the speaker will send an instruction to an API. The API will then send a series of instructions in the background which eventually culminates in a bulb switching on.</p>
-            <p class="govuk-body">You didn't need to write any complicated code or give any specifics about what "turn on" means or exactly where "living room light" is located.  All of this information was dealt with inside of the API.</p>
-            <p class="govuk-body">Wherever possible APIs shouldn't care what is passing it an instruction. Using an app on your smart phone to turn on your living room lights will use the same API and send the exact same instructions as the smart speaker did. The API should behave in the same way to give the same end result.</p>
-            <p class="govuk-body">Therefore an API is a resource that provides a simple way to communicate between two devices or pieces of software.</p>
-            <img src="../../../../assets/images/APITurnOnLight.svg" style="width: 100%; height: auto;">
-            <br/>
-            <br/>
+<app-column-layout [show]="true">
+  <div class="govuk-grid-row">
+    <h1 class="govuk-heading-xl">Hackney API Developer Hub</h1>
+    <h3 class="govuk-heading-m">Overview</h3>
+    <p class="govuk-body">The Hackney API Developer Hub will provide information and instructions on:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>What APIs are</li>
+      <li>Why might you need an API?</li>
+      <li>How to create APIs according to the HackIt API playbook</li>
+      <li>What the API platform is</li>
+      <li>A list of the available APIs</li>
+    </ul>
 
-            <h3 class="govuk-heading-m">Why might you need an API?</h3>
-            <ul class="govuk-body">
-                <li class="govuk-body">Sharing your data - Secure, structured and real-time access to data can be provided by an API</li>
-                <li class="govuk-body">Data integrity - Providing a single source of data in the same format means more consistency across different systems</li>
-                <li class="govuk-body">Integrations - APIs can provide links between different back end systems</li>
-            </ul>
+    <h3 class="govuk-heading-m">What is an API?</h3>
+    <p class="govuk-body">Each time you tell your smart speaker to "turn on the living room light" the speaker will
+      send an instruction to an API. The API will then send a series of instructions in the background which eventually
+      culminates in a bulb switching on.</p>
+    <p class="govuk-body">You didn't need to write any complicated code or give any specifics about what "turn on"
+      means or exactly where "living room light" is located. All of this information was dealt with inside of the API.</p>
+    <p class="govuk-body">Wherever possible APIs shouldn't care what is passing it an instruction. Using an app on your
+      smart phone to turn on your living room lights will use the same API and send the exact same instructions as the
+      smart speaker did. The API should behave in the same way to give the same end result.</p>
+    <p class="govuk-body">Therefore an API is a resource that provides a simple way to communicate between two devices
+      or pieces of software.</p>
+    <img src="../../../../assets/images/APITurnOnLight.svg" style="width: 100%; height: auto;">
+    <br />
+    <br />
 
-            <h3 id="content-index-create" class="govuk-heading-m">How we create HackIT APIs</h3>    
-            <p class="govuk-body">All HackIT developed code should meet the 12 <a href="https://github.com/LBHackney-IT/Hackney-Development-Standards">Hackney Development Standards</a>.
-    				These 12 factors (albeit in a adapted or extended form) are used by many development teams around the world to ensure that HackIT APIs are consistent, supportable and of high quality</p>        
-            <p class="govuk-body">All newly created HackIT APIs will be developed using the guidelines in the <a href="https://github.com/LBHackney-IT/API-Playbook">HackIt API playboook</a>.
-    					It provides clear guidance on the standards that are being followed when developing new APIs and is also used whenever amending old APIs which were created prior to the existence of the Playbook.</p>
-            <p class="govuk-body">Both of these guides are constantly evolving over time alongside technological changes.</p>
-            
-            <h3 id="content-index-platform" class="govuk-heading-m">What is the API platform?</h3>
-    			<p class="govuk-body">There is more to APIs than just sending a command and the API responding. You obviously don't want anyone on the internet to be able to turn your living room lights on. You need to be able decide who is allowed to turn the lights on. Using an API Gateway we are able to issue Tokens to people who want to use our APIs. Each time a developer attempts to access our APIs they will provide this token, essentially telling us who they are.  Requests to our APIs that do not provide the token will be rejected.</p>
+    <h3 class="govuk-heading-m">Why might you need an API?</h3>
+    <ul class="govuk-body">
+      <li class="govuk-body">Sharing your data - Secure, structured and real-time access to data can be provided by an
+        API</li>
+      <li class="govuk-body">Data integrity - Providing a single source of data in the same format means more
+        consistency across different systems</li>
+      <li class="govuk-body">Integrations - APIs can provide links between different back end systems</li>
+    </ul>
 
-    			<img src="../../../../assets/images/APIGateway.svg" style="width: 100%; height: auto;">
+    <h3 id="content-index-create" class="govuk-heading-m">How we create HackIT APIs</h3>
+    <p class="govuk-body">All HackIT developed code should meet the 12 <a href="https://github.com/LBHackney-IT/Hackney-Development-Standards">Hackney
+        Development Standards</a>.
+      These 12 factors (albeit in a adapted or extended form) are used by many development teams around the world to
+      ensure that HackIT APIs are consistent, supportable and of high quality</p>
+    <p class="govuk-body">All newly created HackIT APIs will be developed using the guidelines in the <a href="https://github.com/LBHackney-IT/API-Playbook">HackIt
+        API playboook</a>.
+      It provides clear guidance on the standards that are being followed when developing new APIs and is also used
+      whenever amending old APIs which were created prior to the existence of the Playbook.</p>
+    <p class="govuk-body">Both of these guides are constantly evolving over time alongside technological changes.</p>
 
-    			<p class="govuk-body">You may also want to ensure that someone cannot bombard your API with thousands of calls over a very short period of time. This could cost you time and resources.</p>
+    <h3 id="content-index-platform" class="govuk-heading-m">What is the API platform?</h3>
+    <p class="govuk-body">There is more to APIs than just sending a command and the API responding. You obviously don't
+      want anyone on the internet to be able to turn your living room lights on. You need to be able decide who is
+      allowed to turn the lights on. Using an API Gateway we are able to issue Tokens to people who want to use our
+      APIs. Each time a developer attempts to access our APIs they will provide this token, essentially telling us who
+      they are. Requests to our APIs that do not provide the token will be rejected.</p>
 
-    			<p class="govuk-body">Using the tokens we can limit how often they can use the API.</p>
+    <img src="../../../../assets/images/APIGateway.svg" style="width: 100%; height: auto;">
 
-            </div>
-</div> 
+    <p class="govuk-body">You may also want to ensure that someone cannot bombard your API with thousands of calls over
+      a very short period of time. This could cost you time and resources.</p>
+
+    <p class="govuk-body">Using the tokens we can limit how often they can use the API.</p>
+
+  </div>
+</app-column-layout>

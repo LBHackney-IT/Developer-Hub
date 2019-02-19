@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 
+/**
+ *
+ *
+ * @export
+ * @class RegisterComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -9,10 +16,22 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
+  /**
+   *Creates an instance of RegisterComponent.
+   * @param {AuthService} authService
+   * @memberof RegisterComponent
+   */
   constructor(
     private authService: AuthService
   ) { }
 
+  regEx = '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$';
+
+  /**
+   *
+   *
+   * @memberof RegisterComponent
+   */
   registerForm = new FormGroup({
     emailAddress: new FormControl('', [
       Validators.email,
@@ -31,19 +50,37 @@ export class RegisterComponent implements OnInit {
     ]),
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(8)
+      Validators.minLength(8),
+      Validators.pattern(this.regEx)
     ]),
     confirmPassword: new FormControl('', [
       Validators.required,
-      Validators.minLength(8)
+      Validators.minLength(8),
+      Validators.pattern(this.regEx)
     ]),
   });
 
+  /**
+   *
+   *
+   * @memberof RegisterComponent
+   */
   ngOnInit() {
   }
 
+  /**
+   *
+   *
+   * @readonly
+   * @memberof RegisterComponent
+   */
   get f() { return this.registerForm.controls; }
 
+  /**
+   *
+   *
+   * @memberof RegisterComponent
+   */
   register = () => {
     this.authService.register(this.registerForm);
   }

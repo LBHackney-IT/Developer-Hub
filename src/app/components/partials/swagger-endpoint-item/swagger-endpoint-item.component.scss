@@ -1,0 +1,55 @@
+@import '../../../../variables';
+
+a {
+    &:link,
+    &:visited{
+      text-decoration: none;
+    }
+  }
+
+  .post-request {
+    background-color: $swagger-method-post;
+  }
+
+  .delete-request {
+    background-color: $swagger-method-delete
+  }
+
+  .put-patch-request {
+    background-color: $swagger-method-put-patch
+  }
+
+  .get-request {
+    background-color: $swagger-method-get;
+  }
+
+  .align-right {
+    text-align: right;
+  }
+
+  .table-api {
+    width: 85%;
+    position: relative;
+    left: 5%;
+  }
+
+  .accordion {
+    border: 1px solid #DEE0E2;
+    margin: 5px 0;
+    position: relative;
+  }
+
+  .endpoint-api-column {
+    position: relative;
+  }
+
+  .api-panel {
+    position: relative;
+    top: 10px;
+  }
+
+  .api-title-link:hover, .api-panel:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+

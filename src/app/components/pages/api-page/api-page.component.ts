@@ -5,40 +5,93 @@ import { IApi } from '../../../interfaces/IApi';
 import { ApiKeyService } from '../../../services/apiKey.service';
 import { compliancyConfigMap } from '../../../shared/config';
 
+/**
+ * @export
+ * @class ApiPageComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-api-page',
   templateUrl: './api-page.component.html',
   styleUrls: ['./api-page.component.scss']
 })
 export class ApiPageComponent implements OnInit {
+  /**
+   * @type {IApi}
+   * @memberof ApiPageComponent
+   */
   api: IApi;
+
+  /**
+   * @type {string}
+   * @memberof ApiPageComponent
+   */
   apiKey: string;
+
+  /**
+   * @type {boolean}
+   * @memberof ApiPageComponent
+   */
   verified: boolean;
+
+  /**
+   * @summary Creates an instance of ApiPageComponent.
+   * @param {ApiService} apiService
+   * @param {ActivatedRoute} route
+   * @param {ApiKeyService} apiKeyService
+   * @memberof ApiPageComponent
+   */
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
     private apiKeyService: ApiKeyService
   ) { }
 
+  /**
+   * @summary Retrieves apiId from route params.
+   * Subsequently, retrieves the API info from database
+   * @memberof ApiPageComponent
+   */
   ngOnInit() {
     const apiId: string = this.route.snapshot.paramMap.get('id');
     this.getApi(apiId);
   }
 
-  isStagingAvailiable = () => {
+  /**
+   * @summary To be migrated to the {ApiService}
+   * @returns {boolean}
+   * @memberof ApiPageComponent
+   */
+  isStagingAvailiable = (): boolean => {
     return this.api.hasOwnProperty('staging');
   }
 
-  isProductionAvailiable = () => {
+  /**
+   * @summary To be migrated to the {ApiService}
+   * @returns {boolean}
+   * @memberof ApiPageComponent
+   */
+  isProductionAvailiable = (): boolean => {
     return this.api.hasOwnProperty('production');
   }
 
-  isCompliant = () => {
+  /**
+   * @summary To be migrated to the {ApiService}
+   * @returns {boolean}
+   * @memberof ApiPageComponent
+   */
+  isCompliant = (): boolean => {
     const values: boolean[] = Object.values(this.api.compliant);
     return values.includes(false);
   }
 
-  isHealthy = (environment: string) => {
+  /**
+   * @summary To be migrated to the {ApiService}
+   * @returns {boolean}
+   * @param {string} environment
+   * @memberof ApiPageComponent
+   */
+  isHealthy = (environment: string): boolean => {
     let response: boolean;
     switch (environment) {
       case 'staging': {
@@ -53,7 +106,13 @@ export class ApiPageComponent implements OnInit {
     return response;
   }
 
-  isDeployed = (environment: string) => {
+  /**
+   * @summary To be migrated to the {ApiService}
+   * @returns {boolean}
+   * @param {string} environment
+   * @memberof ApiPageComponent
+   */
+  isDeployed = (environment: string): boolean => {
     let response: boolean;
     switch (environment) {
       case 'staging': {
@@ -68,7 +127,12 @@ export class ApiPageComponent implements OnInit {
     return response;
   }
 
-  requestAPIKey = () => {
+  /**
+   * @summary Subscribes to the createApiKey method in the {ApiKeyService}
+   * @returns {void}
+   * @memberof ApiPageComponent
+   */
+  requestAPIKey = (): void => {
     this.apiKeyService.createApiKey(this.api.id)
     .subscribe(
       (response) => {
@@ -79,20 +143,28 @@ export class ApiPageComponent implements OnInit {
       });
   }
 
-  getAPIKey = () => {
+  /**
+   * @summary Subscribes to the getAPIKey method in the {ApiKeyService}
+   * @returns {void}
+   * @memberof ApiPageComponent
+   */
+  getAPIKey = (): void => {
     this.apiKeyService.readApiKey(this.api.id)
     .subscribe(
       (response: Response) => {
-        if (response.body) {
-          this.apiKey = response.body['apiKey'];
-          this.verified = response.body['verified'];
-        }
+          this.apiKey = response['apiKey'];
+          this.verified = response['verified'];
     },
      (error) => {
       console.log(error);
      });
   }
 
+  /**
+   * @summary Maps the Compliancy Id to the text using the {compliancyConfigMap}
+   * @returns {object}
+   * @memberof ApiPageComponent
+   */
   generateCompliancyText = () => {
     const keys = Object.keys(this.api.compliant);
     return keys.map((id) => {
@@ -104,11 +176,16 @@ export class ApiPageComponent implements OnInit {
     });
   }
 
-  getApi = (id: string) => {
+  /**
+   * @param {string} id
+   * @summary Subscribes to the getApi method in the {ApiService}
+   * @memberof ApiPageComponent
+   */
+  getApi = (id: string): void => {
     this.apiService.getApi(id)
     .subscribe(
       (response) => {
-        this.api = response['body'];
+        this.api = response;
         this.generateCompliancyText();
         this.getAPIKey();
       },

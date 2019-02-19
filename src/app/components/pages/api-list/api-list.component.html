@@ -1,7 +1,3 @@
-<div class="govuk-grid-column-one-quarter">         
-  <app-side-navbar></app-side-navbar>
-</div> 
-<div class="govuk-grid-column-three-quarters"> 
+<app-column-layout [show]="apis">
   <app-api-item  *ngFor="let api of apis" [api] = "api"></app-api-item>         
-</div> 
-
+</app-column-layout>

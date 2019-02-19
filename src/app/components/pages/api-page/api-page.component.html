@@ -1,7 +1,4 @@
-<div class="govuk-grid-column-one-quarter">            
-  <app-side-navbar></app-side-navbar>  
-</div> 
-<div class="govuk-grid-column-three-quarters" *ngIf="api"> 
+<app-column-layout [show]="api"> 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
     <h1 class="govuk-heading-xl">{{ api?.title }}</h1>
@@ -35,7 +32,7 @@
 
         <tr class="govuk-table__row" *ngIf="isDeployed('production')">
           <th class="govuk-table__header" scope="row">Production Base URL</th>
-          <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state">{{ api.production.url }}</a></td>
+          <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state">{{ api?.production.url }}</a></td>
         </tr>
 
         <tr class="govuk-table__row" *ngIf="isDeployed('production')">
@@ -64,9 +61,9 @@
   </div>
 </div>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">        
-    <a class="govuk-button" (click)="requestAPIKey()" type="button">Request API-Key</a>    
+<div class="govuk-grid-row" *ngIf="!apiKey">
+  <div class="govuk-grid-column-full" >        
+    <a class="govuk-button" (click)="requestAPIKey()" type="button" >Request API-Key</a>    
   </div>
 </div>
 
@@ -80,7 +77,7 @@
 <div class="govuk-grid-row">
         
   <div class="govuk-grid-column-two-thirds">      
-    <h3 class="govuk-heading-l"> Compliancy</h3>   
+    <h3 class="govuk-heading-l"> Compliance</h3>   
   </div>
         
   <div class="govuk-grid-column-one-third">          
@@ -111,4 +108,4 @@
         <p class="govuk-body-m"> Email: {{api.owner.technical.contactDetails}} </p>
     </div>
   </details>
-  </div>
+</app-column-layout>
