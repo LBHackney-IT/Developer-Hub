@@ -1,8 +1,30 @@
-.main-content__body {
+@import '../../../../assets/sass/abstracts/variables';
+
+.content__body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
 
     max-width: 100%;
+
+    &-text {
+        @include body-text;
+    }
+
+    &-list {
+        list-style-type: none;
+    }
+}
+
+.content__header--big {
+    font-size: $heading--big;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid $hackney-black;
+}
+
+.content__header--medium {
+    font-size: $heading--medium;
+    margin-bottom: 1.5rem;
 }
