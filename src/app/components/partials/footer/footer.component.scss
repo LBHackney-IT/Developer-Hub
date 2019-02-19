@@ -1,0 +1,67 @@
+@import '../../../../styles.scss';
+
+.stripes {
+
+    position: relative;
+
+    &:before,
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+    }
+    // Dark stripe.
+    &:before {
+        background: $hackney-stripes-dark-colour;
+        height: $dark-stripe-width;
+    }
+
+    // Light stripe.
+    &:after {
+        background: $hackney-stripes-light-colour;
+        height: $light-stripe-width;
+    }
+
+    border-top: $middle-stripe-style;
+
+        &:before,
+        &:after {
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+
+        // Dark stripe.
+        &:before {
+            transform: translate3d(0, $hackney-stripe-spacing, 1px);
+        }
+
+        // Light stripe.
+        &:after {
+            transform: translate3d(0, -($middle-stripe-width + $hackney-stripe-spacing), 1px);
+        }
+}
+
+.footer {
+    background-color: $hackney-black;
+    height: 15rem;
+
+    &__items {
+        display: flex;
+        justify-content: space-between;
+
+        &-link:link,
+        &-link:visited {
+            text-decoration: none;
+            color: $hackney-white;
+            font-size: 1.5rem;
+            
+        }
+
+        &-link:hover {
+            border-bottom: 1px solid $hackney-white;
+        }
+    }
+
+
+}
