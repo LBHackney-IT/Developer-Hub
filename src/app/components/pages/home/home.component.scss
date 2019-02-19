@@ -1,4 +1,4 @@
-@import '../../../../assets/sass/abstracts/variables';
+@import '../../../../styles.scss';
 
 .content__body {
     display: flex;
@@ -14,6 +14,23 @@
 
     &-list {
         list-style-type: none;
+        margin-bottom: 2.5rem;
+
+        &__item {
+
+        }
+
+        &__item:not(:last-child) {
+            margin-bottom: .7rem;
+        }
+    }
+
+    &-img-1 {
+        width: 100%;
+        height: auto;
+        display: inline-block;
+        margin-top: 2rem;
+        margin-bottom: 4rem;
     }
 }
 
@@ -22,6 +39,7 @@
     margin-bottom: 2.5rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid $hackney-black;
+    width: 100%;
 }
 
 .content__header--medium {
