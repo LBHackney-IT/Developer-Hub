@@ -1,3 +1,4 @@
+//////// COLORS
 $hackney-black: #000;
 $hackney-white: #FFF;
 $hackney-green: #00694F;
@@ -19,29 +20,27 @@ $swagger-method-get: #005ea5;
 
 $color-govuk-light-grey: #DEE0E2;
 
-.govuk-panel--green {
-    background: $hackney-green;
-}
 
-//////
-
+////// BOXING
 $container-padding: 4.5rem 4.5rem;
+$margin-bottom-heading: 2rem;
+$margin-bottom-text: 1.5rem;
 
-
-// TYPO
+///// TYPO
 $heading--big: 5rem;
 $heading--medium: 2.5rem;
 
-// MIXINS
+$font-family: "nta", Arial, sans-serif;
+
+///// MIXINS
 @mixin body-text {
+
     color: $hackney-black;
-    font-family: "nta", Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    font-family: $font-family;
     font-weight: 400;
 
     font-size: 1.8rem;
-    line-height: 1.25;
+    line-height: 1.6;
     margin-top: 0;
-    margin-bottom: 1rem;
+    padding-bottom: $margin-bottom-text;
 }
