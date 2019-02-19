@@ -1,0 +1,14 @@
+.container {
+    margin: 0 auto;
+    padding: $container-padding;
+
+    max-width: 960px;
+
+    font-family: "nta", Arial, sans-serif;
+}
+
+@media screen and (max-width: 980px) {
+    html {
+        font-size: 55%;
+    }
+}
