@@ -22,3 +22,26 @@ $color-govuk-light-grey: #DEE0E2;
 .govuk-panel--green {
     background: $hackney-green;
 }
+
+//////
+
+$container-padding: 4.5rem 4.5rem;
+
+
+// TYPO
+$heading--big: 5rem;
+$heading--medium: 2.5rem;
+
+// MIXINS
+@mixin body-text {
+    color: $hackney-black;
+    font-family: "nta", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+
+    font-size: 1.8rem;
+    line-height: 1.25;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
