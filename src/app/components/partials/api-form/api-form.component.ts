@@ -175,6 +175,9 @@ export class ApiFormComponent implements OnInit {
           const api = apis.find(item => item.id === id);
           this.api = api;
           this.patchValuesApi();
+      },
+      (error) => {
+        this.store.dispatch(new GetApiList());
       });
   }
 
