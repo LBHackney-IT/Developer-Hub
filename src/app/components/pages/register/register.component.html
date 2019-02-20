@@ -1,6 +1,6 @@
-<h2 class="govuk-heading-l">Register for a developer account</h2>       
-<p class="govuk-body">Register for a developer account to start using our <a routerLink="/api-list">APIs</a> in your applications.</p>        
-<p class="govuk-body">Already registered? <a routerLink="/login">Sign in.</a></p>
+<h2 class="heading-large">Register for a developer account</h2>       
+<p class="paragraph-text">Register for a developer account to start using our <a routerLink="/api-list">APIs</a> in your applications.</p>        
+<p class="paragraph-text">Already registered? <a routerLink="/login">Sign in.</a></p>
             
 <form class="form js-form" [formGroup]="registerForm" (ngSubmit)="register()">
   <div class="govuk-form-group">
@@ -10,11 +10,11 @@
             name="emailAddress"
             formControlName="emailAddress"
             value=""
-            [ngClass]="{'govuk-input': true, 'govuk-input--error': f.emailAddress.touched && f.emailAddress.invalid}"
+            [ngClass]="{'input': true, 'input--error': f.emailAddress.touched && f.emailAddress.invalid}"
             aria-labelledby="emailAddress-label"        
             aria-required="true"/>
             
-            <div *ngIf="f.emailAddress.touched && f.emailAddress.invalid" class="govuk-error-message">
+            <div *ngIf="f.emailAddress.touched && f.emailAddress.invalid" class="error-message">
               Email address is required
             </div>        
 
@@ -27,11 +27,11 @@
             name="firstName"
             formControlName="firstName"
             value=""
-            [ngClass]="{'govuk-input': true, 'govuk-input--error': f.firstName.touched && f.firstName.invalid}"            
+            [ngClass]="{'input': true, 'input--error': f.firstName.touched && f.firstName.invalid}"            
             aria-labelledby="firstName-label"
             aria-required="true"/>
 
-            <div *ngIf="f.firstName.touched && f.firstName.invalid" class="govuk-error-message">  
+            <div *ngIf="f.firstName.touched && f.firstName.invalid" class="error-message">  
               First Name is required
             </div>  
   </div>
@@ -43,11 +43,11 @@
             name="lastName"
             formControlName="lastName"
             value=""
-            [ngClass]="{'govuk-input': true, 'govuk-input--error': f.lastName.touched && f.lastName.invalid}"            
+            [ngClass]="{'input': true, 'input--error': f.lastName.touched && f.lastName.invalid}"            
             aria-labelledby="lastName-label"
             aria-required="true"/>
 
-            <div *ngIf="f.lastName.touched && f.lastName.invalid" class="govuk-error-message">  
+            <div *ngIf="f.lastName.touched && f.lastName.invalid" class="error-message">  
               Last Name is required  
             </div>  
   </div>
@@ -73,15 +73,15 @@
               id="password"
               name="password"
               formControlName="password"
-              [ngClass]="{'govuk-input': true, 'govuk-input--error': f.password.touched && f.password.invalid}"            
-              class="govuk-input"
+              [ngClass]="{'input': true, 'input--error': f.password.touched && f.password.invalid}"            
+              class="input"
               aria-describedby="password-note"
               aria-required="true"
               pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" />
-              <div *ngIf="f.password.touched && f.password.invalid" class="govuk-error-message">     
+              <div *ngIf="f.password.touched && f.password.invalid" class="error-message">     
                 Password is required   
               </div> 
-              <div *ngIf="f.password.errors" class="govuk-error-message">
+              <div *ngIf="f.password.errors" class="error-message">
                   <div *ngIf="f.password.errors.minlength || f.password.errors.pattern">Your password must be at least 8 characters and contain at least one number, lowercase letter, uppercase letter and special character.</div>
               </div>
     </div>
@@ -93,10 +93,10 @@
               id="confirmPassword"
               name="confirmPassword"
               formControlName="confirmPassword"
-              [ngClass]="{'govuk-input': true, 'govuk-input--error': f.confirmPassword.touched && f.confirmPassword.invalid}"
+              [ngClass]="{'govuk-input': true, 'input--error': f.confirmPassword.touched && f.confirmPassword.invalid}"
               aria-required="true" 
               pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"/>             
-             <div *ngIf="f.confirmPassword.touched && f.confirmPassword.invalid" class="govuk-error-message">    
+             <div *ngIf="f.confirmPassword.touched && f.confirmPassword.invalid" class="error-message">    
               Please confirm password   
             </div> 
     </div>
