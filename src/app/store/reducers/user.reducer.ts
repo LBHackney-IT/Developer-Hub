@@ -6,8 +6,6 @@ import { IUser } from '../../interfaces/IUser';
 export const userReducer = (state = initialUserState, action: UserActions): IUserState => {
     switch (action.type) {
         case EUserActions.SetUser: {
-            console.log('hi');
-
             return {
                 ...state,
                 user: action.payload,
@@ -15,7 +13,6 @@ export const userReducer = (state = initialUserState, action: UserActions): IUse
             };
         }
         case EUserActions.RemoveUser: {
-            console.log('hello');
             return {
                 ...state,
                 user: null,
