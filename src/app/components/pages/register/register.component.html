@@ -59,7 +59,7 @@
             name="organisation"
             value=""
             formControlName="organisation"
-            class="govuk-input"
+            class="input"
             aria-labelledby="organisation-label"
             aria-required="false"/>
   </div>
@@ -93,7 +93,7 @@
               id="confirmPassword"
               name="confirmPassword"
               formControlName="confirmPassword"
-              [ngClass]="{'govuk-input': true, 'input--error': f.confirmPassword.touched && f.confirmPassword.invalid}"
+              [ngClass]="{'input': true, 'input--error': f.confirmPassword.touched && f.confirmPassword.invalid}"
               aria-required="true" 
               pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"/>             
              <div *ngIf="f.confirmPassword.touched && f.confirmPassword.invalid" class="error-message">    

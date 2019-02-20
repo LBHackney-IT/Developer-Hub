@@ -140,7 +140,7 @@
         </label>
         <input type="swagger_url" autocomplete="swagger_url" id="swagger_url" name="swagger_url" formControlName="swagger_url"
           [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.staging.controls.swagger_url.touched && f.staging.controls.swagger_url.invalid}"
-          class="govuk-input" aria-required="true" />
+          class="input" aria-required="true" />
       </div>
 
       <div class="govuk-form-group">
@@ -169,7 +169,7 @@
         <label class="govuk-label" for="url">
           Base Url
         </label>
-        <input type="url" autocomplete="off" id="url" name="url" formControlName="url" [ngClass]="{'govuk-input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.production.controls.url.touched && f.production.controls.url.invalid}"
+        <input type="url" autocomplete="off" id="url" name="url" formControlName="url" [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.production.controls.url.touched && f.production.controls.url.invalid}"
           class="input" aria-required="true" />
       </div>
 
