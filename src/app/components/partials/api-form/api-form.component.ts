@@ -4,6 +4,11 @@ import { ApiService } from '../../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { IApi } from 'src/app/interfaces/IApi';
 import { compliancyConfigMap } from '../../../shared/config';
+import { Store, select } from '@ngrx/store';
+import { IAppState } from '../../../store/state/app.state';
+import { selectApiList } from '../../../store/selectors/api.selectors';
+import { GetApiList } from '../../../store/actions/api.actions';
+import { retry } from 'rxjs/operators';
 
 @Component({
   selector: 'app-api-form',
@@ -13,7 +18,9 @@ import { compliancyConfigMap } from '../../../shared/config';
 export class ApiFormComponent implements OnInit {
 
   constructor(private apiService: ApiService,
-    private activeRoute: ActivatedRoute) { }
+    private activeRoute: ActivatedRoute,
+    private store: Store<IAppState>
+  ) { }
 
 
   api: IApi;
@@ -162,15 +169,13 @@ export class ApiFormComponent implements OnInit {
    * @memberof ApiFormComponent
    */
   getApiAndPatchValues = (id: string): void => {
-    this.apiService.getApi(id)
-      .subscribe(
-        (response) => {
-          this.api = response;
+    this.store.pipe(select(selectApiList)).subscribe(
+      (response: IApi[]) => {
+          const apis: IApi[] = response;
+          const api = apis.find(item => item.id === id);
+          this.api = api;
           this.patchValuesApi();
-        },
-        (error) => {
-          console.log(error);
-        });
+      });
   }
 
   /**
@@ -187,7 +192,7 @@ export class ApiFormComponent implements OnInit {
     return compliantObject.map((id) => {
       return {
         id: id,
-        text:  compliancyConfigMap[id]
+        text: compliancyConfigMap[id]
       };
     }).sort((a, b) => {
       return a.text.charCodeAt(0) - b.text.charCodeAt(0);

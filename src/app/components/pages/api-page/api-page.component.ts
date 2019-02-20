@@ -9,6 +9,7 @@ import { IAppState } from 'src/app/store/state/app.state';
 import { IApiState } from '../../../store/state/api.state';
 import { selectApiList } from '../../../store/selectors/api.selectors';
 import { GetApiList } from '../../../store/actions/api.actions';
+import { retry } from 'rxjs/operators';
 
 /**
  * @export
@@ -140,13 +141,13 @@ export class ApiPageComponent implements OnInit {
    */
   requestAPIKey = (): void => {
     this.apiKeyService.createApiKey(this.api.id)
-    .subscribe(
-      (response) => {
+      .subscribe(
+        (response) => {
           this.getAPIKey();
-      },
-      (error) => {
-        console.log(error);
-      });
+        },
+        (error) => {
+          console.log(error);
+        });
   }
 
   /**
@@ -156,14 +157,14 @@ export class ApiPageComponent implements OnInit {
    */
   getAPIKey = (): void => {
     this.apiKeyService.readApiKey(this.api.id)
-    .subscribe(
-      (response: Response) => {
+      .subscribe(
+        (response: Response) => {
           this.apiKey = response['apiKey'];
           this.verified = response['verified'];
-    },
-     (error) => {
-      console.log(error);
-     });
+        },
+        (error) => {
+          console.log(error);
+        });
   }
 
   /**
@@ -188,16 +189,14 @@ export class ApiPageComponent implements OnInit {
    * @memberof ApiPageComponent
    */
   getApi = (id: string): void => {
-    this.store.pipe(select(selectApiList)).subscribe((response: IApi[]) => {
-      const apis: IApi[] = response;
-
-      const api = apis.find(item => item.id === id);
-
-      if (!api) {
+    this.store.pipe(select(selectApiList)).pipe(retry(2)).subscribe(
+      (response: IApi[]) => {
+        const apis: IApi[] = response;
+        const api = apis.find(item => item.id === id);
+        this.api = api;
+      },
+      (error) => {
         this.store.dispatch(new GetApiList());
-      }
-
-      this.api = api;
-    });
+      });
   }
 }
