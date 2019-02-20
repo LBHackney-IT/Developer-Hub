@@ -9,7 +9,7 @@
 
   <form class="form js-form" [formGroup]="apiForm" (ngSubmit)="submitForm()">
 
-    <h2 class="govuk-heading-m"> General Details </h2>
+    <h2 class="heading-medium"> General Details </h2>
 
 
     <div class="govuk-form-group">
@@ -60,7 +60,7 @@
     </div>
 
     <div class="govuk-form-group">
-      <h3 class="govuk-heading-m"> Is this application internally or externally facing? </h3>
+      <h3 class="heading-medium"> Is this application internally or externally facing? </h3>
 
       <div class="govuk-radios govuk-radios--inline">
         <div class="govuk-radios__item">
@@ -82,7 +82,7 @@
       </div>
     </div>
     <div class="govuk-form-group">
-      <h3 class="govuk-heading-m"> What stage is this application in? </h3>
+      <h3 class="heading-medium"> What stage is this application in? </h3>
       <div class="govuk-radios govuk-radios--inline">
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="stage_alpha" name="stage" type="radio" value="alpha" formControlName="stage">
@@ -112,7 +112,7 @@
     </div>
 
     <div formGroupName="compliant" class="govuk-form-group">
-      <h3 class="govuk-heading-m"> Compliancy </h3>
+      <h3 class="heading-medium"> Compliancy </h3>
 
       <div class="govuk-checkboxes__item" *ngFor="let compliancyObject of generateCompliancyObjects()">
         <input class="govuk-checkboxes__input" id="{{compliancyObject.id}}" name="{{compliancyObject.id}}" type="checkbox"
@@ -125,7 +125,7 @@
 
 
     <div class="govuk-form-group" formGroupName="staging">
-      <h3 class="govuk-heading-m"> Staging Environment</h3>
+      <h3 class="heading-medium"> Staging Environment</h3>
       <div class="govuk-form-group">
         <label class="govuk-label" for="url">
           Base Url
