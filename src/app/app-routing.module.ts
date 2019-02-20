@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: 'api/:id',  component: ApiPageComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   {path: 'api-guide',  component: ApiGuideComponent, pathMatch: 'full'},
   {path: 'api-checklist',  component: ApiChecklistComponent, pathMatch: 'full'},
-  {path: 'api-form/:id', component: ApiFormComponent, pathMatch: 'full'},
+  {path: 'api-form/:id', component: ApiFormComponent, pathMatch: 'full', canActivate: [AuthGuard, AdminGuard]},
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
   {path: 'register', component: RegisterComponent, pathMatch: 'full'},
   {path: 'forgot-password', component: ForgotPasswordComponent, pathMatch: 'full'},
