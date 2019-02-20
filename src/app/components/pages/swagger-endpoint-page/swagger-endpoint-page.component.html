@@ -1,19 +1,19 @@
 <app-column-layout [show]="apiEndpoint">
-  <h2 class="govuk-heading-l"> {{ apiEndpoint?.title }} </h2>
-  <p class="govuk-body-l">
+  <h2 class="heading-large"> {{ apiEndpoint?.title }} </h2>
+  <p class="paragraph-text">
     {{ path?.summary }}
   </p>
 
-  <h3 class="govuk-heading-m"> Endpoint </h3>
+  <h3 class="heading-medium"> Endpoint </h3>
   <div class="govuk-inset-text">
-    <strong class="govuk-tag">
+    <strong class="hackney-tag">
       {{ path?.requestType | uppercase }}
     </strong>
-    <span class="govuk-body">{{ path?.url }}</span>
+    <span class="paragraph-text">{{ path?.url }}</span>
   </div>
 
 
-  <h3 class="govuk-heading-m">Request Parameters</h3>
+  <h3 class="heading-medium">Request Parameters</h3>
 
   <table class="govuk-table">
     <thead class="govuk-table__head">
@@ -50,7 +50,7 @@
   </table>
 
 
-  <h3 class="govuk-heading-m">Example</h3>
+  <h3 class="heading-medium">Example</h3>
 
   <div class="govuk-inset-text">
       <span class="govuk-caption">
