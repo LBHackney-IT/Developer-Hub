@@ -44,24 +44,46 @@
 
 .footer {
     background-color: $hackney-black;
-    height: 15rem;
+    height: 20rem;
 
     &__items {
         display: flex;
         justify-content: space-between;
+
+        border-bottom: 1px solid transparent;
+
 
         &-link:link,
         &-link:visited {
             text-decoration: none;
             color: $hackney-white;
             font-size: 1.8rem;
+            padding: .3rem .5rem;
             
         }
 
         &-link:hover {
-            border-bottom: 1px solid $hackney-white;
+            background-color: $hackney-yellow;
+            color: $hackney-black;
         }
     }
 
 
+}
+
+@media (max-width: 780px) {
+    
+    .footer {
+        height: 30rem;
+    }
+    
+    .footer__items {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        & a {
+            margin: .8rem 0;
+        }
+    }
 }
