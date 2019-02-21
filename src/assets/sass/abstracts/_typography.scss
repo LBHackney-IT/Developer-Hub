@@ -33,3 +33,19 @@
     margin-bottom: $margin-bottom-heading;
 }
 
+@media screen and (max-width: 740px) {
+    
+    .heading-huge {
+        font-size: 4.5rem;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .heading-huge {
+        font-size: 3.8rem;
+    }
+
+    .heading-large {
+        font-size: 3rem;
+    }
+}
