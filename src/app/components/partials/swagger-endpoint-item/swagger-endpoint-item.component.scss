@@ -1,4 +1,75 @@
-@import '../../../../variables';
+@import '../../../../styles.scss';
+
+.documentation {
+
+  &__accordion {
+
+    &-container {
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 1rem;
+      margin-bottom: 2rem;
+      border: 1.5px solid $hackney-black;
+
+      transition: border .2s;
+
+      &:hover {
+        border: 3px solid $hackney-green;
+      }
+    }
+
+    &-container-title {
+
+    }
+
+    &-container-title {
+
+    }
+  }
+
+  &__apis {
+
+    &__api {
+
+      width: 85%;
+      margin: 0 auto;
+
+      display: flex;
+      justify-content: space-between;
+      
+      align-items: center;
+      padding: .5rem 1rem;
+
+      border-bottom: 1px solid $hackney-black;
+
+      &:not(:last-child) {
+        margin-bottom: 1.5rem;
+        
+      }
+
+      &:last-child {
+        margin-bottom: 3rem;
+      }
+
+      &-endpoint {
+
+        &-link {
+
+        }
+      }
+
+      &-request {
+
+      }
+
+    }
+
+  }
+}
+
 
 a {
     &:link,
@@ -7,49 +78,4 @@ a {
     }
   }
 
-  .post-request {
-    background-color: $swagger-method-post;
-  }
-
-  .delete-request {
-    background-color: $swagger-method-delete
-  }
-
-  .put-patch-request {
-    background-color: $swagger-method-put-patch
-  }
-
-  .get-request {
-    background-color: $swagger-method-get;
-  }
-
-  .align-right {
-    text-align: right;
-  }
-
-  .table-api {
-    width: 85%;
-    position: relative;
-    left: 5%;
-  }
-
-  .accordion {
-    border: 1px solid #DEE0E2;
-    margin: 5px 0;
-    position: relative;
-  }
-
-  .endpoint-api-column {
-    position: relative;
-  }
-
-  .api-panel {
-    position: relative;
-    top: 10px;
-  }
-
-  .api-title-link:hover, .api-panel:hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }
 
