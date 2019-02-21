@@ -78,3 +78,19 @@
     margin-bottom: 15px;
     color: $hackney-error;
 }
+
+.post-request {
+    background-color: $swagger-method-post;
+}
+
+.delete-request {
+    background-color: $swagger-method-delete
+}
+
+.put-patch-request {
+    background-color: $swagger-method-put-patch
+}
+
+.get-request {
+    background-color: $swagger-method-get;
+}
