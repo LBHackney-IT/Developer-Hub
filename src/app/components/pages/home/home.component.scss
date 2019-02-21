@@ -25,12 +25,19 @@
         }
     }
 
-    &-img-1 {
+    &-img-1, 
+    &-img-2 {
         width: 100%;
         height: auto;
         display: inline-block;
         margin-top: 2rem;
         margin-bottom: 4rem;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .content__body__heading__span {
+        display: block;
     }
 }
 
