@@ -11,9 +11,28 @@
           <li><a routerLink="/documentation">Documentation</a></li>
           <!-- <li><a routerLink="/api-checklist">API Checklist</a></li> -->
           <li><a routerLink="/api-guide">API Guide</a></li>
-          <li><a class="header__navbar-btn-login">
+          <li class="dropdown">
+            <a class="header__navbar-btn-login" (click)="dropDown = !dropDown;">
             {{ userName === null ? 'Sign In' : userName }} 
-          </a></li>
+          </a>
+            <ul class="dropdown__content" [ngClass]="{'dropdown__content--active': dropDown}">
+              <li><a class="dropdown__content__item" routerLink="/login">
+                Login
+              </a></li>
+              <li><a class="dropdown__content__item" routerLink="/register">
+                Register
+              </a></li>
+              <li><a class="dropdown__content__item" routerLink="/key-manager">
+                Token Manager
+              </a></li>
+              <li><a class="dropdown__content__item" routerLink="admin">
+                Admin
+              </a></li>
+              <li><a class="dropdown__content__item" routerLink="/logout">
+                Logout
+              </a></li>
+          </ul>
+        </li>
         </ul>
       </nav>
 
@@ -29,23 +48,7 @@
               </a>
           </div>
 
-            <div class="dropdown-content">
-                <a class="govuk-header__link paragraph-text-s" routerLink="/login">
-                  Login
-                </a>
-                <a class="govuk-header__link paragraph-text-s" routerLink="/register">
-                  Register
-                </a>
-                <a class="govuk-header__link paragraph-text-s" routerLink="/key-manager">
-                  Token Manager
-                </a>
-                <a class="govuk-header__link paragraph-text-s" routerLink="admin">
-                  Admin
-                </a>
-                <a class="govuk-header__link paragraph-text-s" routerLink="/logout">
-                  Logout
-                </a>
-            </div>
+          
           </div>  -->
     </div>
 </header>
