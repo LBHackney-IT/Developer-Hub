@@ -127,19 +127,71 @@
 
     &-list li a:hover,
     &-btn-login:hover {
-      border: 3px solid $hackney-lines-mid;
+      border: 3px solid $hackney-yellow;
       box-sizing: content-box;
     }
 
     &-list li:last-child {
-      flex: 0 0 30%;
+      flex-basis: 30%;
       text-align: right;
     }
   }
 }
-// @media (min-width: 520px) {
-//     .page__header__inner {
-//         display: flex;
-//         align-items: center;
-//     }
-// }
+
+///////////////////////////////////////////////
+//// DROPDOWN
+
+.dropdown {
+}
+
+.dropdown__content {
+  display: none;
+  list-style: none;
+  text-decoration: none;
+  text-align: right;
+}
+
+.dropdown__content--active {
+  display: flex;
+  flex-direction: column;
+  color: $hackney-white;
+  background: $hackney-black;
+  margin: 1rem 0;
+
+  &:not(:last-child) {
+    margin-bottom: 2.5rem;
+  }
+}
+
+
+.dropdown__content__item {
+  display: inline-block;
+  padding: .5 .7rem;
+}
+
+
+@media (max-width: 1100px) {
+  .header__navbar-list {
+
+    flex-wrap: wrap;
+
+    & li:last-child {
+      flex-basis: auto;
+      text-align: left;
+    }
+    
+  }
+}
+
+@media (max-width: 830px) {
+  .header__navbar-list {
+
+    flex-direction: column;
+
+   & li {
+    
+    margin: 1rem 0;
+   }
+    
+  }
+}
