@@ -48,18 +48,29 @@ export class HeaderComponent implements OnInit {
    * @memberof HeaderComponent
    */
   ngOnInit() {
+  }
+
+  getUsername = (): string => {
+    let user: IUser;
     this.authService.isUserLoggedIn().subscribe(
       (response) => {
         this.isAuthenticated = response;
       });
 
-    this.authService.isUserLoggedIn();
+      if (this.isAuthenticated) {
+        this.authService.getUserObject().subscribe(
+          (response) => {
+            user = response;
+          });
+      }
 
-    if (this.isAuthenticated) {
-      this.user = this.authService.getUserObject();
-    }
+      if (user) {
+        return user.name;
+      } else {
+        return 'username';
+      }
 
-    console.log('this.user', this.user);
+      // user ? return user.name : return 'username';
   }
 
 }
