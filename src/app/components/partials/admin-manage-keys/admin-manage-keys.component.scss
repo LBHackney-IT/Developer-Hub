@@ -1,0 +1,22 @@
+@import '../../../../styles.scss';
+
+.admin__box {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin__header {
+    display: flex;
+    justify-content: space-around;
+
+    padding: 2rem 0;
+}
+
+.admin__body {
+    display: flex;
+    flex-direction: column;
+
+    padding: 2rem 0;
+}
