@@ -16,11 +16,20 @@
   margin-bottom: 3rem;
 
   &__title {
+    
+  }
 
+  &__heading--link {
+    text-decoration: none;
   }
 
   &__compliancy {
     display: flex;
+
+    & p:first-child {
+      display: inline-block;
+      margin-right: .5rem;
+    }
   }
 }
 
