@@ -20,6 +20,7 @@ import { DocumentationComponent } from './components/pages/documentation/documen
 import { ApiFormComponent } from './components/partials/api-form/api-form.component';
 import { SwaggerEndpointPageComponent } from './components/pages/swagger-endpoint-page/swagger-endpoint-page.component';
 import { AdminGuard } from './guards/admin.guard';
+import { GuestGuard } from './guards/guest.guard';
 
 
 const routes: Routes = [
@@ -29,10 +30,10 @@ const routes: Routes = [
   {path: 'api-guide',  component: ApiGuideComponent, pathMatch: 'full'},
   {path: 'api-checklist',  component: ApiChecklistComponent, pathMatch: 'full'},
   {path: 'api-form/:id', component: ApiFormComponent, pathMatch: 'full', canActivate: [AuthGuard, AdminGuard]},
-  {path: 'login', component: LoginComponent, pathMatch: 'full'},
-  {path: 'register', component: RegisterComponent, pathMatch: 'full'},
-  {path: 'forgot-password', component: ForgotPasswordComponent, pathMatch: 'full'},
-  {path: 'confirm-registration', component: ConfirmRegistrationComponent, pathMatch: 'full'},
+  {path: 'login', component: LoginComponent, pathMatch: 'full', canActivate: [GuestGuard]},
+  {path: 'register', component: RegisterComponent, pathMatch: 'full', canActivate: [GuestGuard]},
+  {path: 'forgot-password', component: ForgotPasswordComponent, pathMatch: 'full', canActivate: [GuestGuard]},
+  {path: 'confirm-registration', component: ConfirmRegistrationComponent, pathMatch: 'full', canActivate: [GuestGuard]},
   {path: 'change-password', component: ChangePasswordComponent, pathMatch: 'full'},
   {path: 'confirmation/:type', component: ConfirmationComponent, pathMatch: 'full'},
   {path: 'key-manager', component: TokenManagerComponent, pathMatch: 'full', canActivate: [AuthGuard]},
