@@ -3,6 +3,10 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { AuthService } from './auth.service';
 import { map } from 'rxjs/operators';
+import { Store, select } from '@ngrx/store';
+import { IAppState } from '../store/state/app.state';
+import { selectUser } from '../store/selectors/user.selectors';
+import { IUser } from '../interfaces/IUser';
 
 /**
  * @export
@@ -20,22 +24,23 @@ export class ApiKeyService {
    */
   constructor(
     private authService: AuthService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private store: Store<IAppState>
   ) { }
 
   /**
    * @memberof ApiKeyService
    */
   createApiKey =  (apiId: string) => {
-    const cognitoUsername: string = this.authService.getCognitoUsername();
-
-    const email = this.authService.getUserAttribute('email');
-    localStorage.removeItem('email');
+    let user: IUser;
+    this.store.pipe(select(selectUser)).subscribe((response) => {
+      user = response;
+    });
 
     const payload = {
-      cognito_username: cognitoUsername,
+      cognito_username: user.cognitoUsername,
       api_id: apiId,
-      email: email
+      email: user.email
     };
     return this.httpClient.post(environment.apiURL.tokenService + 'api-key', payload);
   }

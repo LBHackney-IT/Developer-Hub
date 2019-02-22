@@ -1,5 +1,11 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
+import { selectIsAuthenticated } from '../../../store/selectors/user.selectors';
+import { Observable } from 'rxjs';
+import { IUser } from 'src/app/interfaces/IUser';
+import { Store } from '@ngrx/store';
+import { IAppState } from 'src/app/store/state/app.state';
+import { map } from 'rxjs/operators';
 
 
 /**
@@ -22,14 +28,18 @@ export class HeaderComponent implements OnInit {
    * @type {string}
    * @memberof HeaderComponent
    */
-  public userName: string = null;
+  public user: Observable<IUser> = null;
+
+
+  private isAuthenticated: boolean;
   /**
    *Creates an instance of HeaderComponent.
    * @param {AuthService} authService
    * @memberof HeaderComponent
    */
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private store: Store<IAppState>
   ) { }
 
   /**
@@ -38,22 +48,29 @@ export class HeaderComponent implements OnInit {
    * @memberof HeaderComponent
    */
   ngOnInit() {
-    if (this.isUserLoggedIn()) {
-      this.userName = this.authService.getUserAttribute('name');
-    }
-
-    console.log(this.userName);
   }
 
-  /**
-   *
-   *
-   * @memberof HeaderComponent
-   */
-  isUserLoggedIn = (): boolean => {
-    const response = this.authService.isUserLoggedIn();
-    console.log(response);
-    return response;
+  getUsername = (): string => {
+    let user: IUser;
+    this.authService.isUserLoggedIn().subscribe(
+      (response) => {
+        this.isAuthenticated = response;
+      });
+
+      if (this.isAuthenticated) {
+        this.authService.getUserObject().subscribe(
+          (response) => {
+            user = response;
+          });
+      }
+
+      if (user) {
+        return user.name;
+      } else {
+        return 'username';
+      }
+
+      // user ? return user.name : return 'username';
   }
 
 }
