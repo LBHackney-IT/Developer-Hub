@@ -10,7 +10,6 @@ import { SetUser, RemoveUser } from '../store/actions/user.actions';
 import { selectUser, selectIsAuthenticated } from '../store/selectors/user.selectors';
 import { Observable } from 'rxjs';
 import { withLatestFrom, switchMap } from 'rxjs/operators';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -152,9 +151,7 @@ export class AuthService {
     const cognitoUser = await this.getCurrentUser();
     this.removeUser();
     if (cognitoUser !== null) {
-
       cognitoUser.signOut();
-      // window.localStorage.clear();
     }
 
     this.router.navigateByUrl('/');
@@ -266,10 +263,6 @@ export class AuthService {
       const refreshToken = session.getRefreshToken();
       cognitoUser.refreshSession(refreshToken, (refreshSessionErr, result) => {
         const payload = result.getIdToken().payload;
-        // this.user = {};
-        // this.user.email = payload['email'];
-        // this.user.cognitoUsername = payload['cognito:username'];
-        // this.user.roles = payload['cognito:groups'];
       });
     });
   }

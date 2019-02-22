@@ -1,5 +1,5 @@
 import { initialApiState, IApiState } from '../state/api.state';
-import { EApiActions, ApiActions, GetApiList, GetApiListSuccess } from '../actions/api.actions';
+import { EApiActions, ApiActions } from '../actions/api.actions';
 
 export const apiReducer = (state = initialApiState, action: ApiActions): IApiState => {
     switch (action.type) {
