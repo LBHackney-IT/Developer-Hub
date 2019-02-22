@@ -48,8 +48,8 @@ export class LambdaInterceptor implements HttpInterceptor {
             const authReq = req.clone({
                 headers: req.headers
                 .set('Authorization', authToken)
-                .append('Access-Control-Allow-Origin', '*')
-                .append('Content-Type', 'application/json')
+                //.append('Access-Control-Allow-Origin', '*')
+                //.append('Content-Type', 'application/json')
             });
             // Get the auth token from the service.
             return next.handle(authReq);
