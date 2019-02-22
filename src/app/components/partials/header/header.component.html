@@ -21,19 +21,19 @@
           </div>
 
             <div class="dropdown-content">
-                <a class="govuk-header__link govuk-body-s" routerLink="/login">
+                <a class="govuk-header__link govuk-body-s" routerLink="/login" *ngIf='!isAuthenticated()'>
                   Login
                 </a>
-                <a class="govuk-header__link govuk-body-s" routerLink="/register">
+                <a class="govuk-header__link govuk-body-s" routerLink="/register" *ngIf='!isAuthenticated()'>
                   Register
                 </a>
-                <a class="govuk-header__link govuk-body-s" routerLink="/key-manager">
+                <a class="govuk-header__link govuk-body-s" routerLink="/key-manager" *ngIf='isAuthenticated()'>
                   Token Manager
                 </a>
-                <a class="govuk-header__link govuk-body-s" routerLink="admin">
+                <a class="govuk-header__link govuk-body-s" routerLink="admin" *ngIf='isAdmin()'>
                   Admin
                 </a>
-                <a class="govuk-header__link govuk-body-s" routerLink="/logout">
+                <a class="govuk-header__link govuk-body-s" routerLink="/logout" *ngIf='isAuthenticated()'>
                   Logout
                 </a>
             </div>

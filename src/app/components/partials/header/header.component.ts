@@ -28,10 +28,8 @@ export class HeaderComponent implements OnInit {
    * @type {string}
    * @memberof HeaderComponent
    */
-  public user: Observable<IUser> = null;
+  public user: IUser = null;
 
-
-  private isAuthenticated: boolean;
   /**
    *Creates an instance of HeaderComponent.
    * @param {AuthService} authService
@@ -51,26 +49,30 @@ export class HeaderComponent implements OnInit {
   }
 
   getUsername = (): string => {
-    let user: IUser;
-    this.authService.isUserLoggedIn().subscribe(
+    this.authService.getUserObject().subscribe(
       (response) => {
-        this.isAuthenticated = response;
+        this.user = response;
       });
+    // }
+    if (this.user) {
+      return this.user.name;
+    } else {
+      return 'username';
+    }
+  }
 
-      if (this.isAuthenticated) {
-        this.authService.getUserObject().subscribe(
-          (response) => {
-            user = response;
-          });
-      }
+  isAuthenticated = (): boolean => {
+    if (this.user) {
+      return this.user === null ? false : true;
+    }
+    return false;
+  }
 
-      if (user) {
-        return user.name;
-      } else {
-        return 'username';
-      }
-
-      // user ? return user.name : return 'username';
+  isAdmin = (): boolean => {
+    if (this.user) {
+      return this.user !== null && this.user.roles.includes('Admin') ? true : false;
+    }
+    return false;
   }
 
 }
