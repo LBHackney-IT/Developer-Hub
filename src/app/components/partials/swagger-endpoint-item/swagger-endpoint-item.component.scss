@@ -14,11 +14,6 @@
       margin-bottom: 2rem;
       border: 1.5px solid $hackney-black;
 
-      transition: border .2s;
-
-      &:hover {
-        border: 3px solid $hackney-green;
-      }
     }
 
     &-container-title {
@@ -32,6 +27,10 @@
 
   &__apis {
 
+    &__title {
+      color: inherit;
+    }
+    
     &__api {
 
       width: 85%;
@@ -57,12 +56,16 @@
       &-endpoint {
 
         &-link {
-
+          color: inherit;
         }
       }
 
       &-request {
 
+      }
+
+      &-panel {
+        color: inherit;
       }
 
     }

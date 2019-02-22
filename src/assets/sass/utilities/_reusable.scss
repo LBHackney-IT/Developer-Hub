@@ -11,6 +11,18 @@
     text-transform: uppercase;
 }
 
+.hackney-tag--status {
+    background-color: $swagger-method-get;
+}
+
+.hackney-tag--positive {
+    background-color: $hackney-green;
+}
+  
+.hackney-tag--negative {
+    background-color: $hackney-yellow;
+}
+
 .hackney-button {
     font-family: "nta", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
