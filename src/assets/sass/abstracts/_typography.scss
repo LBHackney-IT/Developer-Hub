@@ -33,6 +33,10 @@
     margin-bottom: $margin-bottom-heading;
 }
 
+.line-through {
+    text-decoration: line-through;
+  }
+
 @media screen and (max-width: 740px) {
     
     .heading-huge {
