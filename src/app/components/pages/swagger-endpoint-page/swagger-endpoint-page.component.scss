@@ -1,0 +1,56 @@
+@import "../../../../styles.scss";
+
+.endpoint__content {
+
+}
+
+.endpoint__header {
+
+}
+
+.endpoint__text {
+    margin: 2rem 0;
+}
+
+.endpoint__medium__header {
+
+}
+
+.endpoint__medium__tag {
+}
+
+.endpoint__medium__uri {
+    margin: 0 2rem;
+}
+
+.endpoint__medium__box {
+    display: flex;
+    margin: 4rem 0;
+}
+
+.endpoint__table__title {
+
+}
+
+.endpoint__table__box {
+    display: flex;
+    flex-direction: column;
+
+    margin: 3rem 0;
+}
+
+.endpoint__table__row {
+    display: flex;
+    align-items: center;
+
+    padding: 1.5rem 0;
+    border-bottom: 1px solid $hackney-black;
+}
+
+.endpoint___table__column {
+    flex: 0 0 25%;
+}
+
+.endpoint__table__header {
+    font-weight: 700;
+}
