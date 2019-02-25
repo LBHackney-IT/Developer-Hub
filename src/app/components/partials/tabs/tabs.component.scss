@@ -1,16 +1,20 @@
-.tabs {
+.nav__tabs {
     display: flex;
-    align-items: stretch; /* Default */
+    align-items: center; 
     justify-content: space-evenly;
     width: 100%;
     margin: 0;
-    padding: 10px 10px;
-    
-    li {
-        display: block;
-        flex: 0 1 auto; /* Default */
-        list-style-type: none;
-        cursor: pointer;
-    }
+    padding: 2rem 2rem;
+}
+
+.nav__tabs__list {
+    display: block;
+    flex: 0 1 auto; /* Default */
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.nav__tabs__list-item {
+
 }
 
