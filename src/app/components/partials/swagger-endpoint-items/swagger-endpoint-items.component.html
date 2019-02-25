@@ -1,5 +1,5 @@
 <div class="search-bar">
-        <input class="input" id="name" placeholder="search"
+        <input class="input" id="name" placeholder="Search APIs Endpoints"
         [(ngModel)]="queryString">
 </div>
 <app-swagger-endpoint-item *ngFor="let api of apiList | SearchPipe: queryString" [api]="api"></app-swagger-endpoint-item>
