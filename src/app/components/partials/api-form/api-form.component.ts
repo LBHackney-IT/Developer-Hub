@@ -36,42 +36,49 @@ export class ApiFormComponent implements OnInit {
       Validators.required
     ]),
     compliant: new FormGroup({
-      revision_control: new FormControl('', [
+      open_source: new FormControl('', [
         Validators.required
       ]),
-      dependency_management: new FormControl('', [
+      test_driven: new FormControl('', [
         Validators.required
       ]),
-      environment_config: new FormControl('', [
+      endpoint_documentation: new FormControl('', [
         Validators.required
       ]),
-      decoupled_services: new FormControl('', [
+      centralised_logging: new FormControl('', [
         Validators.required
       ]),
-      build_run_stage: new FormControl('', [
+      centralised_application_monitoring: new FormControl('', [
         Validators.required
       ]),
-      stateless_process: new FormControl('', [
+      centralised_exception_monitoring: new FormControl('', [
         Validators.required
       ]),
-      export_services: new FormControl('', [
+      authentication: new FormControl('', [
         Validators.required
       ]),
-      scalable_process: new FormControl('', [
+      deployment_pipeline: new FormControl('', [
         Validators.required
       ]),
-      rapid_start_shutdown: new FormControl('', [
+      automated_tests: new FormControl('', [
         Validators.required
       ]),
-      maintain_consistency_between_stages: new FormControl('', [
+      twelve_factor_conformant: new FormControl('', [
         Validators.required
       ]),
-      logging: new FormControl('', [
+      cloud_hosted: new FormControl('', [
         Validators.required
       ]),
-      admin_management_process: new FormControl('', [
+      automated_linting: new FormControl('', [
         Validators.required
-      ])
+      ]),
+      automated_vulnerabilty_testing: new FormControl('', [
+        Validators.required
+      ]),
+      documentation: new FormControl('', [
+        Validators.required
+      ]),
+
     }),
     internal: new FormControl(null, [
       Validators.required
