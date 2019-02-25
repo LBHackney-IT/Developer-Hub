@@ -1,7 +1,7 @@
 <div class="govuk-width-container">
-        <div (click)="remove()" *ngIf="message"  class="govuk-panel govuk-panel--positive govuk-panel--confirmation">
-                <div class="govuk-panel__body">
-                    <br><strong>{{message.text}}</strong>        
-                </div>    
-            </div>
+  <div (click)="remove()" *ngIf="message" class="govuk-panel govuk-panel--{{ message.type=='success' ? 'positive': 'negative'}}">
+    <div class="govuk-panel__body">
+      <br><strong>{{message.text}}</strong>
+    </div>
+  </div>
 </div>

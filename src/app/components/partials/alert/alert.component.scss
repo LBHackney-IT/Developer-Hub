@@ -1,11 +1,14 @@
 @import '../../../../variables';
 
 .govuk-panel {
+  padding: 15px;
+  align-content: center;
     &--positive {
-      background: $hackney-green;
+      border: 5px solid  $hackney-green;
     }
   
     &--negative {
-      background: orange;
+      // background: red;
+      border: 5px solid red;
     }  
 }
