@@ -14,7 +14,6 @@ import { SwaggerEndpointService } from '../../../services/swagger-endpoint.servi
   styleUrls: ['./swagger-endpoint-items.component.scss']
 })
 export class SwaggerEndpointItemsComponent implements OnInit {
-  apiList: object[] = swaggerJson;
   swaggerEndpoints: ISwagger[];
 
   constructor(
@@ -25,12 +24,9 @@ export class SwaggerEndpointItemsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.apiList = this.apiDataParserService.parse(swaggerJson);
-
     this.getSwaggerEndpointList();
     this.store.pipe(select(selectSwaggerEndpoints)).subscribe((response) => {
-      // this.swaggerEndpoints = response;
-      console.log('store', response);
+      console.log(response);
     });
   }
 
@@ -38,7 +34,6 @@ export class SwaggerEndpointItemsComponent implements OnInit {
     this.store.dispatch(new GetSwaggerEndpointList());
     this.swaggerEndpointService.getListOfSwaggerEndpoints().subscribe((response: ISwagger[]) => {
       this.swaggerEndpoints = response;
-      console.log(this.swaggerEndpoints);
     });
   }
 
