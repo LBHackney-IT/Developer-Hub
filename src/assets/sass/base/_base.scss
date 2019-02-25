@@ -29,6 +29,11 @@ body {
     background-color: $hackney-background;
 }
 
+a:link,
+a:visited {
+    text-decoration: none;
+}
+
 @media screen and (max-width: 740px) {
     html {
         font-size: 52%;
