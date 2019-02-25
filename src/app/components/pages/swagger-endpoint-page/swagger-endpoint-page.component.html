@@ -15,7 +15,7 @@
 
   <h3 class="govuk-heading-m">Request Parameters</h3>
 
-  <table class="govuk-table">
+  <table class="govuk-table" *ngIf="path">
     <thead class="govuk-table__head">
       <tr class="govuk-table__row">
         <th class="govuk-table__header" scope="col">Parameters</th>
@@ -54,7 +54,7 @@
 
   <div class="govuk-inset-text">
       <span class="govuk-caption">
-          curl -X {{ path?.requestType | uppercase }}  "https://example.com/ {{ path?.url }} -H "Authorization: Bearer"
+          curl -X {{ path?.requestType | uppercase }}  "https://example.com{{ path?.url }} -H "Authorization: Bearer"
       </span>
     </div>
 

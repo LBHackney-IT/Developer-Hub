@@ -29,15 +29,16 @@ export class SwaggerEndpointItemsComponent implements OnInit {
 
     this.getSwaggerEndpointList();
     this.store.pipe(select(selectSwaggerEndpoints)).subscribe((response) => {
-      this.swaggerEndpoints = response;
-      console.log(this.swaggerEndpoints);
+      // this.swaggerEndpoints = response;
+      console.log('store', response);
     });
   }
 
   getSwaggerEndpointList = () => {
     this.store.dispatch(new GetSwaggerEndpointList());
     this.swaggerEndpointService.getListOfSwaggerEndpoints().subscribe((response: ISwagger[]) => {
-      console.log(response);
+      this.swaggerEndpoints = response;
+      console.log(this.swaggerEndpoints);
     });
   }
 
