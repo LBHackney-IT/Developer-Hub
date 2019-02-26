@@ -33,7 +33,6 @@ export class ApiListComponent implements OnInit {
    * @memberof ApiListComponent
    */
   constructor(
-    private apiService: ApiService,
     private store: Store<IAppState>
   ) { }
 
