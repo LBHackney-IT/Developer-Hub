@@ -84,3 +84,18 @@ a {
   }
 
 
+@media screen and (max-width: 720px) {
+  .documentation__apis__api {
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    &-endpoint {
+      order: 2;
+    }
+
+    &-request {
+      order: 1;
+    }
+  }
+}
