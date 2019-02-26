@@ -41,6 +41,15 @@
     margin-bottom: $margin-bottom-heading;
 }
 
+.hackney-link:visited {
+    color: #4c2c92;
+}
+.hackney-link:link {
+    text-decoration: underline;
+    color: #005ea5;
+    font-family: "nta",Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
 .line-through {
     text-decoration: line-through;
   }

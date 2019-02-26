@@ -9,7 +9,19 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  public userName: string = null;
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof HeaderComponent
+   */
+  public user: IUser = null;
+
+  /**
+   *Creates an instance of HeaderComponent.
+   * @param {AuthService} authService
+   * @memberof HeaderComponent
+   */
   private dropDown: boolean = false;
   
   constructor(

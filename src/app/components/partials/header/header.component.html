@@ -13,42 +13,25 @@
           <li><a routerLink="/api-guide">API Guide</a></li>
           <li class="dropdown">
             <a class="header__navbar-btn-login" (click)="dropDown = !dropDown;">
-            {{ userName === null ? 'Sign In' : userName }} 
+              {{ getUsername() }} <span class="dropdown__arrow" [ngClass]="{'dropdown__arrow--rotate': dropDown }">»</span>
           </a>
             <ul class="dropdown__content" [ngClass]="{'dropdown__content--active': dropDown}">
-              <li><a class="dropdown__content__item" routerLink="/login">
+              <li><a class="dropdown__content__item" routerLink="/login" *ngIf='!isAuthenticated()'>
                 Login
               </a></li>
-              <li><a class="dropdown__content__item" routerLink="/register">
+              <li><a class="dropdown__content__item" routerLink="/register" *ngIf='!isAuthenticated()'>
                 Register
               </a></li>
-              <li><a class="dropdown__content__item" routerLink="/key-manager">
+              <li><a class="dropdown__content__item" routerLink="/key-manager" *ngIf='isAuthenticated()'>
                 Token Manager
               </a></li>
-              <li><a class="dropdown__content__item" routerLink="admin">
+              <li><a class="dropdown__content__item" routerLink="admin" *ngIf='isAdmin()'>
                 Admin
               </a></li>
-              <li><a class="dropdown__content__item" routerLink="/logout">
+              <li><a class="dropdown__content__item" routerLink="/logout" *ngIf='isAuthenticated()'>
                 Logout
               </a></li>
           </ul>
         </li>
         </ul>
       </nav>
-
-      
-
-        <!-- The Add Note form. -->
-        <!-- <div class="dropdown">
-        
-          <div class="page__header__column page__header__column--title">
-              <a class="govuk-header__link govuk-header__link--service-name ">
-                {{ userName === null ? 'Sign In' : userName }}
-                <i class="fa fa-caret-down"></i>  
-              </a>
-          </div>
-
-          
-          </div>  -->
-    </div>
-</header>

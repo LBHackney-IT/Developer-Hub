@@ -1,52 +1,6 @@
 @import "../../../../assets/sass/abstracts/variables";
 
 @import "../../../../assets/sass/utilities/hackney-stripes";
-// @import "utilities/hackney-stripes.scss";
-
-/* The dropdown container */
-// .dropdown {
-//     overflow: hidden;
-//   }
-
-// //   /* Dropdown button */
-// //   .dropdown .dropbtn {
-// //     border: none;
-// //     outline: none;
-// //     color: white;
-// //     padding: 14px 16px;
-// //     background-color: inherit;
-// //     font-family: inherit; /* Important for vertical align on mobile phones */
-// //     margin: 0; /* Important for vertical align on mobile phones */
-// //   }
-//   .dropdown-content {
-//     position: absolute;
-//     background-color: #f9f9f9;
-//     min-width: 160px;
-//     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-//     z-index: 1;
-//     float: right;
-//   }
-
-//   /* Links inside the dropdown */
-//   .dropdown-content a {
-//     float: none;
-//     color: black;
-//     padding: 12px 8px;
-//     text-decoration: none;
-//     display: block;
-//     text-align: left;
-//   }
-
-//   /* Add a grey background color to dropdown links on hover */
-//   .dropdown-content a:hover {
-//     background-color: #ddd;
-//   }
-
-//   /* Show the dropdown menu on hover */
-//   .dropdown:hover .dropdown-content {
-//     display: block;
-//   }
-
 .container {
   display: flex;
   flex-direction: column;
@@ -74,16 +28,6 @@
     height: 4.5rem;
     width: auto;
   }
-
-  // &__sidenavbar {
-  // }
-
-  // &__column--id {
-  //   display: flex;
-  //   flex-wrap: nowrap;
-  //   align-items: center;
-  //   justify-content: space-between;
-  // }
 
   //////////////////////////////////////
   // NAVBAR
@@ -169,6 +113,17 @@
   padding: .5 .7rem;
 }
 
+.dropdown__arrow {
+  display: inline-block;
+  transition: all .2s;
+  font-size: 2.2rem;
+  margin-left: 1rem;
+}
+
+.dropdown__arrow--rotate {
+  transform: rotate(90deg);
+}
+
 
 @media (max-width: 1100px) {
   .header__navbar-list {
@@ -193,5 +148,9 @@
     margin: 1rem 0;
    }
     
+  }
+
+  .dropdown__content--active {
+    align-items: flex-start;
   }
 }
