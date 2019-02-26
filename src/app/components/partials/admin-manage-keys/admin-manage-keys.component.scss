@@ -20,3 +20,32 @@
 
     padding: 2rem 0;
 }
+
+.admin__row {
+    display: flex;
+    flex-direction: column;
+
+    &__button {
+        display: inline-block;
+        
+    }
+
+    &__email {
+        display: inline-block;
+        flex-basis: 50%;
+    }
+
+    &__api-id {
+        display: inline-block;
+        margin-right: auto;
+        flex-basis: 35%;
+    }
+}
+
+.admin__row__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid $hackney-black;
+}
