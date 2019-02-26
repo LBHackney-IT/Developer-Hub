@@ -1,0 +1,48 @@
+@import '../../../../styles.scss';
+
+.apiform_container {
+    padding: 5rem 3rem;
+}
+
+.apiform__api {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.apiform__api__form {
+    
+}
+
+.apiform__api__form--fromgroup {
+
+}
+
+.apiform__api__label {
+ 
+}
+
+.apiform__api__form__radios {
+    position: relative;
+    font-family: "nta",Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.25;
+    display: block;
+    position: relative;
+    min-height: 40px;
+    margin-bottom: 10px;
+    padding: 0 0 0 40px;
+
+    margin-right: 20px;
+    float: left;
+    clear: none;
+}
+
+.main-heading {
+    border-bottom: 1px solid $hackney-black;
+
+    display: inline-block;
+}
