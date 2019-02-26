@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: 'api-guide',  component: ApiGuideComponent, pathMatch: 'full'},
   {path: 'api-checklist',  component: ApiChecklistComponent, pathMatch: 'full'},
   {path: 'api-form/:id', component: ApiFormComponent, pathMatch: 'full'},
-  {path: 'login', component: LoginComponent, pathMatch: 'full'},
+  {path: 'login', component: LoginComponent, pathMatch: 'full' },
   {path: 'register', component: RegisterComponent, pathMatch: 'full'},
   {path: 'forgot-password', component: ForgotPasswordComponent, pathMatch: 'full'},
   {path: 'confirm-registration', component: ConfirmRegistrationComponent, pathMatch: 'full'},
