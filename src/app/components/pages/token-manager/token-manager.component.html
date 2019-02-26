@@ -1,23 +1,16 @@
-<app-column-layout [show]="true">
-    <h2 class="heading-large">Key Manager</h2>
-                
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th class="govuk-table__header" scope="col">API</th>
-          <th class="govuk-table__header" scope="col">API-Key</th>
-    
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
-        
-        <tr class="govuk-table__row" *ngFor="let key of apiKeys">
-          <th class="govuk-table__header" scope="row">{{key.api.title}}</th>
-          <td class="govuk-table__cell">
-            <app-click-reveal *ngIf="key.apiKey" [apiKey]="key.apiKey"></app-click-reveal>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-</app-column-layout>
-
+<div class="keymanager__container">
+  <div class="keymanager__header">
+    <h4 class="heading-medium keymanager__header__title">API</h4>
+    <h4 class="h4 heading-medium keymanager__header__header__title-key">API Key</h4>
+  </div>
+  <div class="keymanager__body">
+    <div class="keymanager__body__row" *ngFor="let key of apiKeys">
+      <div class="keymanager__body__row__title">
+        <p class="paragraph-text">{{key.api.title}}</p>
+      </div>
+      <div class="keymanager__body__row__key">
+          <app-click-reveal *ngIf="key.apiKey" [apiKey]="key.apiKey"></app-click-reveal>
+      </div>
+    </div>
+  </div>
+</div>
