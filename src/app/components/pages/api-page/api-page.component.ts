@@ -4,6 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 import { IApi } from '../../../interfaces/IApi';
 import { ApiKeyService } from '../../../services/apiKey.service';
 import { compliancyConfigMap } from '../../../shared/config';
+import { select, Store } from '@ngrx/store';
+import { IAppState } from 'src/app/store/state/app.state';
+import { IApiState } from '../../../store/state/api.state';
+import { selectApiList } from '../../../store/selectors/api.selectors';
+import { GetApiList } from '../../../store/actions/api.actions';
+import { retry } from 'rxjs/operators';
 
 /**
  * @export
@@ -44,7 +50,8 @@ export class ApiPageComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
-    private apiKeyService: ApiKeyService
+    private apiKeyService: ApiKeyService,
+    private store: Store<IAppState>
   ) { }
 
   /**
@@ -134,13 +141,13 @@ export class ApiPageComponent implements OnInit {
    */
   requestAPIKey = (): void => {
     this.apiKeyService.createApiKey(this.api.id)
-    .subscribe(
-      (response) => {
+      .subscribe(
+        (response) => {
           this.getAPIKey();
-      },
-      (error) => {
-        console.log(error);
-      });
+        },
+        (error) => {
+          console.log(error);
+        });
   }
 
   /**
@@ -150,14 +157,14 @@ export class ApiPageComponent implements OnInit {
    */
   getAPIKey = (): void => {
     this.apiKeyService.readApiKey(this.api.id)
-    .subscribe(
-      (response: Response) => {
+      .subscribe(
+        (response: Response) => {
           this.apiKey = response['apiKey'];
           this.verified = response['verified'];
-    },
-     (error) => {
-      console.log(error);
-     });
+        },
+        (error) => {
+          console.log(error);
+        });
   }
 
   /**
@@ -182,15 +189,14 @@ export class ApiPageComponent implements OnInit {
    * @memberof ApiPageComponent
    */
   getApi = (id: string): void => {
-    this.apiService.getApi(id)
-    .subscribe(
-      (response) => {
-        this.api = response;
-        this.generateCompliancyText();
-        this.getAPIKey();
+    this.store.pipe(select(selectApiList)).pipe(retry(2)).subscribe(
+      (response: IApi[]) => {
+        const apis: IApi[] = response;
+        const api = apis.find(item => item.id === id);
+        this.api = api;
       },
       (error) => {
-        console.log(error);
+        this.store.dispatch(new GetApiList());
       });
   }
 }

@@ -4,7 +4,12 @@ import { CognitoUser, AuthenticationDetails, CognitoUserPool, CognitoUserAttribu
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from './alert.service';
 import { IUser } from '../interfaces/IUser';
-
+import { Store, select } from '@ngrx/store';
+import { IAppState } from '../store/state/app.state';
+import { SetUser, RemoveUser } from '../store/actions/user.actions';
+import { selectUser, selectIsAuthenticated } from '../store/selectors/user.selectors';
+import { Observable } from 'rxjs';
+import { withLatestFrom, switchMap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -28,7 +33,8 @@ export class AuthService {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private alertService: AlertService) { }
+    private alertService: AlertService,
+    private store: Store<IAppState>) { }
 
   /**
    *
@@ -62,11 +68,22 @@ export class AuthService {
    *
    * @memberof AuthService
    */
-  setUser = (email: string, cognitoUsername: string, roles: string[]) => {
-    this.user.email = email;
-    this.user.cognitoUsername = cognitoUsername;
-    this.user.roles = roles;
+  setUser = (payload: object) => {
+    const user: IUser = {
+      email: payload['email'],
+      roles: payload['cognito:groups'],
+      cognitoUsername: payload['cognito:username'],
+      name: payload['name'],
+      surname: payload['cognito:surname'],
+    };
+    this.store.dispatch(new SetUser(user));
   }
+
+  getUserObject = () => {
+    return this.store.pipe(select(selectUser));
+  }
+
+  removeUser = () => this.store.dispatch(new RemoveUser());
 
   /**
    *
@@ -109,12 +126,7 @@ export class AuthService {
       cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: (result) => {
           const payload = result.getIdToken().payload;
-          this.user = {};
-          this.user.email = payload['email'];
-          this.user.cognitoUsername = payload['cognito:username'];
-          this.user.roles = payload['cognito:groups'];
-          this.user.name = payload['name'];
-          this.user.surname = payload['cognito:surname'];
+          this.setUser(payload);
           alertService.success('Successful Login');
           router.navigateByUrl('api-list');
         },
@@ -135,13 +147,11 @@ export class AuthService {
    *
    * @memberof AuthService
    */
-  logout = () => {
-    const cognitoUser = this.getCurrentUser();
+  logout = async () => {
+    const cognitoUser = await this.getCurrentUser();
+    this.removeUser();
     if (cognitoUser !== null) {
       cognitoUser.signOut();
-      // window.localStorage.clear();
-      this.user = null;
-      console.log(this.user);
     }
 
     this.router.navigateByUrl('/');
@@ -187,9 +197,6 @@ export class AuthService {
           alertService.error(err.message);
           throw new Error(err.message);
         }
-        const cognitoUser = result.user;
-
-        console.log('user name is ' + cognitoUser.getUsername());
         alertService.success('Please check your email');
         router.navigateByUrl('/confirmation/registration');
       });
@@ -247,12 +254,8 @@ export class AuthService {
     return userPool.getCurrentUser();
   }
 
-  isUserLoggedIn = (): boolean => {
-    if (this.user !== null) {
-      return true;
-    }
-
-    return false;
+  isUserLoggedIn = (): Observable<boolean> => {
+    return this.store.pipe(select(selectIsAuthenticated));
   }
 
   refreshSession = (cognitoUser: CognitoUser) => {
@@ -260,10 +263,6 @@ export class AuthService {
       const refreshToken = session.getRefreshToken();
       cognitoUser.refreshSession(refreshToken, (refreshSessionErr, result) => {
         const payload = result.getIdToken().payload;
-        // this.user = {};
-        // this.user.email = payload['email'];
-        // this.user.cognitoUsername = payload['cognito:username'];
-        // this.user.roles = payload['cognito:groups'];
       });
     });
   }
@@ -340,7 +339,13 @@ export class AuthService {
 
 
   getUserAttribute = (attribute: string) => {
-    return this.user[attribute];
+    let user: IUser;
+    this.store.pipe(select(selectUser)).subscribe(
+      (response) => {
+        user = response;
+      });
+
+    return user[attribute];
   }
 
 }

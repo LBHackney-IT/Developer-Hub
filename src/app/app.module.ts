@@ -43,9 +43,15 @@ import { SwaggerEndpointPathComponent } from './components/partials/swagger-endp
 import { AdminApiListComponent } from './components/pages/admin-api-list/admin-api-list.component';
 import { ApiItemEditComponent } from './components/partials/api-item-edit/api-item-edit.component';
 import { SwaggerEndpointPageComponent } from './components/pages/swagger-endpoint-page/swagger-endpoint-page.component';
-import { ApiDataParser } from './services/apiDataParser.service'
-import { SearchPipe } from './components/partials/swagger-endpoint-items/pipe'
+import { ApiDataParser } from './services/apiDataParser.service';
+import { SearchPipe } from './components/partials/swagger-endpoint-items/pipe';
 import { ApiSearch } from './services/apiSearch.service';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from './store/state/app.state';
+import { EffectsModule } from '@ngrx/effects';
+import { ApiEffects } from './store/effects/api.effects';
+import { environment } from '../environments/environment';
+import {StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -92,7 +98,10 @@ import { ApiSearch } from './services/apiSearch.service';
     ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot([ApiEffects]),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [
     ApiKeyService,

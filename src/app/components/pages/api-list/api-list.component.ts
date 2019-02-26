@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { IApi } from 'src/app/interfaces/IApi';
 import { ApiService } from '../../../services/api.service';
+import { Store, select } from '@ngrx/store';
+import { IAppState } from '../../../store/state/app.state';
+import { selectApiList } from '../../../store/selectors/api.selectors';
+import { GetApiList } from 'src/app/store/actions/api.actions';
+import { Observable } from 'rxjs';
 
 /**
  *
@@ -19,6 +24,7 @@ export class ApiListComponent implements OnInit {
    * @type {IApi[]}
    * @memberof ApiListComponent
    */
+  // apis: Observable<IApi[]>;
   apis: IApi[];
 
   /**
@@ -27,7 +33,7 @@ export class ApiListComponent implements OnInit {
    * @memberof ApiListComponent
    */
   constructor(
-    private apiService: ApiService
+    private store: Store<IAppState>
   ) { }
 
   /**
@@ -36,6 +42,9 @@ export class ApiListComponent implements OnInit {
    */
   ngOnInit() {
     this.getListOfApis();
+    this.store.pipe(select(selectApiList)).subscribe((response) => {
+      this.apis = response;
+    });
   }
 
   /**
@@ -44,14 +53,7 @@ export class ApiListComponent implements OnInit {
    * @memberof ApiListComponent
    */
   getListOfApis = () => {
-    this.apiService.getListOfApis()
-    .subscribe(
-      (response) => {
-        this.apis = response;
-      },
-      (error) => {
-        console.log(error);
-      });
+    this.store.dispatch(new GetApiList());
   }
 
 }
