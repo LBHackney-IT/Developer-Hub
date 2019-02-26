@@ -18,24 +18,24 @@ export class HeaderComponent implements OnInit {
   /**
    *
    *
-   * @type {string}
-   * @memberof HeaderComponent
+   * type {string}
+   * memberof HeaderComponent
    */
   public user: IUser = null;
 
   /**
    *Creates an instance of HeaderComponent.
-   * @param {AuthService} authService
-   * @memberof HeaderComponent
+   * param {AuthService} authService
+   * memberof HeaderComponent
    */
-  private dropDown: boolean = false;
-  
+  private dropDown = false;
+
   constructor(
     private authService: AuthService,
     private store: Store<IAppState>
   ) { }
 
-  
+
   ngOnInit() {
   }
 
