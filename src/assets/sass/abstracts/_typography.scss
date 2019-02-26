@@ -33,6 +33,14 @@
     margin-bottom: $margin-bottom-heading;
 }
 
+.heading-small {
+    color: $hackney-black;
+    font-size: 2rem;
+    font-family: $font-family;
+    font-weight: 700;
+    margin-bottom: $margin-bottom-heading;
+}
+
 .line-through {
     text-decoration: line-through;
   }

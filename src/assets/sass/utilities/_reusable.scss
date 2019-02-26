@@ -113,3 +113,85 @@
 .get-request {
     background-color: $swagger-method-get;
 }
+
+//// Create reusable link style component
+.link {
+    
+}
+
+//// FORMS
+
+.form-group--error {
+    padding-left: 1.5rem;
+    border-left: 5px solid #b10e1e;
+}
+
+.textarea {
+    display: block;
+    box-sizing: border-box;
+    font-family: "nta", Arial, sans-serif;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 16px;
+    line-height: 1.25;
+    width: 100%;
+    padding: 5px 4px 4px;
+    border: 2px solid #0b0c0c;
+}
+
+.textarea--error {
+    border: 4px solid #b10e1e;
+}
+
+.radio__button {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 4rem;
+    height: 4rem;
+    cursor: pointer;
+    margin: 0;
+    opacity: 0;
+}
+
+.radio__label {
+    content: "";
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    background: transparent;
+
+    &::before {
+        content: "";
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 40px;
+        border: 2px solid currentColor;
+        border-radius: 50%;
+        background: transparent;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 0;
+        height: 0;
+        border: 10px solid currentColor;
+        border-radius: 50%;
+        opacity: 0;
+        background: currentColor;
+    }
+}
