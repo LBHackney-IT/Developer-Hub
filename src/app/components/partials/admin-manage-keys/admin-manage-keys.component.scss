@@ -9,9 +9,13 @@
 
 .admin__header {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
 
     padding: 2rem 0;
+
+    &__item {
+        flex-basis: 50%;
+    }
 }
 
 .admin__body {
