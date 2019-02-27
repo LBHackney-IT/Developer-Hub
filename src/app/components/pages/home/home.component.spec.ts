@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeComponent } from './home.component';
+import { HomeComponent, MockHomeComponent } from './home.component';
+import { MockColumnLayoutComponent } from '../../partials/column-layout/column-layout.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -8,7 +9,11 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      declarations: [
+        HomeComponent,
+        MockHomeComponent,
+        MockColumnLayoutComponent
+       ]
     })
     .compileComponents();
   }));
