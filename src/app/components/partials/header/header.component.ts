@@ -8,13 +8,6 @@ import { IAppState } from 'src/app/store/state/app.state';
 import { map } from 'rxjs/operators';
 
 
-/**
- *
- *
- * @export
- * @class HeaderComponent
- * @implements {OnInit}
- */
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -25,26 +18,24 @@ export class HeaderComponent implements OnInit {
   /**
    *
    *
-   * @type {string}
-   * @memberof HeaderComponent
+   * type {string}
+   * memberof HeaderComponent
    */
   public user: IUser = null;
 
   /**
    *Creates an instance of HeaderComponent.
-   * @param {AuthService} authService
-   * @memberof HeaderComponent
+   * param {AuthService} authService
+   * memberof HeaderComponent
    */
+  private dropDown = false;
+
   constructor(
     private authService: AuthService,
     private store: Store<IAppState>
   ) { }
 
-  /**
-   *
-   *
-   * @memberof HeaderComponent
-   */
+
   ngOnInit() {
   }
 
@@ -57,7 +48,7 @@ export class HeaderComponent implements OnInit {
     if (this.user) {
       return this.user.name;
     } else {
-      return 'username';
+      return 'sign in';
     }
   }
 

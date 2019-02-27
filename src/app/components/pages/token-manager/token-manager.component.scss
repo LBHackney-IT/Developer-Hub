@@ -1,0 +1,48 @@
+.main__header {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.keymanager__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.keymanager__header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.keymanager__header__title {
+    display: inline-block;
+}
+
+.keymanager__header__title-key {
+    display: inline-block;
+}
+
+.keymanager__body {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+}
+
+.keymanager__body__row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.keymanager__body__row__title {
+    font-weight: 700;
+    flex-basis: 50%;
+    text-align: center;
+}
+
+.keymanager__body__row__key {
+    font-weight: 700;
+    flex-basis: 50%;
+    text-align: center;
+}
