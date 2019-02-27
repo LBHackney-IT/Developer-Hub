@@ -51,3 +51,31 @@
 
     border-bottom: 1px solid $hackney-black;
 }
+
+@media screen and (max-width: 640px) {
+    .admin__box {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .admin__row__item {
+        flex-direction: column;
+    }
+
+    .admin__row__item {
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .hackney-button {
+        margin: 0;
+    }
+    
+    .admin__header {
+        display: none;
+    }
+
+    .admin__row__button {
+        margin-bottom: 1rem;
+    }
+}
