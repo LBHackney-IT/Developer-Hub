@@ -42,7 +42,6 @@ export class AlertComponent implements OnInit, OnDestroy {
    */
   remove = () => {
     this.message = null;
-    this.subscription.unsubscribe();
   }
 
   /**
