@@ -3,26 +3,29 @@
 .nav__tabs {
     display: flex;
     align-items: center; 
-    justify-content: space-evenly;
+    justify-content: flex-start;
     width: 100%;
     margin: 0;
     padding: 2rem 2rem;
 }
 
 .nav__tabs__list {
-    display: block;
-    flex: 0 1 auto; /* Default */
+    
+    flex-basis: 50% ;
     list-style-type: none;
     cursor: pointer;
 
 }
 
 .nav__tabs__list-item {
-    border-bottom: 1px solid transparent;
+    display: inline-block;
+    border-bottom: 3px solid transparent;
+    padding-bottom: 3px;
 
     &:hover {
-        border-bottom: 1px solid $hackney-black;
+        border-bottom: 3px solid $hackney-green;
         color: $hackney-green;
     }
 }
+
 
