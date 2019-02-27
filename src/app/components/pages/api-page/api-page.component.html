@@ -1,4 +1,5 @@
 <app-column-layout [show]="api"> 
+  
   <div class="api__content">
     <div class="api__table">
       <div class="api__table__header">
@@ -102,117 +103,6 @@
             </div>
     </div>
   </div>
+
+  <a routerLink="/documentation" class="hackney-button api-page__button">← Return to API Endpoints</a>
 </app-column-layout>
-
-
-<!-- <app-column-layout [show]="api"> 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-three-quarters">
-        <h1 class="heading-huge">{{ api?.title }}</h1>
-      </div>
-      <div class="govuk-grid-column-one-quarter">
-          <span class="hackney-tag"> {{ api?.internal ? 'Internal' : 'External'}} </span>
-          <span class="hackney-tag hackney-tag"> {{ api?.stage }} </span>
-        </div>
-    </div>
-    
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-        <table class="govuk-table" >
-          <tbody class="govuk-table__body">
-    
-            
-            <tr class="govuk-table__row" *ngIf="isDeployed('staging')">
-              <th class="govuk-table__header" scope="row">Staging Base URL</th>
-              <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state">{{ api?.staging.url }}</a></td>
-            </tr>
-    
-            <tr class="govuk-table__row" *ngIf="isDeployed('staging')">
-                <th class="govuk-table__header" scope="row">Available in Staging</th>
-                <td class="govuk-table__cell">
-                  <h1 class="hackney-tag hackney-tag--{{isDeployed('staging') ? 'positive' : 'negative' }}"> {{isDeployed('staging') ? 'Yes' : 'No' }} </h1>
-                  <h1 class="hackney-tag hackney-tag--{{isHealthy('staging') ? 'positive' : 'negative' }}"> {{isHealthy('staging') ? 'Healthy' : 'Not Healthy' }} </h1>
-                </td>
-              </tr>
-    
-    
-    
-            <tr class="govuk-table__row" *ngIf="isDeployed('production')">
-              <th class="govuk-table__header" scope="row">Production Base URL</th>
-              <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state">{{ api?.production.url }}</a></td>
-            </tr>
-    
-            <tr class="govuk-table__row" *ngIf="isDeployed('production')">
-                <th class="govuk-table__header" scope="row">Available in Production</th>
-                <td class="govuk-table__cell">
-                    <h1 class="hackney-tag hackney-tag--{{isDeployed('production') ? 'positive' : 'negative' }}"> {{isDeployed('production') ? 'Yes' : 'No' }} </h1>
-                    <h1 class="hackney-tag hackney-tag--{{isHealthy('production') ? 'positive' : 'negative' }}"> {{isHealthy('production') ? 'Healthy' : 'Not Healthy' }} </h1>
-                </td>
-              </tr>
-            
-            <tr class="govuk-table__row" *ngIf="api.github_url">
-              <th class="govuk-table__header" scope="row">GitHub URL</th>
-              <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state">{{api.github_url }}</a></td>
-            </tr>
-    
-            <tr class="govuk-table__row" *ngIf="api.github_url">
-              <th class="govuk-table__header" scope="row"> API Key</th>
-              <td class="govuk-table__cell"> 
-                  <a class="govuk-link govuk-link--no-visited-state" *ngIf="!apiKey">Request Below</a>
-                  <app-click-reveal *ngIf="apiKey" [apiKey]="apiKey"></app-click-reveal>
-                <h1 *ngIf="verified != null" class="hackney-tag hackney-tag--{{verified ? 'positive' : 'negative' }}"> {{verified ? 'Verified' : 'Not Verified' }} </h1>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    
-    <div class="govuk-grid-row" *ngIf="!apiKey">
-      <div class="govuk-grid-column-full" >        
-        <a class="hackney-button" (click)="requestAPIKey()" type="button" >Request API-Key</a>    
-      </div>
-    </div>
-    
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-        <h3 class="heading-large"> Overview</h3>
-        <p class="paragraph-text"> {{ api.description }} </p>
-      </div>
-    </div>
-    
-    <div class="govuk-grid-row">
-            
-      <div class="govuk-grid-column-two-thirds">      
-        <h3 class="heading-large"> Compliance</h3>   
-      </div>
-            
-      <div class="govuk-grid-column-one-third">          
-        <h3 class="hackney-tag hackney-tag--{{isCompliant() ? 'negative' : 'positive' }}"> {{isCompliant() ? 'Non Compliant' : 'Compliant' }} </h3> 
-      </div>
-      <div class="govuk-grid-column-full">  
-          <ul class="list-style-none">
-            <li *ngFor="let compliancy of generateCompliancyText()" [class.line-through] = "!compliancy.compliant">  {{compliancy.text}} </li>
-          </ul>       
-      </div>
-    
-    </div>
-    
-    
-    <details class="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-            Contact Details
-          </span>
-        </summary>
-        <div class="govuk-details__text">
-            <h3 class="heading-medium"> Product Owner</h3>
-            <p class="paragraph-text"> Name: {{api.owner.product.name}} </p>
-            <p class="paragraph-text"> Email: {{api.owner.product.contactDetails}} </p>
-    
-            <h3 class="heading-medium"> Technical Owner</h3>
-            <p class="paragraph-text"> Name: {{api.owner.technical.name}} </p>
-            <p class="paragraph-text"> Email: {{api.owner.technical.contactDetails}} </p>
-        </div>
-      </details>
-    </app-column-layout> -->
