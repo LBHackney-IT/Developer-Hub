@@ -1,0 +1,44 @@
+@import '../../../../styles.scss';
+
+.content__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    max-width: 100%;
+
+    &-text {
+        @include body-text;
+    }
+
+    &-list {
+        padding-left: 2rem;
+        margin-bottom: 2.5rem;
+
+        &__item {
+
+        }
+
+        &__item:not(:last-child) {
+            margin-bottom: .7rem;
+        }
+    }
+
+    &-img-1, 
+    &-img-2 {
+        width: 100%;
+        height: auto;
+        display: inline-block;
+        margin-top: 2rem;
+        margin-bottom: 4rem;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .content__body__heading__span {
+        display: block;
+    }
+}
+
+

@@ -1,6 +1,6 @@
-<h2 class="govuk-heading-l">Log in to your account</h2>
+<h2 class="heading-large">Log in to your account</h2>
            
-<p class="govuk-body">Don't have a developer account yet? <a routerLink="/register">Sign up now</a>.</p>
+<p class="paragraph-text">Don't have a developer account yet? <a routerLink="/register" class="hackney-link">Sign up now</a>.</p>
         
 <form class="form js-form" [formGroup]="loginForm" (ngSubmit)="logIn()">
   <div class="govuk-form-group">             
@@ -10,11 +10,11 @@
             name="emailaddress"
             formControlName="emailAddress"             
             value=""             
-            [ngClass]="{'govuk-input': true, 'govuk-input--error': f.emailAddress.touched && f.emailAddress.invalid}"                        
+            [ngClass]="{'input': true, 'input--error': f.emailAddress.touched && f.emailAddress.invalid}"                        
             aria-labelledby="emailaddress-label"             
             aria-required="true"/>  
             
-            <div *ngIf="f.emailAddress.touched && f.emailAddress.invalid" class="govuk-error-message">
+            <div *ngIf="f.emailAddress.touched && f.emailAddress.invalid" class="error-message">
                 
               Email address is required
               
@@ -27,21 +27,21 @@
             autocomplete="off"          
             name="password"
             formControlName="password"
-            [ngClass]="{'govuk-input': true, 'govuk-input--error': f.password.touched && f.password.invalid}"                                    
+            [ngClass]="{'input': true, 'input--error': f.password.touched && f.password.invalid}"                                    
             aria-describedby="password-note"
             aria-required="true"/> 
             
-            <div *ngIf="f.password.touched && f.password.invalid" class="govuk-error-message">             
+            <div *ngIf="f.password.touched && f.password.invalid" class="error-message">             
                 Password is required      
             </div> 
                   
-            <div *ngIf="f.password.errors" class="govuk-error-message">
+            <div *ngIf="f.password.errors" class="error-message">
                 <div *ngIf="f.password.errors.minlength">Your password must be at least 8 characters and contain at least one number, lowercase letter, uppercase letter and special character.</div>   
             </div>
   </div>
   <a routerLink="/forgot-password"  class="govuk-back-link">Forgot your password?</a>
 
   <div class="govuk-form-group">
-    <button id="submitButton" class="govuk-button" type="submit" [disabled]="!loginForm.valid">Sign In</button>            
+    <button id="submitButton" class="hackney-button" type="submit" [disabled]="!loginForm.valid">Sign In</button>            
   </div>      
 </form>

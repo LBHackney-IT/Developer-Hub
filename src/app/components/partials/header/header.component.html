@@ -1,42 +1,37 @@
-<header class="page__header" role="banner" data-module="header">
-    <div class="page__header__inner">  
-      <div class="page__header__column page__header__column--logo">    
-        <img class="page__header__logo" src="/assets/images/hackney.png" alt="Hackney">  
+<header class="header" role="banner" data-module="header">
+    <div class="container">  
+      <div class="header__hackney-logo">    
+        <img class="header__hackney-image" src="/assets/images/hackney.png" alt="Hackney">
       </div>
 
-        <div class="page__header__column page__header__column--title">
-            <a routerLink="/" class="govuk-header__link govuk-header__link--service-name">
-              Developer Hub
-            </a>   
-        </div>
-
-        <!-- The Add Note form. -->
-        <div class="dropdown">
-        
-          <div class="page__header__column page__header__column--title">
-              <a class="govuk-header__link govuk-header__link--service-name ">
-                {{ getUsername() }}
-                <i class="fa fa-caret-down"></i>  
-              </a>
-          </div>
-
-            <div class="dropdown-content">
-                <a class="govuk-header__link govuk-body-s" routerLink="/login" *ngIf='!isAuthenticated()'>
-                  Login
-                </a>
-                <a class="govuk-header__link govuk-body-s" routerLink="/register" *ngIf='!isAuthenticated()'>
-                  Register
-                </a>
-                <a class="govuk-header__link govuk-body-s" routerLink="/key-manager" *ngIf='isAuthenticated()'>
-                  Token Manager
-                </a>
-                <a class="govuk-header__link govuk-body-s" routerLink="admin" *ngIf='isAdmin()'>
-                  Admin
-                </a>
-                <a class="govuk-header__link govuk-body-s" routerLink="/logout" *ngIf='isAuthenticated()'>
-                  Logout
-                </a>
-            </div>
-          </div> 
-    </div>
-</header>
+      <nav class="header__navbar">
+        <ul class="header__navbar-list">
+          <li><a routerLink="/">Home</a></li>
+          <li><a routerLink="/api-list">APIs</a></li>
+          <li><a routerLink="/documentation">Documentation</a></li>
+          <!-- <li><a routerLink="/api-checklist">API Checklist</a></li> -->
+          <li><a routerLink="/api-guide">API Guide</a></li>
+          <li class="dropdown">
+            <a class="header__navbar-btn-login" (click)="dropDown = !dropDown;">
+              {{ getUsername() }} <span class="dropdown__arrow" [ngClass]="{'dropdown__arrow--rotate': dropDown }">»</span>
+          </a>
+            <ul class="dropdown__content" [ngClass]="{'dropdown__content--active': dropDown}">
+              <li><a class="dropdown__content__item" routerLink="/login" *ngIf='!isAuthenticated()'>
+                Login
+              </a></li>
+              <li><a class="dropdown__content__item" routerLink="/register" *ngIf='!isAuthenticated()'>
+                Register
+              </a></li>
+              <li><a class="dropdown__content__item" routerLink="/key-manager" *ngIf='isAuthenticated()'>
+                Token Manager
+              </a></li>
+              <li><a class="dropdown__content__item" routerLink="admin" *ngIf='isAdmin()'>
+                Admin
+              </a></li>
+              <li><a class="dropdown__content__item" routerLink="/logout" *ngIf='isAuthenticated()'>
+                Logout
+              </a></li>
+          </ul>
+        </li>
+        </ul>
+      </nav>

@@ -1,0 +1,64 @@
+//////// COLORS
+$hackney-black: #000;
+$hackney-white: #FFF;
+$hackney-green: #00694F;
+$hackney-blue: #005ea5;
+$hackney-yellow: #FFBF47;
+$hackney-background: #ffffff;
+
+$hackney-lines-dark: #00664F;
+$hackney-lines-mid: #00B140;
+$hackney-lines-light: #84BD00;
+$hackney-error: #b10e1e;
+
+$hackney-border-color: #064579;
+
+$page-header-bg-colour: $hackney-black;
+$page-header-text-colour: $hackney-white;
+$page-header-padding: 2rem !default;
+
+$swagger-method-delete: 	#df3034;
+$swagger-method-put-patch: #f47738;
+$swagger-method-post: #006435;
+$swagger-method-get: #005ea5;
+
+$hackney-light-grey: #DEE0E2;
+
+
+////// HACKNEY STRIPES
+$hackney-stripes-dark-colour: #00664F !default;
+$hackney-stripes-middle-colour: #00B140 !default;
+$hackney-stripes-light-colour: #A4D65E !default;
+
+$hackney-stripe-width: 4px !default;
+$hackney-stripe-spacing: $hackney-stripe-width * 2 !default;
+
+$middle-stripe-width: $hackney-stripe-width;
+$light-stripe-width: $hackney-stripe-width / 2;
+$dark-stripe-width: $hackney-stripe-width * 2;
+
+$middle-stripe-style: $middle-stripe-width solid $hackney-stripes-middle-colour;
+
+////// BOXING
+$container-padding: 4.5rem 4.5rem;
+$margin-bottom-heading: 2rem;
+$margin-bottom-text: 1.5rem;
+
+///// TYPO
+$heading--big: 5rem;
+$heading--medium: 2.5rem;
+
+$font-family: "nta", Arial, sans-serif;
+
+///// MIXINS
+@mixin body-text {
+
+    color: $hackney-black;
+    font-family: $font-family;
+    font-weight: 400;
+
+    font-size: 1.8rem;
+    line-height: 1.6;
+    margin-top: 0;
+    padding-bottom: $margin-bottom-text;
+}
