@@ -23,7 +23,53 @@ describe('ChangePasswordComponent', () => {
     fixture.detectChanges();
   });
 
+  afterEach(() => {
+    fixture.destroy();
+  });
+
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should create a form with two controls', () => {
+    expect(Object.keys(component.changePasswordForm.controls).length).toBe(2);
+    expect(component.changePasswordForm.contains('password')).toBe(true);
+    expect(component.changePasswordForm.contains('confirmPassword')).toBe(true);
+  });
+
+  it('should make the password control required', () => {
+    const control = component.changePasswordForm.get('password');
+    control.setValue('');
+    expect(control.valid).toBe(false);
+  });
+
+  it('should be false if password control has a min length < 8', () => {
+    const control = component.changePasswordForm.get('password');
+    control.setValue('a'.repeat(7));
+    expect(control.valid).toBe(false);
+  });
+
+  it('should be true if password control has a min length >= 8', () => {
+    const control = component.changePasswordForm.get('password');
+    control.setValue('a'.repeat(8));
+    expect(control.valid).toBe(true);
+  });
+
+  it('should make the confirmPassword control required', () => {
+    const control = component.changePasswordForm.get('confirmPassword');
+    control.setValue('');
+    expect(control.valid).toBe(false);
+  });
+
+  it('should be false if confirmPassword control has a min length < 8', () => {
+    const control = component.changePasswordForm.get('confirmPassword');
+    control.setValue('a'.repeat(7));
+    expect(control.valid).toBe(false);
+  });
+
+  it('should be true if confirmPassword control has a min length >= 8', () => {
+    const control = component.changePasswordForm.get('confirmPassword');
+    control.setValue('a'.repeat(8));
+    expect(control.valid).toBe(true);
   });
 });
