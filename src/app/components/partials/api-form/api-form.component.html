@@ -18,7 +18,7 @@
           aria-describedby="id" aria-required="true" />
   
         <div *ngIf="f.id.touched && f.id.invalid" class="error-message">
-          Id is required
+          ID is required
         </div>
       </div>
   
@@ -127,7 +127,7 @@
         <h3 class="heading-medium"> Staging Environment</h3>
         <div class="apiform__api__form--formgroup">
           <label class="apiform__api__label" for="url">
-            Base Url
+            Base URL
           </label>
           <input type="url" autocomplete="off" id="url" name="url" formControlName="url" [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.staging.controls.url.touched && f.staging.controls.url.invalid}"
             class="input" aria-required="true" />
@@ -135,7 +135,7 @@
   
         <div class="apiform__api__form--formgroup">
           <label class="apiform__api__label" for="url">
-            Swagger JSON Url
+            Swagger JSON URL
           </label>
           <input type="swagger_url" autocomplete="swagger_url" id="swagger_url" name="swagger_url" formControlName="swagger_url"
             [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.staging.controls.swagger_url.touched && f.staging.controls.swagger_url.invalid}"
@@ -166,7 +166,7 @@
         <h3 class="heading-medium"> Production </h3>
         <div class="apiform__api__form--formgroup">
           <label class="apiform__api__label" for="url">
-            Base Url
+            Base URL
           </label>
           <input type="url" autocomplete="off" id="url" name="url" formControlName="url" [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.production.controls.url.touched && f.production.controls.url.invalid}"
             class="input" aria-required="true" />
@@ -174,7 +174,7 @@
   
         <div class="apiform__api__form--formgroup">
           <label class="apiform__api__label" for="url">
-            Swagger JSON Url
+            Swagger JSON URL
           </label>
           <input type="swagger_url" autocomplete="swagger_url" id="swagger_url" name="swagger_url" formControlName="swagger_url"
             [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.production.controls.swagger_url.touched && f.production.controls.swagger_url.invalid}"
@@ -204,14 +204,14 @@
   
       <div class="apiform__api__form--formgroup">
         <label class="apiform__api__label" for="github_url">
-          Github URL
+          GitHub URL
         </label>
         <input type="github_url" autocomplete="off" id="github_url" name="github_url" formControlName="github_url"
           [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.github_url.touched && f.github_url.invalid}"
           class="input" aria-required="true" />
   
         <div *ngIf="f.github_url.touched && f.github_url.invalid" class="govuk-error-message">
-          Github URL is required
+          GitHub URL is required
         </div>
       </div>
   
