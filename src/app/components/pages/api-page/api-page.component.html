@@ -15,12 +15,12 @@
       <tbody class="govuk-table__body">
 
         
-        <tr class="govuk-table__row" *ngIf="isDeployed('staging')">
+        <tr class="govuk-table__row" *ngIf="api && isDeployed('staging')">
           <th class="govuk-table__header" scope="row">Staging Base URL</th>
           <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state">{{ api?.staging.url }}</a></td>
         </tr>
 
-        <tr class="govuk-table__row" *ngIf="isDeployed('staging')">
+        <tr class="govuk-table__row" *ngIf="api && isDeployed('staging')">
             <th class="govuk-table__header" scope="row">Available in Staging</th>
             <td class="govuk-table__cell">
               <h1 class="govuk-tag govuk-!-margin-right-1 govuk-tag--{{isDeployed('staging') ? 'positive' : 'negative' }}"> {{isDeployed('staging') ? 'Yes' : 'No' }} </h1>
@@ -30,12 +30,12 @@
 
 
 
-        <tr class="govuk-table__row" *ngIf="isDeployed('production')">
+        <tr class="govuk-table__row" *ngIf="api && isDeployed('production')">
           <th class="govuk-table__header" scope="row">Production Base URL</th>
           <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state">{{ api?.production.url }}</a></td>
         </tr>
 
-        <tr class="govuk-table__row" *ngIf="isDeployed('production')">
+        <tr class="govuk-table__row" *ngIf="api && isDeployed('production')">
             <th class="govuk-table__header" scope="row">Available in Production</th>
             <td class="govuk-table__cell">
                 <h1 class="govuk-tag govuk-!-margin-right-1 govuk-tag--{{isDeployed('production') ? 'positive' : 'negative' }}"> {{isDeployed('production') ? 'Yes' : 'No' }} </h1>
@@ -43,12 +43,12 @@
             </td>
           </tr>
         
-        <tr class="govuk-table__row" *ngIf="api.github_url">
+        <tr class="govuk-table__row" *ngIf="api && api.github_url">
           <th class="govuk-table__header" scope="row">GitHub URL</th>
           <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state">{{api.github_url }}</a></td>
         </tr>
 
-        <tr class="govuk-table__row" *ngIf="api.github_url">
+        <tr class="govuk-table__row">
           <th class="govuk-table__header" scope="row"> API Key</th>
           <td class="govuk-table__cell"> 
               <a class="govuk-link govuk-link--no-visited-state" *ngIf="!apiKey">Request Below</a>
@@ -70,14 +70,14 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <h3 class="govuk-heading-l"> Overview</h3>
-    <p class="govuk-body"> {{ api.description }} </p>
+    <p class="govuk-body"> {{ api?.description }} </p>
   </div>
 </div>
 
-<div class="govuk-grid-row">
+<div class="govuk-grid-row" *ngIf="api">
         
   <div class="govuk-grid-column-two-thirds">      
-    <h3 class="govuk-heading-l"> Compliance</h3>   
+    <h3 class="govuk-heading-l"> Compliancy</h3>   
   </div>
         
   <div class="govuk-grid-column-one-third">          
@@ -98,14 +98,14 @@
         Contact Details
       </span>
     </summary>
-    <div class="govuk-details__text">
+    <div class="govuk-details__text" *ngIf="api">
         <h3 class="govuk-heading-m"> Product Owner</h3>
-        <p class="govuk-body-m"> Name: {{api.owner.product.name}} </p>
-        <p class="govuk-body-m"> Email: {{api.owner.product.contactDetails}} </p>
+        <p class="govuk-body-m"> Name: {{api?.owner.product.name}} </p>
+        <p class="govuk-body-m"> Email: {{api?.owner.product.contactDetails}} </p>
 
         <h3 class="govuk-heading-m"> Technical Owner</h3>
-        <p class="govuk-body-m"> Name: {{api.owner.technical.name}} </p>
-        <p class="govuk-body-m"> Email: {{api.owner.technical.contactDetails}} </p>
+        <p class="govuk-body-m"> Name: {{api?.owner.technical.name}} </p>
+        <p class="govuk-body-m"> Email: {{api?.owner.technical.contactDetails}} </p>
     </div>
   </details>
 </app-column-layout>
