@@ -37,19 +37,19 @@ describe('ForgotPasswordComponent', () => {
     expect(component.forgotPasswordForm.contains('emailAddress')).toBe(true);
   });
 
-  it('should make the password control required', () => {
+  it('should make the emailAddress control required', () => {
     const control = component.forgotPasswordForm.get('emailAddress');
     control.setValue('');
     expect(control.valid).toBe(false);
   });
 
-  it('should be false if email is not provided', () => {
+  it('should be false if emailAddress is not provided', () => {
     const control = component.forgotPasswordForm.get('emailAddress');
     control.setValue('aaaaaa');
     expect(control.valid).toBe(false);
   });
 
-  it('should be true if email is provided', () => {
+  it('should be true if emailAddress is provided', () => {
     const control = component.forgotPasswordForm.get('emailAddress');
     control.setValue('aaa@email.com');
     expect(control.valid).toBe(true);
