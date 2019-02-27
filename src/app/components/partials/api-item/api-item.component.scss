@@ -20,7 +20,13 @@
   }
 
   &__heading--link {
+    cursor: pointer;
     text-decoration: none;
+    color: $hackney-blue;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__compliancy {
