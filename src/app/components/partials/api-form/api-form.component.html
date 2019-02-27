@@ -62,18 +62,18 @@
         <h3 class="heading-medium"> Is this application internally or externally facing? </h3>
         <!-- Replace and create radio button and styling -->
         <div class="govuk-radios govuk-radios--inline">
-          <div class="apiform__api__form__radios">
-            <input class="radio__button" id="internal" name="internal" type="radio" [value]="true" formControlName="internal">
-            <label class="apiform__api__label radio__label" for="internal">
-              <strong class="hackney-tag">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="internal" name="internal" type="radio" [value]="true" formControlName="internal">
+            <label class="apiform__api__label govuk-radios__label" for="internal">
+              <strong class="govuk-tag">
                 Internal
               </strong>
             </label>
           </div>
           <div class="govuk-radios__item">
-            <input class="radio__button" id="external" name="internal" type="radio" [value]="false" formControlName="internal">
-            <label class="apiform__api__label radio__label" for="external">
-              <strong class="hackney-tag">
+            <input class="govuk-radios__input" id="external" name="internal" type="radio" [value]="false" formControlName="internal">
+            <label class="apiform__api__label govuk-radios__label" for="external">
+              <strong class="govuk-tag">
                 External
               </strong>
             </label>
@@ -84,25 +84,25 @@
         <h3 class="heading-medium"> What stage is this application in? </h3>
         <div class="govuk-radios govuk-radios--inline">
           <div class="govuk-radios__item">
-            <input class="radio__button" id="stage_alpha" name="stage" type="radio" value="alpha" formControlName="stage">
-            <label class="apiform__api__label radio__label" for="stage_alpha">
-              <strong class="hackney-tag">
+            <input class="govuk-radios__input" id="stage_alpha" name="stage" type="radio" value="alpha" formControlName="stage">
+            <label class="apiform__api__label govuk-radios__label" for="stage_alpha">
+              <strong class="govuk-tag">
                 Alpha
               </strong>
             </label>
           </div>
           <div class="govuk-radios__item">
-            <input class="radio__button" id="external" name="stage" type="radio" value="beta" formControlName="stage">
-            <label class="apiform__api__label radio__label" for="external">
-              <strong class="hackney-tag">
+            <input class="govuk-radios__input" id="external" name="stage" type="radio" value="beta" formControlName="stage">
+            <label class="apiform__api__label govuk-radios__label" for="external">
+              <strong class="govuk-tag">
                 Beta
               </strong>
             </label>
           </div>
           <div class="govuk-radios__item">
-            <input class="radio__button" id="external" name="stage" type="radio" value="live" formControlName="stage">
-            <label class="apiform__api__label radio__label" for="external">
-              <strong class="hackney-tag">
+            <input class="govuk-radios__input" id="external" name="stage" type="radio" value="live" formControlName="stage">
+            <label class="apiform__api__label govuk-radios__label" for="external">
+              <strong class="govuk-tag">
                 Live
               </strong>
             </label>
@@ -112,7 +112,7 @@
   
       <div formGroupName="compliant" class="apiform__api__form--formgroup">
         <h3 class="heading-medium"> Compliancy </h3>
-        <!-- Create Checkbox styling in CSS and replace all instances in this component -->
+  
         <div class="govuk-checkboxes__item" *ngFor="let compliancyObject of generateCompliancyObjects()">
           <input class="govuk-checkboxes__input" id="{{compliancyObject.id}}" name="{{compliancyObject.id}}" type="checkbox"
             formControlName="{{compliancyObject.id}}">
@@ -146,14 +146,14 @@
           <h3 class="heading-small"> Has this application been deployed? </h3>
           <div class="govuk-radios govuk-radios--inline">
             <div class="govuk-radios__item">
-              <input class="radio__button" id="staging_deployed_true" type="radio" [value]="true" formControlName="deployed">
-              <label class="apiform__api__label radio__label" for="staging_deployed_true">
+              <input class="govuk-radios__input" id="staging_deployed_true" type="radio" [value]="true" formControlName="deployed">
+              <label class="apiform__api__label govuk-radios__label" for="staging_deployed_true">
                 Yes
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="radio__button" id="staging_deployed_false" type="radio" [value]="false" formControlName="deployed">
-              <label class="apiform__api__label radio__label" for="staging_deployed_false">
+              <input class="govuk-radios__input" id="staging_deployed_false" type="radio" [value]="false" formControlName="deployed">
+              <label class="apiform__api__label govuk-radios__label" for="staging_deployed_false">
                 No
               </label>
             </div>
@@ -178,23 +178,23 @@
           </label>
           <input type="swagger_url" autocomplete="swagger_url" id="swagger_url" name="swagger_url" formControlName="swagger_url"
             [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.production.controls.swagger_url.touched && f.production.controls.swagger_url.invalid}"
-            class="nput" aria-required="true" />
+            class="input" aria-required="true" />
         </div>
   
         <div class="apiform__api__form--formgroup">
           <h3 class="heading-medium"> Has this application been deployed? </h3>
           <div class="govuk-radios govuk-radios--inline">
             <div class="govuk-radios__item">
-              <input class="radio__button" id="deployed_true" name="deployed" type="radio" [value]="true"
+              <input class="govuk-radios__input" id="deployed_true" name="deployed" type="radio" [value]="true"
                 formControlName="deployed" aria-required="true" />
-              <label class="apiform__api__label radio__label" for="deployed_true">
+              <label class="apiform__api__label govuk-radios__label" for="deployed_true">
                 Yes
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="radio__button" id="deployed_false" name="deployed" type="radio" [value]="false"
+              <input class="govuk-radios__input" id="deployed_false" name="deployed" type="radio" [value]="false"
                 formControlName="deployed">
-              <label class="apiform__api__label radio__label" for="deployed_false">
+              <label class="apiform__api__label govuk-radios__label" for="deployed_false">
                 No
               </label>
             </div>
@@ -210,7 +210,7 @@
           [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.github_url.touched && f.github_url.invalid}"
           class="input" aria-required="true" />
   
-        <div *ngIf="f.github_url.touched && f.github_url.invalid" class="error-message">
+        <div *ngIf="f.github_url.touched && f.github_url.invalid" class="govuk-error-message">
           Github URL is required
         </div>
       </div>
@@ -220,4 +220,3 @@
       </div>
     </form>
   </div>
-</div>
