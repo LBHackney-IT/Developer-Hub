@@ -3,8 +3,8 @@
     <li 
     *ngFor="let tab of tabs" 
     (click)="selectTab(tab)" 
-    [class.active]="tab.active">
-      <h3 class="govuk-heading-m govuk-tabs__tab govuk-tabs__tab--selected">  {{ tab.label }}</h3>
+    [class.active]="tab?.active">
+      <h3 class="govuk-heading-m govuk-tabs__tab govuk-tabs__tab--selected">  {{ tab?.label }}</h3>
     </li>
   </ul>
 </nav>

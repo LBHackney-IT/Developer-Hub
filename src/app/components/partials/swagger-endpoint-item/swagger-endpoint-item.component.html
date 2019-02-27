@@ -2,19 +2,19 @@
   <div class="govuk-grid-column-full">
     <div
       class="govuk-grid-row accordion"
-      *ngIf="api.paths.length"
+      *ngIf="api && api.paths.length"
       (click)="toggleDescription()"
     >
       <div class="govuk-grid-column-two-thirds endpoint-api-column">
         <h3 class="govuk-heading-m api-panel">
           <a class="api-title-link">
-            {{ api.title }}
+            {{ api?.title }}
           </a>
         </h3>
       </div>
       <div class="govuk-grid-column-one-third align-right endpoint-api-column">
         <strong class="govuk-body api-panel">
-          {{ api.paths.length }} Endpoints
+          {{ api?.paths.length }} Endpoints
         </strong>
       </div>
     </div>
@@ -40,7 +40,7 @@
               >
                 <th class="govuk-table__header" scope="row">
                   <a class="govuk-link" routerLink="/{{api.id}}/endpoints/{{endpoint.id}}">
-                    {{ endpoint.url }}
+                    {{ endpoint?.url }}
                   </a>
                 </th>
                 <td class="govuk-table__cell govuk-table__cell--numeric">
@@ -53,7 +53,7 @@
                       'delete-request': endpoint.requestType.toLowerCase() === 'delete'
                     }"
                   >
-                    {{ endpoint.requestType }}
+                    {{ endpoint?.requestType }}
                   </strong>
                 </td>
               </tr>
