@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
     if (this.user) {
       return this.user.name;
     } else {
-      return 'username';
+      return 'sign in';
     }
   }
 
