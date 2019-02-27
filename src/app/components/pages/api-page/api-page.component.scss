@@ -102,7 +102,7 @@
   }
 
   &__compliance__tag {
-
+    margin-top: 1.3rem;
   }
 
   &__compliance__text {
@@ -115,3 +115,29 @@
 
 }
 
+.api-page__button {
+  display: inline-block;
+  align-self: flex-start;
+}
+
+@media screen and (max-width: 640px) {
+  .api__table__header {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .api__table__body__row {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .api__table__body--column2 {
+    text-align: left;
+  }
+
+  .api__details__overview {
+    margin-bottom: 1.5rem;
+  }
+}
