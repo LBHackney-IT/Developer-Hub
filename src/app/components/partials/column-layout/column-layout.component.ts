@@ -13,3 +13,12 @@ export class ColumnLayoutComponent implements OnInit {
   }
 
 }
+
+
+@Component({
+  selector: 'app-column-layout',
+  template: ''
+})
+export class MockColumnLayoutComponent {
+  @Input() show: boolean;
+}

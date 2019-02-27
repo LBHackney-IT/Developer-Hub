@@ -51,3 +51,10 @@ export class AdminApiListComponent implements OnInit {
 
 }
 
+@Component({
+  selector: 'app-admin-api-list',
+  template: ''
+})
+export class MockAdminApiListComponent {
+}
+

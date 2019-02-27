@@ -13,8 +13,11 @@ export class TabComponent implements OnInit {
 
   ngOnInit() {
   }
+}
 
-
-
-
+@Component({
+  selector: 'app-tab',
+  template: ''
+})
+export class MockTabComponent {
 }

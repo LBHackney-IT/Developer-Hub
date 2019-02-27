@@ -67,3 +67,11 @@ export class ApiItemComponent implements OnInit {
   }
 
 }
+
+@Component({
+  selector: 'app-api-item',
+  template: ''
+})
+export class MockApiItemComponent {
+  @Input() api: IApi;
+}
