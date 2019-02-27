@@ -17,14 +17,10 @@ export class ChangePasswordComponent implements OnInit {
 
   /**
    * @summary Creates an instance of ChangePasswordComponent.
-   * @param {ActivatedRoute} route
-   * @param {Router} router
    * @param {AuthService} authService
    * @memberof ChangePasswordComponent
    */
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
     private authService: AuthService
 
   ) { }
