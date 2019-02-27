@@ -37,7 +37,7 @@ describe('ChangePasswordComponent', () => {
     expect(component.changePasswordForm.contains('confirmPassword')).toBe(true);
   });
 
-  it('should make the password control required', () => {
+  it('should be false if password control is not set', () => {
     const control = component.changePasswordForm.get('password');
     control.setValue('');
     expect(control.valid).toBe(false);
@@ -55,7 +55,7 @@ describe('ChangePasswordComponent', () => {
     expect(control.valid).toBe(true);
   });
 
-  it('should make the confirmPassword control required', () => {
+  it('should be false if confirmPassword control is not set', () => {
     const control = component.changePasswordForm.get('confirmPassword');
     control.setValue('');
     expect(control.valid).toBe(false);
