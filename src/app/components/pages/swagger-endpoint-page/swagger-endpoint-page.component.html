@@ -7,7 +7,7 @@
   <div class="endpoint__medium__box">
     <div class="endpoint__medium__tag hackney-tag hackney-tag--status">{{ path?.requestType | uppercase }}</div>
     <div class="endpoint__medium__uri">
-      <a class="">{{ path?.url }}</a>
+      <a class="heading-small">{{ path?.url }}</a>
     </div>
   </div>
 
@@ -16,7 +16,7 @@
   </div>
 
   <div class="endpoint__table__box">
-    <div class="endpoint__table__row endpoint__table__header">
+    <div class="endpoint__table__row heading-small">
       <div class="endpoint__table__column">Parameters</div>
       <div class="endpoint__table__column">In</div>
       <div class="endpoint__table__column">Required</div>
@@ -30,86 +30,20 @@
       </div>
   </div>
 
-  <table>
-    <thead>
-      <th scope="col">Header Field</th>
-      <th scope="col">Value</th>
-    </thead>
-    <tbody>
-      <td scope="col">Authorization</td>
-      <td scope="col">Authorization Required. A valid access token generated</td>
-    </tbody>
-  </table>
-
+  <div class="endpoint__table__box">
+    <div class="endpoint__table__row heading-small">
+      <div class="endpoint__table__column--half">Header Field</div>
+      <div class="endpoint__table__column--half">Value</div>
+    </div>
+    <div class="endpoint__table__row">
+      <div class="endpoint__table__column--half">Header Field</div>
+      <div class="endpoint__table__column--half">Value</div>
+    </div>
+  </div>
 
   <h3 class="heading-medium">Example</h3>
   <p>curl -X {{ path?.requestType | uppercase }}  "https://example.com/ {{ path?.url }} -H "Authorization: Bearer"</p>
 
-  <a routerLink="/documentation" class="hackney-button">All Endpoints</a>
+  <a routerLink="/documentation" class="hackney-button">← All Endpoints</a>
 </section>
 </app-column-layout>
-
-
-<!-- <app-column-layout [show]="apiEndpoint">
-  <h2 class="heading-large"> {{ apiEndpoint?.title }} </h2>
-  <p class="paragraph-text">
-    {{ path?.summary }}
-  </p>
-
-  <h3 class="heading-medium"> Endpoint </h3>
-  <div class="govuk-inset-text">
-    <strong class="hackney-tag">
-      {{ path?.requestType | uppercase }}
-    </strong>
-    <span class="paragraph-text">{{ path?.url }}</span>
-  </div>
-
-
-  <h3 class="heading-medium">Request Parameters</h3>
-
-  <table class="govuk-table" *ngIf="path">
-    <thead class="govuk-table__head">
-      <tr class="govuk-table__row">
-        <th class="govuk-table__header" scope="col">Parameters</th>
-        <th class="govuk-table__header" scope="col">In</th>
-        <th class="govuk-table__header" scope="col">Required</th>
-        <th class="govuk-table__header" scope="col">Value</th>
-      </tr>
-    </thead>
-    <tbody class="govuk-table__body">
-      <tr class="govuk-table__row" *ngFor="let parameter of getParameters(path)">
-          <td class="govuk-table__cell"> {{parameter?.name}}</td>
-          <td class="govuk-table__cell"> {{parameter?.name}}</td>
-          <td class="govuk-table__cell"> {{parameter?.required}}</td>
-          <td class="govuk-table__cell"> {{parameter?.type}}</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <table class="govuk-table">
-    <thead class="govuk-table__head">
-      <tr class="govuk-table__row">
-        <th class="govuk-table__header" scope="col">Header Field</th>
-        <th class="govuk-table__header" scope="col">Value</th>
-      </tr>
-    </thead>
-    <tbody class="govuk-table__body">
-      <tr class="govuk-table__row">
-        <th class="govuk-table__header" scope="row">Authorization</th>
-        <td class="govuk-table__cell">Authorization Required. A valid access token generated.</td>
-      </tr>
-    </tbody>
-  </table>
-
-
-  <h3 class="heading-medium">Example</h3>
-
-  <div class="govuk-inset-text">
-      <span class="govuk-caption">
-          curl -X {{ path?.requestType | uppercase }}  "https://example.com{{ path?.url }} -H "Authorization: Bearer"
-      </span>
-    </div>
-
-  <a routerLink="/documentation" class="govuk-back-link">All Endpoints</a>
-
-</app-column-layout> -->
