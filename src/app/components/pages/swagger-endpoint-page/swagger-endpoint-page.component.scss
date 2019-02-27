@@ -12,11 +12,8 @@
     margin: 2rem 0;
 }
 
-.endpoint__medium__header {
-
-}
-
 .endpoint__medium__tag {
+    
 }
 
 .endpoint__medium__uri {
@@ -35,6 +32,7 @@
 .endpoint__table__box {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
 
     margin: 3rem 0;
 }
@@ -47,10 +45,17 @@
     border-bottom: 1px solid $hackney-black;
 }
 
-.endpoint___table__column {
-    flex: 0 0 25%;
+.endpoint__table__column {
+    flex-basis: 25%;
 }
 
-.endpoint__table__header {
-    font-weight: 700;
+.endpoint__table__column--half {
+    flex-basis: 50%;
+}
+
+@media screen and (max-width: 640px) {
+    .endpoint__medium__box {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
 }
