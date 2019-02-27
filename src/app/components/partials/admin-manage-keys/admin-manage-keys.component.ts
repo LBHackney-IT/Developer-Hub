@@ -49,3 +49,10 @@ export class AdminManageKeysComponent implements OnInit {
   }
 
 }
+
+@Component({
+  selector: 'app-admin-manage-keys',
+  template: ''
+})
+export class MockAdminManageKeysComponent {
+}
