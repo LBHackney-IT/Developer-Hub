@@ -6,18 +6,19 @@ import { TestingModule, MockStore } from '../../../../testing/utils';
 import { IAppState } from 'src/app/store/state/app.state';
 import { Store } from '@ngrx/store';
 import { GetApiList } from '../../../store/actions/api.actions';
-import { initialApiState, IApiState } from '../../../store/state/api.state';
-import { initialUserState } from '../../../store/state/user.state';
-import { initialSwaggerEndpointState } from '../../../store/state/swagger-endpoints.state';
-import { Observable, of } from 'rxjs';
-import 'rxjs/add/observable/from';
+import { IApiState } from '../../../store/state/api.state';
+import { of } from 'rxjs';
+import { generateTestApis } from '../../../../testing/mock-db';
+
 describe('ApiListComponent', () => {
   let component: ApiListComponent;
   let fixture: ComponentFixture<ApiListComponent>;
 
   let store: MockStore<IAppState>;
   let dispatchSpy: jasmine.Spy;
-  let dispatchSubscribe: jasmine.Spy;
+  let subscribeSpy: jasmine.Spy;
+  let getListOfApisSpy: jasmine.Spy;
+
   const apiState: IApiState = {
     apis: []
   };
@@ -41,27 +42,38 @@ describe('ApiListComponent', () => {
     component = fixture.componentInstance;
     store = TestBed.get(Store);
     dispatchSpy = spyOn(store, 'dispatch');
-    // spyOn(store, 'subscribe').and.callFake(() => {
-    //   return Observable.from(apis);
-    // });
-
-    dispatchSubscribe = spyOn(store, 'subscribe').and.returnValue(of(apis));
-
+    subscribeSpy = spyOn(store, 'subscribe').and.callFake(() => {
+      return (of(generateTestApis(4)));
+    });
+    getListOfApisSpy = spyOn(component, 'getListOfApis');
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    fixture.destroy();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should dispatch GetApiList action', () => {
+  it('should call getListOfApis upon initialising', () => {
+    expect(getListOfApisSpy).toHaveBeenCalled();
+  });
+
+  it('should call store.subscribe upon initialising', () => {
+    expect(subscribeSpy).toHaveBeenCalled();
+  });
+
+  it('getListOfApis should dispatch GetApiList action', () => {
     // store.setState({ api: initialApiState, user: initialUserState, swaggerEndpoint: initialSwaggerEndpointState});
-    fixture.detectChanges();
-    expect(dispatchSpy).toHaveBeenCalledTimes(1);
-    expect(dispatchSpy).toHaveBeenCalledWith(new GetApiList());
+    component.getListOfApis();
+    console.log(dispatchSpy);
+    expect(dispatchSpy).toHaveBeenCalled();
+    // expect(dispatchSpy).toHaveBeenCalledWith(new GetApiList());
   });
 
   it('should call store subscribe', () => {
-
+    expect(subscribeSpy).toHaveBeenCalled();
   });
 });
