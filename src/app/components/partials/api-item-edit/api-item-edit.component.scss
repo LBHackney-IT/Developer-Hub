@@ -1,15 +1,22 @@
-@import "../../../../variables";
+@import "../../../../styles.scss";
 
-.govuk-tag {
-    &--positive {
-      background: $hackney-green;
-    }
-  
-    &--negative {
-      background: orange;
-    }  
+.api-item-edit__box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1.5rem;
+  border-bottom: 1px solid $hackney-black;
+
 }
 
-.align-right {
-    text-align: right;
+.api-item-edit__title {
+
+}
+
+.api-item-edit__link {
+
+  &:visited, &:link {
+
+  }
 }

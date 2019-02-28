@@ -1,16 +1,24 @@
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <h3 class="govuk-heading-m">
-            <a class="govuk-link--no-visited-state govuk-link" routerLink="/api/{{ api?.id }}">{{ api?.title }}</a>
-          </h3>
-          <p class="govuk-body">{{ api?.summary }}</p>
-        </div>
-        <div class="govuk-grid-column-one-third align-right">
-            <strong class="govuk-tag "> {{ api?.internal ? 'Internal' : 'External'}} </strong>
-            <strong class="govuk-tag govuk-!-margin-top-2 govuk-tag--{{isApiCompliant(api) ? 'negative' : 'positive' }}"> {{isApiCompliant(api) ? 'Non Compliant' : 'Compliant' }} </strong>
-        </div>
+<div class="api__item__container">
+  <div class="api__item__box">
+    <div class="api__item__box__title">
+      <h3 class="api__item__box__heading heading-medium">
+        <a class="api__item__box__heading--link" routerLink="/api/{{ api.id }}">{{ api.title }}</a>
+      </h3>
+    </div>
+    <div class="api__item__box__compliancy">
+        <p><strong class="hackney-tag hackney-tag--status">
+          {{ api?.internal ? "Internal" : "External" }}
+        </strong></p>
+        <p><strong
+          class="hackney-tag  hackney-tag--{{
+            isApiCompliant(api) ? 'negative' : 'positive'
+          }}"
+        >
+          {{ isApiCompliant(api) ? "Non Compliant" : "Compliant" }}
+        </strong></p>
       </div>
   </div>
+  <div class="api__item__summary">
+      <p class="api__item__summary__text paragraph-text">{{ api.summary }}</p>
+    </div>
 </div>

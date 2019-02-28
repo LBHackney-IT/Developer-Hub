@@ -79,6 +79,11 @@ export class AuthService {
     this.store.dispatch(new SetUser(user));
   }
 
+  /**
+   *
+   *
+   * @memberof AuthService
+   */
   getUserObject = () => {
     return this.store.pipe(select(selectUser));
   }
@@ -150,10 +155,10 @@ export class AuthService {
   logout = async () => {
     const cognitoUser = await this.getCurrentUser();
     this.removeUser();
+    this.alertService.success('You have been logged out');
     if (cognitoUser !== null) {
       cognitoUser.signOut();
     }
-
     this.router.navigateByUrl('/');
   }
 
@@ -289,13 +294,13 @@ export class AuthService {
       const cognitoUser = new CognitoUser(userData);
       cognitoUser.confirmPassword(code, password, {
         onSuccess: function () {
-          alertService.success('Success message');
+          alertService.success('Thank you');
           router.navigateByUrl('/confirmation/change-password');
         },
         onFailure: function (err) {
           console.log(err);
           alertService.error(err.message);
-          router.navigateByUrl('/');
+          router.navigateByUrl('/forgot-password');
         }
       });
 
@@ -324,10 +329,10 @@ export class AuthService {
 
     cognitoUser.confirmRegistration(code, true, function (err, result) {
       if (err) {
-        alertService.error('Error Message');
+        alertService.error(err.message);
         router.navigateByUrl('/');
       }
-      alertService.success('Success Message');
+      alertService.success('Thank you for confirming your email');
       router.navigateByUrl('/login');
     });
   }

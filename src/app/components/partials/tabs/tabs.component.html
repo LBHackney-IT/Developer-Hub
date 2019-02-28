@@ -1,16 +1,17 @@
-<nav>
-  <ul class="tabs govuk-tabs__list">
+<nav class="nav__navbar">
+  <ul class="nav__tabs tabs">
     <li 
     *ngFor="let tab of tabs" 
     (click)="selectTab(tab)" 
-    [class.active]="tab?.active">
-      <h3 class="govuk-heading-m govuk-tabs__tab govuk-tabs__tab--selected">  {{ tab?.label }}</h3>
+    [class.active]="tab.active"
+    class="nav__tabs__list">
+      <h3 class="heading-medium nav__tabs__list-item">  {{ tab.label }}</h3>
     </li>
   </ul>
 </nav>
 <hr>
 
 
-<div class="govuk-tabs__panel">
+<div class="">
   <ng-content></ng-content>
 </div>
