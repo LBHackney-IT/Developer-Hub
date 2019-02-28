@@ -13,4 +13,4 @@ jobs:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - "node_modules"
-      - run: npm run test -- --single-run --no-progress --browser=ChromeNoSandbox
+      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
