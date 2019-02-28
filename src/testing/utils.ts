@@ -6,12 +6,12 @@ import {
     ReducerManager,
     StoreModule
 } from '@ngrx/store';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AppRoutingModule } from '../app/app-routing.module';
+import { ActivatedRoute, convertToParamMap, ParamMap } from '@angular/router';
 
 // Mock Store
 @Injectable()
@@ -33,13 +33,62 @@ export class MockStore<T> extends Store<T> {
 }
 
 
-export function provideMockStore() {
+const provideMockStore = () => {
     return {
         provide: Store,
         useClass: MockStore
     };
+};
+
+const provideMockActivatedRoute = () => {
+    return {
+        provide: ActivatedRoute,
+        useClass: MockActivatedRoute
+    };
+};
+
+@Injectable()
+export class MockActivatedRoute {
+
+    private subjectParamMap = new BehaviorSubject(convertToParamMap(this.testParamMap));
+    paramMap = this.subjectParamMap.asObservable();
+
+
+    private _testParamMap: ParamMap;
+    get testParamMap() {
+        return this._testParamMap;
+    }
+    set testParamMap(params: {}) {
+        this._testParamMap = convertToParamMap(params);
+        this.subjectParamMap.next(this._testParamMap);
+    }
+
+    private subjectQueryParamMap = new BehaviorSubject(convertToParamMap(this.testParamMap));
+    queryParamMap = this.subjectQueryParamMap.asObservable();
+
+    private _testQueryParamMap: ParamMap;
+    get testQueryParamMap() {
+        return this._testQueryParamMap;
+    }
+    set testQueryParamMap(params: {}) {
+        this._testQueryParamMap = convertToParamMap(params);
+        this.subjectQueryParamMap.next(this._testQueryParamMap);
+    }
+
+    get snapshot() {
+        return {
+            paramMap: this.testParamMap,
+            queryParamMap: this.testQueryParamMap
+        };
+    }
 }
 
+/**
+ *
+ *
+ * @export
+ * @class TestingModule
+ */
 @NgModule({
     imports: [
         RouterTestingModule,
@@ -49,7 +98,9 @@ export function provideMockStore() {
         ReactiveFormsModule,
         CommonModule
     ],
-    providers: [provideMockStore()],
+    providers: [
+        provideMockStore()
+    ],
     exports: [
         RouterTestingModule,
         ReactiveFormsModule
