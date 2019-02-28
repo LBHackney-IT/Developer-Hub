@@ -1,17 +1,143 @@
-@import '../../../../variables';
-// ** {
-//   word-wrap: break-word;
-// }
-.govuk-tag {
-    &--positive {
-      background: $hackney-green;
-    }
-  
-    &--negative {
-      background: orange;
-    }  
+@import '../../../../styles.scss';
+
+.api__content {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+
+  font-family: inherit;
 }
 
-.line-through {
-  text-decoration: line-through;
+.api__table {
+  padding: 2.5rem 2.5rem;
+  border: 1px solid $hackney-black;
+  margin-bottom: 4rem;
+}
+
+.api__table__header {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  border-bottom: 1px solid $hackney-black;
+  padding: 2.5rem 0;
+
+
+  &__tags {
+    display: flex;
+    align-items: flex-start;
+
+    & p:first-child {
+      margin-right: .5rem;
+    }
+  }
+}
+
+.api__table__body {
+
+  display: flex;
+  flex-direction: column;
+
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+
+    padding-top: 2.5rem;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $hackney-black;
+      padding-bottom: 2.5rem;
+    }
+
+  }
+
+  &--column1 {
+  }
+
+  &--column2 {
+    text-align: right;
+
+    & p:first-child {
+      margin-right: .5rem;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+  }
+
+  &__link:visited,
+  &__link:link {
+    text-decoration: none;
+  }
+}
+
+.api__key {
+
+}
+
+//remove first child p margin in the tag on media query
+
+
+.api__details {
+
+  &__overview {
+    margin-bottom: 4rem;
+  }
+
+  &__compliance {
+    margin-bottom: 4rem;
+  }
+
+  &__compliance__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__compliance__title {
+
+  }
+
+  &__compliance__tag {
+    margin-top: 1.3rem;
+  }
+
+  &__compliance__text {
+
+  }
+
+  &__compliance__list {
+
+  }
+
+}
+
+.api-page__button {
+  display: inline-block;
+  align-self: flex-start;
+}
+
+@media screen and (max-width: 640px) {
+  .api__table__header {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .api__table__body__row {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .api__table__body--column2 {
+    text-align: left;
+  }
+
+  .api__details__overview {
+    margin-bottom: 1.5rem;
+  }
 }

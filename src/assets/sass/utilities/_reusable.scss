@@ -1,0 +1,148 @@
+.hackney-tag {
+    display: inline-block;
+    padding: 4px 8px;
+    padding-bottom: 1px;
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+    color: $hackney-white;
+    background-color: $hackney-green;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    font-family: "nta", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.1875;
+}
+
+.hackney-tag--status {
+    background-color: $swagger-method-get;
+}
+
+.hackney-tag--positive {
+    background-color: $hackney-green;
+}
+  
+.hackney-tag--negative {
+    background-color: $hackney-yellow;
+}
+
+.hackney-tag--error {
+    background-color: $hackney-error;
+}
+
+.hackney-button {
+    font-family: "nta", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.1875;
+
+    box-sizing: border-box;
+    display: inline-block;
+
+    margin: 2rem 0;
+    padding: .7rem 1rem;
+    border-radius: 0;
+    color: $hackney-white;
+    background-color: $hackney-green;
+
+    text-align: center;
+    vertical-align: top;
+    cursor: pointer;
+    -webkit-appearance: none;
+
+    &:hover {
+        background-color: $hackney-lines-mid;
+    }
+}
+
+.list-style-none {
+    list-style: none;
+
+    &:not(:last-child) {
+        margin-bottom: .7rem;
+    }
+}
+
+
+.input {
+    border: 2px solid #0b0c0c;
+    border-radius: 0;
+    width: 100%;
+    height: 40px;
+    padding: 5px;
+    margin-bottom: 2rem;
+
+    font-size: 1.8rem;
+
+    &:focus,
+    &:active {
+        outline: 3px solid $hackney-green;
+    }
+}
+
+.input--error {
+    border: 4px solid $hackney-error;
+
+    &:focus,
+    &:active {
+        outline-offset: -3px;
+        outline: 3px solid $hackney-green;
+    }
+}
+
+.error-message {
+    display: block;
+    margin-bottom: 15px;
+    color: $hackney-error;
+}
+
+.post-request {
+    background-color: $swagger-method-post;
+}
+
+.delete-request {
+    background-color: $swagger-method-delete
+}
+
+.put-patch-request {
+    background-color: $swagger-method-put-patch
+}
+
+.get-request {
+    background-color: $swagger-method-get;
+}
+
+//// Create reusable link style component
+.link {
+    
+}
+
+//// FORMS
+
+.form-group--error {
+    padding-left: 1.5rem;
+    border-left: 5px solid #b10e1e;
+}
+
+.textarea {
+    display: block;
+    box-sizing: border-box;
+    font-family: "nta", Arial, sans-serif;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 16px;
+    line-height: 1.25;
+    width: 100%;
+    padding: 5px 4px 4px;
+    border: 2px solid #0b0c0c;
+}
+
+.textarea--error {
+    border: 4px solid #b10e1e;
+}

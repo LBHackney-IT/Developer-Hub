@@ -9,6 +9,7 @@ import { IAppState } from '../../../store/state/app.state';
 import { selectApiList } from '../../../store/selectors/api.selectors';
 import { GetApiList } from '../../../store/actions/api.actions';
 import { retry } from 'rxjs/operators';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-api-form',
@@ -19,20 +20,21 @@ export class ApiFormComponent implements OnInit {
 
   constructor(private apiService: ApiService,
     private activeRoute: ActivatedRoute,
-    private store: Store<IAppState>
+    private store: Store<IAppState>,
+    private alertService: AlertService
   ) { }
 
 
   api: IApi;
 
   apiForm = new FormGroup({
-    id: new FormControl('id', [
+    id: new FormControl('', [
       Validators.required
     ]),
     title: new FormControl('', [
       Validators.required
     ]),
-    summary: new FormControl('summary', [
+    summary: new FormControl('', [
       Validators.required
     ]),
     compliant: new FormGroup({
@@ -155,9 +157,11 @@ export class ApiFormComponent implements OnInit {
     const api: IApi = this.apiForm.getRawValue();
     this.apiService.putApi(api).subscribe(
       (response) => {
+        this.alertService.success('Api Successfully Edited');
         console.log(response);
       },
       (error) => {
+        this.alertService.error(error.message);
         console.log(error);
       });
   }

@@ -1,63 +1,49 @@
 <app-column-layout [show]="apiEndpoint">
-  <h2 class="govuk-heading-l"> {{ apiEndpoint?.title }} </h2>
-  <p class="govuk-body-l">
-    {{ path?.summary }}
-  </p>
+<section class="endpoint__content">
+  <h1 class="endpoint__header heading-large">{{ apiEndpoint?.title }}</h1>
+  <p class="endpoint__text paragraph-text">{{ path?.summary }}</p>
 
-  <h3 class="govuk-heading-m"> Endpoint </h3>
-  <div class="govuk-inset-text">
-    <strong class="govuk-tag">
-      {{ path?.requestType | uppercase }}
-    </strong>
-    <span class="govuk-body">{{ path?.url }}</span>
+  <h3 class="endpoint__medium__header heading-medium">Endpoint</h3>
+  <div class="endpoint__medium__box">
+    <div class="endpoint__medium__tag hackney-tag hackney-tag--status">{{ path?.requestType | uppercase }}</div>
+    <div class="endpoint__medium__uri">
+      <a class="heading-small">{{ path?.url }}</a>
+    </div>
   </div>
 
+  <div class="endpoint__table__title">
+    <h3 class="heading-medium">Request Parameters</h3>
+  </div>
 
-  <h3 class="govuk-heading-m">Request Parameters</h3>
-
-  <table class="govuk-table">
-    <thead class="govuk-table__head">
-      <tr class="govuk-table__row">
-        <th class="govuk-table__header" scope="col">Parameters</th>
-        <th class="govuk-table__header" scope="col">In</th>
-        <th class="govuk-table__header" scope="col">Required</th>
-        <th class="govuk-table__header" scope="col">Value</th>
-      </tr>
-    </thead>
-    <tbody class="govuk-table__body">
-      <tr class="govuk-table__row" *ngFor="let parameter of getParameters(path)">
-          <td class="govuk-table__cell"> {{parameter?.name}}</td>
-          <td class="govuk-table__cell"> {{parameter?.in}}</td>
-          <td class="govuk-table__cell"> {{parameter?.required}}</td>
-          <td class="govuk-table__cell"> {{parameter?.type}}</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <table class="govuk-table">
-    <thead class="govuk-table__head">
-      <tr class="govuk-table__row">
-        <th class="govuk-table__header" scope="col">Header Field</th>
-        <th class="govuk-table__header" scope="col">Value</th>
-      </tr>
-    </thead>
-    <tbody class="govuk-table__body">
-      <tr class="govuk-table__row">
-        <th class="govuk-table__header" scope="row">Authorization</th>
-        <td class="govuk-table__cell">Authorization Required. A valid access token generated.</td>
-      </tr>
-    </tbody>
-  </table>
-
-
-  <h3 class="govuk-heading-m">Example</h3>
-
-  <div class="govuk-inset-text">
-      <span class="govuk-caption">
-          curl -X {{ path?.requestType | uppercase }}  "https://example.com/ {{ path?.url }} -H "Authorization: Bearer"
-      </span>
+  <div class="endpoint__table__box">
+    <div class="endpoint__table__row heading-small">
+      <div class="endpoint__table__column">Parameters</div>
+      <div class="endpoint__table__column">In</div>
+      <div class="endpoint__table__column">Required</div>
+      <div class="endpoint__table__column">Value</div>
     </div>
+    <div class="endpoint__table__row" *ngFor="let parameter of getParameters(path)">
+        <div class="endpoint__table__column">{{parameter?.name}}</div>
+        <div class="endpoint__table__column">{{parameter?.name}}</div>
+        <div class="endpoint__table__column">{{parameter?.required}}</div>
+        <div class="endpoint__table__column">{{parameter?.type}}</div>
+      </div>
+  </div>
 
-  <a routerLink="/documentation" class="govuk-back-link">All Endpoints</a>
+  <div class="endpoint__table__box">
+    <div class="endpoint__table__row heading-small">
+      <div class="endpoint__table__column--half">Header Field</div>
+      <div class="endpoint__table__column--half">Value</div>
+    </div>
+    <div class="endpoint__table__row">
+      <div class="endpoint__table__column--half">Header Field</div>
+      <div class="endpoint__table__column--half">Value</div>
+    </div>
+  </div>
 
+  <h3 class="heading-medium">Example</h3>
+  <p>curl -X {{ path?.requestType | uppercase }}  "https://example.com/ {{ path?.url }} -H "Authorization: Bearer"</p>
+
+  <a routerLink="/documentation" class="hackney-button">← All Endpoints</a>
+</section>
 </app-column-layout>

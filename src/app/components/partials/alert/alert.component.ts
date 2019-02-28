@@ -30,9 +30,9 @@ export class AlertComponent implements OnInit, OnDestroy {
         this.message = message;
     });
 
-    setTimeout(() => {
-      this.remove();
-    }, 10000);
+    // setTimeout(() => {
+    //   this.remove();
+    // }, 10000);
   }
 
   /**
@@ -42,7 +42,6 @@ export class AlertComponent implements OnInit, OnDestroy {
    */
   remove = () => {
     this.message = null;
-    this.subscription.unsubscribe();
   }
 
   /**
