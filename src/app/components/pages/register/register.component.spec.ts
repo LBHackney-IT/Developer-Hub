@@ -153,9 +153,11 @@ describe('RegisterComponent', () => {
   });
 
   it('should be true if confirmPassword control has a min length >= 8', () => {
-    const control = component.registerForm.get('confirmPassword');
-    control.setValue('Ab1!'.repeat(2));
-    expect(control.valid).toBe(true);
+    const confirmPasswordControl = component.registerForm.get('confirmPassword');
+    const passwordControl = component.registerForm.get('password');
+    passwordControl.setValue('Ab1!'.repeat(2));
+    confirmPasswordControl.setValue('Ab1!'.repeat(2));
+    expect(confirmPasswordControl.valid).toBe(true);
   });
 
   it('should be false if confirmPassword control does not match regex', () => {
@@ -166,10 +168,13 @@ describe('RegisterComponent', () => {
   });
 
   it('should be true if confirmPassword control does match regex', () => {
-    const control = component.registerForm.get('confirmPassword');
-    control.setValue('Ab1!'.repeat(2));
-    expect(RegExp(component.regEx).test(control.value)).toBe(true);
-    expect(control.valid).toBe(true);
+    const confirmPasswordControl = component.registerForm.get('confirmPassword');
+    const passwordControl = component.registerForm.get('password');
+    passwordControl.setValue('Ab1!'.repeat(2));
+    confirmPasswordControl.setValue('Ab1!'.repeat(2));
+    expect(confirmPasswordControl.valid).toBe(true);
+    expect(RegExp(component.regEx).test(confirmPasswordControl.value)).toBe(true);
+    expect(confirmPasswordControl.valid).toBe(true);
   });
 
 });
