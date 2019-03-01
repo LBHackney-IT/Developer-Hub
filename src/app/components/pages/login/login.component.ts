@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
+import { passwordRegex } from '../../../shared/password-regex.validation';
 
 /**
  *
@@ -37,7 +38,8 @@ export class LoginComponent implements OnInit {
     ]),
     password : new FormControl('', [
       Validators.required,
-      Validators.minLength(8)
+      Validators.minLength(8),
+      Validators.pattern(passwordRegex)
     ])
   });
 
