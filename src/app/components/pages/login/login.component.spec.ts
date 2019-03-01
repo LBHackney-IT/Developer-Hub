@@ -65,14 +65,14 @@ describe('LoginComponent', () => {
   });
 
   it('should be false if password control has a min length < 8', () => {
-    const control = component.loginForm.get('password');
-    control.setValue('a'.repeat(7));
-    expect(control.valid).toBe(false);
+    const passwordControl = component.loginForm.get('password');
+    passwordControl.setValue('Ab1!'.repeat(1));
+    expect(passwordControl.valid).toBe(false);
   });
 
   it('should be true if password control has a min length >= 8', () => {
-    const control = component.loginForm.get('password');
-    control.setValue('a'.repeat(8));
-    expect(control.valid).toBe(true);
+    const passwordControl = component.loginForm.get('password');
+    passwordControl.setValue('Ab1!'.repeat(2));
+    expect(passwordControl.valid).toBe(true);
   });
 });

@@ -50,9 +50,11 @@ describe('ChangePasswordComponent', () => {
   });
 
   it('should be true if password control has a min length >= 8', () => {
-    const control = component.changePasswordForm.get('password');
-    control.setValue('a'.repeat(8));
-    expect(control.valid).toBe(true);
+    const confirmPasswordControl = component.changePasswordForm.get('confirmPassword');
+    const passwordControl = component.changePasswordForm.get('password');
+    passwordControl.setValue('Ab1!'.repeat(2));
+    confirmPasswordControl.setValue('Ab1!'.repeat(2));
+    expect(passwordControl.valid).toBe(true);
   });
 
   it('should be false if confirmPassword control is not set', () => {
@@ -62,9 +64,11 @@ describe('ChangePasswordComponent', () => {
   });
 
   it('should be false if confirmPassword control has a min length < 8', () => {
-    const control = component.changePasswordForm.get('confirmPassword');
-    control.setValue('a'.repeat(7));
-    expect(control.valid).toBe(false);
+    const confirmPasswordControl = component.changePasswordForm.get('confirmPassword');
+    const passwordControl = component.changePasswordForm.get('password');
+    passwordControl.setValue('Ab1!'.repeat(1));
+    confirmPasswordControl.setValue('Ab1!'.repeat(1));
+    expect(confirmPasswordControl.valid).toBe(false);
   });
 
   it('should be true if confirmPassword control has a min length >= 8', () => {
