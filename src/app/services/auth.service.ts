@@ -339,7 +339,7 @@ export class AuthService {
 
   getCognitoUsername = (): string => {
     const cognitoUser = this.getCurrentUser();
-    return cognitoUser.getUsername();
+    return cognitoUser ? cognitoUser.getUsername() : null;
   }
 
 

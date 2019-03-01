@@ -12,6 +12,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, convertToParamMap, ParamMap } from '@angular/router';
+import { CognitoUser } from 'amazon-cognito-identity-js';
+import { MockAppComponent } from '../app/app.component';
 
 // Mock Store
 @Injectable()
@@ -83,9 +85,29 @@ export class MockActivatedRoute {
     }
 }
 
+
+@Injectable({
+    providedIn: 'root'
+  })
+  class MockAuthService {
+    getCurrentUser = () => {
+      return {
+      };
+    }
+
+    generatePoolData = () => {
+        return {
+            UserPoolId: 'xxxxxxx',
+            ClientId: 'xxxxx'
+        };
+    }
+
+    confirmRegistration = () => {
+        return;
+      }
+  }
+
 /**
- *
- *
  * @export
  * @class TestingModule
  */
@@ -96,10 +118,14 @@ export class MockActivatedRoute {
         HttpClientTestingModule,
         FormsModule,
         ReactiveFormsModule,
-        CommonModule
+        // CommonModule
     ],
+    // declarations: [
+    //     MockAppComponent
+    // ],
     providers: [
-        provideMockStore()
+        provideMockStore(),
+        MockAuthService
     ],
     exports: [
         RouterTestingModule,

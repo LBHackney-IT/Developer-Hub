@@ -29,7 +29,6 @@
     "aws-sdk": "^2.395.0",
     "core-js": "^2.6.3",
     "faker": "^4.1.0",
-    "govuk-frontend": "^2.5.1",
     "govuk-frontend": "^2.7.0",
     "rxjs": "^6.3.3",
     "tslib": "^1.9.0",
