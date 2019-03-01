@@ -67,3 +67,10 @@ export class HeaderComponent implements OnInit {
   }
 
 }
+
+@Component({
+  selector: 'app-header',
+  template: ''
+})
+export class MockHeaderComponent {
+}

@@ -29,3 +29,11 @@ export class SideNavbarComponent implements OnInit {
   }
 
 }
+
+
+@Component({
+  selector: 'app-side-navbar',
+  template: ''
+})
+export class MockSideNavbarComponent {
+}

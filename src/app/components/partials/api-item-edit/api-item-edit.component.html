@@ -4,8 +4,8 @@
           <div class="govuk-grid-column-two-thirds">
             <h3 class="heading-medium">
               <a class="govuk-link--no-visited-state govuk-link" 
-                  routerLink="/api/{{ api.id }}">
-                  {{ api.title }}
+                  routerLink="/api/{{ api?.id }}">
+                  {{ api?.title }}
                 </a>
             </h3>
           </div>
@@ -19,7 +19,7 @@
   </div> -->
 
 
-  <div class="api-item-edit__box">
+  <div class="api-item-edit__box" *ngIf='api'>
     <div class="api-item-edit__title">
       <h3 class="heading-medium">
         <a class="api-item-edit__link" 

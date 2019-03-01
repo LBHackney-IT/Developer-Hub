@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ApiFormComponent } from './api-form.component';
+import { TestingModule } from '../../../../testing/utils';
 
 describe('ApiFormComponent', () => {
   let component: ApiFormComponent;
@@ -8,6 +9,9 @@ describe('ApiFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        TestingModule
+      ],
       declarations: [ ApiFormComponent ]
     })
     .compileComponents();

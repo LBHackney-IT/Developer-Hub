@@ -16,7 +16,20 @@ export class AppComponent implements OnInit {
   getCurrentUser = () => {
     const user = this.authService.getCurrentUser();
     if (user !== null) {
+      console.log(user);
        this.authService.refreshSession(user);
     }
+  }
+}
+
+
+@Component({
+  selector: 'app-root',
+  template: ''
+})
+export class MockAppComponent {
+  title = 'Developer-Hub-Frontend';
+  getCurrentUser = () => {
+    return;
   }
 }

@@ -17,6 +17,7 @@ import { IConfirmationPageText } from '../../../interfaces/IConfirmationPageText
 export class ConfirmationComponent implements OnInit {
   title: string;
   message: string;
+  type: string;
 
   confirmationTextMap = {
     forgotPassword: {
@@ -59,8 +60,8 @@ export class ConfirmationComponent implements OnInit {
    * @memberof ConfirmationComponent
    */
   ngOnInit() {
-    const type = this.route.snapshot.paramMap.get('type');
-    switch (type) {
+    this.type = this.getTypeFromUri();
+    switch (this.type) {
       case 'forgot-password': {
         this.assignMessage(this.confirmationTextMap.forgotPassword);
         break;
@@ -77,6 +78,10 @@ export class ConfirmationComponent implements OnInit {
         this.assignMessage(this.confirmationTextMap.default);
       }
     }
+  }
+
+  getTypeFromUri = () => {
+    return this.route.snapshot.paramMap.get('type');
   }
 
 }

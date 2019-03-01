@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ApiItemEditComponent } from './api-item-edit.component';
+import { TestingModule } from '../../../../testing/utils';
 
 describe('ApiItemEditComponent', () => {
   let component: ApiItemEditComponent;
@@ -8,6 +9,9 @@ describe('ApiItemEditComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        TestingModule
+      ],
       declarations: [ ApiItemEditComponent ]
     })
     .compileComponents();

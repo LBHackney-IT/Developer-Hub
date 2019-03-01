@@ -54,3 +54,10 @@ export class AlertComponent implements OnInit, OnDestroy {
   }
 
 }
+
+@Component({
+  selector: 'app-alert',
+  template: ''
+})
+export class MockAlertComponent {
+}

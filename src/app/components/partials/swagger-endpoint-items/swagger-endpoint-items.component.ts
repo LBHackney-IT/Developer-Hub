@@ -36,7 +36,11 @@ export class SwaggerEndpointItemsComponent implements OnInit {
       this.swaggerEndpoints = response;
     });
   }
+}
 
-
-
+@Component({
+  selector: 'app-swagger-endpoint-items',
+  template: ''
+})
+export class MockSwaggerEndpointItemsComponent {
 }

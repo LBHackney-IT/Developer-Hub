@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ColumnLayoutComponent } from './column-layout.component';
+import { MockSideNavbarComponent } from '../side-navbar/side-navbar.component';
 
 describe('ColumnLayoutComponent', () => {
   let component: ColumnLayoutComponent;
@@ -8,9 +9,12 @@ describe('ColumnLayoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ColumnLayoutComponent ]
+      declarations: [
+        ColumnLayoutComponent,
+        MockSideNavbarComponent
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

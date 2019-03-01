@@ -49,8 +49,8 @@ export class TokenManagerComponent implements OnInit {
    * @memberof TokenManagerComponent
    */
   requestApiKeys = async () => {
-    const cognitoUsername = this.authSerice.getCognitoUsername();
-    console.log('cognitoUsername', cognitoUsername);
+    // const cognitoUsername = this.authSerice.getCognitoUsername();
+
     await this.apiKeyService.readUserApiKeys()
     .subscribe(
       (response) => {

@@ -31,3 +31,11 @@ export class TabsComponent implements AfterContentInit {
   }
 
 }
+
+
+@Component({
+  selector: 'app-tabs',
+  template: ''
+})
+export class MockTabsComponent {
+}
