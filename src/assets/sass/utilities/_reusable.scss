@@ -50,14 +50,22 @@
     border-radius: 0;
     color: $hackney-white;
     background-color: $hackney-green;
+    box-shadow: 0 .4rem .3rem #bbb;
 
     text-align: center;
     vertical-align: top;
     cursor: pointer;
     -webkit-appearance: none;
 
+    transition: all .1s;
+
     &:hover {
         background-color: $hackney-lines-mid;
+    }
+
+    &:active {
+        transform: translateY(.2rem) scale(0.98);
+        
     }
 }
 
