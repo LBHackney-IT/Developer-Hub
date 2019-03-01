@@ -125,7 +125,7 @@ export class MockActivatedRoute {
     // ],
     providers: [
         provideMockStore(),
-        MockAuthService
+        // MockAuthService
     ],
     exports: [
         RouterTestingModule,

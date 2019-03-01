@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   title = 'Developer-Hub-Frontend';
   constructor(private authService: AuthService) {}
   ngOnInit() {
-    // this.getCurrentUser();
+    this.getCurrentUser();
   }
 
   getCurrentUser = () => {
