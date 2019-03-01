@@ -69,18 +69,7 @@
     font-weight: 700;
   }
 
-  &__link:visited,
-  &__link:link {
-    text-decoration: none;
-  }
 }
-
-.api__key {
-
-}
-
-//remove first child p margin in the tag on media query
-
 
 .api__details {
 
@@ -139,5 +128,22 @@
 
   .api__details__overview {
     margin-bottom: 1.5rem;
+  }
+}
+
+.api__table__body__link {
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: $hackney-blue;
+
+  &:link, 
+  &:visited {
+  text-decoration: none;
+  }
+
+  &:hover{
+    text-decoration: underline;
   }
 }

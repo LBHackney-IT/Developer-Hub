@@ -34,7 +34,7 @@
                 <p class="api__table__body__title">Production Base URL</p>
             </div>
             <div class="api__table__body--column2">
-                <a class="govuk-link govuk-link--no-visited-state">{{ api?.production.url }}</a>
+                <a class="api__table__body__link ">{{ api?.production.url }}</a>
             </div>
         </div>
         <div class="api__table__body__row" *ngIf="isDeployed('production')">
@@ -51,7 +51,7 @@
                 <p class="api__table__body__title">Github URL</p>
             </div>
             <div class="api__table__body--column2">
-                <a class="govuk-link govuk-link--no-visited-state">{{api.github_url }}</a>
+                <a class="api__table__body__link ">{{api.github_url }}</a>
             </div>
         </div>
         <div class="api__table__body__row api__key" *ngIf="api.github_url">
