@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { checkPassword } from 'src/app/validators/check-password.validator';
 
 /**
  * @export
@@ -41,7 +42,7 @@ export class ChangePasswordComponent implements OnInit {
       Validators.required,
       Validators.minLength(8)
     ]),
-  });
+  }, checkPassword);
   /**
    * @memberof ChangePasswordComponent
    */
