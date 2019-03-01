@@ -11,15 +11,12 @@ export function checkPassword(control: AbstractControl) {
     const confirmPassword = control.get('confirmPassword').value;
 
     if (confirmPassword.length <= 0) {
-        console.log('less than 0');
         return null;
     }
 
     if (confirmPassword !== password) {
-        console.log('not match');
         // return {passwordsNotEqual: true};
         control.get('confirmPassword').setErrors({passwordsNotEqual: true});
     }
-    console.log('null');
     return null;
 }
