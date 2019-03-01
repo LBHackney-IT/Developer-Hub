@@ -1,16 +1,26 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { Component } from '@angular/core';
+import { TestingModule} from '../testing/utils';
+import { MockHeaderComponent } from './components/partials/header/header.component';
+import { MockPhaseBannerComponent } from './components/partials/phase-banner/phase-banner.component';
+import { MockFooterComponent } from './components/partials/footer/footer.component';
+import { MockAlertComponent } from './components/partials/alert/alert.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        TestingModule,
       ],
       declarations: [
-        AppComponent
-      ],
+        AppComponent,
+        MockHeaderComponent,
+        MockPhaseBannerComponent,
+        MockAlertComponent,
+        MockFooterComponent
+      ]
     }).compileComponents();
   }));
 
@@ -25,11 +35,5 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('Developer-Hub-Frontend');
   });
-
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to Developer-Hub-Frontend!');
-  });
 });
+

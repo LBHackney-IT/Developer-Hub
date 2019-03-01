@@ -39,3 +39,11 @@ export class ClickRevealComponent implements OnInit {
   }
 
 }
+
+@Component({
+  selector: 'app-click-reveal',
+  template: ''
+})
+export class MockClickRevealComponent {
+  @Input() apiKey: string;
+}

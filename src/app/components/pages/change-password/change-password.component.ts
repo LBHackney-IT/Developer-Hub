@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { checkPassword } from 'src/app/validators/check-password.validator';
+import { passwordRegex } from '../../../shared/password-regex.validation';
 
 /**
  * @export
@@ -17,14 +19,10 @@ export class ChangePasswordComponent implements OnInit {
 
   /**
    * @summary Creates an instance of ChangePasswordComponent.
-   * @param {ActivatedRoute} route
-   * @param {Router} router
    * @param {AuthService} authService
    * @memberof ChangePasswordComponent
    */
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
     private authService: AuthService
 
   ) { }
@@ -35,13 +33,15 @@ export class ChangePasswordComponent implements OnInit {
   changePasswordForm: FormGroup = new FormGroup({
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(8)
+      Validators.minLength(8),
+      Validators.pattern(passwordRegex)
     ]),
     confirmPassword: new FormControl('', [
       Validators.required,
-      Validators.minLength(8)
+      Validators.minLength(8),
+      Validators.pattern(passwordRegex)
     ]),
-  });
+  }, checkPassword);
   /**
    * @memberof ChangePasswordComponent
    */

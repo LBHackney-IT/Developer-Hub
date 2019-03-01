@@ -43,3 +43,10 @@ export class SwaggerEndpointPageComponent implements OnInit {
     return path.parameters;
   }
 }
+
+@Component({
+  selector: 'app-swagger-endpoint-page',
+  template: ''
+})
+export class MockSwaggerEndpointPageComponent {
+}

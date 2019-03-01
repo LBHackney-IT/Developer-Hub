@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
+import { checkPassword } from '../../../validators/check-password.validator';
+import { passwordRegex } from '../../../shared/password-regex.validation';
 
 /**
  *
@@ -51,14 +53,14 @@ export class RegisterComponent implements OnInit {
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
-      Validators.pattern(this.regEx)
+      Validators.pattern(passwordRegex)
     ]),
     confirmPassword: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
-      Validators.pattern(this.regEx)
+      Validators.pattern(passwordRegex)
     ]),
-  });
+  }, checkPassword);
 
   /**
    *

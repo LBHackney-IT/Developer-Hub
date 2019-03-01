@@ -1,11 +1,17 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpService } from './apiKey.service';
+import { ApiKeyService } from './apiKey.service';
+import { TestingModule } from '../../testing/utils';
 
-describe('HttpService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+
+describe('ApiKeyService', () => {
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [
+      TestingModule
+    ],
+  }));
 
   it('should be created', () => {
-    const service: HttpService = TestBed.get(HttpService);
+    const service: ApiKeyService = TestBed.get(ApiKeyService);
     expect(service).toBeTruthy();
   });
 });

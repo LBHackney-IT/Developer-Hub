@@ -36,7 +36,7 @@
             </div> 
                   
             <div *ngIf="f.password.errors" class="error-message">
-                <div *ngIf="f.password.errors.minlength">Your password must be at least 8 characters and contain at least one number, lowercase letter, uppercase letter and special character.</div>   
+              <div *ngIf="f.password.errors.minlength || f.password.errors.pattern">Your password must be at least 8 characters and contain at least one number, lowercase letter, uppercase letter and special character.</div>
             </div>
   </div>
   <a routerLink="/forgot-password"  class="govuk-back-link">Forgot your password?</a>

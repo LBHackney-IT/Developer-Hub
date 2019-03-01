@@ -199,17 +199,15 @@ export class AuthService {
 
       await userPool.signUp(username, password, attributeList, null, function (err, result) {
         if (err) {
-          alertService.error(err.message);
           throw new Error(err.message);
         }
-        alertService.success('Please check your email');
         router.navigateByUrl('/confirmation/registration');
       });
 
     } catch (error) {
-      const alertService = this.alertService;
+      // const alertService = this.alertService;
       console.log(error);
-      alertService.error(error.message);
+      // alertService.error(error.message);
     }
   }
 
@@ -339,7 +337,7 @@ export class AuthService {
 
   getCognitoUsername = (): string => {
     const cognitoUser = this.getCurrentUser();
-    return cognitoUser.getUsername();
+    return cognitoUser ? cognitoUser.getUsername() : null;
   }
 
 

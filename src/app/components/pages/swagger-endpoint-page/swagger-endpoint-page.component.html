@@ -1,5 +1,5 @@
 <app-column-layout [show]="apiEndpoint">
-<section class="endpoint__content">
+<section class="endpoint__content" *ngIf='apiEndpoint'>
   <h1 class="endpoint__header heading-large">{{ apiEndpoint?.title }}</h1>
   <p class="endpoint__text paragraph-text">{{ path?.summary }}</p>
 

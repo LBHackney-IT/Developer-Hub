@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SwaggerEndpointPageComponent } from './swagger-endpoint-page.component';
+import { MockColumnLayoutComponent } from '../../partials/column-layout/column-layout.component';
+import { TestingModule } from '../../../../testing/utils';
 
 describe('SwaggerEndpointPageComponent', () => {
   let component: SwaggerEndpointPageComponent;
@@ -8,9 +10,15 @@ describe('SwaggerEndpointPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SwaggerEndpointPageComponent ]
+      imports: [
+        TestingModule
+      ],
+      declarations: [
+        SwaggerEndpointPageComponent,
+        MockColumnLayoutComponent
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

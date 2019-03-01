@@ -1,6 +1,6 @@
 <app-column-layout [show]="api"> 
   
-  <div class="api__content">
+  <div class="api__content" *ngIf='api'>
     <div class="api__table">
       <div class="api__table__header">
         <div class="api__table__header__title">
@@ -20,13 +20,13 @@
               <a class="api__table__body__link">{{ api?.staging.url }}</a>
             </div>
         </div>
-        <div class="api__table__body__row" *ngIf="isDeployed('staging')">
+        <div class="api__table__body__row" *ngIf="api && isDeployed('staging')">
             <div class="api__table__body--column1">
                 <p class="api__table__body__title">Available in Staging</p>
             </div>
             <div class="api__table__body--column2">
-                <p class="hackney-tag hackney-tag--{{isDeployed('staging') ? 'positive' : 'negative' }}"> {{isDeployed('staging') ? 'Yes' : 'No' }} </p>
-                <p class="hackney-tag hackney-tag--{{isHealthy('staging') ? 'positive' : 'negative' }}"> {{isHealthy('staging') ? 'Healthy' : 'Not Healthy' }} </p>
+                <p class="hackney-tag hackney-tag--{{api && isDeployed('staging') ? 'positive' : 'negative' }}"> {{isDeployed('staging') ? 'Yes' : 'No' }} </p>
+                <p class="hackney-tag hackney-tag--{{api && isHealthy('staging') ? 'positive' : 'negative' }}"> {{isHealthy('staging') ? 'Healthy' : 'Not Healthy' }} </p>
             </div>
         </div>
         <div class="api__table__body__row"*ngIf="isDeployed('production')">
@@ -34,7 +34,7 @@
                 <p class="api__table__body__title">Production Base URL</p>
             </div>
             <div class="api__table__body--column2">
-                <a class="govuk-link govuk-link--no-visited-state">{{ api?.production.url }}</a>
+                <a class="api__table__body__link ">{{ api?.production.url }}</a>
             </div>
         </div>
         <div class="api__table__body__row" *ngIf="isDeployed('production')">
@@ -51,7 +51,7 @@
                 <p class="api__table__body__title">Github URL</p>
             </div>
             <div class="api__table__body--column2">
-                <a class="govuk-link govuk-link--no-visited-state">{{api.github_url }}</a>
+                <a class="api__table__body__link ">{{api.github_url }}</a>
             </div>
         </div>
         <div class="api__table__body__row api__key" *ngIf="api.github_url">
@@ -69,10 +69,10 @@
         </div>
       </div>
     </div>
-    <div class="api__details">
+    <div class="api__details" *ngIf='api'>
         <div class="api__details__overview">
             <h3 class="heading-large"> Overview</h3>
-            <p class="paragraph-text"> {{ api.description }} </p>
+            <p class="paragraph-text"> {{ api?.description }} </p>
           </div>
           <div class="api__details__compliance">
               <div class="api__details__compliance__header">
@@ -91,7 +91,7 @@
                 </div>
           </div>
     </div>
-    <div class="api__owner">
+    <div class="api__owner" *ngIf='api'>
             <div class="api__owner__content">
                 <h3 class="heading-medium"> Product Owner</h3>
                 <p class="paragraph-text"> Name: {{api.owner.product.name}} </p>

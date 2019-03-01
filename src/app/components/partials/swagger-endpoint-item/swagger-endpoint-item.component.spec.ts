@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SwaggerEndpointItemComponent } from './swagger-endpoint-item.component';
+import { TestingModule } from '../../../../testing/utils';
 
 describe('SwaggerEndpointItemComponent', () => {
   let component: SwaggerEndpointItemComponent;
@@ -8,6 +9,9 @@ describe('SwaggerEndpointItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        TestingModule
+      ],
       declarations: [ SwaggerEndpointItemComponent ]
     })
     .compileComponents();
