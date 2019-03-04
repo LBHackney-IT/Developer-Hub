@@ -22,16 +22,18 @@ jobs:
       #     name: Linting
       #     command: npm run lint
       - run: npm run test -- --no-watch --no-progress
-    #   - run:
-    #       name: Building
-    #       command: |
-    #           if [ "${CIRCLE_BRANCH}" == "dev" ]; then
-    #               npm run build --prod
-    #           elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-    #               npm run build --prod
-    #           else
-    #               echo 'dry-branch'
-    #           fi
+      - run:
+          name: Building
+          command: |
+              if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                #   npm run build --prod
+                echo 'build in prod'
+              elif [ "${CIRCLE_BRANCH}" == "dev" ]; then
+                #   npm run build --prod
+                echo 'build in dev'
+              else
+                  echo 'dry-branch'
+              fi
       # - run:
       #     name: Deploy to S3
       #     command: |
