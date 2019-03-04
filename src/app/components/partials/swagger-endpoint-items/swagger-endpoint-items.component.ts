@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { swaggerJson } from '../../../shared/swagger';
-import { ApiDataParser } from '../../../services/apiDataParser.service';
 import { ISwagger } from 'src/app/interfaces/ISwagger';
 import { GetSwaggerEndpointList } from '../../../store/actions/swagger-endpoints.action';
 import { Store, select } from '@ngrx/store';
@@ -14,10 +12,10 @@ import { SwaggerEndpointService } from '../../../services/swagger-endpoint.servi
   styleUrls: ['./swagger-endpoint-items.component.scss']
 })
 export class SwaggerEndpointItemsComponent implements OnInit {
+  queryString = '';
   swaggerEndpoints: ISwagger[];
 
   constructor(
-    private apiDataParserService: ApiDataParser,
     private store: Store<IAppState>,
     private swaggerEndpointService: SwaggerEndpointService
     ) {

@@ -1,11 +1,65 @@
 import { IApi } from 'src/app/interfaces/IApi';
 import * as Faker from 'faker/locale/en_GB';
+import { ISwagger } from '../app/interfaces/ISwagger';
+import { IPath } from '../app/interfaces/IPath';
+import { IPathParameter } from '../app/interfaces/IPathParameters';
 export const generateTestApis = (numberOfApis: number): IApi[] => {
     const apis: IApi[] = [];
     for (let i = 0; i < numberOfApis; i++) {
         apis.push(generateRandomApi());
     }
     return apis;
+};
+
+export const generateTestSwaggerEndpoints = (numberOfEndpoints: number) => {
+    const swaggerEndpoints: ISwagger[] = [];
+    for (let i = 0; i < numberOfEndpoints; i++) {
+        swaggerEndpoints.push(generateRandomSwagger());
+    }
+};
+
+const generateRandomSwagger = (): ISwagger => {
+    return {
+        id: Faker.random.alphaNumeric(8),
+        title: Faker.lorem.word() + ' API',
+        description: Faker.lorem.words(10),
+        paths: generateRandomPaths(5),
+        version: 'v1',
+        last_updated: Faker.date.recent(1).getTime()
+    };
+};
+
+const generateRandomPaths = (numberOfPaths: number): IPath[] => {
+    const paths: IPath[] = [];
+    const possibleRequestTypes = ['GET', 'POST'];
+    for (let i = 0; i < numberOfPaths; i++) {
+        paths.push({
+            id: Faker.random.alphaNumeric(8),
+            requestType: Faker.helpers.randomize(possibleRequestTypes),
+            url: Faker.internet.url(),
+            tags: [Faker.lorem.word()],
+            summary: Faker.lorem.words(15),
+            parameters: generatePathParameter(3),
+            responses: {[Faker.random.number(100)] : 'Test'},
+        });
+    }
+
+    return paths;
+};
+
+const generatePathParameter = (numberOfParameters: number): IPathParameter[] => {
+    const parameters: IPathParameter[] = [];
+    for (let i = 0; i < numberOfParameters; i++) {
+        parameters.push({
+            name: Faker.lorem.words(2),
+            in: Faker.lorem.word(),
+            description: Faker.lorem.words(10),
+            required: Faker.random.boolean(),
+            type: Faker.lorem.word()
+        });
+    }
+
+    return parameters;
 };
 
 const generateRandomApi = (): IApi => {
