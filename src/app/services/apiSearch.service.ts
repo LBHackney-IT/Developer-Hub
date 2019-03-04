@@ -10,9 +10,10 @@ export class ApiSearch {
     search = (swaggerEndpoints: ISwagger[], searchText: string) => {
         const words = searchText.toLowerCase().split(' ');
         this.swaggerEndpoints = swaggerEndpoints;
-        words.forEach(word => {
-            this.filteredSwaggerEndpoints = this.getMatchingEndpoints(word);
-        });
+        // words.forEach(word => {
+        //     this.filteredSwaggerEndpoints = this.getMatchingEndpoints(word);
+        // });
+        this.filteredSwaggerEndpoints = this.getMatchingEndpoints(searchText);
 
         console.log(this.filteredSwaggerEndpoints);
 
@@ -23,7 +24,8 @@ export class ApiSearch {
     private getMatchingEndpoints = (word: string) => {
         const swaggerEndpoints = this.swaggerEndpoints.filter((swaggerEndpoint) => {
             swaggerEndpoint.paths =  swaggerEndpoint.paths.filter((path) => {
-                if (path.summary && path.tags && path.url) {
+                // Check if path summary exists
+                if (path.summary) {
                     return path.tags[0].toLowerCase().includes(word) ||
                     path.url.includes(word) ||
                     path.summary.includes(word);

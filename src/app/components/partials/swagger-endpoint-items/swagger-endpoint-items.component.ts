@@ -18,7 +18,6 @@ export class SwaggerEndpointItemsComponent implements OnInit {
   swaggerEndpoints: ISwagger[];
 
   constructor(
-    private apiDataParserService: ApiDataParser,
     private store: Store<IAppState>,
     private swaggerEndpointService: SwaggerEndpointService
     ) {
