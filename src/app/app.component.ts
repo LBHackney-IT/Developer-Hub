@@ -15,7 +15,8 @@ export class AppComponent implements OnInit {
 
   getCurrentUser = () => {
     const user = this.authService.getCurrentUser();
-    if (user !== null) {
+    const isAuthenticated: boolean = user ? this.authService.isAuthenticated(user) : false;
+    if (user !== null && isAuthenticated) {
        this.authService.refreshSession(user);
     }
   }
