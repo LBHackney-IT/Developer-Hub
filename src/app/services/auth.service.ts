@@ -155,9 +155,16 @@ export class AuthService {
   logout = async () => {
     const cognitoUser = await this.getCurrentUser();
     this.removeUser();
-    this.alertService.success('You have been logged out');
     if (cognitoUser !== null) {
       cognitoUser.signOut();
+      // cognitoUser.globalSignOut({
+      //   onSuccess: function (result) {
+      //     console.log('hello');
+      //   },
+      //   onFailure: function (err) {
+      //     console.log(err);
+      //   },
+      // });
     }
     this.router.navigateByUrl('/');
   }
@@ -264,10 +271,22 @@ export class AuthService {
   refreshSession = (cognitoUser: CognitoUser) => {
     cognitoUser.getSession((err, session) => {
       const refreshToken = session.getRefreshToken();
-      cognitoUser.refreshSession(refreshToken, (refreshSessionErr, result) => {
-        const payload = result.getIdToken().payload;
-      });
+      if (this.isAuthenticated(cognitoUser)) {
+        cognitoUser.refreshSession(refreshToken, (refreshSessionErr, result) => {
+          const payload = result.getIdToken().payload;
+          this.setUser(payload);
+        });
+      }
     });
+  }
+
+  isAuthenticated = (cogintoUser: CognitoUser) => {
+    let isAuthenticated: boolean;
+    cogintoUser.getSession((err, session) => {
+      isAuthenticated = session.isValid();
+    });
+
+    return isAuthenticated;
   }
 
   changePassword = async (changePasswordForm): Promise<any> => {
