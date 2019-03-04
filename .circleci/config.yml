@@ -38,7 +38,7 @@ jobs:
           name: Install aws cli
           command:
             sudo apt-get -y -qq install awscli
-      - run: echo ~/.aws/credentials
+      - run: echo /home/circleci/.aws/credentials
       - run:
           name: Deploy to S3
           command: |
