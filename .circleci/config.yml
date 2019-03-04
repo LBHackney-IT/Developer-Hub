@@ -1,0 +1,44 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/my-project
+    docker:
+      - image: circleci/node:8-browsers
+    steps:
+      - checkout
+      - run:
+          name: Show current branch
+          command: echo ${CIRCLE_BRANCH}
+      - restore_cache:
+          key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
+      - run:
+          name: Install local dependencies
+          command: npm install
+      - save_cache:
+          key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - "node_modules"
+      # - run:
+      #     name: Linting
+      #     command: npm run lint
+      - run: npm run test -- --no-watch --no-progress
+      - run:
+          name: Building
+          command: |
+              if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                #   npm run build --prod
+                echo 'build in prod'
+              elif [ "${CIRCLE_BRANCH}" == "dev" ]; then
+                #   npm run build --prod
+                echo 'build in dev'
+              else
+                  echo 'dry-branch'
+              fi
+      # - run:
+      #     name: Deploy to S3
+      #     command: |
+      #         if [ "${CIRCLE_BRANCH}" == "dev" ]; then
+      #             aws --region eu-west-2 s3 sync dist s3://project-dev/ --delete
+      #         elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+      #             aws --region eu-west-2 s3 sync dist http://developer.api.hackney.gov.uk.s3-eu-west-2.amazonaws.com --delete
+      #         fi

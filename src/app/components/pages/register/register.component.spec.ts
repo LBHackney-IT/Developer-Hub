@@ -139,7 +139,6 @@ describe('RegisterComponent', () => {
     expect(control.valid).toBe(true);
   });
 
-  // 
   it('should be false if confirmPassword control is not set', () => {
     const control = component.registerForm.get('confirmPassword');
     control.setValue('');
