@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { swaggerJson } from '../../../shared/swagger';
-import { ApiDataParser } from '../../../services/apiDataParser.service';
 import { ISwagger } from 'src/app/interfaces/ISwagger';
 import { GetSwaggerEndpointList } from '../../../store/actions/swagger-endpoints.action';
 import { Store, select } from '@ngrx/store';

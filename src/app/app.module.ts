@@ -43,8 +43,6 @@ import { SwaggerEndpointItemsComponent } from './components/partials/swagger-end
 import { AdminApiListComponent } from './components/pages/admin-api-list/admin-api-list.component';
 import { ApiItemEditComponent } from './components/partials/api-item-edit/api-item-edit.component';
 import { SwaggerEndpointPageComponent } from './components/pages/swagger-endpoint-page/swagger-endpoint-page.component';
-import { ApiDataParser } from './services/apiDataParser.service';
-import { SearchPipe } from './components/partials/swagger-endpoint-items/pipe';
 import { ApiSearch } from './services/apiSearch.service';
 import { StoreModule } from '@ngrx/store';
 import { appReducers } from './store/state/app.state';
@@ -91,7 +89,6 @@ import { FilterEndpointsPipe } from './pipes/filter-endpoints.pipe';
     AdminApiListComponent,
     ApiItemEditComponent,
     SwaggerEndpointPageComponent,
-    SearchPipe,
     FilterEndpointsPipe
   ],
   imports: [
@@ -108,7 +105,6 @@ import { FilterEndpointsPipe } from './pipes/filter-endpoints.pipe';
   providers: [
     ApiKeyService,
     ApiService,
-    ApiDataParser,
     ApiSearch,
     { provide: HTTP_INTERCEPTORS, useClass: LambdaInterceptor, multi: true },
   ],
