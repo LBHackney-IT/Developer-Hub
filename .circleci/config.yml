@@ -46,6 +46,7 @@ jobs:
           name: Deploy to S3
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                echo 'deploy to prod'
                 #   aws --region eu-west-2 s3 sync dist https://s3.eu-west-2.amazonaws.com/developer.api.hackney.gov.uk/ --delete
               elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
                   aws --region eu-west-2 s3 sync dist https://s3.eu-west-2.amazonaws.com/staging.developer.api.hackney.gov.uk/ --delete
