@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminManageKeysComponent } from './admin-manage-keys.component';
+import { TestingModule } from '../../../../testing/utils';
 
 describe('AdminManageKeysComponent', () => {
   let component: AdminManageKeysComponent;
@@ -8,6 +9,9 @@ describe('AdminManageKeysComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        TestingModule
+      ],
       declarations: [ AdminManageKeysComponent ]
     })
     .compileComponents();

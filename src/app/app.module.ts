@@ -39,13 +39,18 @@ import { AdminManageKeysComponent } from './components/partials/admin-manage-key
 import { DocumentationComponent } from './components/pages/documentation/documentation.component';
 import { SwaggerEndpointItemComponent } from './components/partials/swagger-endpoint-item/swagger-endpoint-item.component';
 import { SwaggerEndpointItemsComponent } from './components/partials/swagger-endpoint-items/swagger-endpoint-items.component';
-import { SwaggerEndpointPathComponent } from './components/partials/swagger-endpoint-path/swagger-endpoint-path.component';
+// import { SwaggerEndpointPathComponent } from './components/partials/swagger-endpoint-path/swagger-endpoint-path.component';
 import { AdminApiListComponent } from './components/pages/admin-api-list/admin-api-list.component';
 import { ApiItemEditComponent } from './components/partials/api-item-edit/api-item-edit.component';
 import { SwaggerEndpointPageComponent } from './components/pages/swagger-endpoint-page/swagger-endpoint-page.component';
-import { ApiDataParser } from './services/apiDataParser.service'
-import { SearchPipe } from './components/partials/swagger-endpoint-items/pipe'
 import { ApiSearch } from './services/apiSearch.service';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from './store/state/app.state';
+import { EffectsModule } from '@ngrx/effects';
+import { ApiEffects } from './store/effects/api.effects';
+import { environment } from '../environments/environment';
+import {StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { FilterEndpointsPipe } from './pipes/filter-endpoints.pipe';
 
 @NgModule({
   declarations: [
@@ -80,11 +85,11 @@ import { ApiSearch } from './services/apiSearch.service';
     DocumentationComponent,
     SwaggerEndpointItemComponent,
     SwaggerEndpointItemsComponent,
-    SwaggerEndpointPathComponent,
+    // SwaggerEndpointPathComponent,
     AdminApiListComponent,
     ApiItemEditComponent,
     SwaggerEndpointPageComponent,
-    SearchPipe
+    FilterEndpointsPipe
   ],
   imports: [
     BrowserModule,
@@ -92,12 +97,14 @@ import { ApiSearch } from './services/apiSearch.service';
     ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot([ApiEffects]),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [
     ApiKeyService,
     ApiService,
-    ApiDataParser,
     ApiSearch,
     { provide: HTTP_INTERCEPTORS, useClass: LambdaInterceptor, multi: true },
   ],

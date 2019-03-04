@@ -29,3 +29,10 @@ export class PhaseBannerComponent implements OnInit {
   }
 
 }
+
+@Component({
+  selector: 'app-phase-banner',
+  template: ''
+})
+export class MockPhaseBannerComponent {
+}

@@ -1,0 +1,72 @@
+.paragraph-text {
+    color: $hackney-black;
+    font-family: $font-family;
+    font-weight: 400;
+
+    font-size: 1.8rem;
+    line-height: 1.6;
+    margin-top: 0;
+    padding-bottom: $margin-bottom-text;
+}
+
+.heading-large {
+    color: $hackney-black;
+    font-size: 3.5rem;
+    font-family: $font-family;
+    font-weight: 700;
+    margin-bottom: $margin-bottom-heading;
+}
+
+.heading-huge {
+    color: $hackney-black;
+    font-family: $font-family;
+    font-size: 5rem;
+    font-weight: 700;
+    margin-bottom: $margin-bottom-heading;
+}
+
+.heading-medium {
+    color: $hackney-black;
+    font-size: 2.5rem;
+    font-family: $font-family;
+    font-weight: 700;
+    margin-bottom: $margin-bottom-heading;
+}
+
+.heading-small {
+    color: $hackney-black;
+    font-size: 2rem;
+    font-family: $font-family;
+    font-weight: 700;
+    margin-bottom: $margin-bottom-heading;
+}
+
+.hackney-link:visited {
+    color: #4c2c92;
+}
+.hackney-link:link {
+    text-decoration: underline;
+    color: #005ea5;
+    font-family: "nta",Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+.line-through {
+    text-decoration: line-through;
+  }
+
+@media screen and (max-width: 740px) {
+    
+    .heading-huge {
+        font-size: 4.5rem;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .heading-huge {
+        font-size: 3.8rem;
+    }
+
+    .heading-large {
+        font-size: 3rem;
+    }
+}

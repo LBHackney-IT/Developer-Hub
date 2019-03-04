@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { IApi } from 'src/app/interfaces/IApi';
 import { ApiService } from 'src/app/services/api.service';
+import { Store, select } from '@ngrx/store';
+import { IAppState } from '../../../store/state/app.state';
+import { GetApiList } from '../../../store/actions/api.actions';
+import { selectApiList } from '../../../store/selectors/api.selectors';
 
 @Component({
   selector: 'app-admin-api-list',
@@ -21,7 +25,8 @@ export class AdminApiListComponent implements OnInit {
    * @memberof ApiListComponent
    */
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private store: Store<IAppState>
   ) { }
 
   /**
@@ -30,6 +35,9 @@ export class AdminApiListComponent implements OnInit {
    */
   ngOnInit() {
     this.getListOfApis();
+    this.store.pipe(select(selectApiList)).subscribe((response) => {
+      this.apis = response;
+    });
   }
 
   /**
@@ -38,15 +46,15 @@ export class AdminApiListComponent implements OnInit {
    * @memberof ApiListComponent
    */
   getListOfApis = () => {
-    this.apiService.getListOfApis()
-    .subscribe(
-      (response) => {
-        this.apis = response;
-      },
-      (error) => {
-        console.log(error);
-      });
+    this.store.dispatch(new GetApiList());
   }
 
+}
+
+@Component({
+  selector: 'app-admin-api-list',
+  template: ''
+})
+export class MockAdminApiListComponent {
 }
 

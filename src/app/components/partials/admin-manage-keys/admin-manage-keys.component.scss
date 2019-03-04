@@ -1,0 +1,81 @@
+@import '../../../../styles.scss';
+
+.admin__box {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin__header {
+    display: flex;
+    justify-content: flex-start;
+
+    &__item {
+        flex-basis: 50%;
+    }
+}
+
+.admin__body {
+    display: flex;
+    flex-direction: column;
+
+    padding: 2rem 0;
+}
+
+.admin__row {
+    display: flex;
+    flex-direction: column;
+
+    &__button {
+        display: inline-block;
+        
+    }
+
+    &__email {
+        display: inline-block;
+        flex-basis: 50%;
+    }
+
+    &__api-id {
+        display: inline-block;
+        margin-right: auto;
+        flex-basis: 35%;
+    }
+}
+
+.admin__row__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid $hackney-black;
+}
+
+@media screen and (max-width: 640px) {
+    .admin__box {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .admin__row__item {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        
+        padding-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hackney-button {
+        margin: 0;
+    }
+    
+    .admin__header {
+        display: none;
+    }
+
+    .admin__row__button {
+        margin-bottom: 1rem;
+    }
+}

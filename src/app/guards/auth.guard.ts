@@ -37,9 +37,11 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     const currentUser: CognitoUser = this.authService.getCurrentUser();
-    const isUserLoggedIn: boolean = this.authService.isUserLoggedIn();
+    let isUserLoggedIn: boolean;
+    this.authService.isUserLoggedIn().subscribe((response) => {
+      isUserLoggedIn = response;
+    });
     if (currentUser && isUserLoggedIn) {
-      this.authService.refreshSession(currentUser);
       return true;
     }
     this.router.navigateByUrl('/login');

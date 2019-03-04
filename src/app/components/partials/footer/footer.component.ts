@@ -29,3 +29,10 @@ export class FooterComponent implements OnInit {
   }
 
 }
+
+@Component({
+  selector: 'app-footer',
+  template: ''
+})
+export class MockFooterComponent {
+}

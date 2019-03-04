@@ -36,7 +36,10 @@ export class LambdaInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpEvent<any>> {
         let authToken;
-        const isUserLoggedIn: boolean = this.authService.isUserLoggedIn();
+        let isUserLoggedIn: boolean;
+        this.authService.isUserLoggedIn().subscribe((response) => {
+            isUserLoggedIn = response;
+        });
         const cognitoUser: CognitoUser = this.authService.getCurrentUser();
         if (isUserLoggedIn && cognitoUser) {
             cognitoUser.getSession((err, session) => {
@@ -48,8 +51,8 @@ export class LambdaInterceptor implements HttpInterceptor {
             const authReq = req.clone({
                 headers: req.headers
                 .set('Authorization', authToken)
-                .append('Access-Control-Allow-Origin', '*')
-                .append('Content-Type', 'application/json')
+                // .append('Access-Control-Allow-Origin', '*')
+                // .append('Content-Type', 'application/json')
             });
             // Get the auth token from the service.
             return next.handle(authReq);

@@ -1,46 +1,43 @@
 import { Injectable } from '@angular/core';
+import { ISwagger } from '../interfaces/ISwagger';
 
 @Injectable({
     providedIn: 'root'
   })
 export class ApiSearch {
-    apiData: any;
-    resultApiData: ApiModel[];
-    query: string[];
-
-    search = (apiData: any, formInput: string) => {
-        this.apiData = apiData;
-        this.resultApiData = [];
-        this.query = formInput.toLowerCase().split(' ');
-        
-        this.populateLocalApiParentData();
-        this.query.forEach(word => {
-            if (word != ' ') {
-                this.getMatchingEndpoints(word);
-                this.apiData = this.resultApiData;
-            }
+    swaggerEndpoints: ISwagger[];
+    filteredSwaggerEndpoints = [];
+    search = (swaggerEndpoints: ISwagger[], searchText: string) => {
+        const words = searchText.toLowerCase().split(' ');
+        this.swaggerEndpoints = swaggerEndpoints;
+        words.forEach(word => {
+            this.filteredSwaggerEndpoints = this.getMatchingEndpoints(word);
         });
-        return this.resultApiData;
+
+        return this.filteredSwaggerEndpoints;
     }
 
     private getMatchingEndpoints = (word: string) => {
-        for (var i=0; i<this.apiData.length; i++) {
-            let matchingEndpoints = this.apiData[i].paths.filter(function (element: any) {
-                return element.tags.toString().toLowerCase().indexOf(word) > -1 ||
-                    element.url.toLowerCase().indexOf(word) > -1 ||
-                    element.summary.toLowerCase().indexOf(word) > -1;
-            })
-            this.resultApiData[i].paths = matchingEndpoints;
-        }
-    }
+        const swaggerEndpoints = this.swaggerEndpoints.filter((swaggerEndpoint) => {
+            const paths = swaggerEndpoint.paths.filter((path) => {
+                // Check if path summary exists
+                let pass = false;
+                if (path.summary) {
+                    pass =  path.summary.includes(word) ? true : pass;
+                }
 
-    private populateLocalApiParentData = () => {
-        this.apiData.forEach(api => {
-            let emptyApi = new ApiModel;
-            emptyApi.title = api.title;
-            emptyApi.paths = [];
-            this.resultApiData.push(emptyApi);
+                if (path.tags[0]) {
+                    pass =  path.tags[0].includes(word) ? true : pass;
+                }
+
+                if (path.url[0]) {
+                    pass =  path.url.includes(word) ? true : pass;
+                }
+                return pass;
+            });
+            return paths.length > 0;
         });
+        return swaggerEndpoints;
     }
 }
 
