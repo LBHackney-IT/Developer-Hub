@@ -7,6 +7,6 @@
   />
 </div>
 <app-swagger-endpoint-item
-  *ngFor="let api of (swaggerEndpoints | SearchPipe: queryString)"
+  *ngFor="let api of (swaggerEndpoints | filterEndpoints: queryString)"
   [api]="api"
 ></app-swagger-endpoint-item>

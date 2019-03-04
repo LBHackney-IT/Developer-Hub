@@ -52,6 +52,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ApiEffects } from './store/effects/api.effects';
 import { environment } from '../environments/environment';
 import {StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { FilterEndpointsPipe } from './pipes/filter-endpoints.pipe';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import {StoreDevtoolsModule } from '@ngrx/store-devtools';
     AdminApiListComponent,
     ApiItemEditComponent,
     SwaggerEndpointPageComponent,
-    SearchPipe
+    SearchPipe,
+    FilterEndpointsPipe
   ],
   imports: [
     BrowserModule,

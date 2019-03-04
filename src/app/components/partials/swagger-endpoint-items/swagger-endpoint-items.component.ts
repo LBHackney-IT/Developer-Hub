@@ -14,6 +14,7 @@ import { SwaggerEndpointService } from '../../../services/swagger-endpoint.servi
   styleUrls: ['./swagger-endpoint-items.component.scss']
 })
 export class SwaggerEndpointItemsComponent implements OnInit {
+  queryString = '';
   swaggerEndpoints: ISwagger[];
 
   constructor(
