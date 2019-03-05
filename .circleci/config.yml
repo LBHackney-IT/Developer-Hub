@@ -50,5 +50,5 @@ jobs:
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
                 echo 'deploy to master'
               elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
-                  aws --region eu-west-2 s3 sync dist s3://staging.developer.api.hackney.gov.uk/ --delete
+                  aws s3 sync dist s3://staging.developer.api.hackney.gov.uk/ --delete
               fi
