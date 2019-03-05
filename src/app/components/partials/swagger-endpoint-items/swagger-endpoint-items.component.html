@@ -6,7 +6,9 @@
     [(ngModel)]="queryString"
   />
 </div>
+
 <app-swagger-endpoint-item
   *ngFor="let api of (swaggerEndpoints | filterEndpoints: queryString)"
   [api]="api"
+  [queryString]="queryString"
 ></app-swagger-endpoint-item>
