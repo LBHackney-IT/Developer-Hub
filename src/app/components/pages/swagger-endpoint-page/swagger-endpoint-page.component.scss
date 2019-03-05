@@ -18,6 +18,10 @@
 
 .endpoint__medium__uri {
     margin: 0 2rem;
+    
+    & a {
+        color: $hackney-blue;
+    }
 }
 
 .endpoint__medium__box {
@@ -53,9 +57,22 @@
     flex-basis: 50%;
 }
 
+.endpoint__example {
+
+}
+
 @media screen and (max-width: 640px) {
     .endpoint__medium__box {
         align-items: flex-start;
         justify-content: flex-start;
+    }
+
+    .endpoint__example {
+        word-break: break-all;
+    }
+
+    .endpoint__medium__uri {
+        word-break: break-all;
+        width: 100%;
     }
 }
