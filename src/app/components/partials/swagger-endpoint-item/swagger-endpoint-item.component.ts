@@ -1,4 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { ISwagger } from './../../../interfaces/ISwagger';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { IPath } from 'src/app/interfaces/IPath';
+import { apiReducer } from 'src/app/store/reducers/api.reducers';
 
 @Component({
   selector: 'app-swagger-endpoint-item',
@@ -6,16 +9,32 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./swagger-endpoint-item.component.scss']
 })
 export class SwaggerEndpointItemComponent implements OnInit {
-  @Input() api: object;
+  @Input() api: ISwagger;
+  @Input() queryString: string;
   showDescription = false;
   showApiInfo = false;
 
   constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   toggleDescription = () => {
     this.showDescription = !this.showDescription;
+  }
+
+  highlight(endPoint: IPath) {
+
+    if (!endPoint.url) {
+      return '';
+    }
+
+    if (this.queryString === '') {
+      return endPoint.url;
+    }
+
+    return endPoint.url.replace(
+      this.queryString,
+      `<mark>${this.queryString}</mark>`
+    );
   }
 }

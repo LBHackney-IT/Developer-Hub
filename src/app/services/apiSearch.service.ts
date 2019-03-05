@@ -30,7 +30,7 @@ export class ApiSearch {
                     pass =  path.tags[0].includes(word) ? true : pass;
                 }
 
-                if (path.url[0]) {
+                if (path.url) {
                     pass =  path.url.includes(word) ? true : pass;
                 }
                 return pass;

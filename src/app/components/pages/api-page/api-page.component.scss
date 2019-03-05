@@ -120,10 +120,17 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    flex-wrap: wrap;
   }
 
   .api__table__body--column2 {
     text-align: left;
+    width: 100%;
+    & a {
+      width: 100%;
+      display: inline-block;
+      word-break: break-all;
+    }
   }
 
   .api__details__overview {
