@@ -29,7 +29,7 @@ jobs:
           name: Building
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                echo 'build in prod'
+                npm run build --prod
               elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
                   npm run build --prod
               else
@@ -48,7 +48,7 @@ jobs:
           name: Deploy to S3
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                echo 'deploy to master'
+                  aws s3 sync dist s3://developer.api.hackney.gov.uk/ --delete
               elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
                   aws s3 sync dist s3://staging.developer.api.hackney.gov.uk/ --delete
               fi
