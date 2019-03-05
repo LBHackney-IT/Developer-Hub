@@ -1,4 +1,4 @@
-<div class="documentation" *ngIf='api'>
+<div class="documentation" *ngIf="api">
   <div class="documentation__accordion">
     <div
       class="documentation__accordion-container"
@@ -22,8 +22,12 @@
     <div class="documentation__apis" *ngIf="showDescription">
       <div class="documentation__apis__api" *ngFor="let endpoint of api.paths">
         <div class="documentation__apis__api-endpoint">
-          <a class="documentation__apis__api-endpoint-link" routerLink="/{{ api.id }}/endpoints/{{ endpoint.id }}">
-            {{ endpoint.url }}
+          <a
+            class="documentation__apis__api-endpoint-link"
+            routerLink="/{{ api.id }}/endpoints/{{ endpoint.id }}"
+            [innerHTML]="highlight(endpoint)"
+          >
+            /* this allows to highlight the search term */
           </a>
         </div>
         <div class="documentation__apis__api-request">
