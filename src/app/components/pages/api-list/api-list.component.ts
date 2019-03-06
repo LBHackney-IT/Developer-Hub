@@ -6,6 +6,7 @@ import { IAppState } from '../../../store/state/app.state';
 import { selectApiList } from '../../../store/selectors/api.selectors';
 import { GetApiList } from 'src/app/store/actions/api.actions';
 import { Observable } from 'rxjs';
+import { SpinnerService } from '../../../services/spinner.service';
 
 /**
  *
@@ -33,7 +34,8 @@ export class ApiListComponent implements OnInit {
    * @memberof ApiListComponent
    */
   constructor(
-    private store: Store<IAppState>
+    private store: Store<IAppState>,
+    private spinnerService: SpinnerService
   ) { }
 
   /**
@@ -42,7 +44,9 @@ export class ApiListComponent implements OnInit {
    */
   ngOnInit() {
     this.getListOfApis();
+    this.spinnerService.displaySpinner();
     this.store.pipe(select(selectApiList)).subscribe((response) => {
+      this.spinnerService.hideSpinner();
       this.apis = response;
     });
   }
