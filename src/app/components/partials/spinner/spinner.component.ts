@@ -23,3 +23,10 @@ export class SpinnerComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 }
+
+@Component({
+  selector: 'app-spinner',
+  template: ''
+})
+export class MockSpinnerComponent {
+}
