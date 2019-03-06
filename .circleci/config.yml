@@ -1,4 +1,8 @@
-version: 2
+version: 2.1
+
+orbs:
+  aws-cli: circleci/aws-cli@0.1.11
+
 jobs:
   build:
     working_directory: ~/my-project
@@ -18,27 +22,33 @@ jobs:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - "node_modules"
-      # - run:
-      #     name: Linting
-      #     command: npm run lint
-      - run: npm run test -- --no-watch --no-progress
+      - run: 
+          name: run tests
+          command: npm run test -- --no-watch --no-progress
       - run:
           name: Building
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                #   npm run build --prod
-                echo 'build in prod'
-              elif [ "${CIRCLE_BRANCH}" == "dev" ]; then
-                #   npm run build --prod
-                echo 'build in dev'
+                npm run build --prod
+              elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
+                  npm run build --prod
               else
                   echo 'dry-branch'
               fi
-      # - run:
-      #     name: Deploy to S3
-      #     command: |
-      #         if [ "${CIRCLE_BRANCH}" == "dev" ]; then
-      #             aws --region eu-west-2 s3 sync dist s3://project-dev/ --delete
-      #         elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-      #             aws --region eu-west-2 s3 sync dist http://developer.api.hackney.gov.uk.s3-eu-west-2.amazonaws.com --delete
-      #         fi
+      - run:
+          name: Install aws cli
+          command:
+            sudo apt-get -y -qq install awscli
+      # - aws-cli/install
+      - aws-cli/configure:
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          aws-region: AWS_DEFAULT_REGION      
+      - run:
+          name: Deploy to S3
+          command: |
+              if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                  aws s3 sync dist s3://developer.api.hackney.gov.uk/ --delete
+              elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
+                  aws s3 sync dist s3://staging.developer.api.hackney.gov.uk/ --delete
+              fi
