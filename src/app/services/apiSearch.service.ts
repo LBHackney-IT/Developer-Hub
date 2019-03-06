@@ -1,59 +1,58 @@
+import { IPath } from 'src/app/interfaces/IPath';
 import { Injectable } from '@angular/core';
 import { ISwagger } from '../interfaces/ISwagger';
+import { filter } from 'rxjs/operators';
 
 @Injectable({
-    providedIn: 'root'
-  })
+  providedIn: 'root'
+})
 export class ApiSearch {
-    swaggerEndpoints: ISwagger[];
-    filteredSwaggerEndpoints = [];
-    search = (swaggerEndpoints: ISwagger[], searchText: string) => {
-        const words = searchText.toLowerCase().split(' ');
-        this.swaggerEndpoints = swaggerEndpoints;
-        words.forEach(word => {
-            this.filteredSwaggerEndpoints = this.getMatchingEndpoints(word);
-        });
+  //swaggerEndpoints: ISwagger[];
 
-        return this.filteredSwaggerEndpoints;
+  search = (swaggerArray: ISwagger[], searchString: string): ISwagger[] => {
+    // let filteredSearch = swaggerArray.slice();
+    const filteredArray: ISwagger[] = [];
+
+    // Array of APIs Swaggers
+    swaggerArray.forEach(apiSwagger => {
+      const arrayOfPaths = [];
+      // Array of API Paths
+      apiSwagger.paths.forEach(apiPath => {
+        // Single API Path (with summary, url and title)
+        if (this.isPathMatch(apiPath, searchString)) {
+          arrayOfPaths.push(apiPath);
+        }
+      });
+
+      if (arrayOfPaths.length > 0) {
+        const filteredApi = {
+          ...apiSwagger,
+          paths: arrayOfPaths
+        };
+
+        filteredArray.push(filteredApi);
+      }
+    });
+
+    if (searchString !== '') {;
+      return filteredArray;
     }
 
-    private getMatchingEndpoints = (word: string) => {
-        const swaggerEndpoints = this.swaggerEndpoints.filter((swaggerEndpoint) => {
-            const paths = swaggerEndpoint.paths.filter((path) => {
-                // Check if path summary exists
-                let pass = false;
-                if (path.summary) {
-                    pass =  path.summary.includes(word) ? true : pass;
-                }
+    return swaggerArray;
+  }
 
-                if (path.tags[0]) {
-                    pass =  path.tags[0].includes(word) ? true : pass;
-                }
-
-                if (path.url) {
-                    pass =  path.url.includes(word) ? true : pass;
-                }
-                return pass;
-            });
-            return paths.length > 0;
-        });
-        return swaggerEndpoints;
+  isPathMatch = (path: IPath, searchString: string): boolean => {
+    let pass = false;
+    if (path.url) {
+      pass = path.url.includes(searchString) ? true : pass;
     }
-}
+    if (path.tags[0]) {
+      pass = path.tags[0].includes(searchString) ? true : pass;
+    }
 
-export class ApiModel {
-    title: string;
-    description: string;
-    id: string;
-    lastUpdated: number;
-    paths: ApiEndpointModel[];
-}
-
-export class ApiEndpointModel {
-    name: string;
-    method: string;
-    summary: string;
-    parameters: any;
-    responses: any;
-    tags: string[];
+    if (path.url) {
+      pass = path.url.includes(searchString) ? true : pass;
+    }
+    return pass;
+  }
 }
