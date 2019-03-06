@@ -5,6 +5,7 @@ import { Store, select } from '@ngrx/store';
 import { IAppState } from '../../../store/state/app.state';
 import { selectSwaggerEndpoints } from '../../../store/selectors/swagger-endpoints.selectors';
 import { SwaggerEndpointService } from '../../../services/swagger-endpoint.service';
+import { SpinnerService } from '../../../services/spinner.service';
 
 @Component({
   selector: 'app-swagger-endpoint-items',
@@ -18,8 +19,9 @@ export class SwaggerEndpointItemsComponent implements OnInit {
 
   constructor(
     private store: Store<IAppState>,
-    private swaggerEndpointService: SwaggerEndpointService
-  ) {}
+    private swaggerEndpointService: SwaggerEndpointService,
+    private spinnerService: SpinnerService
+  ) { }
 
   ngOnInit() {
     this.getSwaggerEndpointList();
@@ -30,16 +32,18 @@ export class SwaggerEndpointItemsComponent implements OnInit {
 
   getSwaggerEndpointList = () => {
     this.store.dispatch(new GetSwaggerEndpointList());
+    this.spinnerService.displaySpinner();
     this.swaggerEndpointService
       .getListOfSwaggerEndpoints()
       .subscribe((response: ISwagger[]) => {
+        this.spinnerService.hideSpinner();
         this.swaggerEndpoints = response;
       });
-  };
+  }
 }
 
 @Component({
   selector: 'app-swagger-endpoint-items',
   template: ''
 })
-export class MockSwaggerEndpointItemsComponent {}
+export class MockSwaggerEndpointItemsComponent { }
