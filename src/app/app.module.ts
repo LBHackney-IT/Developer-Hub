@@ -51,6 +51,7 @@ import { ApiEffects } from './store/effects/api.effects';
 import { environment } from '../environments/environment';
 import {StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FilterEndpointsPipe } from './pipes/filter-endpoints.pipe';
+import { OrderApisAlphabeticallyPipe } from './pipes/order-apis-alphabetically.pipe';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { FilterEndpointsPipe } from './pipes/filter-endpoints.pipe';
     AdminApiListComponent,
     ApiItemEditComponent,
     SwaggerEndpointPageComponent,
-    FilterEndpointsPipe
+    FilterEndpointsPipe,
+    OrderApisAlphabeticallyPipe
   ],
   imports: [
     BrowserModule,
