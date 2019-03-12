@@ -3,7 +3,7 @@ import { IApi } from '../../../interfaces/IApi';
 import { Router } from '@angular/router';
 import {  Store } from '@ngrx/store';
 import { IAppState } from '../../../store/state/app.state';
-import { DeleteApi } from '../../../store/actions/api.actions';
+import { DeleteApi, DeleteApiSuccess } from '../../../store/actions/api.actions';
 
 @Component({
   selector: 'app-api-item-crud',
@@ -19,13 +19,13 @@ export class ApiItemCrudComponent implements OnInit {
   }
 
   // redirect to the API form page using the API's id
-  onEditApi(id: string) {
+  onEditApi() {
     const idUrl = this.api.id;
     this.router.navigate([`/api-form/${idUrl}`]);
   }
 
   onDeleteApi(id: string) {
-    this.store.dispatch(new DeleteApi(id));
+    this.store.dispatch(new DeleteApiSuccess(id));
   }
 
 }
