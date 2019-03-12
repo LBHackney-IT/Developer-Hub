@@ -26,6 +26,7 @@ export class ApiFormComponent implements OnInit {
     private spinnerService: SpinnerService
   ) { }
 
+  creating = false;
 
   api: IApi;
 
@@ -39,52 +40,55 @@ export class ApiFormComponent implements OnInit {
     summary: new FormControl('', [
       Validators.required
     ]),
+    description: new FormControl('', [
+      Validators.required
+    ]),
     compliant: new FormGroup({
-      open_source: new FormControl('', [
+      open_source: new FormControl(false, [
         Validators.required
       ]),
-      test_driven: new FormControl('', [
+      test_driven: new FormControl(false, [
         Validators.required
       ]),
-      endpoint_documentation: new FormControl('', [
+      endpoint_documentation: new FormControl(false, [
         Validators.required
       ]),
-      centralised_logging: new FormControl('', [
+      centralised_logging: new FormControl(false, [
         Validators.required
       ]),
-      centralised_application_monitoring: new FormControl('', [
+      centralised_application_monitoring: new FormControl(false, [
         Validators.required
       ]),
-      centralised_exception_monitoring: new FormControl('', [
+      centralised_exception_monitoring: new FormControl(false, [
         Validators.required
       ]),
-      authentication: new FormControl('', [
+      authentication: new FormControl(false, [
         Validators.required
       ]),
-      deployment_pipeline: new FormControl('', [
+      deployment_pipeline: new FormControl(false, [
         Validators.required
       ]),
-      automated_tests: new FormControl('', [
+      automated_tests: new FormControl(false, [
         Validators.required
       ]),
-      twelve_factor_conformant: new FormControl('', [
+      twelve_factor_conformant: new FormControl(false, [
         Validators.required
       ]),
-      cloud_hosted: new FormControl('', [
+      cloud_hosted: new FormControl(false, [
         Validators.required
       ]),
-      automated_linting: new FormControl('', [
+      automated_linting: new FormControl(false, [
         Validators.required
       ]),
-      automated_vulnerabilty_testing: new FormControl('', [
+      automated_vulnerabilty_testing: new FormControl(false, [
         Validators.required
       ]),
-      documentation: new FormControl('', [
+      documentation: new FormControl(false, [
         Validators.required
       ]),
 
     }),
-    internal: new FormControl(null, [
+    internal: new FormControl(true, [
       Validators.required
     ]),
     staging: new FormGroup({
@@ -97,7 +101,7 @@ export class ApiFormComponent implements OnInit {
       deployed: new FormControl(null, [
         Validators.required
       ]),
-      healthStatus: new FormControl(null, [
+      healthStatus: new FormControl(false, [
         Validators.required
       ])
     }),
@@ -111,17 +115,14 @@ export class ApiFormComponent implements OnInit {
       deployed: new FormControl(null, [
         Validators.required
       ]),
-      healthStatus: new FormControl('', [
+      healthStatus: new FormControl(false, [
         Validators.required
       ])
     }),
-    description: new FormControl('', [
+    approved: new FormControl(false, [
       Validators.required
     ]),
-    approved: new FormControl('false', [
-      Validators.required
-    ]),
-    stage: new FormControl('', [
+    stage: new FormControl(null, [
       Validators.required
     ]),
     github_url: new FormControl('', [
@@ -159,7 +160,7 @@ export class ApiFormComponent implements OnInit {
     const api: IApi = this.apiForm.getRawValue();
     this.apiService.putApi(api).subscribe(
       (response) => {
-        this.alertService.success('Api Successfully Edited');
+        this.alertService.success(this.creating ? 'Api Successfully created' : 'Api Successfully Edited');
         console.log(response);
       },
       (error) => {
@@ -170,7 +171,11 @@ export class ApiFormComponent implements OnInit {
 
   ngOnInit() {
     const id = this.activeRoute.snapshot.params['id'];
-    this.getApiAndPatchValues(id);
+    if (id !== 'new') {
+      this.getApiAndPatchValues(id);
+    } else {
+      this.creating = true;
+    }
   }
 
 
