@@ -52,6 +52,7 @@ import { environment } from '../environments/environment';
 import {StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FilterEndpointsPipe } from './pipes/filter-endpoints.pipe';
 import { OrderApisAlphabeticallyPipe } from './pipes/order-apis-alphabetically.pipe';
+import { SpinnerComponent } from './components/partials/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { OrderApisAlphabeticallyPipe } from './pipes/order-apis-alphabetically.p
     ApiItemEditComponent,
     SwaggerEndpointPageComponent,
     FilterEndpointsPipe,
-    OrderApisAlphabeticallyPipe
+    OrderApisAlphabeticallyPipe,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

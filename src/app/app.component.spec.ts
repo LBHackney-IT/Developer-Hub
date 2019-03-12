@@ -7,6 +7,7 @@ import { MockHeaderComponent } from './components/partials/header/header.compone
 import { MockPhaseBannerComponent } from './components/partials/phase-banner/phase-banner.component';
 import { MockFooterComponent } from './components/partials/footer/footer.component';
 import { MockAlertComponent } from './components/partials/alert/alert.component';
+import { MockSpinnerComponent } from './components/partials/spinner/spinner.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -19,7 +20,8 @@ describe('AppComponent', () => {
         MockHeaderComponent,
         MockPhaseBannerComponent,
         MockAlertComponent,
-        MockFooterComponent
+        MockFooterComponent,
+        MockSpinnerComponent
       ]
     }).compileComponents();
   }));

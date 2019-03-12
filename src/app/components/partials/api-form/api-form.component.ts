@@ -10,6 +10,7 @@ import { selectApiList } from '../../../store/selectors/api.selectors';
 import { GetApiList } from '../../../store/actions/api.actions';
 import { retry } from 'rxjs/operators';
 import { AlertService } from '../../../services/alert.service';
+import { SpinnerService } from '../../../services/spinner.service';
 
 @Component({
   selector: 'app-api-form',
@@ -21,7 +22,8 @@ export class ApiFormComponent implements OnInit {
   constructor(private apiService: ApiService,
     private activeRoute: ActivatedRoute,
     private store: Store<IAppState>,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private spinnerService: SpinnerService
   ) { }
 
 
@@ -180,14 +182,17 @@ export class ApiFormComponent implements OnInit {
    * @memberof ApiFormComponent
    */
   getApiAndPatchValues = (id: string): void => {
+    this.spinnerService.displaySpinner();
     this.store.pipe(select(selectApiList)).subscribe(
       (response: IApi[]) => {
-          const apis: IApi[] = response;
-          const api = apis.find(item => item.id === id);
-          this.api = api;
-          this.patchValuesApi();
+        this.spinnerService.hideSpinner();
+        const apis: IApi[] = response;
+        const api = apis.find(item => item.id === id);
+        this.api = api;
+        this.patchValuesApi();
       },
       (error) => {
+        this.spinnerService.hideSpinner();
         this.store.dispatch(new GetApiList());
       });
   }

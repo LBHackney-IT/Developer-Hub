@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ISwagger } from '../../../interfaces/ISwagger';
 import { IPath } from '../../../interfaces/IPath';
 import { IPathParameter } from '../../../interfaces/IPathParameters';
+import { SpinnerService } from '../../../services/spinner.service';
 
 @Component({
   selector: 'app-swagger-endpoint-page',
@@ -16,7 +17,8 @@ export class SwaggerEndpointPageComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private spinnerService: SpinnerService) { }
 
   ngOnInit() {
     const apiID = this.route.snapshot.paramMap.get('apiID');
@@ -26,14 +28,16 @@ export class SwaggerEndpointPageComponent implements OnInit {
   }
 
  getEndpoint = async (apiId: string, endpointId: string) => {
+    this.spinnerService.displaySpinner();
     await this.apiService.getApiEndpoint(apiId, endpointId)
     .subscribe(
       (response) => {
+        this.spinnerService.hideSpinner();
         this.apiEndpoint = response;
         this.path = this.apiEndpoint['paths'][0];
-      console.log(response);
     },
     (error) => {
+      this.spinnerService.hideSpinner();
       console.log(error);
     }
     );
