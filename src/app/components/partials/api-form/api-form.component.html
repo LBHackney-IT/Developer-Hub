@@ -10,18 +10,6 @@
 
       <h2 class="heading-medium"> General Details </h2>
 
-
-      <div class="apiform__api__formgroup">
-        <label class="apiform__api__label" for="id">
-          ID
-        </label>
-        <input type="text" autocomplete="off" id="id" name="id" formControlName="id" [ngClass]="{'input': true, 'input--error': f.id.touched && f.id.invalid}"
-          aria-describedby="id" aria-required="true" />
-        <div *ngIf="f.id.touched && f.id.invalid" class="error-message">
-          ID is required
-        </div>
-      </div>
-
       <div class="apiform__api__formgroup">
         <label class="apiform__api__label" for="title">
           Title
@@ -108,6 +96,9 @@
             </label>
           </div>
         </div>
+        <div *ngIf="f.stage.touched && f.stage.invalid" class="error-message">
+          Stage is required
+        </div>
       </div>
 
       <div formGroupName="compliant" class="apiform__api__form--formgroup">
@@ -124,7 +115,7 @@
 
 
       <div class="apiform__api__form--formgroup" formGroupName="staging">
-        <h3 class="heading-medium"> Staging Environment</h3>
+        <h3 class="heading-medium"> Staging</h3>
         <div class="apiform__api__form--formgroup">
           <label class="apiform__api__label" for="url">
             Base URL
