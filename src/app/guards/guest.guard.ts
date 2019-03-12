@@ -20,13 +20,18 @@ export class GuestGuard implements CanActivate {
       const currentUser: CognitoUser = this.authService.getCurrentUser();
       let isUserLoggedIn: boolean;
       this.authService.isUserLoggedIn().subscribe((response) => {
+        console.log(1, response);
         isUserLoggedIn = response;
       });
 
-      if (isUserLoggedIn && currentUser) {
+      console.log(2, isUserLoggedIn);
+
+      if (currentUser) {
         this.router.navigateByUrl('/');
+        console.log('hello');
         return false;
       }
+
     return true;
   }
 }
