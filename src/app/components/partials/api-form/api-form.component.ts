@@ -31,17 +31,20 @@ export class ApiFormComponent implements OnInit {
   api: IApi;
 
   apiForm = new FormGroup({
-    id: new FormControl('', [
-      Validators.required
+    id: new FormControl(null, [
+      // Validators.required
     ]),
     title: new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.minLength(6)
     ]),
     summary: new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.minLength(6)
     ]),
     description: new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.minLength(6)
     ]),
     compliant: new FormGroup({
       open_source: new FormControl(false, [
@@ -93,10 +96,13 @@ export class ApiFormComponent implements OnInit {
     ]),
     staging: new FormGroup({
       url: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.minLength(3),
       ]),
       swagger_url: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.minLength(3),
+
       ]),
       deployed: new FormControl(null, [
         Validators.required
@@ -107,10 +113,12 @@ export class ApiFormComponent implements OnInit {
     }),
     production: new FormGroup({
       url: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.minLength(3)
       ]),
       swagger_url: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.minLength(3)
       ]),
       deployed: new FormControl(null, [
         Validators.required
@@ -126,23 +134,30 @@ export class ApiFormComponent implements OnInit {
       Validators.required
     ]),
     github_url: new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.minLength(6)
     ]),
     owner: new FormGroup({
       product: new FormGroup({
         name: new FormControl('', [
-          Validators.required
+          Validators.required,
+          Validators.minLength(3)
         ]),
         contactDetails: new FormControl('', [
-          Validators.required
+          Validators.required,
+          Validators.minLength(3),
+          Validators.email
         ]),
       }),
       technical: new FormGroup({
         name: new FormControl('', [
-          Validators.required
+          Validators.required,
+          Validators.minLength(3)
         ]),
         contactDetails: new FormControl('', [
-          Validators.required
+          Validators.required,
+          Validators.minLength(3),
+          Validators.email
         ]),
       }),
     }),
