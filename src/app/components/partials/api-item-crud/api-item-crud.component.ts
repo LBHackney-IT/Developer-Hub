@@ -3,11 +3,11 @@ import { IApi } from '../../../interfaces/IApi';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-api-item-edit',
-  templateUrl: './api-item-edit.component.html',
-  styleUrls: ['./api-item-edit.component.scss']
+  selector: 'app-api-item-crud',
+  templateUrl: './api-item-crud.component.html',
+  styleUrls: ['./api-item-crud.component.scss']
 })
-export class ApiItemEditComponent implements OnInit {
+export class ApiItemCrudComponent implements OnInit {
 @Input() api: IApi;
 
   constructor(private router: Router) { }

@@ -1,0 +1,21 @@
+
+  <div class="api-item-edit__box" *ngIf='api'>
+    <div class="api-item-edit__title">
+      <h3 class="heading-medium">
+        <a class="api-item-edit__link" 
+            routerLink="/api/{{ api.id }}">
+            {{ api.title }}
+          </a>
+      </h3>
+    </div>
+    <div class="api-item-edit__button">
+      <button 
+        class="hackney-button" 
+        type="submit"
+        (click)="onEditApi()">Edit</button>
+        <button 
+        class="hackney-button" 
+        type="submit"
+        (click)="onEditApi()">Delete</button>
+    </div>
+  </div>
