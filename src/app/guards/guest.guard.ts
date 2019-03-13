@@ -28,7 +28,6 @@ export class GuestGuard implements CanActivate {
 
       if (currentUser) {
         this.router.navigateByUrl('/');
-        console.log('hello');
         return false;
       }
 
