@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiService } from '../../../services/api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IApi } from 'src/app/interfaces/IApi';
 import { compliancyConfigMap } from '../../../shared/config';
 import { Store, select } from '@ngrx/store';
 import { IAppState } from '../../../store/state/app.state';
 import { selectApiList } from '../../../store/selectors/api.selectors';
-import { GetApiList } from '../../../store/actions/api.actions';
+import { GetApiList, AddApiSuccess, AddApi } from '../../../store/actions/api.actions';
 import { retry } from 'rxjs/operators';
 import { AlertService } from '../../../services/alert.service';
 import { SpinnerService } from '../../../services/spinner.service';
@@ -23,7 +23,8 @@ export class ApiFormComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private store: Store<IAppState>,
     private alertService: AlertService,
-    private spinnerService: SpinnerService
+    private spinnerService: SpinnerService,
+    private router: Router
   ) { }
 
   creating = false;
@@ -102,7 +103,6 @@ export class ApiFormComponent implements OnInit {
       swagger_url: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
-
       ]),
       deployed: new FormControl(null, [
         Validators.required
@@ -173,15 +173,8 @@ export class ApiFormComponent implements OnInit {
 
   submitForm = () => {
     const api: IApi = this.apiForm.getRawValue();
-    this.apiService.putApi(api).subscribe(
-      (response) => {
-        this.alertService.success(this.creating ? 'Api Successfully created' : 'Api Successfully Edited');
-        console.log(response);
-      },
-      (error) => {
-        this.alertService.error(error.message);
-        console.log(error);
-      });
+    this.store.dispatch(new AddApi(api));
+    this.router.navigateByUrl('/api-list');
   }
 
   ngOnInit() {
@@ -264,6 +257,4 @@ export class ApiFormComponent implements OnInit {
       compliant: this.api.compliant
     });
   }
-
-
 }
