@@ -6,6 +6,8 @@ export enum EApiActions {
     GetApiListSuccess = 'GET_API_LIST_SUCCESS',
     DeleteApi = 'DELETE_API',
     DeleteApiSuccess = 'DELETE_API_SUCCESS',
+    AddApiSuccess = 'ADD_API_SUCCESS',
+    AddApi = 'ADD_API',
 }
 
 export class GetApiList implements Action {
@@ -27,4 +29,14 @@ export class DeleteApiSuccess implements Action {
     constructor(public payload: string) {}
 }
 
-export type ApiActions =  DeleteApi | DeleteApiSuccess |GetApiList | GetApiListSuccess;
+export class AddApi implements Action {
+    public readonly type = EApiActions.AddApi;
+    constructor(public payload: IApi) {}
+}
+
+export class AddApiSuccess implements Action {
+    public readonly type = EApiActions.AddApiSuccess;
+    constructor(public payload: IApi) {}
+}
+
+export type ApiActions = AddApi | AddApiSuccess | DeleteApi | DeleteApiSuccess |GetApiList | GetApiListSuccess;
