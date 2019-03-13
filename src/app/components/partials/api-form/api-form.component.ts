@@ -33,7 +33,6 @@ export class ApiFormComponent implements OnInit {
 
   apiForm = new FormGroup({
     id: new FormControl(null, [
-      // Validators.required
     ]),
     title: new FormControl('', [
       Validators.required,
