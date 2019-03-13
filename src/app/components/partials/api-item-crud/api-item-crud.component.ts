@@ -3,7 +3,7 @@ import { IApi } from '../../../interfaces/IApi';
 import { Router } from '@angular/router';
 import {  Store } from '@ngrx/store';
 import { IAppState } from '../../../store/state/app.state';
-import { DeleteApi, DeleteApiSuccess } from '../../../store/actions/api.actions';
+import { DeleteApi } from '../../../store/actions/api.actions';
 
 @Component({
   selector: 'app-api-item-crud',
@@ -25,7 +25,7 @@ export class ApiItemCrudComponent implements OnInit {
   }
 
   onDeleteApi(id: string) {
-    this.store.dispatch(new DeleteApiSuccess(id));
+    this.store.dispatch(new DeleteApi(id));
   }
 
 }
