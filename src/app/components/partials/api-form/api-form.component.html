@@ -113,7 +113,6 @@
         </div>
       </div>
 
-
       <div class="apiform__api__form--formgroup" formGroupName="staging">
         <h3 class="heading-medium"> Staging</h3>
         <div class="apiform__api__form--formgroup">
@@ -122,6 +121,9 @@
           </label>
           <input type="url" autocomplete="off" id="url" name="url" formControlName="url" [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.staging.controls.url.touched && f.staging.controls.url.invalid}"
             class="input" aria-required="true" />
+            <div *ngIf="f.staging.controls.url.touched && f.staging.controls.url.invalid" class="error-message">
+              Production Base URL is required
+            </div>
         </div>
 
         <div class="apiform__api__form--formgroup">
@@ -131,6 +133,9 @@
           <input type="swagger_url" autocomplete="swagger_url" id="swagger_url" name="swagger_url" formControlName="swagger_url"
             [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.staging.controls.swagger_url.touched && f.staging.controls.swagger_url.invalid}"
             class="input" aria-required="true" />
+            <div *ngIf="f.staging.controls.swagger_url.touched && f.staging.controls.swagger_url.invalid" class="error-message">
+              Production Swagger URL is required
+            </div>
         </div>
 
         <div class="apiform__api__form--formgroup">
@@ -161,6 +166,9 @@
           </label>
           <input type="url" autocomplete="off" id="url" name="url" formControlName="url" [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.production.controls.url.touched && f.production.controls.url.invalid}"
             class="input" aria-required="true" />
+          <div *ngIf="f.production.controls.url.touched && f.production.controls.url.invalid" class="error-message">
+            Production Base URL is required
+          </div>
         </div>
 
         <div class="apiform__api__form--formgroup">
@@ -170,6 +178,9 @@
           <input type="swagger_url" autocomplete="swagger_url" id="swagger_url" name="swagger_url" formControlName="swagger_url"
             [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.production.controls.swagger_url.touched && f.production.controls.swagger_url.invalid}"
             class="input" aria-required="true" />
+          <div *ngIf="f.production.controls.swagger_url.touched && f.production.controls.swagger_url.invalid" class="error-message">
+            Production Swagger URL is required
+          </div>
         </div>
 
         <div class="apiform__api__form--formgroup">
@@ -216,33 +227,43 @@
             </label>
             <input type="text" autocomplete="off" id="name" name="name" formControlName="name" [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.owner.controls.technical.controls.name.touched && f.owner.controls.technical.controls.name.invalid}"
               class="input" aria-required="true" />
+            <div *ngIf="f.owner.controls.technical.controls.name.touched && f.owner.controls.technical.controls.name.invalid"
+              class="govuk-error-message">
+              Technical Owner's name is required
+            </div>
           </div>
           <div class="apiform__api__form--formgroup">
-              <label class="apiform__api__label" for="name">
-                Email
-              </label>
-              <input type="text" autocomplete="off" id="contactDetails" name="contactDetails" formControlName="contactDetails" [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.owner.controls.technical.controls.contactDetails.touched && f.owner.controls.technical.controls.contactDetails.invalid}"
-                class="input" aria-required="true" />
+            <label class="apiform__api__label" for="contactDetails">
+              Email
+            </label>
+            <input type="text" autocomplete="off" id="contactDetails" name="contactDetails" formControlName="contactDetails"
+              [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.owner.controls.technical.controls.contactDetails.touched && f.owner.controls.technical.controls.contactDetails.invalid}"
+              class="input" aria-required="true" />
+            <div *ngIf="f.owner.controls.technical.controls.contactDetails.touched && f.owner.controls.technical.controls.contactDetails.invalid"
+              class="govuk-error-message">
+              Technical Owner's email is required
             </div>
+          </div>
         </div>
 
         <div class="apiform__api__form--formgroup" formGroupName="product">
-            <h4 class="heading-small"> Product </h4>
-            <div class="apiform__api__form--formgroup">
-              <label class="apiform__api__label" for="name">
-                Name
-              </label>
-              <input type="text" autocomplete="off" id="name" name="name" formControlName="name" [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.owner.controls.product.controls.name.touched && f.owner.controls.product.controls.name.invalid}"
-                class="input" aria-required="true" />
-            </div>
-            <div class="apiform__api__form--formgroup">
-                <label class="apiform__api__label" for="name">
-                  Email
-                </label>
-                <input type="text" autocomplete="off" id="contactDetails" name="contactDetails" formControlName="contactDetails" [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.owner.controls.product.controls.contactDetails.touched && f.owner.controls.product.controls.contactDetails.invalid}"
-                  class="input" aria-required="true" />
-              </div>
+          <h4 class="heading-small"> Product </h4>
+          <div class="apiform__api__form--formgroup">
+            <label class="apiform__api__label" for="name">
+              Name
+            </label>
+            <input type="text" autocomplete="off" id="name" name="name" formControlName="name" [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.owner.controls.product.controls.name.touched && f.owner.controls.product.controls.name.invalid}"
+              class="input" aria-required="true" />
           </div>
+          <div class="apiform__api__form--formgroup">
+            <label class="apiform__api__label" for="name">
+              Email
+            </label>
+            <input type="text" autocomplete="off" id="contactDetails" name="contactDetails" formControlName="contactDetails"
+              [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.owner.controls.product.controls.contactDetails.touched && f.owner.controls.product.controls.contactDetails.invalid}"
+              class="input" aria-required="true" />
+          </div>
+        </div>
       </div>
 
       <div class="apiform__api__form--formgroup">
