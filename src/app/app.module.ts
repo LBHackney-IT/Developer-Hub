@@ -41,7 +41,7 @@ import { SwaggerEndpointItemComponent } from './components/partials/swagger-endp
 import { SwaggerEndpointItemsComponent } from './components/partials/swagger-endpoint-items/swagger-endpoint-items.component';
 // import { SwaggerEndpointPathComponent } from './components/partials/swagger-endpoint-path/swagger-endpoint-path.component';
 import { AdminApiListComponent } from './components/pages/admin-api-list/admin-api-list.component';
-import { ApiItemEditComponent } from './components/partials/api-item-edit/api-item-edit.component';
+import { ApiItemCrudComponent } from './components/partials/api-item-crud/api-item-crud.component';
 import { SwaggerEndpointPageComponent } from './components/pages/swagger-endpoint-page/swagger-endpoint-page.component';
 import { ApiSearch } from './services/apiSearch.service';
 import { StoreModule } from '@ngrx/store';
@@ -51,6 +51,8 @@ import { ApiEffects } from './store/effects/api.effects';
 import { environment } from '../environments/environment';
 import {StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FilterEndpointsPipe } from './pipes/filter-endpoints.pipe';
+import { OrderApisAlphabeticallyPipe } from './pipes/order-apis-alphabetically.pipe';
+import { SpinnerComponent } from './components/partials/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -87,9 +89,11 @@ import { FilterEndpointsPipe } from './pipes/filter-endpoints.pipe';
     SwaggerEndpointItemsComponent,
     // SwaggerEndpointPathComponent,
     AdminApiListComponent,
-    ApiItemEditComponent,
+    ApiItemCrudComponent,
     SwaggerEndpointPageComponent,
-    FilterEndpointsPipe
+    FilterEndpointsPipe,
+    OrderApisAlphabeticallyPipe,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

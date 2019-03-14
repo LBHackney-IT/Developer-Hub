@@ -118,14 +118,9 @@ export class MockActivatedRoute {
         HttpClientTestingModule,
         FormsModule,
         ReactiveFormsModule,
-        // CommonModule
     ],
-    // declarations: [
-    //     MockAppComponent
-    // ],
     providers: [
         provideMockStore(),
-        // MockAuthService
     ],
     exports: [
         RouterTestingModule,

@@ -2,20 +2,10 @@ import { Action } from '@ngrx/store';
 import { IApi } from '../../interfaces/IApi';
 
 export enum EApiActions {
-    GetApi = 'GET_API',
-    GetApiSuccess = 'GET_API_SUCCESS',
     GetApiList = 'GET_API_LIST',
-    GetApiListSuccess = 'GET_API_LIST_SUCCESS'
-}
-
-export class GetApi implements Action {
-    public readonly type = EApiActions.GetApi;
-    constructor(public payload: string) {}
-}
-
-export class GetApiSuccess implements Action {
-    public readonly type = EApiActions.GetApiSuccess;
-    constructor(public payload: IApi) {}
+    GetApiListSuccess = 'GET_API_LIST_SUCCESS',
+    DeleteApi = 'DELETE_API',
+    DeleteApiSuccess = 'DELETE_API_SUCCESS',
 }
 
 export class GetApiList implements Action {
@@ -27,4 +17,14 @@ export class GetApiListSuccess implements Action {
     constructor(public payload: IApi[]) {}
 }
 
-export type ApiActions = GetApi | GetApiSuccess | GetApiList | GetApiListSuccess;
+export class DeleteApi implements Action {
+    public readonly type = EApiActions.DeleteApi;
+    constructor(public payload: string) {}
+}
+
+export class DeleteApiSuccess implements Action {
+    public readonly type = EApiActions.DeleteApiSuccess;
+    constructor(public payload: string) {}
+}
+
+export type ApiActions =  DeleteApi | DeleteApiSuccess |GetApiList | GetApiListSuccess;

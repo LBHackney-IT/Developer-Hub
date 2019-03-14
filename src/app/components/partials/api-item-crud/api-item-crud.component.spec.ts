@@ -1,24 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ApiItemEditComponent } from './api-item-edit.component';
+import { ApiItemCrudComponent } from './api-item-crud.component';
 import { TestingModule } from '../../../../testing/utils';
 
 describe('ApiItemEditComponent', () => {
-  let component: ApiItemEditComponent;
-  let fixture: ComponentFixture<ApiItemEditComponent>;
+  let component: ApiItemCrudComponent;
+  let fixture: ComponentFixture<ApiItemCrudComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         TestingModule
       ],
-      declarations: [ ApiItemEditComponent ]
+      declarations: [ ApiItemCrudComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ApiItemEditComponent);
+    fixture = TestBed.createComponent(ApiItemCrudComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
