@@ -31,10 +31,8 @@ export class HeaderComponent implements OnInit {
   private dropDown = false;
 
   constructor(
-    private authService: AuthService,
-    private store: Store<IAppState>
+    private authService: AuthService
   ) { }
-
 
   ngOnInit() {
   }
@@ -64,7 +62,6 @@ export class HeaderComponent implements OnInit {
     }
     return false;
   }
-
 }
 
 @Component({
