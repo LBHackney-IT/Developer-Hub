@@ -31,10 +31,8 @@ export class HeaderComponent implements OnInit {
   private dropDown = false;
 
   constructor(
-    private authService: AuthService,
-    private store: Store<IAppState>
+    private authService: AuthService
   ) { }
-
 
   ngOnInit() {
   }
@@ -44,8 +42,7 @@ export class HeaderComponent implements OnInit {
       (response) => {
         this.user = response;
       });
-    // }
-    if (this.user) {
+    if (this.user && this.user.name) {
       return this.user.name;
     } else {
       return 'sign in';
@@ -53,19 +50,18 @@ export class HeaderComponent implements OnInit {
   }
 
   isAuthenticated = (): boolean => {
-    if (this.user) {
+    if (this.user !== null) {
       return this.user === null ? false : true;
     }
     return false;
   }
 
   isAdmin = (): boolean => {
-    if (this.user) {
+    if (this.user && this.user.roles) {
       return this.user !== null && this.user.roles.includes('Admin') ? true : false;
     }
     return false;
   }
-
 }
 
 @Component({
