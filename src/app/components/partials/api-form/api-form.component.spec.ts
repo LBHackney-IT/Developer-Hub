@@ -236,4 +236,86 @@ describe('ApiFormComponent', () => {
   });
 
 
+  describe('owner', () => {
+    describe('product', () => {
+      describe('name', () => {
+        it('should make the name control required', () => {
+          const control = component.apiForm.get('owner.product.name');
+          control.setValue('');
+          expect(control.valid).toBe(false);
+        });
+        it('should be false if summary is less than 3', () => {
+          const control = component.apiForm.get('owner.product.name');
+          control.setValue('a'.repeat(2));
+          expect(control.valid).toBe(false);
+        });
+        it('should be true if summary is >= than 3', () => {
+          const control = component.apiForm.get('owner.product.name');
+          control.setValue('a'.repeat(3));
+          expect(control.valid).toBe(true);
+        });
+      });
+
+      describe('contactDetails', () => {
+        it('should make the contactDetails control required', () => {
+          const control = component.apiForm.get('owner.product.contactDetails');
+          control.setValue('');
+          expect(control.valid).toBe(false);
+        });
+
+        it('should be false if contactDetails is not an email', () => {
+          const control = component.apiForm.get('owner.product.contactDetails');
+          control.setValue('aaaaaa');
+          expect(control.valid).toBe(false);
+        });
+
+        it('should be true if emailAddress is provided', () => {
+          const control = component.apiForm.get('owner.product.contactDetails');
+          control.setValue('aaa@email.com');
+          expect(control.valid).toBe(true);
+        });
+      });
+    });
+
+    describe('technical', () => {
+      describe('name', () => {
+        it('should make the name control required', () => {
+          const control = component.apiForm.get('owner.technical.name');
+          control.setValue('');
+          expect(control.valid).toBe(false);
+        });
+        it('should be false if summary is less than 3', () => {
+          const control = component.apiForm.get('owner.technical.name');
+          control.setValue('a'.repeat(2));
+          expect(control.valid).toBe(false);
+        });
+        it('should be true if summary is >= than 3', () => {
+          const control = component.apiForm.get('owner.technical.name');
+          control.setValue('a'.repeat(3));
+          expect(control.valid).toBe(true);
+        });
+      });
+
+      describe('contactDetails', () => {
+        it('should make the contactDetails control required', () => {
+          const control = component.apiForm.get('owner.technical.contactDetails');
+          control.setValue('');
+          expect(control.valid).toBe(false);
+        });
+
+        it('should be false if contactDetails is not an email', () => {
+          const control = component.apiForm.get('owner.technical.contactDetails');
+          control.setValue('aaaaaa');
+          expect(control.valid).toBe(false);
+        });
+
+        it('should be true if emailAddress is provided', () => {
+          const control = component.apiForm.get('owner.technical.contactDetails');
+          control.setValue('aaa@email.com');
+          expect(control.valid).toBe(true);
+        });
+      });
+    });
+  });
+
 });
