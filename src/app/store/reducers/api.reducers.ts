@@ -1,5 +1,6 @@
 import { initialApiState, IApiState } from '../state/api.state';
-import { EApiActions, ApiActions } from '../actions/api.actions';
+import { EApiActions, ApiActions, DeleteApi, DeleteApiSuccess } from '../actions/api.actions';
+import { IApi } from '../../interfaces/IApi';
 
 export const apiReducer = (state = initialApiState, action: ApiActions): IApiState => {
     switch (action.type) {
@@ -9,9 +10,14 @@ export const apiReducer = (state = initialApiState, action: ApiActions): IApiSta
                 apis: action.payload
             };
         }
-        case EApiActions.GetApiSuccess: {
+        case EApiActions.DeleteApiSuccess: {
+            let apis: IApi[] = [...state.apis];
+            apis = apis.filter((api) => {
+                return api.id !== action.payload;
+            });
             return  {
-                ...state
+                ...state,
+                apis: apis
             };
         }
         default:

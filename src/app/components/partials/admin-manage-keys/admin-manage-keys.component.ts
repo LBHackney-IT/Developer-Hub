@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiKeyService } from '../../../services/apiKey.service';
 import { AuthService } from '../../../services/auth.service';
-import { AlertService } from '../../../services/alert.service';
+import { SpinnerService } from '../../../services/spinner.service';
 
 @Component({
   selector: 'app-admin-manage-keys',
@@ -15,7 +15,7 @@ export class AdminManageKeysComponent implements OnInit {
   constructor(
     private apiKeyService: ApiKeyService,
     private authService: AuthService,
-    private alertService: AlertService
+    private spinnerService: SpinnerService
   ) { }
 
   ngOnInit() {
@@ -26,26 +26,30 @@ export class AdminManageKeysComponent implements OnInit {
     const apiID: string = tokenObject.apiID;
     const cognitoUsername: string = tokenObject.cognitoUsername;
     this.apiKeyService.verifyApiKey(apiID, cognitoUsername)
-    .subscribe(
-      (response) => {
-        this.tokenObjects = this.tokenObjects.filter((item) => {
-          return item !== tokenObject;
+      .subscribe(
+        (response) => {
+          this.tokenObjects = this.tokenObjects.filter((item) => {
+            return item !== tokenObject;
+          });
+        },
+        (error) => {
+          console.log(error);
         });
-      },
-      (error) => {
-        console.log(error);
-      });
   }
 
   private getUnverifiedKeys = async (): Promise<void> => {
+    this.spinnerService.displaySpinner();
     await this.apiKeyService.readAllUnverifiedApiKeys()
-    .subscribe(
-      (response) => {
-        this.tokenObjects = response;
-      },
-      (error) => {
-        console.log(error);
-      });
+      .subscribe(
+        (response) => {
+          this.tokenObjects = response;
+          this.spinnerService.hideSpinner();
+
+        },
+        (error) => {
+          console.log(error);
+          this.spinnerService.hideSpinner();
+        });
   }
 
 }

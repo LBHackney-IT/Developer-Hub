@@ -61,6 +61,16 @@ export class ApiService {
   }
 
   /**
+   * Deletes Apis
+   *
+   * @memberof ApiService
+   */
+  deleteApi = (id: string) => {
+    return this.httpClient.delete(this.url + 'api/' + id)
+    .pipe(map((response) => response['body']));
+  }
+
+  /**
    *
    *
    * @memberof ApiService

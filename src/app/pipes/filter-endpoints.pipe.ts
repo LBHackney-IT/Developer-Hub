@@ -8,11 +8,12 @@ import { ApiSearch } from '../services/apiSearch.service';
 export class FilterEndpointsPipe implements PipeTransform {
   constructor(private searchService: ApiSearch) { }
 
-  transform = (swaggerEndpoints: ISwagger[], searchText: string): any => {
-    if (searchText !== '') {
-      return this.searchService.search(swaggerEndpoints, searchText);
+  transform = (initialSwaggerList: ISwagger[], searchText: string): any => {
+    if (searchText === '') {
+      return initialSwaggerList;
     }
-    return swaggerEndpoints;
+    const resultsFromSearch = this.searchService.search(initialSwaggerList, searchText);
+    return resultsFromSearch;
   }
 
 }

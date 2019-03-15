@@ -9,6 +9,7 @@ import { GetApiList } from '../../../store/actions/api.actions';
 import { IApiState } from '../../../store/state/api.state';
 import { of } from 'rxjs';
 import { generateTestApis } from '../../../../testing/mock-db';
+import { OrderApisAlphabeticallyPipe } from '../../../pipes/order-apis-alphabetically.pipe';
 
 describe('ApiListComponent', () => {
   let component: ApiListComponent;
@@ -31,7 +32,8 @@ describe('ApiListComponent', () => {
       declarations: [
         ApiListComponent,
         MockColumnLayoutComponent,
-        MockApiItemComponent
+        MockApiItemComponent,
+        OrderApisAlphabeticallyPipe
       ]
     })
       .compileComponents();
@@ -45,6 +47,7 @@ describe('ApiListComponent', () => {
     subscribeSpy = spyOn(store, 'subscribe').and.callFake(() => {
       return (of(generateTestApis(4)));
     });
+    component.apis = generateTestApis(4);
     getListOfApisSpy = spyOn(component, 'getListOfApis');
     fixture.detectChanges();
   });

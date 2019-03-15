@@ -1,37 +1,40 @@
 <header class="header" role="banner" data-module="header">
-    <div class="container">  
-      <div class="header__hackney-logo">    
-        <img class="header__hackney-image" src="/assets/images/hackney.png" alt="Hackney">
-      </div>
+  <div class="container">
+    <div class="header__hackney-logo">
+      <img class="header__hackney-image" src="/assets/images/hackney.png" alt="Hackney">
+    </div>
 
-      <nav class="header__navbar">
-        <ul class="header__navbar-list">
-          <li><a routerLink="/">Home</a></li>
-          <li><a routerLink="/api-list">APIs</a></li>
-          <li><a routerLink="/documentation">Documentation</a></li>
-          <!-- <li><a routerLink="/api-checklist">API Checklist</a></li> -->
-          <li><a routerLink="/api-guide">API Guide</a></li>
-          <li class="dropdown">
-            <a class="header__navbar-btn-login" (click)="dropDown = !dropDown;">
-              {{ getUsername() }} <span class="dropdown__arrow" [ngClass]="{'dropdown__arrow--rotate': dropDown }">»</span>
+    <nav class="header__navbar">
+      <ul class="header__navbar-list">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/api-list">APIs</a></li>
+        <li><a routerLink="/documentation">Documentation</a></li>
+        <!-- <li><a routerLink="/api-checklist">API Checklist</a></li> -->
+        <!-- <li><a routerLink="/api-guide">API Guide</a></li> -->
+        <li class="dropdown">
+          <a class="header__navbar-btn-login" (click)="dropDown = !dropDown;">
+            {{ getUsername() }} <span class="dropdown__arrow" [ngClass]="{'dropdown__arrow--rotate': dropDown }">»</span>
           </a>
-            <ul class="dropdown__content" [ngClass]="{'dropdown__content--active': dropDown}">
-              <li><a class="dropdown__content__item" routerLink="/login" *ngIf='!isAuthenticated()'>
+          <ul class="dropdown__content" [ngClass]="{'dropdown__content--active': dropDown}">
+            <li><a class="dropdown__content__item" routerLink="/api-guide">
+                API Guide
+              </a></li>
+            <li><a class="dropdown__content__item" routerLink="/login" *ngIf='!isAuthenticated()'>
                 Login
               </a></li>
-              <li><a class="dropdown__content__item" routerLink="/register" *ngIf='!isAuthenticated()'>
+            <li><a class="dropdown__content__item" routerLink="/register" *ngIf='!isAuthenticated()'>
                 Register
               </a></li>
-              <li><a class="dropdown__content__item" routerLink="/key-manager" *ngIf='isAuthenticated()'>
+            <li><a class="dropdown__content__item" routerLink="/key-manager" *ngIf='isAuthenticated()'>
                 Token Manager
               </a></li>
-              <li><a class="dropdown__content__item" routerLink="admin" *ngIf='isAdmin()'>
+            <li><a class="dropdown__content__item" routerLink="admin" *ngIf='isAdmin()'>
                 Admin
               </a></li>
-              <li><a class="dropdown__content__item" routerLink="/logout" *ngIf='isAuthenticated()'>
+            <li><a class="dropdown__content__item" routerLink="/logout" *ngIf='isAuthenticated()'>
                 Logout
               </a></li>
           </ul>
         </li>
-        </ul>
-      </nav>
+      </ul>
+    </nav>

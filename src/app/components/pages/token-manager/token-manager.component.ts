@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiKeyService } from '../../../services/apiKey.service';
 import { AuthService } from '../../../services/auth.service';
+import { SpinnerService } from '../../../services/spinner.service';
 
 /**
  *
@@ -29,7 +30,8 @@ export class TokenManagerComponent implements OnInit {
    */
   constructor(
     private apiKeyService: ApiKeyService,
-    private authSerice: AuthService
+    private authSerice: AuthService,
+    private spinnerService: SpinnerService
   ) {
 
   }
@@ -50,16 +52,18 @@ export class TokenManagerComponent implements OnInit {
    */
   requestApiKeys = async () => {
     // const cognitoUsername = this.authSerice.getCognitoUsername();
-
+    this.spinnerService.displaySpinner();
     await this.apiKeyService.readUserApiKeys()
-    .subscribe(
-      (response) => {
-        this.apiKeys = response;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+      .subscribe(
+        (response) => {
+          this.spinnerService.hideSpinner();
+          this.apiKeys = response;
+        },
+        (error) => {
+          console.log(error);
+          this.spinnerService.hideSpinner();
+        }
+      );
   }
 
 }
