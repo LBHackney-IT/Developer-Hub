@@ -56,7 +56,9 @@ export class TokenManagerComponent implements OnInit {
       .subscribe(
         (response) => {
           this.spinnerService.hideSpinner();
-          this.apiKeys = JSON.parse(response);
+          response = JSON.parse(response);
+          console.log(typeof response, response);
+          this.apiKeys = response;
         },
         (error) => {
           console.log(error);
