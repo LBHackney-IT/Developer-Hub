@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { Component } from '@angular/core';
 import { TestingModule} from '../testing/utils';
 import { MockHeaderComponent } from './components/partials/header/header.component';
-import { MockPhaseBannerComponent } from './components/partials/phase-banner/phase-banner.component';
 import { MockFooterComponent } from './components/partials/footer/footer.component';
 import { MockAlertComponent } from './components/partials/alert/alert.component';
 import { MockSpinnerComponent } from './components/partials/spinner/spinner.component';
@@ -18,7 +17,6 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         MockHeaderComponent,
-        MockPhaseBannerComponent,
         MockAlertComponent,
         MockFooterComponent,
         MockSpinnerComponent

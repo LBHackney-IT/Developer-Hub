@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiService } from '../../../services/api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IApi } from 'src/app/interfaces/IApi';
 import { compliancyConfigMap } from '../../../shared/config';
 import { Store, select } from '@ngrx/store';
 import { IAppState } from '../../../store/state/app.state';
 import { selectApiList } from '../../../store/selectors/api.selectors';
-import { GetApiList } from '../../../store/actions/api.actions';
+import { GetApiList, AddApiSuccess, AddApi } from '../../../store/actions/api.actions';
 import { retry } from 'rxjs/operators';
 import { AlertService } from '../../../services/alert.service';
 import { SpinnerService } from '../../../services/spinner.service';
@@ -23,125 +23,140 @@ export class ApiFormComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private store: Store<IAppState>,
     private alertService: AlertService,
-    private spinnerService: SpinnerService
+    private spinnerService: SpinnerService,
+    private router: Router
   ) { }
 
+  creating = false;
 
   api: IApi;
 
   apiForm = new FormGroup({
-    id: new FormControl('', [
-      Validators.required
+    id: new FormControl(null, [
     ]),
     title: new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.minLength(6)
     ]),
     summary: new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.minLength(6)
+    ]),
+    description: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6)
     ]),
     compliant: new FormGroup({
-      open_source: new FormControl('', [
+      open_source: new FormControl(false, [
         Validators.required
       ]),
-      test_driven: new FormControl('', [
+      test_driven: new FormControl(false, [
         Validators.required
       ]),
-      endpoint_documentation: new FormControl('', [
+      endpoint_documentation: new FormControl(false, [
         Validators.required
       ]),
-      centralised_logging: new FormControl('', [
+      centralised_logging: new FormControl(false, [
         Validators.required
       ]),
-      centralised_application_monitoring: new FormControl('', [
+      centralised_application_monitoring: new FormControl(false, [
         Validators.required
       ]),
-      centralised_exception_monitoring: new FormControl('', [
+      centralised_exception_monitoring: new FormControl(false, [
         Validators.required
       ]),
-      authentication: new FormControl('', [
+      authentication: new FormControl(false, [
         Validators.required
       ]),
-      deployment_pipeline: new FormControl('', [
+      deployment_pipeline: new FormControl(false, [
         Validators.required
       ]),
-      automated_tests: new FormControl('', [
+      automated_tests: new FormControl(false, [
         Validators.required
       ]),
-      twelve_factor_conformant: new FormControl('', [
+      twelve_factor_conformant: new FormControl(false, [
         Validators.required
       ]),
-      cloud_hosted: new FormControl('', [
+      cloud_hosted: new FormControl(false, [
         Validators.required
       ]),
-      automated_linting: new FormControl('', [
+      automated_linting: new FormControl(false, [
         Validators.required
       ]),
-      automated_vulnerabilty_testing: new FormControl('', [
+      automated_vulnerabilty_testing: new FormControl(false, [
         Validators.required
       ]),
-      documentation: new FormControl('', [
+      documentation: new FormControl(false, [
         Validators.required
       ]),
 
     }),
-    internal: new FormControl(null, [
+    internal: new FormControl(true, [
       Validators.required
     ]),
     staging: new FormGroup({
       url: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.minLength(3),
       ]),
       swagger_url: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.minLength(3),
       ]),
       deployed: new FormControl(null, [
         Validators.required
       ]),
-      healthStatus: new FormControl(null, [
+      healthStatus: new FormControl(false, [
         Validators.required
       ])
     }),
     production: new FormGroup({
       url: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.minLength(3)
       ]),
       swagger_url: new FormControl('', [
-        Validators.required
+        Validators.required,
+        Validators.minLength(3)
       ]),
       deployed: new FormControl(null, [
         Validators.required
       ]),
-      healthStatus: new FormControl('', [
+      healthStatus: new FormControl(false, [
         Validators.required
       ])
     }),
-    description: new FormControl('', [
+    approved: new FormControl(false, [
       Validators.required
     ]),
-    approved: new FormControl('false', [
-      Validators.required
-    ]),
-    stage: new FormControl('', [
+    stage: new FormControl(null, [
       Validators.required
     ]),
     github_url: new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.minLength(6)
     ]),
     owner: new FormGroup({
       product: new FormGroup({
         name: new FormControl('', [
-          Validators.required
+          Validators.required,
+          Validators.minLength(3)
         ]),
         contactDetails: new FormControl('', [
-          Validators.required
+          Validators.required,
+          Validators.minLength(3),
+          Validators.email
         ]),
       }),
       technical: new FormGroup({
         name: new FormControl('', [
-          Validators.required
+          Validators.required,
+          Validators.minLength(3)
         ]),
         contactDetails: new FormControl('', [
-          Validators.required
+          Validators.required,
+          Validators.minLength(3),
+          Validators.email
         ]),
       }),
     }),
@@ -157,20 +172,17 @@ export class ApiFormComponent implements OnInit {
 
   submitForm = () => {
     const api: IApi = this.apiForm.getRawValue();
-    this.apiService.putApi(api).subscribe(
-      (response) => {
-        this.alertService.success('Api Successfully Edited');
-        console.log(response);
-      },
-      (error) => {
-        this.alertService.error(error.message);
-        console.log(error);
-      });
+    this.store.dispatch(new AddApi(api));
+    this.router.navigateByUrl('/api-list');
   }
 
   ngOnInit() {
     const id = this.activeRoute.snapshot.params['id'];
-    this.getApiAndPatchValues(id);
+    if (id !== 'new') {
+      this.getApiAndPatchValues(id);
+    } else {
+      this.creating = true;
+    }
   }
 
 
@@ -244,6 +256,4 @@ export class ApiFormComponent implements OnInit {
       compliant: this.api.compliant
     });
   }
-
-
 }

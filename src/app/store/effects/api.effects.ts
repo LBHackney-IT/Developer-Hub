@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { of, forkJoin } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { EApiActions, GetApiList, GetApiListSuccess, DeleteApi, DeleteApiSuccess } from '../actions/api.actions';
+import { EApiActions, GetApiList, GetApiListSuccess, DeleteApi, DeleteApiSuccess, AddApiSuccess, AddApi } from '../actions/api.actions';
 import { switchMap, concatMap } from 'rxjs/operators';
 import { IAppState } from '../state/app.state';
 import { IApi } from 'src/app/interfaces/IApi';
@@ -27,7 +27,16 @@ export class ApiEffects {
     @Effect()
     deleteApi$ =
         this.actions$.pipe(
-            ofType<DeleteApiSuccess>(EApiActions.DeleteApiSuccess),
-            switchMap((action: DeleteApiSuccess) => this.apiService.deleteApi(action.payload))
+            ofType<DeleteApi>(EApiActions.DeleteApi),
+            switchMap((action: DeleteApi) => this.apiService.deleteApi(action.payload)),
+            switchMap((response: string) => of (new DeleteApiSuccess(response)))
+        );
+
+    @Effect()
+    addApi$ =
+        this.actions$.pipe(
+            ofType<AddApi>(EApiActions.AddApi),
+            switchMap((action: AddApi) => this.apiService.putApi(action.payload)),
+            switchMap((response: IApi) => of( new AddApiSuccess(response)))
         );
 }
