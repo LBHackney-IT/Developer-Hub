@@ -21,12 +21,13 @@ import { ApiFormComponent } from './components/partials/api-form/api-form.compon
 import { SwaggerEndpointPageComponent } from './components/pages/swagger-endpoint-page/swagger-endpoint-page.component';
 import { AdminGuard } from './guards/admin.guard';
 import { GuestGuard } from './guards/guest.guard';
+import { APIResolver } from './resolvers/api.resolver';
 
 
 const routes: Routes = [
   {path: '',  component: HomeComponent},
   {path: 'api-list',  component: ApiListComponent, pathMatch: 'full'},
-  {path: 'api/:id',  component: ApiPageComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+  {path: 'api/:id',  component: ApiPageComponent, pathMatch: 'full' , resolve: {api: APIResolver}},
   {path: 'api-guide',  component: ApiGuideComponent, pathMatch: 'full'},
   {path: 'api-checklist',  component: ApiChecklistComponent, pathMatch: 'full'},
   {path: 'api-form/:id', component: ApiFormComponent, pathMatch: 'full', canActivate: [AuthGuard, AdminGuard]},

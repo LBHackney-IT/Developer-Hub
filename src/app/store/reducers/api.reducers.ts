@@ -20,6 +20,17 @@ export const apiReducer = (state = initialApiState, action: ApiActions): IApiSta
                 apis: apis
             };
         }
+        case EApiActions.AddApiSuccess: {
+            let apis: IApi[] = [...state.apis];
+            apis = apis.filter((api) => {
+                return api.id !== action.payload.id;
+            });
+            apis.push(action.payload);
+            return {
+                ...state,
+                apis: apis
+            };
+        }
         default:
             return state;
     }

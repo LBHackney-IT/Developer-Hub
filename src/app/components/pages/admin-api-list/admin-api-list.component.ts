@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { IApi } from 'src/app/interfaces/IApi';
-import { ApiService } from 'src/app/services/api.service';
 import { Store, select } from '@ngrx/store';
 import { IAppState } from '../../../store/state/app.state';
 import { GetApiList } from '../../../store/actions/api.actions';
 import { selectApiList } from '../../../store/selectors/api.selectors';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-api-list',
@@ -25,7 +25,7 @@ export class AdminApiListComponent implements OnInit {
    * @memberof ApiListComponent
    */
   constructor(
-    private apiService: ApiService,
+    private router: Router,
     private store: Store<IAppState>
   ) { }
 
@@ -47,6 +47,10 @@ export class AdminApiListComponent implements OnInit {
    */
   getListOfApis = () => {
     this.store.dispatch(new GetApiList());
+  }
+
+  createApi = ()  => {
+    this.router.navigate(['/api-form/new']);
   }
 
 }

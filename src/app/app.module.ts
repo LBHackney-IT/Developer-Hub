@@ -4,8 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/partials/header/header.component';
-import { PhaseBannerComponent } from './components/partials/phase-banner/phase-banner.component';
-import { SideNavbarComponent } from './components/partials/side-navbar/side-navbar.component';
 import { ApiListComponent } from './components/pages/api-list/api-list.component';
 import { ApiItemComponent } from './components/partials/api-item/api-item.component';
 import { HomeComponent } from './components/pages/home/home.component';
@@ -53,13 +51,12 @@ import {StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FilterEndpointsPipe } from './pipes/filter-endpoints.pipe';
 import { OrderApisAlphabeticallyPipe } from './pipes/order-apis-alphabetically.pipe';
 import { SpinnerComponent } from './components/partials/spinner/spinner.component';
+import { APIResolver } from './resolvers/api.resolver';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    PhaseBannerComponent,
-    SideNavbarComponent,
     ApiListComponent,
     ApiItemComponent,
     HomeComponent,
@@ -110,6 +107,7 @@ import { SpinnerComponent } from './components/partials/spinner/spinner.componen
     ApiKeyService,
     ApiService,
     ApiSearch,
+    APIResolver,
     { provide: HTTP_INTERCEPTORS, useClass: LambdaInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]

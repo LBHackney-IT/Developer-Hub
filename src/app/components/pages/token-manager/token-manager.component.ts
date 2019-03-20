@@ -21,7 +21,7 @@ export class TokenManagerComponent implements OnInit {
    *
    * @memberof TokenManagerComponent
    */
-  apiKeys;
+  apiKeys: [];
   /**
    *Creates an instance of TokenManagerComponent.
    * @param {ApiKeyService} apiKeyService
@@ -30,7 +30,6 @@ export class TokenManagerComponent implements OnInit {
    */
   constructor(
     private apiKeyService: ApiKeyService,
-    private authSerice: AuthService,
     private spinnerService: SpinnerService
   ) {
 
@@ -57,6 +56,8 @@ export class TokenManagerComponent implements OnInit {
       .subscribe(
         (response) => {
           this.spinnerService.hideSpinner();
+          response = JSON.parse(response);
+          console.log(typeof response, response);
           this.apiKeys = response;
         },
         (error) => {
