@@ -70,7 +70,7 @@
           </div>
         </div>
 
-        <div class="api__table__body__row" *ngIf='isLoggedIn()'>
+        <div class="api__table__body__row" *ngIf='isLoggedIn() && !apiKey'>
           <div class="api__table__body--column1">
             <p class="api__table__body__title"></p>
           </div>
@@ -89,7 +89,7 @@
       <div class="api__details__compliance">
         <div class="api__details__compliance__header">
           <div class="api__details__compliance__title">
-            <h3 class="heading-large"> Compliance</h3>
+            <h3 class="heading-large"> Is it compliant?</h3>
           </div>
 
           <div class="api__details__compliance__tag">
