@@ -51,6 +51,7 @@ import {StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FilterEndpointsPipe } from './pipes/filter-endpoints.pipe';
 import { OrderApisAlphabeticallyPipe } from './pipes/order-apis-alphabetically.pipe';
 import { SpinnerComponent } from './components/partials/spinner/spinner.component';
+import { APIResolver } from './resolvers/api.resolver';
 
 @NgModule({
   declarations: [
@@ -106,6 +107,7 @@ import { SpinnerComponent } from './components/partials/spinner/spinner.componen
     ApiKeyService,
     ApiService,
     ApiSearch,
+    APIResolver,
     { provide: HTTP_INTERCEPTORS, useClass: LambdaInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
