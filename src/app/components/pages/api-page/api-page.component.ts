@@ -7,9 +7,10 @@ import { compliancyConfigMap } from '../../../shared/config';
 import { select, Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/state/app.state';
 import { IApiState } from '../../../store/state/api.state';
-import { selectApiList } from '../../../store/selectors/api.selectors';
+import { selectApiList, selectApi } from '../../../store/selectors/api.selectors';
 import { GetApiList } from '../../../store/actions/api.actions';
 import { retry } from 'rxjs/operators';
+import { AuthService } from '../../../services/auth.service';
 
 /**
  * @export
@@ -27,6 +28,7 @@ export class ApiPageComponent implements OnInit {
    * @memberof ApiPageComponent
    */
   api: IApi;
+
 
   /**
    * @type {string}
@@ -48,7 +50,7 @@ export class ApiPageComponent implements OnInit {
    * @memberof ApiPageComponent
    */
   constructor(
-    private apiService: ApiService,
+    private authService: AuthService,
     private route: ActivatedRoute,
     private apiKeyService: ApiKeyService,
     private store: Store<IAppState>
@@ -60,8 +62,20 @@ export class ApiPageComponent implements OnInit {
    * @memberof ApiPageComponent
    */
   ngOnInit() {
-    const apiId: string = this.route.snapshot.paramMap.get('id');
-    this.getApi(apiId);
+    const id: string = this.route.snapshot.paramMap.get('id');
+    this.getApi(id);
+    if (this.isLoggedIn()) {
+      this.getAPIKey();
+    }
+  }
+
+  isLoggedIn = (): boolean => {
+    let isUserLoggedIn;
+    this.authService.isUserLoggedIn().subscribe((response) => {
+      isUserLoggedIn = response;
+    });
+
+    return isUserLoggedIn;
   }
 
   /**
@@ -159,11 +173,11 @@ export class ApiPageComponent implements OnInit {
     this.apiKeyService.readApiKey(this.api.id)
       .subscribe(
         (response: Response) => {
-          this.apiKey = response['apiKey'];
-          this.verified = response['verified'];
+          this.apiKey = response ? response['apiKey'] : null;
+          this.verified = response ? response['verified'] : false;
         },
         (error) => {
-          console.log(error);
+          // console.log(error);
         });
   }
 
@@ -189,11 +203,9 @@ export class ApiPageComponent implements OnInit {
    * @memberof ApiPageComponent
    */
   getApi = (id: string): void => {
-    this.store.pipe(select(selectApiList)).pipe(retry(2)).subscribe(
-      (response: IApi[]) => {
-        const apis: IApi[] = response;
-        const api = apis.find(item => item.id === id);
-        this.api = api;
+    this.store.pipe(select(selectApi(id))).pipe(retry(2)).subscribe(
+      (response: IApi) => {
+        this.api = response;
       },
       (error) => {
         this.store.dispatch(new GetApiList());

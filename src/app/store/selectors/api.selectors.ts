@@ -9,7 +9,7 @@ export const selectApiList = createSelector(
     (state: IApiState) => state.apis
 );
 
-export const selectApi = createSelector(
+export const selectApi = (id: string) => createSelector(
     selectApiState,
-    (state: IApiState, id) => state.apis.find(item => item.id === id)
+    (state: IApiState) => state.apis.find(item => item.id === id)
 );
