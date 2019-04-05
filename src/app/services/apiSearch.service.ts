@@ -7,7 +7,6 @@ import { filter } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiSearch {
-  //swaggerEndpoints: ISwagger[];
 
   search = (swaggerArray: ISwagger[], searchString: string): ISwagger[] => {
     // let filteredSearch = swaggerArray.slice();
@@ -34,7 +33,7 @@ export class ApiSearch {
       }
     });
 
-    if (searchString !== '') {;
+    if (searchString !== '') {
       return filteredArray;
     }
 

@@ -10,6 +10,9 @@
       </div>
       <div class="keymanager__body__row__key">
           <app-click-reveal *ngIf="key.apiKey" [apiKey]="key.apiKey"></app-click-reveal>
+          <p class="hackney-tag hackney-tag--{{key.verified ? 'positive' : 'negative' }}">
+            {{key.verified ? 'Verified' : 'Not Verified' }} 
+          </p>
       </div>
     </div>
   </div>
