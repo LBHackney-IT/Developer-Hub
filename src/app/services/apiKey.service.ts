@@ -31,7 +31,7 @@ export class ApiKeyService {
   /**
    * @memberof ApiKeyService
    */
-  createApiKey =  (apiId: string) => {
+  createApiKey =  (apiId: string, stage: string) => {
     let user: IUser;
     this.store.pipe(select(selectUser)).subscribe((response) => {
       user = response;
@@ -40,7 +40,8 @@ export class ApiKeyService {
     const payload = {
       cognito_username: user.cognitoUsername,
       api_id: apiId,
-      email: user.email
+      email: user.email,
+      stage: stage
     };
     return this.httpClient.post(environment.apiURL.tokenService + 'api-key', payload);
   }
@@ -50,9 +51,13 @@ export class ApiKeyService {
     *
     * @memberof ApiKeyService
     */
-   readApiKey = (apiId) => {
+   readApiKey = (apiId, stageId) => {
     const cognitoUsername: string = this.authService.getCognitoUsername();
-    const params = new HttpParams().set('cognito_username', cognitoUsername).append('api_id', apiId);
+    const params = new HttpParams()
+      .set('cognito_username', cognitoUsername)
+      .append('api_id', apiId)
+      .append('stage_id', stageId);
+
     return this.httpClient.get(environment.apiURL.tokenService + 'api-key', {params: params})
     .pipe(map((response) => response['body']));
   }
@@ -78,15 +83,17 @@ export class ApiKeyService {
     .pipe(map((response) => response['body']));
   }
 
+
   /**
    *
    *
    * @memberof ApiKeyService
    */
-  verifyApiKey = (apiId: string, cognitoUsername: string) => {
+  verifyApiKey = (apiId: string, stageId: string, cognitoUsername: string) => {
     const payload = {
       cognito_username: cognitoUsername,
       api_id: apiId,
+      stage_id: stageId
     };
     return this.httpClient.post(environment.apiURL.tokenService + 'api-key/verify', payload);
   }
