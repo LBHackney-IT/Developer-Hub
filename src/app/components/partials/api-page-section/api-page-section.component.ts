@@ -26,7 +26,6 @@ export class ApiPageSectionComponent implements OnInit {
     if (this.isLoggedIn()) {
       this.getAPIKey();
     }
-    console.log(this.title);
   }
 
   isLoggedIn = (): boolean => {
