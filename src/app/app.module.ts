@@ -52,6 +52,8 @@ import { FilterEndpointsPipe } from './pipes/filter-endpoints.pipe';
 import { OrderApisAlphabeticallyPipe } from './pipes/order-apis-alphabetically.pipe';
 import { SpinnerComponent } from './components/partials/spinner/spinner.component';
 import { APIResolver } from './resolvers/api.resolver';
+import { ApiPageSectionComponent } from './components/partials/api-page-section/api-page-section.component';
+import { ApiPageTableComponent } from './components/partials/api-page-table/api-page-table.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +92,9 @@ import { APIResolver } from './resolvers/api.resolver';
     SwaggerEndpointPageComponent,
     FilterEndpointsPipe,
     OrderApisAlphabeticallyPipe,
-    SpinnerComponent
+    SpinnerComponent,
+    ApiPageSectionComponent,
+    ApiPageTableComponent
   ],
   imports: [
     BrowserModule,
