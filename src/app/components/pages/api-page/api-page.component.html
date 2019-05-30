@@ -1,6 +1,7 @@
 <app-column-layout [show]="api">
 
   <div class="api__content" *ngIf='api'>
+
     <div class="api__table">
       <div class="api__table__header">
         <div class="api__table__header__title">
@@ -11,45 +12,45 @@
           <p class="hackney-tag hackney-tag--status">{{ api?.stage }}</p>
         </div>
       </div>
+
       <div class="api__table__body">
-        <div class="api__table__body__row" *ngIf="isDeployed('staging')">
-          <div class="api__table__body--column1">
-            <p class="api__table__body__title">Staging Base URL</p>
+        <!-- Development -->
+        <app-api-page-section [title]="'Development'" [display]="isDeployed('development')" [stage]="api.development"
+          [api]="api">
+        </app-api-page-section>
+        <!-- Staging -->
+        <app-api-page-section [title]="'Staging'" [display]="isDeployed('staging')" [stage]="api.staging" [api]="api">
+        </app-api-page-section>
+        <!-- Production -->
+        <app-api-page-section [title]="'Production'" [display]="isDeployed('production')" [stage]="api.production"
+          [api]="api">
+        </app-api-page-section>
+        <!-- <div class="api__table__body__section" *ngIf="isDeployed('production')">
+          <div class="api__table__body__title">
+            <p class="heading-medium"> Production </p>
           </div>
-          <div class="api__table__body--column2">
-            <a class="api__table__body__link">{{ api?.staging.url }}</a>
+          <div class="api__table__body__row" *ngIf="isDeployed('production')">
+
+            <div class="api__table__body--column1">
+              <p class="api__table__body__title">Production Base URL</p>
+            </div>
+            <div class="api__table__body--column2">
+              <a class="api__table__body__link ">{{ api?.production.url }}</a>
+            </div>
           </div>
-        </div>
-        <div class="api__table__body__row" *ngIf="api && isDeployed('staging')">
-          <div class="api__table__body--column1">
-            <p class="api__table__body__title">Available in Staging</p>
+          <div class="api__table__body__row" *ngIf="isDeployed('production')">
+            <div class="api__table__body--column1">
+              <p class="api__table__body__title">Available in Production</p>
+            </div>
+            <div class="api__table__body--column2">
+              <p class="hackney-tag hackney-tag--{{isDeployed('production') ? 'positive' : 'negative' }}">
+                {{isDeployed('production') ? 'Yes' : 'No' }} </p>
+              <p class="hackney-tag hackney-tag--{{isHealthy('production') ? 'positive' : 'negative' }}">
+                {{isHealthy('production') ? 'Healthy' : 'Not Healthy' }} </p>
+            </div>
           </div>
-          <div class="api__table__body--column2">
-            <p class="hackney-tag hackney-tag--{{api && isDeployed('staging') ? 'positive' : 'negative' }}">
-              {{isDeployed('staging') ? 'Yes' : 'No' }} </p>
-            <p class="hackney-tag hackney-tag--{{api && isHealthy('staging') ? 'positive' : 'negative' }}">
-              {{isHealthy('staging') ? 'Healthy' : 'Not Healthy' }} </p>
-          </div>
-        </div>
-        <div class="api__table__body__row" *ngIf="isDeployed('production')">
-          <div class="api__table__body--column1">
-            <p class="api__table__body__title">Production Base URL</p>
-          </div>
-          <div class="api__table__body--column2">
-            <a class="api__table__body__link ">{{ api?.production.url }}</a>
-          </div>
-        </div>
-        <div class="api__table__body__row" *ngIf="isDeployed('production')">
-          <div class="api__table__body--column1">
-            <p class="api__table__body__title">Available in Production</p>
-          </div>
-          <div class="api__table__body--column2">
-            <p class="hackney-tag hackney-tag--{{isDeployed('production') ? 'positive' : 'negative' }}">
-              {{isDeployed('production') ? 'Yes' : 'No' }} </p>
-            <p class="hackney-tag hackney-tag--{{isHealthy('production') ? 'positive' : 'negative' }}">
-              {{isHealthy('production') ? 'Healthy' : 'Not Healthy' }} </p>
-          </div>
-        </div>
+        </div> -->
+        <!-- Github -->
         <div class="api__table__body__row" *ngIf="api.github_url">
           <div class="api__table__body--column1">
             <p class="api__table__body__title">Github URL</p>
@@ -58,27 +59,6 @@
             <a class="api__table__body__link ">{{api.github_url }}</a>
           </div>
         </div>
-        <div class="api__table__body__row" *ngIf="apiKey">
-          <div class="api__table__body--column1">
-            <p class="api__table__body__title">API Key</p>
-          </div>
-          <div class="api__table__body--column3">
-            <app-click-reveal *ngIf="apiKey" [apiKey]="apiKey"></app-click-reveal>
-            <p class="hackney-tag hackney-tag--{{verified ? 'positive' : 'negative' }}">
-              {{verified ? 'Verified' : 'Not Verified' }} 
-            </p>
-          </div>
-        </div>
-
-        <div class="api__table__body__row" *ngIf='isLoggedIn() && !apiKey'>
-          <div class="api__table__body--column1">
-            <p class="api__table__body__title"></p>
-          </div>
-          <div class="api__table__body--column2">
-            <a class="hackney-button" (click)="requestAPIKey()" type="button"> Request API-Key</a>
-          </div>
-        </div>
-
       </div>
     </div>
     <div class="api__details" *ngIf='api'>
