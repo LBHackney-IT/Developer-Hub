@@ -25,31 +25,6 @@
         <app-api-page-section [title]="'Production'" [display]="isDeployed('production')" [stage]="api.production"
           [api]="api">
         </app-api-page-section>
-        <!-- <div class="api__table__body__section" *ngIf="isDeployed('production')">
-          <div class="api__table__body__title">
-            <p class="heading-medium"> Production </p>
-          </div>
-          <div class="api__table__body__row" *ngIf="isDeployed('production')">
-
-            <div class="api__table__body--column1">
-              <p class="api__table__body__title">Production Base URL</p>
-            </div>
-            <div class="api__table__body--column2">
-              <a class="api__table__body__link ">{{ api?.production.url }}</a>
-            </div>
-          </div>
-          <div class="api__table__body__row" *ngIf="isDeployed('production')">
-            <div class="api__table__body--column1">
-              <p class="api__table__body__title">Available in Production</p>
-            </div>
-            <div class="api__table__body--column2">
-              <p class="hackney-tag hackney-tag--{{isDeployed('production') ? 'positive' : 'negative' }}">
-                {{isDeployed('production') ? 'Yes' : 'No' }} </p>
-              <p class="hackney-tag hackney-tag--{{isHealthy('production') ? 'positive' : 'negative' }}">
-                {{isHealthy('production') ? 'Healthy' : 'Not Healthy' }} </p>
-            </div>
-          </div>
-        </div> -->
         <!-- Github -->
         <div class="api__table__body__row" *ngIf="api.github_url">
           <div class="api__table__body--column1">
