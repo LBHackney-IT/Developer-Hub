@@ -95,6 +95,9 @@ export class ApiFormComponent implements OnInit {
       Validators.required
     ]),
     staging: new FormGroup({
+      id: new FormControl('staging', [
+        Validators.required,
+      ]),
       url: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
@@ -111,6 +114,9 @@ export class ApiFormComponent implements OnInit {
       ])
     }),
     development: new FormGroup({
+      id: new FormControl('development', [
+        Validators.required,
+      ]),
       url: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
@@ -127,6 +133,9 @@ export class ApiFormComponent implements OnInit {
       ])
     }),
     production: new FormGroup({
+      id: new FormControl('production', [
+        Validators.required,
+      ]),
       url: new FormControl('', [
         Validators.required,
         Validators.minLength(3)
@@ -264,7 +273,7 @@ export class ApiFormComponent implements OnInit {
       internal: this.api.internal,
       staging: this.api.staging,
       production: this.api.production,
-      // development: this.api.development,
+      development: this.api.development,
       description: this.api.description,
       approved: this.api.approved,
       stage: this.api.stage,
