@@ -110,6 +110,22 @@ export class ApiFormComponent implements OnInit {
         Validators.required
       ])
     }),
+    development: new FormGroup({
+      url: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      swagger_url: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      deployed: new FormControl(null, [
+        Validators.required
+      ]),
+      healthStatus: new FormControl(false, [
+        Validators.required
+      ])
+    }),
     production: new FormGroup({
       url: new FormControl('', [
         Validators.required,
@@ -248,6 +264,7 @@ export class ApiFormComponent implements OnInit {
       internal: this.api.internal,
       staging: this.api.staging,
       production: this.api.production,
+      // development: this.api.development,
       description: this.api.description,
       approved: this.api.approved,
       stage: this.api.stage,
