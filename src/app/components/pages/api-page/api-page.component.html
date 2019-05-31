@@ -15,14 +15,14 @@
 
       <div class="api__table__body">
         <!-- Development -->
-        <app-api-page-section [title]="'Development'" [display]="isDeployed('development')" [stage]="api.development"
+        <app-api-page-section *ngIf="api.development" [title]="'Development'" [display]="isDeployed('development')" [stage]="api.development"
           [api]="api">
         </app-api-page-section>
         <!-- Staging -->
-        <app-api-page-section [title]="'Staging'" [display]="isDeployed('staging')" [stage]="api.staging" [api]="api">
+        <app-api-page-section *ngIf="api.staging" [title]="'Staging'" [display]="isDeployed('staging')" [stage]="api.staging" [api]="api">
         </app-api-page-section>
         <!-- Production -->
-        <app-api-page-section [title]="'Production'" [display]="isDeployed('production')" [stage]="api.production"
+        <app-api-page-section *ngIf="api.production" [title]="'Production'" [display]="isDeployed('production')" [stage]="api.production"
           [api]="api">
         </app-api-page-section>
         <!-- Github -->
