@@ -25,8 +25,9 @@ export class AdminManageKeysComponent implements OnInit {
   private verifyUser = (tokenObject): void => {
     const apiID: string = tokenObject.apiID;
     const cognitoUsername: string = tokenObject.cognitoUsername;
-    const stageId: string = tokenObject.stageId;
-    this.apiKeyService.verifyApiKey(apiID, cognitoUsername, stageId)
+    const stageId: string = tokenObject.stage;
+
+    this.apiKeyService.verifyApiKey(apiID, stageId, cognitoUsername)
       .subscribe(
         (response) => {
           this.tokenObjects = this.tokenObjects.filter((item) => {

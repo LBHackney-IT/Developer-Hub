@@ -43,6 +43,7 @@ export class ApiKeyService {
       email: user.email,
       stage: stage
     };
+    console.log(payload);
     return this.httpClient.post(environment.apiURL.tokenService + 'api-key', payload);
   }
 
@@ -56,7 +57,7 @@ export class ApiKeyService {
     const params = new HttpParams()
       .set('cognito_username', cognitoUsername)
       .append('api_id', apiId)
-      .append('stage_id', stageId);
+      .append('stage', stageId);
 
     return this.httpClient.get(environment.apiURL.tokenService + 'api-key', {params: params})
     .pipe(map((response) => response['body']));
@@ -93,7 +94,7 @@ export class ApiKeyService {
     const payload = {
       cognito_username: cognitoUsername,
       api_id: apiId,
-      stage_id: stageId
+      stage: stageId
     };
     return this.httpClient.post(environment.apiURL.tokenService + 'api-key/verify', payload);
   }
