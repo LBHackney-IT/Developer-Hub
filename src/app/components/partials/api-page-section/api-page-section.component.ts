@@ -14,6 +14,7 @@ import { IApikey } from '../../../interfaces/IApikey';
 })
 export class ApiPageSectionComponent implements OnInit {
   private apiKey: IApikey;
+  private apiKeyCallMade = false;
   @Input() title: string;
   @Input() display: boolean;
   @Input() stage: IStage;
@@ -36,7 +37,13 @@ export class ApiPageSectionComponent implements OnInit {
     return isUserLoggedIn;
   }
 
+  hasApiKey = (): boolean => {
+    const response = this.apiKey.value.length > 0;
+    return response;
+  }
+
   requestAPIKey = (): void => {
+    console.log(this.api.id, this.stage.id);
     this.apikeyService.createApiKey(this.api.id, this.stage.id)
       .subscribe(
         (response) => {
@@ -52,9 +59,11 @@ export class ApiPageSectionComponent implements OnInit {
       .subscribe(
         (response: Response) => {
           this.apiKey = {
-            value : response ? response['apiKey'] : null,
-            verified : response ? response['verified'] : false
+            value: response ? response['apiKey'] : '',
+            verified: response ? response['verified'] : undefined
           };
+          this.apiKeyCallMade = true;
+          // }
         },
         (error) => {
           // console.log(error);
