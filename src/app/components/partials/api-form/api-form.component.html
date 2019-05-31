@@ -167,6 +167,55 @@
         </div>
       </div>
 
+      <div class="apiform__api__form--formgroup" formGroupName="development">
+        <h3 class="heading-medium"> Development</h3>
+        <div class="apiform__api__form--formgroup">
+          <label class="apiform__api__label" for="url">
+            Base URL
+          </label>
+          <input type="url" autocomplete="off" id="url" name="url" formControlName="url"
+            [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.development.controls.url.touched && f.development.controls.url.invalid}"
+            class="input" aria-required="true" />
+          <div *ngIf="f.development.controls.url.touched && f.development.controls.url.invalid" class="error-message">
+            Development Base URL is required
+          </div>
+        </div>
+
+        <div class="apiform__api__form--formgroup">
+          <label class="apiform__api__label" for="url">
+            Swagger JSON URL
+          </label>
+          <input type="swagger_url" autocomplete="swagger_url" id="swagger_url" name="swagger_url"
+            formControlName="swagger_url"
+            [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.development.controls.swagger_url.touched && f.development.controls.swagger_url.invalid}"
+            class="input" aria-required="true" />
+          <div *ngIf="f.development.controls.swagger_url.touched && f.development.controls.swagger_url.invalid"
+            class="error-message">
+            Development Swagger URL is required
+          </div>
+        </div>
+
+        <div class="apiform__api__form--formgroup">
+          <h3 class="heading-small"> Has this application been deployed? </h3>
+          <div class="govuk-radios govuk-radios--inline">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="development_deployed_true" type="radio" [value]="true"
+                formControlName="deployed">
+              <label class="apiform__api__label govuk-radios__label" for="development_deployed_true">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="development_deployed_false" type="radio" [value]="false"
+                formControlName="deployed">
+              <label class="apiform__api__label govuk-radios__label" for="development_deployed_false">
+                No
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="apiform__api__form--formgroup" formGroupName="production">
         <h3 class="heading-medium"> Production </h3>
         <div class="apiform__api__form--formgroup">
