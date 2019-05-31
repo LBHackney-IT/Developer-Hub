@@ -138,6 +138,10 @@ export class ApiPageComponent implements OnInit {
         response = this.api.staging.deployed;
         break;
       }
+      case 'development': {
+        response = this.api.development.deployed;
+        break;
+      }
       case 'production': {
         response = this.api.production.deployed;
         break;
