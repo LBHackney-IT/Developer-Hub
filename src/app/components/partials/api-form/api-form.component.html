@@ -128,7 +128,7 @@
             [ngClass]="{'input': true, 'govuk-!-width-two-thirds': true, 'input--error': f.staging.controls.url.touched && f.staging.controls.url.invalid}"
             class="input" aria-required="true" />
           <div *ngIf="f.staging.controls.url.touched && f.staging.controls.url.invalid" class="error-message">
-            Production Base URL is required
+            Stage Base URL is required
           </div>
         </div>
 
@@ -142,7 +142,7 @@
             class="input" aria-required="true" />
           <div *ngIf="f.staging.controls.swagger_url.touched && f.staging.controls.swagger_url.invalid"
             class="error-message">
-            Production Swagger URL is required
+            Staging Swagger URL is required
           </div>
         </div>
 
