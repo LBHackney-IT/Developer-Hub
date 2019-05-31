@@ -85,12 +85,21 @@ const generateRandomApi = (): IApi => {
         },
         internal: Faker.random.boolean(),
         staging: {
+            id: Faker.random.word(),
             url: Faker.internet.url(),
             swagger_url: Faker.internet.url(),
             deployed: Faker.random.boolean(),
             healthStatus: Faker.random.boolean()
         },
         production: {
+            id: Faker.random.word(),
+            url: Faker.internet.url(),
+            swagger_url: Faker.internet.url(),
+            deployed: Faker.random.boolean(),
+            healthStatus: Faker.random.boolean()
+        },
+        development: {
+            id: Faker.random.word(),
             url: Faker.internet.url(),
             swagger_url: Faker.internet.url(),
             deployed: Faker.random.boolean(),
