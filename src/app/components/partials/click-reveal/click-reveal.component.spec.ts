@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ClickRevealComponent } from './click-reveal.component';
+import { TestingModule } from '../../../../testing/utils';
 
 describe('ClickRevealComponent', () => {
   let component: ClickRevealComponent;
@@ -8,6 +9,9 @@ describe('ClickRevealComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      // imports: [
+      //   TestingModule
+      // ],
       declarations: [ ClickRevealComponent ]
     })
     .compileComponents();
