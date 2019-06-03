@@ -41,14 +41,12 @@ export class ApiPageSectionComponent implements OnInit {
   }
 
   requestAPIKey = (): void => {
-    console.log(this.api.id, this.stage.id);
     this.apikeyService.createApiKey(this.api.id, this.stage.id)
       .subscribe(
         (response) => {
           this.getAPIKey();
         },
         (error) => {
-          console.log(error);
         });
   }
 

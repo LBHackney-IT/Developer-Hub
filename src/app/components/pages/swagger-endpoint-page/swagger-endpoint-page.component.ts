@@ -24,7 +24,6 @@ export class SwaggerEndpointPageComponent implements OnInit {
     const apiID = this.route.snapshot.paramMap.get('apiID');
     const endpointID = this.route.snapshot.paramMap.get('endpointID');
     this.getEndpoint(apiID, endpointID);
-    console.log(this.apiEndpoint, this.path);
   }
 
  getEndpoint = async (apiId: string, endpointId: string) => {
@@ -38,7 +37,6 @@ export class SwaggerEndpointPageComponent implements OnInit {
     },
     (error) => {
       this.spinnerService.hideSpinner();
-      console.log(error);
     }
     );
   }

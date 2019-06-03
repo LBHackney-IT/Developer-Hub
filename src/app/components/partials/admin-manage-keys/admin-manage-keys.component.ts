@@ -35,7 +35,6 @@ export class AdminManageKeysComponent implements OnInit {
           });
         },
         (error) => {
-          console.log(error);
         });
   }
 
@@ -49,7 +48,6 @@ export class AdminManageKeysComponent implements OnInit {
 
         },
         (error) => {
-          console.log(error);
           this.spinnerService.hideSpinner();
         });
   }

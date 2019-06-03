@@ -151,7 +151,6 @@ describe('ApiFormComponent', () => {
       it('should make the internal control required', () => {
         const control = component.apiForm.get('staging.deployed');
         // control.setValue(null);
-        console.log(control);
         expect(control.valid).toBe(false);
       });
     });
