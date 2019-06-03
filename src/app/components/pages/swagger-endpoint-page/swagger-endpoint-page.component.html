@@ -36,13 +36,17 @@
       <div class="endpoint__table__column--half">Value</div>
     </div>
     <div class="endpoint__table__row">
-      <div class="endpoint__table__column--half">Header Field</div>
-      <div class="endpoint__table__column--half">Value</div>
+      <div class="endpoint__table__column--half">Content-Type</div>
+      <div class="endpoint__table__column--half">application/json</div>
+    </div>
+    <div class="endpoint__table__row">
+      <div class="endpoint__table__column--half">Authorization</div>
+      <div class="endpoint__table__column--half">{Api_Key}</div>
     </div>
   </div>
 
   <h3 class="heading-medium">Example</h3>
-  <p class="endpoint__example paragraph-text">curl -X {{ path?.requestType | uppercase }}  "https://example.com/ {{ path?.url }} -H "Authorization: Bearer"</p>
+  <p class="endpoint__example paragraph-text">curl -X {{ path?.requestType | uppercase }}  "https://example.com{{ path?.url }}" -H "Authorization: Bearer"</p>
 
   <a routerLink="/documentation" class="hackney-button">← All Endpoints</a>
 </section>
