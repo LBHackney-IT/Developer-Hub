@@ -2,6 +2,7 @@
   <div class="keymanager__header">
     <h4 class="heading-medium keymanager__header__title">API</h4>
     <h4 class="h4 heading-medium keymanager__header__header__title-key">API Key</h4>
+    <h4 class="h4 heading-medium keymanager__header__header__title-key">Stage</h4>
   </div>
   <div class="keymanager__body">
     <div class="keymanager__body__row" *ngFor="let key of apiKeys">
@@ -14,6 +15,10 @@
             {{key.verified ? 'Verified' : 'Not Verified' }} 
           </p>
       </div>
+
+      <div class="keymanager__body__row__key">
+        <p class="paragraph-text">{{key.stage }}</p>
+    </div>
     </div>
   </div>
 </div>
