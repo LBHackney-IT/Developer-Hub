@@ -1,9 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IApi } from 'src/app/interfaces/IApi';
 import { AuthService } from '../../../services/auth.service';
-import { environment } from '../../../../environments/environment';
 import { IStage } from '../../../interfaces/IStage';
-import { apiKeyService } from '../../../../../../token-generator/services/apiKeyService';
 import { ApiKeyService } from '../../../services/apiKey.service';
 import { IApikey } from '../../../interfaces/IApikey';
 
