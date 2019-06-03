@@ -26,7 +26,7 @@ export class SwaggerEndpointItemsComponent implements OnInit {
   ngOnInit() {
     this.getSwaggerEndpointList();
     this.store.pipe(select(selectSwaggerEndpoints)).subscribe(response => {
-      console.log(response);
+
     });
   }
 

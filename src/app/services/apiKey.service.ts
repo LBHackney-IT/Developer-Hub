@@ -43,7 +43,6 @@ export class ApiKeyService {
       email: user.email,
       stage: stage
     };
-    console.log(payload);
     return this.httpClient.post(environment.apiURL.tokenService + 'api-key', payload);
   }
 
