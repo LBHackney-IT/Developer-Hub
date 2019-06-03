@@ -1,8 +1,12 @@
 .container {
     margin: 0 auto;
-    padding: $container-padding;
+    padding: $container-padding-mobile;
 
     max-width: 960px;
 
     font-family: "nta", Arial, sans-serif;
+
+    @media (min-width: 830px) {
+        padding: $container-padding;
+    }
 }
