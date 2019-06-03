@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ApiPageSectionComponent } from './api-page-section.component';
+import { TestingModule } from '../../../../testing/utils';
+import { MockClickRevealComponent } from '../click-reveal/click-reveal.component';
 
 describe('ApiPageSectionComponent', () => {
   let component: ApiPageSectionComponent;
@@ -8,9 +10,13 @@ describe('ApiPageSectionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ApiPageSectionComponent ]
+      imports: [TestingModule],
+      declarations: [
+        ApiPageSectionComponent,
+        MockClickRevealComponent
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

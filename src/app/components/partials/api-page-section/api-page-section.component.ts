@@ -69,3 +69,17 @@ export class ApiPageSectionComponent implements OnInit {
   }
 
 }
+
+
+@Component({
+  selector: 'app-api-page-section',
+  template: ''
+})
+export class MockApiPageSectionComponent {
+  private apiKey: IApikey;
+  private apiKeyCallMade = false;
+  @Input() title: string;
+  @Input() display: boolean;
+  @Input() stage: IStage;
+  @Input() api: IApi;
+}

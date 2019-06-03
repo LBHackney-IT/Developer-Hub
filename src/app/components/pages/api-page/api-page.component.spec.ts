@@ -4,6 +4,7 @@ import { ApiPageComponent } from './api-page.component';
 import { MockColumnLayoutComponent } from '../../partials/column-layout/column-layout.component';
 import { MockClickRevealComponent } from '../../partials/click-reveal/click-reveal.component';
 import { TestingModule } from '../../../../testing/utils';
+import { MockApiPageSectionComponent } from '../../partials/api-page-section/api-page-section.component';
 
 describe('ApiPageComponent', () => {
   let component: ApiPageComponent;
@@ -17,7 +18,8 @@ describe('ApiPageComponent', () => {
       declarations: [
         ApiPageComponent,
         MockColumnLayoutComponent,
-        MockClickRevealComponent
+        MockClickRevealComponent,
+        MockApiPageSectionComponent
       ]
     })
       .compileComponents();
