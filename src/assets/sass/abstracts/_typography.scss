@@ -7,6 +7,10 @@
     line-height: 1.6;
     margin-top: 0;
     padding-bottom: $margin-bottom-text;
+
+    &__small {
+        font-size: 1.6rem;
+    }
 }
 
 .heading-large {

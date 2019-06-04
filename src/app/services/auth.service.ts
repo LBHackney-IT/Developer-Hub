@@ -137,7 +137,6 @@ export class AuthService {
         },
         onFailure: function (err: Error) {
           alertService.error(err.message);
-          console.log(err.message);
         }
       });
 
@@ -213,7 +212,6 @@ export class AuthService {
 
     } catch (error) {
       // const alertService = this.alertService;
-      console.log(error);
       // alertService.error(error.message);
     }
   }
@@ -242,7 +240,6 @@ export class AuthService {
         },
         onFailure: function (err) {
           alertService.error(err.message);
-          console.log(err);
         },
       });
 

@@ -25,7 +25,9 @@ export class AdminManageKeysComponent implements OnInit {
   private verifyUser = (tokenObject): void => {
     const apiID: string = tokenObject.apiID;
     const cognitoUsername: string = tokenObject.cognitoUsername;
-    this.apiKeyService.verifyApiKey(apiID, cognitoUsername)
+    const stageId: string = tokenObject.stage;
+
+    this.apiKeyService.verifyApiKey(apiID, stageId, cognitoUsername)
       .subscribe(
         (response) => {
           this.tokenObjects = this.tokenObjects.filter((item) => {
@@ -33,7 +35,6 @@ export class AdminManageKeysComponent implements OnInit {
           });
         },
         (error) => {
-          console.log(error);
         });
   }
 
@@ -47,7 +48,6 @@ export class AdminManageKeysComponent implements OnInit {
 
         },
         (error) => {
-          console.log(error);
           this.spinnerService.hideSpinner();
         });
   }

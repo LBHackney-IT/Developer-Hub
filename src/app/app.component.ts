@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { createUser } from '../testing/mock-db';
 
 @Component({
   selector: 'app-root',
@@ -30,6 +31,6 @@ export class AppComponent implements OnInit {
 export class MockAppComponent {
   title = 'Developer-Hub-Frontend';
   getCurrentUser = () => {
-    return;
+    return createUser();
   }
 }
