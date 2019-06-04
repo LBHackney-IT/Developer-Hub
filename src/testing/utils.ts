@@ -105,6 +105,10 @@ export class MockActivatedRoute {
     confirmRegistration = () => {
         return;
       }
+
+      isAuthenticated = (cognitoUser) => {
+        return true;
+      }
   }
 
 /**
