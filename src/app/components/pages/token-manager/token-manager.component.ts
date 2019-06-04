@@ -60,7 +60,6 @@ export class TokenManagerComponent implements OnInit {
           this.apiKeys = response;
         },
         (error) => {
-          console.log(error);
           this.spinnerService.hideSpinner();
         }
       );

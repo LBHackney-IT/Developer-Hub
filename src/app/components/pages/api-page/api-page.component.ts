@@ -3,7 +3,7 @@ import { ApiService } from '../../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { IApi } from '../../../interfaces/IApi';
 import { ApiKeyService } from '../../../services/apiKey.service';
-import { compliancyConfigMap } from '../../../shared/config';
+import { compliancyConfigMap} from '../../../shared/config';
 import { select, Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/state/app.state';
 import { IApiState } from '../../../store/state/api.state';
@@ -11,6 +11,7 @@ import { selectApiList, selectApi } from '../../../store/selectors/api.selectors
 import { GetApiList } from '../../../store/actions/api.actions';
 import { retry } from 'rxjs/operators';
 import { AuthService } from '../../../services/auth.service';
+import { IApikey } from '../../../interfaces/IApikey';
 
 /**
  * @export
@@ -34,7 +35,7 @@ export class ApiPageComponent implements OnInit {
    * @type {string}
    * @memberof ApiPageComponent
    */
-  apiKey: string;
+  apiKey: IApikey;
 
   /**
    * @type {boolean}
@@ -64,9 +65,6 @@ export class ApiPageComponent implements OnInit {
   ngOnInit() {
     const id: string = this.route.snapshot.paramMap.get('id');
     this.getApi(id);
-    if (this.isLoggedIn()) {
-      this.getAPIKey();
-    }
   }
 
   isLoggedIn = (): boolean => {
@@ -140,6 +138,10 @@ export class ApiPageComponent implements OnInit {
         response = this.api.staging.deployed;
         break;
       }
+      case 'development': {
+        response = this.api.development.deployed;
+        break;
+      }
       case 'production': {
         response = this.api.production.deployed;
         break;
@@ -147,40 +149,6 @@ export class ApiPageComponent implements OnInit {
     }
     return response;
   }
-
-  /**
-   * @summary Subscribes to the createApiKey method in the {ApiKeyService}
-   * @returns {void}
-   * @memberof ApiPageComponent
-   */
-  requestAPIKey = (): void => {
-    this.apiKeyService.createApiKey(this.api.id)
-      .subscribe(
-        (response) => {
-          this.getAPIKey();
-        },
-        (error) => {
-          console.log(error);
-        });
-  }
-
-  /**
-   * @summary Subscribes to the getAPIKey method in the {ApiKeyService}
-   * @returns {void}
-   * @memberof ApiPageComponent
-   */
-  getAPIKey = (): void => {
-    this.apiKeyService.readApiKey(this.api.id)
-      .subscribe(
-        (response: Response) => {
-          this.apiKey = response ? response['apiKey'] : null;
-          this.verified = response ? response['verified'] : false;
-        },
-        (error) => {
-          // console.log(error);
-        });
-  }
-
   /**
    * @summary Maps the Compliancy Id to the text using the {compliancyConfigMap}
    * @returns {object}

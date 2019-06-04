@@ -47,10 +47,10 @@
 
     padding-top: 2.5rem;
 
-    &:not(:last-child) {
-      border-bottom: 1px solid $hackney-black;
-      padding-bottom: 2.5rem;
-    }
+    // &:not(:last-child) {
+    //   border-bottom: 1px solid $hackney-black;
+    //   padding-bottom: 2.5rem;
+    // }
 
   }
 
@@ -67,6 +67,11 @@
 
   &__title {
     font-weight: 700;
+  }
+
+  &__section {
+    border-bottom: 1px solid $hackney-black;
+    padding-bottom: 2.5rem;
   }
 
 }
