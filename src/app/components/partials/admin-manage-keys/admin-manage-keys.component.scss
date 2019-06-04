@@ -11,8 +11,17 @@
     display: flex;
     justify-content: flex-start;
 
-    &__item {
+    &__email {
         flex-basis: 50%;
+    }
+    &__api {
+        flex-basis: 25%;
+    }
+    &__stage {
+        flex-basis: 15%;
+    }
+    &__item {
+        flex-basis: 33%;
     }
 }
 
@@ -27,21 +36,27 @@
     display: flex;
     flex-direction: column;
 
-    &__button {
-        display: inline-block;
-        
-    }
-
     &__email {
         display: inline-block;
         flex-basis: 50%;
     }
 
-    &__api-id {
+    &__api {
         display: inline-block;
         margin-right: auto;
-        flex-basis: 35%;
+        flex-basis: 25%;
     }
+
+    &__stage {
+        display: inline-block;
+        margin-right: auto;
+        flex-basis: 15%;
+    }
+
+    &__button {
+        display: inline-block;
+        flex-basis: 5%;
+    }    
 }
 
 .admin__row__item {

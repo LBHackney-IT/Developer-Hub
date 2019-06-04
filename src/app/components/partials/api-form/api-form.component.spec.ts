@@ -27,8 +27,8 @@ describe('ApiFormComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should create a form with twelve controls', () => {
-    expect(Object.keys(component.apiForm.controls).length).toBe(12);
+  it('should create a form with thirteen controls', () => {
+    expect(Object.keys(component.apiForm.controls).length).toBe(13);
     expect(component.apiForm.contains('id')).toBe(true);
     expect(component.apiForm.contains('title')).toBe(true);
     expect(component.apiForm.contains('summary')).toBe(true);
@@ -151,7 +151,6 @@ describe('ApiFormComponent', () => {
       it('should make the internal control required', () => {
         const control = component.apiForm.get('staging.deployed');
         // control.setValue(null);
-        console.log(control);
         expect(control.valid).toBe(false);
       });
     });

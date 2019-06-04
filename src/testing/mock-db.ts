@@ -3,6 +3,7 @@ import * as Faker from 'faker/locale/en_GB';
 import { ISwagger } from '../app/interfaces/ISwagger';
 import { IPath } from '../app/interfaces/IPath';
 import { IPathParameter } from '../app/interfaces/IPathParameters';
+import { CognitoUser, ICognitoUserData, CognitoUserPool, ICognitoUserPoolData } from 'amazon-cognito-identity-js';
 export const generateTestApis = (numberOfApis: number): IApi[] => {
     const apis: IApi[] = [];
     for (let i = 0; i < numberOfApis; i++) {
@@ -85,12 +86,21 @@ const generateRandomApi = (): IApi => {
         },
         internal: Faker.random.boolean(),
         staging: {
+            id: Faker.random.word(),
             url: Faker.internet.url(),
             swagger_url: Faker.internet.url(),
             deployed: Faker.random.boolean(),
             healthStatus: Faker.random.boolean()
         },
         production: {
+            id: Faker.random.word(),
+            url: Faker.internet.url(),
+            swagger_url: Faker.internet.url(),
+            deployed: Faker.random.boolean(),
+            healthStatus: Faker.random.boolean()
+        },
+        development: {
+            id: Faker.random.word(),
             url: Faker.internet.url(),
             swagger_url: Faker.internet.url(),
             deployed: Faker.random.boolean(),
@@ -112,3 +122,16 @@ const generateRandomApi = (): IApi => {
         }
     };
 };
+
+export const createUser = () => {
+    const dummyUserPoolData: ICognitoUserPoolData = {
+        UserPoolId: 'xxxx123',
+        ClientId: 'gdfsgs'
+    };
+    const dummyUserPool: CognitoUserPool = new CognitoUserPool(dummyUserPoolData);
+    const dummyUserData: ICognitoUserData = {
+        Username: 'xxxxxxx',
+        Pool: dummyUserPool
+    };
+    const user: CognitoUser = new CognitoUser(dummyUserData);
+}
