@@ -3,6 +3,7 @@
   <div class="api__content" *ngIf='api'>
 
     <div class="api__table">
+
       <div class="api__table__header">
         <div class="api__table__header__title">
           <h1 class="heading-large">{{ api?.title }}</h1>
@@ -13,18 +14,19 @@
         </div>
       </div>
 
-      <div class="api__table__body">
+      <div class="govuk-accordion" data-module="accordion" id="accordion-default">
         <!-- Development -->
-        <app-api-page-section *ngIf="api.development" [title]="'Development'" [display]="isDeployed('development')" [stage]="api.development"
-          [api]="api">
-        </app-api-page-section>
+        <app-accordion-section *ngIf="api.development" [title]="'Development'" [display]="isDeployed('development')"
+          [stage]="api.development" [api]="api"></app-accordion-section>
         <!-- Staging -->
-        <app-api-page-section *ngIf="api.staging" [title]="'Staging'" [display]="isDeployed('staging')" [stage]="api.staging" [api]="api">
-        </app-api-page-section>
+        <app-accordion-section *ngIf="api.staging" [title]="'Staging'" [display]="isDeployed('staging')"
+          [stage]="api.staging" [api]="api"></app-accordion-section>
         <!-- Production -->
-        <app-api-page-section *ngIf="api.production" [title]="'Production'" [display]="isDeployed('production')" [stage]="api.production"
-          [api]="api">
-        </app-api-page-section>
+        <app-accordion-section *ngIf="api.production" [title]="'Production'" [display]="isDeployed('production')"
+          [stage]="api.production" [api]="api"></app-accordion-section>
+      </div>
+      
+      <div class="api__table__body">
         <!-- Github -->
         <div class="api__table__body__row" *ngIf="api.github_url">
           <div class="api__table__body--column1">

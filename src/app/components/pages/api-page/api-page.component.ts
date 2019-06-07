@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../../services/api.service';
+import { Component, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IApi } from '../../../interfaces/IApi';
 import { ApiKeyService } from '../../../services/apiKey.service';
-import { compliancyConfigMap} from '../../../shared/config';
+import { compliancyConfigMap } from '../../../shared/config';
 import { select, Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/state/app.state';
 import { IApiState } from '../../../store/state/api.state';
@@ -12,7 +11,7 @@ import { GetApiList } from '../../../store/actions/api.actions';
 import { retry } from 'rxjs/operators';
 import { AuthService } from '../../../services/auth.service';
 import { IApikey } from '../../../interfaces/IApikey';
-
+import { Accordion } from 'govuk-frontend';
 /**
  * @export
  * @class ApiPageComponent
@@ -23,12 +22,20 @@ import { IApikey } from '../../../interfaces/IApikey';
   templateUrl: './api-page.component.html',
   styleUrls: ['./api-page.component.scss']
 })
-export class ApiPageComponent implements OnInit {
+export class ApiPageComponent implements OnInit, AfterViewChecked, AfterViewInit {
   /**
    * @type {IApi}
    * @memberof ApiPageComponent
    */
   api: IApi;
+
+  /**
+   *
+   *
+   * @type {boolean}
+   * @memberof ApiPageComponent
+   */
+  hasAccordionInitialised = false;
 
 
   /**
@@ -65,6 +72,21 @@ export class ApiPageComponent implements OnInit {
   ngOnInit() {
     const id: string = this.route.snapshot.paramMap.get('id');
     this.getApi(id);
+  }
+
+  ngAfterViewInit() {
+    // const $accordion = document.querySelector('[data-module="accordion"]');
+
+    // new Accordion($accordion).init();
+
+  }
+
+  ngAfterViewChecked() {
+      const $accordion = document.querySelector('[data-module="accordion"]');
+      if ($accordion && !this.hasAccordionInitialised) {
+        new Accordion($accordion).init();
+        this.hasAccordionInitialised = true;
+      }
   }
 
   isLoggedIn = (): boolean => {
