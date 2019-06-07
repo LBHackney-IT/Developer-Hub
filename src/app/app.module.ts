@@ -54,6 +54,7 @@ import { SpinnerComponent } from './components/partials/spinner/spinner.componen
 import { APIResolver } from './resolvers/api.resolver';
 import { ApiPageSectionComponent } from './components/partials/api-page-section/api-page-section.component';
 import { ApiPageTableComponent } from './components/partials/api-page-table/api-page-table.component';
+import { AccordionSectionComponent } from './components/partials/accordion-section/accordion-section.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { ApiPageTableComponent } from './components/partials/api-page-table/api-
     OrderApisAlphabeticallyPipe,
     SpinnerComponent,
     ApiPageSectionComponent,
-    ApiPageTableComponent
+    ApiPageTableComponent,
+    AccordionSectionComponent
   ],
   imports: [
     BrowserModule,
