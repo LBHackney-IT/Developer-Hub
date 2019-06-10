@@ -1,30 +1,54 @@
 <div class="admin__box">
   <div class="admin__header">
-      <div class="admin__header__email">
-        <h3 class="heading-medium">Email</h3>
-      </div>
-      <div class="admin__header__api">
-        <h3 class="heading-medium">API ID</h3>
-      </div>
-      <div class="admin__header__stage">
-        <h3 class="heading-medium">Stage</h3>
-      </div>
+    <div class="admin__header__email">
+      <h3 class="heading-medium">Email</h3>
+    </div>
+    <div class="admin__header__api">
+      <h3 class="heading-medium">API ID</h3>
+    </div>
+    <div class="admin__header__stage">
+      <h3 class="heading-medium">Stage</h3>
+    </div>
   </div>
 
   <div class="admin__body">
     <div class="admin__row" *ngIf="!tokenObjects || tokenObjects.length < 1">
-        <p> There are no API keys to verify</p>
+      <p> There are no API keys to verify</p>
     </div>
 
     <div class="admin__row">
-        <div *ngFor="let tokenObject of tokenObjects" class="admin__row__item">
-            <p class="paragraph-text__small admin__row__email" scope="row">{{tokenObject.email}}</p>
-            <p class="paragraph-text__small admin__row__api">{{tokenObject.apiID}}</p>
-            <p class="paragraph-text__small admin__row__stage">{{tokenObject.stage}}</p>
-            <div class="admin__row__button">
-              <a class="hackney-button" (click)="verifyUser(tokenObject)" type="button">Verify</a>
-            </div>
-          </div>
+      <div *ngFor="let tokenObject of tokenObjects" class="admin__row__item">
+        <p class="paragraph-text__small admin__row__email" scope="row">{{tokenObject.email}}</p>
+        <p class="paragraph-text__small admin__row__api">{{tokenObject.apiID}}</p>
+        <p class="paragraph-text__small admin__row__stage">{{tokenObject.stage}}</p>
+        <div class="admin__row__button">
+          <a class="hackney-button" (click)="verifyUser(tokenObject)" type="button">Verify</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- 
+<table class="govuk-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header app-custom-class" scope="col">Email</th>
+        <th class="govuk-table__header app-custom-class" scope="col">API ID</th>
+        <th class="govuk-table__header app-custom-class" scope="col">Stage</th>
+        <th class="govuk-table__header app-custom-class" scope="col"></th>
+      </tr>
+    </thead>
+    
+    <tbody class="govuk-table__body">
+      
+      <tr *ngFor="let tokenObject of tokenObjects"  class="govuk-table__row">
+        <td class="govuk-table__cell" scope="row">{{tokenObject.email}}</td>
+        <td class="govuk-table__cell">{{tokenObject.apiID}}</td>
+        <td class="govuk-table__cell">{{tokenObject.stage}}</td>
+        <td class="govuk-table__cell">
+            <a class="govuk-button govuk-button--start" (click)="verifyUser(tokenObject)" type="button">Verify</a>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
