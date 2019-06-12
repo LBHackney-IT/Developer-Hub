@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { selectIsAuthenticated } from '../../../store/selectors/user.selectors';
 import { Observable } from 'rxjs';
@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
    * type {string}
    * memberof HeaderComponent
    */
-  public user: IUser = null;
+  @Input() user: IUser;
 
   /**
    *Creates an instance of HeaderComponent.
@@ -38,10 +38,6 @@ export class HeaderComponent implements OnInit {
   }
 
   getUsername = (): string => {
-    this.authService.getUserObject().subscribe(
-      (response) => {
-        this.user = response;
-      });
     if (this.user && this.user.name) {
       return this.user.name;
     } else {
