@@ -12,6 +12,7 @@ import { retry } from 'rxjs/operators';
 import { AuthService } from '../../../services/auth.service';
 import { IApikey } from '../../../interfaces/IApikey';
 import { Accordion } from 'govuk-frontend';
+import { ICompliancyObject } from 'src/app/interfaces/ICompliancyObject';
 /**
  * @export
  * @class ApiPageComponent
@@ -176,7 +177,7 @@ export class ApiPageComponent implements OnInit, AfterViewChecked, AfterViewInit
    * @returns {object}
    * @memberof ApiPageComponent
    */
-  generateCompliancyText = () => {
+  generateCompliancyText = (): ICompliancyObject[] => {
     const keys = Object.keys(this.api.compliant);
     return keys.map((id) => {
       return {
@@ -185,6 +186,7 @@ export class ApiPageComponent implements OnInit, AfterViewChecked, AfterViewInit
         compliant: this.api.compliant[id]
       };
     });
+
   }
 
   /**
