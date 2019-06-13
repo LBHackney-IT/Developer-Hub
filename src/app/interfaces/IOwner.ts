@@ -1,5 +1,5 @@
 import { IContactInfo } from './IContactInfo';
 export interface IOwner {
-    product: IContactInfo;
-    technical: IContactInfo;
+    product?: IContactInfo;
+    technical?: IContactInfo;
 }
