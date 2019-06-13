@@ -20,10 +20,11 @@ describe('AlertComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AlertComponent);
     component = fixture.componentInstance;
+    component.message = 'hello';
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

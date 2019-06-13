@@ -23,7 +23,7 @@ import { ICompliancyObject } from 'src/app/interfaces/ICompliancyObject';
   templateUrl: './api-page.component.html',
   styleUrls: ['./api-page.component.scss']
 })
-export class ApiPageComponent implements OnInit, AfterViewChecked, AfterViewInit {
+export class ApiPageComponent implements OnInit, AfterViewChecked {
   /**
    * @type {IApi}
    * @memberof ApiPageComponent
@@ -75,12 +75,6 @@ export class ApiPageComponent implements OnInit, AfterViewChecked, AfterViewInit
     this.getApi(id);
   }
 
-  ngAfterViewInit() {
-    // const $accordion = document.querySelector('[data-module="accordion"]');
-
-    // new Accordion($accordion).init();
-
-  }
 
   ngAfterViewChecked() {
       const $accordion = document.querySelector('[data-module="accordion"]');
