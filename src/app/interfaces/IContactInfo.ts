@@ -1,4 +1,4 @@
 export interface IContactInfo {
-    name: string;
-    contactDetails: string;
+    name?: string;
+    contactDetails?: string;
 }

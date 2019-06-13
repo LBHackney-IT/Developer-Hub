@@ -65,4 +65,5 @@ export class HeaderComponent implements OnInit {
   template: ''
 })
 export class MockHeaderComponent {
+  @Input() user: IUser;
 }

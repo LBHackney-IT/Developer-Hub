@@ -19,3 +19,12 @@ export class ApiPageOwnerComponent implements OnInit {
     return text.substr(0, 1).toUpperCase() + text.substr(1).toLowerCase();
   }
 }
+
+
+@Component({
+  selector: 'app-api-page-owner',
+  template: ''
+})
+export class MockApiPageOwnerComponent {
+  @Input() owner: IOwner;
+}

@@ -70,3 +70,14 @@ export class AccordionSectionComponent implements OnInit, AfterContentChecked {
         });
   }
 }
+
+@Component({
+  selector: 'app-accordion-section',
+  template: ''
+})
+export class MockAccordionSectionComponent {
+  @Input() title: string;
+  @Input() display: boolean;
+  @Input() stage: IStage;
+  @Input() api: IApi;
+}
