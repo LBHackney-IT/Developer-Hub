@@ -22,6 +22,7 @@ describe('ConfirmRegistrationComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ConfirmRegistrationComponent);
     component = fixture.componentInstance;
+    component.confirmRegistration = () => {};
     fixture.detectChanges();
   });
 
