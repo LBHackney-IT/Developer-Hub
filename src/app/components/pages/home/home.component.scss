@@ -13,15 +13,15 @@
     }
 
     &-list {
-        padding-left: 2rem;
-        margin-bottom: 2.5rem;
+        padding-left: rem(20);
+        margin-bottom: rem(25);
 
         &__item {
 
         }
 
         &__item:not(:last-child) {
-            margin-bottom: .7rem;
+            margin-bottom: rem(7);
         }
     }
 
@@ -30,8 +30,8 @@
         width: 100%;
         height: auto;
         display: inline-block;
-        margin-top: 2rem;
-        margin-bottom: 4rem;
+        margin-top: rem(20);
+        margin-bottom: rem(40);
     }
 }
 

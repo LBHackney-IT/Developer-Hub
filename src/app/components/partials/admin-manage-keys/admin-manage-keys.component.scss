@@ -1,8 +1,8 @@
 @import '../../../../styles.scss';
 
 .admin__box {
-    margin-top: 4rem;
-    margin-bottom: 4rem;
+    margin-top: rem(40);
+    margin-bottom: rem(40);
     display: flex;
     flex-direction: column;
 }
@@ -29,7 +29,7 @@
     display: flex;
     flex-direction: column;
 
-    padding: 2rem 0;
+    padding: rem(20) 0;
 }
 
 .admin__row {
@@ -67,6 +67,10 @@
     border-bottom: 1px solid $hackney-black;
 }
 
+.govuk-table .govuk-button {
+    margin-bottom: 0;
+}
+
 @media screen and (max-width: 640px) {
     .admin__box {
         margin-top: 0;
@@ -78,8 +82,8 @@
         justify-content: flex-start;
         align-items: flex-start;
         
-        padding-bottom: 1.5rem;
-        margin-bottom: 1.5rem;
+        padding-bottom: rem(15);
+        margin-bottom: rem(15);
     }
 
     .hackney-button {
@@ -92,5 +96,35 @@
 
     .admin__row__button {
         margin-bottom: 1rem;
+    }
+
+    .govuk-table__head {
+        display: none;
+    }
+
+    .govuk-table__cell {
+        border-bottom: 0;
+        display: block;
+        padding: 3px 0;
+
+        &:before {
+            content: attr(data-label);
+            display: inline-block;
+            font-weight: bold;
+            width: rem(50);
+        }
+
+        &--no-header {
+            border-bottom: 1px solid $hackney-light-grey;
+            margin-bottom: rem(10);
+        }
+
+        &--no-header:before {
+            content: none;
+        }
+    }
+
+    .govuk-table .govuk-button {
+        margin-bottom: rem(10);
     }
 }

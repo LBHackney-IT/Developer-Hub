@@ -1,6 +1,5 @@
-@import "../../../../assets/sass/abstracts/variables";
+@import '../../../../styles.scss';
 
-@import "../../../../assets/sass/utilities/hackney-stripes";
 .container {
   display: flex;
   flex-direction: column;
@@ -26,15 +25,15 @@
   &__hackney-logo {
     display: inline-block;
     align-self: flex-start;
-    margin-bottom: 1rem;
+    margin-bottom: rem(10);
   }
 
   &__hackney-image {
-    height: 3.5rem;
+    height: rem(35);
     width: auto;
 
     @media (min-width: 830px) {
-      height: 4.5rem;
+      height: rem(45);
     }
   }
 
@@ -42,11 +41,11 @@
   // NAVBAR
 
   &__navbar {
-    padding-bottom: 1rem;
+    padding-bottom: rem(10);
     width: 100%;
 
     @media (min-width: 830px) { 
-      margin-top: 1.6rem;
+      margin-top: rem(16);
       padding: 0;
       width: auto;
     }
@@ -59,14 +58,14 @@
       justify-content: space-between;
 
       color: $hackney-white;
-      font-size: 1.8rem;
+      font-size: rem(18);
     }
 
     &-list li > a {
       text-decoration: none;
       color: inherit;
 
-      padding: 1rem;
+      padding: rem(10);
       cursor: pointer;
       border: 3px solid transparent;
 
@@ -76,7 +75,7 @@
     &-btn-login {
       color: inherit;
       transition: all 0.2s;
-      padding: 0.5rem;
+      padding: rem(5);
     }
 
     &-list li a:hover,
@@ -110,25 +109,25 @@
   flex-direction: column;
   color: $hackney-white;
   background: $hackney-black;
-  margin: 1rem 0;
+  margin: rem(10) 0;
 
   &:not(:last-child) {
-    margin-bottom: 2.5rem;
+    margin-bottom: rem(25);
   }
 }
 
 
 .dropdown__content__item {
   display: inline-block;
-  padding: .5 .7rem;
+  padding: rem(5) rem(7);
 }
 
 .dropdown__arrow {
   display: inline-block;
   transition: all .2s;
-  font-size: 2.2rem;
-  line-height: 2.2rem;
-  margin-left: 1rem;
+  font-size: rem(22);
+  line-height: rem(22);
+  margin-left: rem(10);
 }
 
 .dropdown__arrow--rotate {
@@ -152,11 +151,11 @@
   .header__navbar-list {
 
     flex-direction: column;
-    margin-left: -1rem;
+    margin-left: rem(-8);
 
    & li {
     
-    margin: 1rem 0;
+    margin: rem(10) 0;
    }
     
   }
