@@ -1,7 +1,8 @@
 import { Component, OnInit,   ContentChildren, QueryList, AfterContentInit, ViewChild, ComponentFactoryResolver,
   ViewContainerRef } from '@angular/core';
 import { TabComponent } from './tab/tab.component';
-
+import { AfterViewChecked } from '@angular/core';
+import { Tabs } from 'govuk-frontend';
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.component.html',
@@ -9,7 +10,7 @@ import { TabComponent } from './tab/tab.component';
 })
 export class TabsComponent implements AfterContentInit {
   @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
-
+  hasTabInitialised = false;
   constructor() { }
 
   ngAfterContentInit() {

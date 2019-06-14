@@ -8,3 +8,8 @@
 @import 'assets/sass/utilities/positioning';
 @import 'assets/sass/utilities/reusable';
 
+@import "../node_modules/govuk-frontend/all";
+
+.govuk-details__summary {
+    color: black;
+}
