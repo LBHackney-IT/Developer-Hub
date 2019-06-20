@@ -1,2 +1,20 @@
-<app-api-item-crud *ngFor="let api of apis | orderApisAlphabetically" [api]="api"></app-api-item-crud>
-<button class="hackney-button" type="submit" (click)="createApi()">Create New Api</button>
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row" *ngFor="let api of apis | orderApisAlphabetically">
+    <dd class="govuk-summary-list__value">
+      <a class="govuk-link govuk-link--no-visited-state" routerLink="/api/{{ api.id }}">
+        {{ api.title }}
+      </a>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link govuk-link--no-visited-state" routerLink="/api-form/{{ api.id }}">
+        Edit
+      </a>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link govuk-link--no-visited-state delete" (click)="onDeleteApi(api)">
+        Delete
+      </a>
+    </dd>
+  </div>
+</dl>
+<button class="govuk-button govuk-button--start" type="submit" (click)="createApi()">Create New Api</button>
