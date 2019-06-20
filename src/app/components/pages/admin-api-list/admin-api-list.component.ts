@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IApi } from 'src/app/interfaces/IApi';
 import { Store, select } from '@ngrx/store';
 import { IAppState } from '../../../store/state/app.state';
-import { GetApiList } from '../../../store/actions/api.actions';
+import { GetApiList, DeleteApi } from '../../../store/actions/api.actions';
 import { selectApiList } from '../../../store/selectors/api.selectors';
 import { Router } from '@angular/router';
 
@@ -49,8 +49,12 @@ export class AdminApiListComponent implements OnInit {
     this.store.dispatch(new GetApiList());
   }
 
-  createApi = ()  => {
+  createApi = () => {
     this.router.navigate(['/api-form/new']);
+  }
+
+  onDeleteApi(api: IApi) {
+    this.store.dispatch(new DeleteApi(api.id));
   }
 
 }

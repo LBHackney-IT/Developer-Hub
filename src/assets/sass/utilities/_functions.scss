@@ -1,0 +1,7 @@
+@function rem($size) {
+  @if (unitless($size)) {
+    $size: $size * 1px;
+  }
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}

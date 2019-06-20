@@ -1,0 +1,25 @@
+<details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      <h3 class="heading-medium">
+        Is it compliant with the Hackney standards?
+      </h3>
+    </span>
+  </summary>
+
+  <div class="govuk-details__text">
+    <div class="api__details__compliance" *ngIf="compliancyArray.length > 0">
+      <dl class="govuk-summary-list govuk-summary-list--no-border">
+        <div class="govuk-summary-list__row" *ngFor="let compliancy of compliancyArray">
+          <dt class="govuk-summary-list__key">
+            {{ compliancy.text }}
+          </dt>
+          <dd class="govuk-summary-list__actions">
+            <h3 class="hackney-tag hackney-tag--{{compliancy.compliant ? 'positive' : 'negative' }}">
+              {{compliancy.compliant ? 'Compliant' : 'Non Compliant' }} </h3>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</details>

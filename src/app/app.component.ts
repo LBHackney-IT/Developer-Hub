@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { createUser } from '../testing/mock-db';
+import { IUser } from './interfaces/IUser';
 
 @Component({
   selector: 'app-root',
@@ -9,16 +10,20 @@ import { createUser } from '../testing/mock-db';
 })
 export class AppComponent implements OnInit {
   title = 'Developer-Hub-Frontend';
+  user: IUser = null;
   constructor(private authService: AuthService) {}
   ngOnInit() {
     this.getCurrentUser();
   }
-
   getCurrentUser = () => {
-    const user = this.authService.getCurrentUser();
-    const isAuthenticated: boolean = user ? this.authService.isAuthenticated(user) : false;
-    if (user !== null && isAuthenticated) {
-       this.authService.refreshSession(user);
+    const cognitoUser = this.authService.getCurrentUser();
+    const isAuthenticated: boolean = cognitoUser ? this.authService.isAuthenticated(cognitoUser) : false;
+    if (cognitoUser !== null && isAuthenticated) {
+       this.authService.refreshSession(cognitoUser);
+       this.authService.getUserObject().subscribe(
+         (response) => {
+           this.user = response;
+         });
     }
   }
 }

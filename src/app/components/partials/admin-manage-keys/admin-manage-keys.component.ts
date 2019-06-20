@@ -14,7 +14,6 @@ export class AdminManageKeysComponent implements OnInit {
 
   constructor(
     private apiKeyService: ApiKeyService,
-    private authService: AuthService,
     private spinnerService: SpinnerService
   ) { }
 

@@ -2,8 +2,8 @@
 
 .api__item__container {
 
-  padding: 2rem;
-  margin-bottom: 3rem;
+  padding: rem(20);
+  margin-bottom: rem(30);
   border-bottom: 2px solid $hackney-black;
 }
 
@@ -13,7 +13,7 @@
   justify-content: space-between;
   align-items: flex-start;
 
-  margin-bottom: 3rem;
+  margin-bottom: rem(30);
 
   &__title {
     
@@ -34,7 +34,7 @@
 
     & p:first-child {
       display: inline-block;
-      margin-right: .5rem;
+      margin-right: rem(5);
     }
   }
 }

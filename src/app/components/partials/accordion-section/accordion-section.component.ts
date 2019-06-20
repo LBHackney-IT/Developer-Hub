@@ -1,28 +1,33 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { IApi } from 'src/app/interfaces/IApi';
-import { AuthService } from '../../../services/auth.service';
+import { Component, OnInit, Input, AfterContentInit, AfterViewInit, AfterViewChecked, AfterContentChecked } from '@angular/core';
 import { IStage } from '../../../interfaces/IStage';
-import { ApiKeyService } from '../../../services/apiKey.service';
+import { IApi } from '../../../interfaces/IApi';
 import { IApikey } from '../../../interfaces/IApikey';
+import { AuthService } from '../../../services/auth.service';
+import { ApiKeyService } from '../../../services/apiKey.service';
 
 @Component({
-  selector: 'app-api-page-section',
-  templateUrl: './api-page-section.component.html',
-  styleUrls: ['./api-page-section.component.scss']
+  selector: 'app-accordion-section',
+  templateUrl: './accordion-section.component.html',
+  styleUrls: ['./accordion-section.component.scss']
 })
-export class ApiPageSectionComponent implements OnInit {
+export class AccordionSectionComponent implements OnInit, AfterContentChecked {
+
   private apiKey: IApikey;
   private apiKeyCallMade = false;
+
   @Input() title: string;
   @Input() display: boolean;
   @Input() stage: IStage;
   @Input() api: IApi;
-  constructor(
-    private authService: AuthService,
+  constructor(private authService: AuthService,
     private apikeyService: ApiKeyService) { }
 
   ngOnInit() {
-    if (this.isLoggedIn()) {
+
+  }
+
+  ngAfterContentChecked() {
+    if (this.isLoggedIn() && !this.apiKeyCallMade) {
       this.getAPIKey();
     }
   }
@@ -59,23 +64,18 @@ export class ApiPageSectionComponent implements OnInit {
             verified: response ? response['verified'] : undefined
           };
           this.apiKeyCallMade = true;
-          // }
         },
         (error) => {
           // console.log(error);
         });
   }
-
 }
 
-
 @Component({
-  selector: 'app-api-page-section',
+  selector: 'app-accordion-section',
   template: ''
 })
-export class MockApiPageSectionComponent {
-  private apiKey: IApikey;
-  private apiKeyCallMade = false;
+export class MockAccordionSectionComponent {
   @Input() title: string;
   @Input() display: boolean;
   @Input() stage: IStage;

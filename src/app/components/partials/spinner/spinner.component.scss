@@ -1,15 +1,15 @@
-@import '../../../../assets/sass/abstracts/variables';
+@import '../../../../styles.scss';
 
 .loader,
 .loader:after {
   border-radius: 50%;
-  width: 7rem;
-  height: 7rem;
+  width: rem(70);
+  height: rem(70);
 
 
   @media (max-width: 900px) {
-    width: 5.5rem;
-    height: 5.5rem;
+    width: rem(55);
+    height: rem(55);
     }
 }
 .loader {

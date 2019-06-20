@@ -1,24 +1,30 @@
-<div class="keymanager__container">
-  <div class="keymanager__header">
-    <h4 class="heading-medium keymanager__header__title">API</h4>
-    <h4 class="h4 heading-medium keymanager__header__header__title-key">API Key</h4>
-    <h4 class="h4 heading-medium keymanager__header__header__title-key">Stage</h4>
-  </div>
-  <div class="keymanager__body">
-    <div class="keymanager__body__row" *ngFor="let key of apiKeys">
-      <div class="keymanager__body__row__title">
-        <p class="paragraph-text">{{key.api.title}}</p>
-      </div>
-      <div class="keymanager__body__row__key">
-          <app-click-reveal *ngIf="key.apiKey" [apiKey]="key.apiKey"></app-click-reveal>
-          <p class="hackney-tag hackney-tag--{{key.verified ? 'positive' : 'negative' }}">
-            {{key.verified ? 'Verified' : 'Not Verified' }} 
-          </p>
-      </div>
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header app-custom-class" scope="col">API</th>
+      <th class="govuk-table__header app-custom-class" scope="col">Stage</th>
+      <th class="govuk-table__header app-custom-class" scope="col">Key</th>
+      <th class="govuk-table__header app-custom-class" scope="col"></th>
+    </tr>
+  </thead>
 
-      <div class="keymanager__body__row__key">
-        <p class="paragraph-text">{{key.stage }}</p>
-    </div>
-    </div>
-  </div>
-</div>
+  <tbody class="govuk-table__body">
+
+    <tr *ngFor="let key of apiKeys" class="govuk-table__row">
+      <td data-label="API" class="govuk-table__cell" scope="row">
+        {{key.api.title}}
+      </td>
+      <td data-label="Stage" class="govuk-table__cell">
+        {{key.stage }}
+      </td>
+      <td data-label="Key" class="govuk-table__cell">
+        <app-click-reveal *ngIf="key.apiKey" [apiKey]="key.apiKey"></app-click-reveal>
+      </td>
+      <td data-label="Verified" class="govuk-table__cell">
+        <span class="hackney-tag hackney-tag--{{key.verified ? 'positive' : 'negative' }}">
+          {{key.verified ? 'Verified' : 'Not Verified' }}
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

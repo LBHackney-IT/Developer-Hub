@@ -9,9 +9,9 @@
 }
 
 .api__table {
-  padding: 2.5rem 2.5rem;
+  padding: rem(25) rem(25);
   border: 1px solid $hackney-black;
-  margin-bottom: 4rem;
+  margin-bottom: rem(40);
 }
 
 .api__table__header {
@@ -20,8 +20,8 @@
   justify-content: space-between;
   align-items: flex-start;
 
-  border-bottom: 1px solid $hackney-black;
-  padding: 2.5rem 0;
+  // border-bottom: 1px solid $hackney-black;
+  // padding: 2.5rem 0;
 
 
   &__tags {
@@ -29,7 +29,7 @@
     align-items: flex-start;
 
     & p:first-child {
-      margin-right: .5rem;
+      margin-right: rem(5);
     }
   }
 }
@@ -45,7 +45,7 @@
     justify-content: space-between;
     align-content: center;
 
-    padding-top: 2.5rem;
+    padding-top: rem(25);
 
     // &:not(:last-child) {
     //   border-bottom: 1px solid $hackney-black;
@@ -61,7 +61,7 @@
     text-align: right;
 
     & p:first-child {
-      margin-right: .5rem;
+      margin-right: rem(5);
     }
   }
 
@@ -71,7 +71,7 @@
 
   &__section {
     border-bottom: 1px solid $hackney-black;
-    padding-bottom: 2.5rem;
+    padding-bottom: rem(25);
   }
 
 }
@@ -79,11 +79,11 @@
 .api__details {
 
   &__overview {
-    margin-bottom: 4rem;
+    margin-bottom: rem(40);
   }
 
   &__compliance {
-    margin-bottom: 4rem;
+    margin-bottom: rem(40);
   }
 
   &__compliance__header {
@@ -96,7 +96,7 @@
   }
 
   &__compliance__tag {
-    margin-top: 1.3rem;
+    margin-top: rem(13);
   }
 
   &__compliance__text {
@@ -139,14 +139,14 @@
   }
 
   .api__details__overview {
-    margin-bottom: 1.5rem;
+    margin-bottom: rem(15);
   }
 }
 
 .api__table__body__link {
   text-decoration: none;
   font-family: inherit;
-  font-size: 1.6rem;
+  font-size: rem(16);
   font-weight: 600;
   color: $hackney-blue;
 

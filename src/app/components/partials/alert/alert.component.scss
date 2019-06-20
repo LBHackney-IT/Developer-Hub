@@ -2,7 +2,7 @@
 
 .alert__banner {
   text-align: center;
-  padding: 2rem;
+  padding: rem(20);
   border: 4px solid transparent;
   margin: 4rem 0;
 
@@ -26,6 +26,6 @@
 
 @media screen and (min-width: 740px) {
   .alert__banner {
-    margin: 2rem 0;
+    margin: rem(20) 0;
   }
 }
