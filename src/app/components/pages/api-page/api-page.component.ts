@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../../services/api.service';
+import { Component, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IApi } from '../../../interfaces/IApi';
 import { ApiKeyService } from '../../../services/apiKey.service';
-import { compliancyConfigMap} from '../../../shared/config';
+import { compliancyConfigMap } from '../../../shared/config';
 import { select, Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/state/app.state';
 import { IApiState } from '../../../store/state/api.state';
@@ -12,7 +11,8 @@ import { GetApiList } from '../../../store/actions/api.actions';
 import { retry } from 'rxjs/operators';
 import { AuthService } from '../../../services/auth.service';
 import { IApikey } from '../../../interfaces/IApikey';
-
+import { Accordion } from 'govuk-frontend';
+import { ICompliancyObject } from 'src/app/interfaces/ICompliancyObject';
 /**
  * @export
  * @class ApiPageComponent
@@ -23,12 +23,20 @@ import { IApikey } from '../../../interfaces/IApikey';
   templateUrl: './api-page.component.html',
   styleUrls: ['./api-page.component.scss']
 })
-export class ApiPageComponent implements OnInit {
+export class ApiPageComponent implements OnInit, AfterViewChecked {
   /**
    * @type {IApi}
    * @memberof ApiPageComponent
    */
   api: IApi;
+
+  /**
+   *
+   *
+   * @type {boolean}
+   * @memberof ApiPageComponent
+   */
+  hasAccordionInitialised = false;
 
 
   /**
@@ -65,6 +73,15 @@ export class ApiPageComponent implements OnInit {
   ngOnInit() {
     const id: string = this.route.snapshot.paramMap.get('id');
     this.getApi(id);
+  }
+
+
+  ngAfterViewChecked() {
+      const $accordion = document.querySelector('[data-module="accordion"]');
+      if ($accordion && !this.hasAccordionInitialised) {
+        new Accordion($accordion).init();
+        this.hasAccordionInitialised = true;
+      }
   }
 
   isLoggedIn = (): boolean => {
@@ -154,7 +171,7 @@ export class ApiPageComponent implements OnInit {
    * @returns {object}
    * @memberof ApiPageComponent
    */
-  generateCompliancyText = () => {
+  generateCompliancyText = (): ICompliancyObject[] => {
     const keys = Object.keys(this.api.compliant);
     return keys.map((id) => {
       return {
@@ -163,6 +180,7 @@ export class ApiPageComponent implements OnInit {
         compliant: this.api.compliant[id]
       };
     });
+
   }
 
   /**

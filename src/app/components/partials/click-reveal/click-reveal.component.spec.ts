@@ -20,10 +20,11 @@ describe('ClickRevealComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ClickRevealComponent);
     component = fixture.componentInstance;
+    component.apiKey = 'apiKey';
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

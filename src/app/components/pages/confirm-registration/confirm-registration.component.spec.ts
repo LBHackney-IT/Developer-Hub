@@ -11,7 +11,7 @@ describe('ConfirmRegistrationComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        // TestingModule,
+        TestingModule,
         RouterTestingModule,
       ],
       declarations: [ ConfirmRegistrationComponent ]
@@ -22,10 +22,11 @@ describe('ConfirmRegistrationComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ConfirmRegistrationComponent);
     component = fixture.componentInstance;
+    component.confirmRegistration = () => {};
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,0 +1,25 @@
+<details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      <h3 class="heading-medium">
+        Contact Owners
+      </h3>
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <dl class="govuk-summary-list govuk-summary-list--no-border">
+      <div class="govuk-summary-list__row" *ngFor="let ownerType of ownerTypes">
+        <dt class="govuk-summary-list__key heading-small">
+          {{ toTitleCase(ownerType) }} Owner
+        </dt>
+        <dd class="govuk-summary-list__value paragraph-text">
+          {{ owner[ownerType].name }}
+        </dd>
+
+        <dd class="govuk-summary-list__actions paragraph-text">
+            {{ owner[ownerType].contactDetails }}
+        </dd>
+      </div>
+    </dl>
+  </div>
+</details>

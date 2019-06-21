@@ -15,7 +15,7 @@ $hackney-border-color: #064579;
 
 $page-header-bg-colour: $hackney-black;
 $page-header-text-colour: $hackney-white;
-$page-header-padding: 2rem !default;
+$page-header-padding: rem(20) !default;
 
 $swagger-method-delete: 	#df3034;
 $swagger-method-put-patch: #f47738;
@@ -40,14 +40,14 @@ $dark-stripe-width: $hackney-stripe-width * 2;
 $middle-stripe-style: $middle-stripe-width solid $hackney-stripes-middle-colour;
 
 ////// BOXING
-$container-padding: 4.5rem 4.5rem;
-$container-padding-mobile: 2.25rem 2.25rem;
-$margin-bottom-heading: 2rem;
-$margin-bottom-text: 1.5rem;
+$container-padding: rem(45) rem(45);
+$container-padding-mobile: rem(22.5) rem(22.5);
+$margin-bottom-heading: rem(20);
+$margin-bottom-text: rem(15);
 
 ///// TYPO
-$heading--big: 5rem;
-$heading--medium: 2.5rem;
+$heading--big: rem(50);
+$heading--medium: rem(25);
 
 $font-family: "nta", Arial, sans-serif;
 
@@ -58,7 +58,7 @@ $font-family: "nta", Arial, sans-serif;
     font-family: $font-family;
     font-weight: 400;
 
-    font-size: 1.8rem;
+    font-size: rem(18);
     line-height: 1.6;
     margin-top: 0;
     padding-bottom: $margin-bottom-text;

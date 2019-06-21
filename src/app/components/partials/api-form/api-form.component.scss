@@ -6,7 +6,7 @@
 // @import '../../../../../node_modules/govuk-frontend/components/label/label';
 
 .apiform_container {
-    padding: 5rem 3rem;
+    padding: rem(50) rem(30);
 }
 
 .apiform__api {
@@ -16,15 +16,15 @@
 }
 
 .apiform__api__form {
-    margin-bottom: 2rem;
+    margin-bottom: rem(20);
 }
 
 .apiform__api__form--formgroup {
-    margin-bottom: 2rem;
+    margin-bottom: rem(20);
 }
 
 .apiform__api__label {
-    font-size: 1.8rem;
+    font-size: rem(18);
     font-weight: 400;
     font-family: inherit;
 }
@@ -36,5 +36,5 @@
 }
 
 .textarea {
-    margin-bottom: 2rem;
+    margin-bottom: rem(20);
 }

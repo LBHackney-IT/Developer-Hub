@@ -63,7 +63,7 @@ const generatePathParameter = (numberOfParameters: number): IPathParameter[] => 
     return parameters;
 };
 
-const generateRandomApi = (): IApi => {
+export const generateRandomApi = (): IApi => {
     return {
         id: Faker.random.alphaNumeric(8),
         title: Faker.lorem.word() + ' API',
@@ -134,4 +134,4 @@ export const createUser = () => {
         Pool: dummyUserPool
     };
     const user: CognitoUser = new CognitoUser(dummyUserData);
-}
+};

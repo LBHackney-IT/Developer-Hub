@@ -1,0 +1,52 @@
+<div class="govuk-accordion__section ">
+  <div class="govuk-accordion__section-header">
+    <h2 class="govuk-accordion__section-heading">
+      <span class="govuk-accordion__section-button" id="accordion-{{stage.id}}-heading">
+        {{ title }}
+      </span>
+    </h2>
+  </div>
+
+  <div id="accordion-{{ stage.id }}-content" class="govuk-accordion__section-content">
+    
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Base URL
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ stage?.url }}
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Availiable in Development
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ stage?.deployed }}
+        </dd>
+      </div>
+
+      <div *ngIf="isLoggedIn() && api && apiKeyCallMade" class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          API Key
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <div *ngIf="hasApiKey()">
+            <app-click-reveal [apiKey]="apiKey.value"></app-click-reveal>
+            <p class="hackney-tag hackney-tag--{{apiKey?.verified ? 'positive' : 'negative' }}">
+              {{ apiKey?.verified ? 'Verified' : 'Not Verified' }}
+            </p>
+          </div>
+
+          <div *ngIf="!hasApiKey()">
+              <a data-prevent-double-click="true" class="govuk-button govuk-button--start govuk-!-margin-bottom-0" (click)="requestAPIKey()" type="button"> Request API-Key</a>
+          </div>
+        </dd>
+      </div>
+
+      
+    </dl>
+  </div>
+</div>
