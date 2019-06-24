@@ -29,9 +29,9 @@ jobs:
           name: Building
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                npm run build --prod
+                npm run build --prod --aot=true
               elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
-                  npm run build --prod
+                  npm run build --aot=true
               else
                   echo 'dry-branch'
               fi
