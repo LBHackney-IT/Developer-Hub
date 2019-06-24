@@ -20,11 +20,11 @@ export class AppComponent implements OnInit {
     const isAuthenticated: boolean = cognitoUser ? this.authService.isAuthenticated(cognitoUser) : false;
     if (cognitoUser !== null && isAuthenticated) {
        await this.authService.refreshSession(cognitoUser);
-       this.authService.getUserObject().subscribe(
-         (response) => {
-           this.user = response;
-         });
     }
+    this.authService.getUserObject().subscribe(
+      (response) => {
+        this.user = response;
+      });
   }
 }
 
