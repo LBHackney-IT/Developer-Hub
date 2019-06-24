@@ -37,7 +37,7 @@ export class AdminManageKeysComponent implements OnInit {
         });
   }
 
-  private getUnverifiedKeys = async (): Promise<void> => {
+  getUnverifiedKeys = async (): Promise<void> => {
     this.spinnerService.displaySpinner();
     await this.apiKeyService.readAllUnverifiedApiKeys()
       .subscribe(
