@@ -11,15 +11,18 @@ import { IUser } from './interfaces/IUser';
 export class AppComponent implements OnInit {
   title = 'Developer-Hub-Frontend';
   user: IUser = null;
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) { }
   ngOnInit() {
     this.getCurrentUser();
   }
   getCurrentUser = async () => {
     const cognitoUser = this.authService.getCurrentUser();
-    const isAuthenticated: boolean = cognitoUser ? this.authService.isAuthenticated(cognitoUser) : false;
-    if (cognitoUser !== null && isAuthenticated) {
-       await this.authService.refreshSession(cognitoUser);
+    let isAuthenticated: boolean;
+
+    isAuthenticated = cognitoUser !== null ? this.authService.isAuthenticated(cognitoUser) : false;
+
+    if (isAuthenticated) {
+      await this.authService.refreshSession(cognitoUser);
     }
     this.authService.getUserObject().subscribe(
       (response) => {
