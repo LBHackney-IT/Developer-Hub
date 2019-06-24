@@ -265,8 +265,8 @@ export class AuthService {
     return this.store.pipe(select(selectIsAuthenticated));
   }
 
-  refreshSession = (cognitoUser: CognitoUser) => {
-    cognitoUser.getSession((err, session) => {
+  refreshSession = async (cognitoUser: CognitoUser) => {
+    await cognitoUser.getSession((err, session) => {
       const refreshToken = session.getRefreshToken();
       if (this.isAuthenticated(cognitoUser)) {
         cognitoUser.refreshSession(refreshToken, (refreshSessionErr, result) => {

@@ -15,11 +15,11 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.getCurrentUser();
   }
-  getCurrentUser = () => {
+  getCurrentUser = async () => {
     const cognitoUser = this.authService.getCurrentUser();
     const isAuthenticated: boolean = cognitoUser ? this.authService.isAuthenticated(cognitoUser) : false;
     if (cognitoUser !== null && isAuthenticated) {
-       this.authService.refreshSession(cognitoUser);
+       await this.authService.refreshSession(cognitoUser);
        this.authService.getUserObject().subscribe(
          (response) => {
            this.user = response;
