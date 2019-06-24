@@ -44,39 +44,9 @@
         <p class="paragraph-text"> {{ api?.description }} </p>
       </div>
     </div>
-    <!-- <div class="api__details__compliance">
-        <div class="api__details__compliance__header">
-          <div class="api__details__compliance__title">
-            <h3 class="heading-large"> Is it compliant?</h3>
-          </div>
-
-          <div class="api__details__compliance__tag">
-            <h3 class="hackney-tag hackney-tag--{{isCompliant() ? 'negative' : 'positive' }}"> {{isCompliant() ? 'Non
-              Compliant' : 'Compliant' }} </h3>
-          </div>
-        </div>
-        <div class="api__details__compliance__text">
-          <ul class="api__details__compliance__list">
-            <li *ngFor="let compliancy of generateCompliancyText()" [class.line-through]="!compliancy.compliant">
-              {{compliancy.text}} </li>
-          </ul>
-        </div>
-      </div> -->
-
 
     <app-api-page-compliancy [compliance]="api.compliant"></app-api-page-compliancy>
     <app-api-page-owner [owner]="api.owner"></app-api-page-owner>
-    <!-- <div class="api__owner" *ngIf='api'>
-      <div class="api__owner__content">
-        <h3 class="heading-medium"> Product Owner</h3>
-        <p class="paragraph-text"> Name: {{api.owner.product.name}} </p>
-        <p class="paragraph-text"> Email: {{api.owner.product.contactDetails}} </p>
-
-        <h3 class="heading-medium"> Technical Owner</h3>
-        <p class="paragraph-text"> Name: {{api.owner.technical.name}} </p>
-        <p class="paragraph-text"> Email: {{api.owner.technical.contactDetails}} </p>
-      </div>
-    </div> -->
   </div>
 
   <a routerLink="/documentation" class="hackney-button api-page__button">← Return to API Endpoints</a>
