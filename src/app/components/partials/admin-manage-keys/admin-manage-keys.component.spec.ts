@@ -22,7 +22,7 @@ describe('AdminManageKeysComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AdminManageKeysComponent);
     component = fixture.componentInstance;
-    const getUnverifiedKeysStub = sinon.stub(component, 'getUnverifiedKeys');
+    const getUnverifiedKeysStub = sinon.stub(component, 'getUnverifiedKeys').resolves();
     component.getUnverifiedKeys = getUnverifiedKeysStub;
     fixture.detectChanges();
   });
