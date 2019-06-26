@@ -6,7 +6,7 @@ export const environment = {
     clientId: 'fjnkqnloe7adg1b85kvdmmscm'
   },
   apiURL : {
-    tokenService: 'https://j88uh2klte.execute-api.eu-west-2.amazonaws.com/dev/',
-    apiService: 'https://j88uh2klte.execute-api.eu-west-2.amazonaws.com/dev/'
+    tokenService: 'https://6ah8eiywzg.execute-api.eu-west-2.amazonaws.com/production/',
+    apiService: 'https://6ah8eiywzg.execute-api.eu-west-2.amazonaws.com/production/'
   }
 };

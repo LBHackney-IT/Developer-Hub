@@ -2,7 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminManageKeysComponent } from './admin-manage-keys.component';
 import { TestingModule } from '../../../../testing/utils';
-
+import * as sinon from 'sinon';
+import { Observable } from 'rxjs';
+import { AuthService } from '../../../services/auth.service';
 describe('AdminManageKeysComponent', () => {
   let component: AdminManageKeysComponent;
   let fixture: ComponentFixture<AdminManageKeysComponent>;
@@ -20,6 +22,8 @@ describe('AdminManageKeysComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AdminManageKeysComponent);
     component = fixture.componentInstance;
+    const getUnverifiedKeysStub = sinon.stub(component, 'getUnverifiedKeys').resolves();
+    component.getUnverifiedKeys = getUnverifiedKeysStub;
     fixture.detectChanges();
   });
 

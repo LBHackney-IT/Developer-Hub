@@ -17,6 +17,7 @@ export const environment = {
     tokenService: 'https://j88uh2klte.execute-api.eu-west-2.amazonaws.com/dev/',
     apiService: 'https://j88uh2klte.execute-api.eu-west-2.amazonaws.com/dev/'
   }
+
 };
 
 /*

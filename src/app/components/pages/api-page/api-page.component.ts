@@ -98,7 +98,7 @@ export class ApiPageComponent implements OnInit, AfterViewChecked {
    * @returns {boolean}
    * @memberof ApiPageComponent
    */
-  isStagingAvailiable = (): boolean => {
+  isStagingAvailable = (): boolean => {
     return this.api.hasOwnProperty('staging');
   }
 
@@ -107,7 +107,7 @@ export class ApiPageComponent implements OnInit, AfterViewChecked {
    * @returns {boolean}
    * @memberof ApiPageComponent
    */
-  isProductionAvailiable = (): boolean => {
+  isProductionAvailable = (): boolean => {
     return this.api.hasOwnProperty('production');
   }
 
